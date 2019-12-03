@@ -1,0 +1,41 @@
+body {
+  font-family: "Avenir Next", "Avenir", sans-serif;
+  line-height: 1.3em;
+}
+
+main {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1,h2  {
+  margin-top: 4em;
+  margin-bottom: 1.5em;
+}
+
+p.attention {
+  background-color: #cff;
+  border: 1px solid #8dd;
+  padding: 2em;
+}
+
+p.attention::before {
+  content: "attention";
+  display: block;
+  color: #6bb;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+section.assignment {
+  margin: 4em 0 1em 0;
+}
+
+
+.assignment-link {
+  background-color: #eee;
+  border: 1px solid #ddd;
+  padding: 1em;
+}
