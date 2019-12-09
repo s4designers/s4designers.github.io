@@ -59,3 +59,14 @@ typings/
 
 # next.js build output
 .next
+
+#############
+
+# macOS hidden file
+.DS_Store
+
+# JetBrains IDE 
+.idea
+
+# MSOffice temp files
+~$*
