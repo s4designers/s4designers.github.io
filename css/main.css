@@ -1,6 +1,8 @@
 body {
-  font-family: "Avenir Next", "Avenir", sans-serif;
-  line-height: 1.3em;
+  font-family: "Zilla Slab";
+  font-size: 14pt;
+  line-height: 1.4em;
+  color: #444;
 }
 
 main {
@@ -10,8 +12,10 @@ main {
 }
 
 h1,h2,h3 {
+  font-family: "Avenir Next", "Avenir", sans-serif;
   margin-top: 4em;
   margin-bottom: 1.5em;
+  color: #000;
 }
 
 p.attention {
@@ -21,6 +25,7 @@ p.attention {
 }
 
 p.attention::before {
+  font-family: "Avenir Next", "Avenir", sans-serif;
   content: "attention";
   display: block;
   color: #6bb;
@@ -30,8 +35,11 @@ p.attention::before {
 }
 
 .assignment-block {
-  background-color: #eee;
-  border: 1px solid #ddd;
+  font-family: "Avenir Next", "Avenir", sans-serif;
+  font-size: 80%;
+  line-height: 1.3em;
+  background-color: #f1f1f1;
+  border: 1px solid #d8d8d8;
   padding: 0.5em;
-  display: table;
+  display: table;  /* trick to make its width fit its content */
 }
