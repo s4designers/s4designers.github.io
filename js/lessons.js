@@ -140,11 +140,19 @@ const createAnswerBlocks = function() {
   })
 }
 
+async function loadAgenda() {
+  const response = await fetch('agenda.html')
+  const content = await response.text()
+  const agendaElement = createElement( 'div', {class: 'agenda'}, content);
+  $('#sidebar').appendChild(agendaElement)
+}
+
 //====== main program ===============================================
 
 console.log("HIYA!")
 createYoutubePlayers()
 createAnswerBlocks()
+loadAgenda()
 
 // change window title to reflect page title
 $('title').textContent = "S4D - " + $('h1').textContent
