@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Page Title</title>
+  <link rel="stylesheet" href="../fonts/ZillaSlab/ZillaSlab.css"/>
+  <link rel="stylesheet" href="../css/main.css"/>
+</head>
+<body>
+<main>
+
+  <h1>Chapter 2: Javascript</h1>
+
+  <p>This chapter introduces the Javascript -- a language that is used to make websites interactive. In this chapter we are going to use javascriptcommands to change the html that is displayed in the browser.</p>
+
+  <p class="attention">Before you start watching the video below, make sure you have a texteditor or a physical notepad ready to use. <b>Write down all the words you did not understand.</b></p>
+
+  <youtube data-ytid="ERazncKuQfQ"></youtube>
+
+  <section class="assignment">
+    <h3 class="assignment summary">2.1 Create a short summary</h3>
+    <p>Make a list with <i>3 to 5 bulletpoints</i>, in which you describe <b>the biggest differences with the arduino</b> 
+
+    <answer part="a" buttontext="Mail your summary"></answer>
+  </section>
+
+  <section class="assignment">
+      <h3 class="assignment questions">2.2 Things we could explain</h3>
+      <p>Refer to the notes you took when watching the video. <b>Which words would you like us to explain during class?</b></p>
+      <answer noslider buttontext="Mail your word list"></answer>
+  </section>
+
+  <p class="attention">The next assignments use the following images (green_pidgeon) and (crowned_hornbill). Save those to the same directory as your html file.</b></p>
+  <section class="assignment">
+  <h3>2.3 First page</h3>
+  Run both scripts. Can you explain the difference? Which one is correct?
+  <pre>
+    <code class="language-markup">
+      <html>
+      <head>
+        <title>Birds!</title>
+      </head>
+      <body>
+        <script>
+          document.getElementById("caption").innerHTML = "Crowned Hornbill"
+        </script>
+        <img src="crowned_hornbill.jpg"  width="500">
+        <p id="caption">Nice bird</p>
+      </body>
+      </html>
+    </code>
+  </pre>
+
+  <pre>
+    <code class="language-markup">
+      <html>
+      <head>
+        <title>Birds!</title>
+      </head>
+      <body>
+        <img src="crowned_hornbill.jpg"  width="500">
+        <p id="caption">Nice bird</p>
+        <script>
+          document.getElementById("caption").innerHTML = "Crowned Hornbill"
+        </script>
+      </body>
+      </html>
+    </code>
+  </pre>
+  <answer noslider buttontext="Mail your code"></answer>
+  </section>
+  <section class="assignment">
+      <h3 class="assignment questions">2.4 Change the image</h3>
+      Use the code from assignment 2.3.
+      <ul>
+        <li>Give the image an id.</li>
+        <li>Use this id to change the image to a green pidgeon using javascript. </li>
+      </ul>
+      <answer noslider buttontext="Mail your code"></answer>
+  </section> 
+
+<section class="assignment">
+      <h3 class="assignment questions">2.5 read-write</h3>
+        <pre>
+          <code class="language-markup">
+           <html>
+            <head>
+              <title>Birds!</title>
+            </head>
+            <body>
+              <img src="crowned_hornbill.jpg"  width="500">
+              <p id="caption">Nice bird</p>
+              <p id="caption2">can be found in Uganda</p>
+            <script>
+              document.getElementById("caption").innerHTML = "Crowned Hornbill"
+              alert(document.getElementById("caption2").innerHTML)
+            </script>
+            </body>
+            </html>
+          </code>
+        </pre>
+      <p>On line x, <code>document.getElementById("caption").innerHTML</code> is used to find an element, and access the innerHTML to override it with something else. In line x+1, the same code is used to find an element, find the innerHTML, and then use it to output something in an alert. </p>
+      <p>
+        Write code where you find the innerHTML of caption2 and use it to override the innerHTML of caption1.
+      </p>
+  </section>
+
+  <youtube data-ytid="RKs3r-uXTUc"/></youtube>
+
+  <section class="assignment">
+      <h3 class="assignment questions">2.6 Console</h3>
+        <pre>
+          <code class="language-markup">
+           <html>
+            <head>
+              <title>Birds!</title>
+            </head>
+            <body>
+              <img src="crowned_hornbill.jpg" width="500">
+              <p id="Title">Nice bird</p>
+              <p id="caption"></p>
+              <script>
+                document.getElementById("Caption").innerHTML = "Crowned Hornbill"
+                document.getElementById("Title").innerHTML = document.getElementById("caption").innerhtml
+              </script>
+            </body>
+            </html>
+          </code>
+        </pre>
+      <p>The given code has some problems, fix them. The console might help.</p>
+  </section>
+
+
+</main>  
+<aside id="sidebar"></aside>
+<script src='../js/chapters.js'></script>
+</body>
+</html>
