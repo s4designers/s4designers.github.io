@@ -4,10 +4,13 @@
   <meta charset='utf-8'>
   <title>Page Title</title>
   <link rel="stylesheet" href="../fonts/ZillaSlab/ZillaSlab.css"/>
+  <link rel="stylesheet" href="../fonts/SourceCodePro/SourceCodePro.css"/>
+  <link href="../libraries/prism.css" rel="stylesheet" />
   <link rel="stylesheet" href="../css/main.css"/>
 </head>
 <body>
-<main>
+<!-- <body class="line-numbers"> -->
+ <main>
 
   <h1>Chapter 1: Arduino</h1>
 
@@ -37,7 +40,7 @@
     <li>Digital pins</li>
     <li>The big chip</li>
     <li>The small push button</li>
-    <li>The black round connector</li>
+    <li>The big black round connector</li>
   </ul>
   <section class="assignment">
     <p>1.3.a) To which component should you connect sensors for things like temperature, sound, or light intensity?</p>
@@ -76,7 +79,7 @@
 
     <section class="assignment">
       <h3 class="assignment questions">1.4 Calculations with magnets</h3>
-      <pre>
+      <pre data-line="3-5, 7, 10-12"><code class="language-arduino">
 #include "s4d_breadboard.h"
 
 void setup() {
@@ -90,7 +93,7 @@ void loop() {
   digitalWrite(LED_RED, LOW);
   delay(500);
 }
-      </pre>
+</code></pre>
       <p>For the scientology church, we are building their new so called "<a href="https://en.wikipedia.org/wiki/E-meter" target="_blank">E-meter</a>" using our arduino's magnet sensor. </p>
       <ul>
         <li>Make sure to include your s4d_breadboard.h file in your project.</li>
@@ -102,6 +105,7 @@ void loop() {
 
 </main>  
 <aside id="sidebar"></aside>
+<script src="../libraries/prism.js"></script>
 <script src='../js/chapters.js'></script>
 </body>
 </html>

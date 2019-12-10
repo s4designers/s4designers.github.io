@@ -157,6 +157,8 @@ loadAgenda()
 // change window title to reflect page title
 $('title').textContent = "S4D - " + $('h1').textContent
 
+// configure code highlighter
+window.Prism.plugins.customClass.prefix("p-");
 
 })();  // end of iife construct
 
