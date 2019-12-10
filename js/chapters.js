@@ -140,6 +140,16 @@ const createAnswerBlocks = function() {
   })
 }
 
+function createTodoBlocks() {
+  $$('todo').forEach( todoElement => {
+    const replacementHtml = `<div class="todo">
+        ${todoElement.innerHTML}
+      </div>`
+    todoElement.outerHTML = replacementHtml
+  })
+
+}
+
 async function loadAgenda() {
   const response = await fetch('agenda.html')
   const content = await response.text()
@@ -152,6 +162,7 @@ async function loadAgenda() {
 console.log("HIYA!")
 createYoutubePlayers()
 createAnswerBlocks()
+createTodoBlocks()
 loadAgenda()
 
 // change window title to reflect page title

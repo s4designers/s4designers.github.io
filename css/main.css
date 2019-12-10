@@ -81,7 +81,22 @@ div.line-highlight,
   display: block;
 }
 
-
 pre {
   white-space:pre-wrap;
+}
+
+.todo {
+  color: white;
+  background-color: #0c0;
+  font-family: "Comic Sans MS";
+  padding: 1em;
+  border-radius: 10px;
+}
+.todo::before {
+  color: #080;
+  font-family: "Comic Sans MS";
+  font-weight: bold;
+  display: block;
+  content: "TODO:";
+  letter-spacing: 5px;
 }
