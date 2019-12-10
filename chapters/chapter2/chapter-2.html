@@ -90,25 +90,28 @@
             <body>
               <img src="crowned_hornbill.jpg"  width="500">
               <p id="caption">Nice bird</p>
-              <p id="caption2">can be found in Uganda</p>
             <script>
               document.getElementById("caption").innerHTML = "Crowned Hornbill"
-              alert(document.getElementById("caption2").innerHTML)
+              alert("alert something")
             </script>
             </body>
             </html>
           </code>
         </pre>
-      <p>On line x, <code>document.getElementById("caption").innerHTML</code> is used to find an element, and access the innerHTML to override it with something else. In line x+1, the same code is used to find an element, find the innerHTML, and then use it to output something in an alert. </p>
-      <p>
-        Write code where you find the innerHTML of caption2 and use it to override the innerHTML of caption1.
-      </p>
+      <p>Use javascript to create an alert that uses the innerHTML of the caption as input for the alert. </p>
+    <answer noslider buttontext="Mail your code"></answer>
   </section>
 
   <youtube data-ytid="RKs3r-uXTUc"/></youtube>
-
+  
   <section class="assignment">
       <h3 class="assignment questions">2.6 Console</h3>
+       Use the console to create some alerts. Can you find a trick that repeats the previous statement? 
+      <answer noslider buttontext="Mail your trick"></answer>
+  </section>
+
+  <section class="assignment">
+      <h3 class="assignment questions">2.7 Console</h3>
         <pre>
           <code class="language-markup">
            <html>
@@ -128,9 +131,44 @@
           </code>
         </pre>
       <p>The given code has some problems, fix them. The console might help.</p>
+      <answer noslider buttontext="Mail your code"></answer>
   </section>
 
+    <section class="assignment">
+      <h3 class="assignment questions">2.8 style</h3>
+      <p>
+        An elements style can be changed using javascript. Below are two examples. 
+      </p>
+      <pre>
+        <code class="language-javascript">
+         document.getElementById("caption").style.backgroundColor = "blue"
+         document.getElementById("caption").style.padding = "2pt"
+        </code>
+      </pre>
+      <p>
+        <i>Notice the background-color property is written as backgroundColor. This is because the "-" dash symbol cannot be used in javascript names.</i>
+      </p>
+      <p>
+        Use javascript to add style to the caption element, making the background HAN Pink (#e50055) and the text color white.
+      </p>
+      <answer noslider buttontext="Mail your code"></answer>
+  </section>
 
+    <section class="assignment">
+      <h3 class="assignment questions">2.9 Whoops</h3>
+      <p>
+        Let's try something stupid.
+      </p>
+      <pre>
+        <code class="language-javascript">
+         document.getElementById("caption").style.padding = "hotdog"
+        </code>
+      </pre>
+      <p>
+        How does the browser will handle this code? What does the console say?
+      </p>
+      <answer noslider buttontext="Mail your code"></answer>
+  </section>
 </main>  
 <aside id="sidebar"></aside>
 <script src='../js/chapters.js'></script>
