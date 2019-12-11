@@ -3,10 +3,9 @@
 <head>
   <meta charset='utf-8'>
   <title>Page Title</title>
-  <link rel="stylesheet" href="../fonts/ZillaSlab/ZillaSlab.css"/>
-  <link rel="stylesheet" href="../fonts/SourceCodePro/SourceCodePro.css"/>
-  <link href="../libraries/prism.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/main.css"/>
+  <link rel="stylesheet" href="./fonts/ZillaSlab/ZillaSlab.css"/>
+  <link rel="stylesheet" href="./fonts/SourceCodePro/SourceCodePro.css"/>
+  <link rel="stylesheet" href="./css/main.css"/>
   <style type="text/css">
     #agenda-pointer {
       font-family: 'Avenir Next';
@@ -28,10 +27,9 @@
 
 </main>  
 <aside id="sidebar"></aside>
-<script src="../libraries/prism.js"></script>
 <script language="javascript">
   async function loadAgenda() {
-    const response = await fetch('../agenda.html')
+    const response = await fetch('./agenda.html')
     const content = await response.text()
     const agendaElement = document.createElement( 'div')
     agendaElement.className = 'agenda';
