@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Page Title</title>
+  <link rel="stylesheet" href="../fonts/ZillaSlab/ZillaSlab.css"/>
+  <link rel="stylesheet" href="../fonts/SourceCodePro/SourceCodePro.css"/>
+  <link href="../libraries/prism.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/main.css"/>
+  <style type="text/css">
+    #agenda-pointer {
+      font-family: 'Avenir Next';
+      margin: 150px 40px 0 0;
+      font-size: 18pt;
+      text-align: right;
+      color: #aaa;
+    }
+  
+  </style>
+</head>
+<body>
+<!-- <body class="line-numbers"> -->
+ <main>
+
+  <div id="agenda-pointer">
+    Select a chapter from the agenda -->
+  </div>
+
+</main>  
+<aside id="sidebar"></aside>
+<script src="../libraries/prism.js"></script>
+<script language="javascript">
+  async function loadAgenda() {
+    const response = await fetch('../agenda.html')
+    const content = await response.text()
+    const agendaElement = document.createElement( 'div')
+    agendaElement.className = 'agenda';
+    agendaElement.innerHTML = content;
+    document.querySelector('#sidebar').appendChild(agendaElement)
+  }
+  loadAgenda();
+</script>
+</body>
+</html>
