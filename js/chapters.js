@@ -151,7 +151,7 @@ function createTodoBlocks() {
 }
 
 async function loadAgenda() {
-  const response = await fetch('agenda.html')
+  const response = await fetch('../agenda.html')
   const content = await response.text()
   const agendaElement = createElement( 'div', {class: 'agenda'}, content);
   $('#sidebar').appendChild(agendaElement)
