@@ -157,19 +157,83 @@ async function loadAgenda() {
   $('#sidebar').appendChild(agendaElement)
 }
 
+function addCodeHighlighter() {
+  const ghUser = 'rbrtrbrt'
+  const ghRepo = 'prism'
+  const ghRelease = 'v1.17.1.3'
+  const cdnBaseUrl = `https://cdn.jsdelivr.net/gh/${ghUser}/${ghRepo}@${ghRelease}`
+
+  const scripts = []
+  function addScript(scriptPath, extraAttrs) {
+    const scriptEl = document.createElement('script');
+    scriptEl.type = 'text/javascript';
+    scriptEl.src = cdnBaseUrl + scriptPath;
+    scriptEl.async = false;
+    if(extraAttrs) {
+      for( [name, value] of Object.entries(extraAttrs)){
+        scriptEl.setAttribute(name, value);
+      }
+    }
+    scripts.push(scriptEl)
+  }
+  const mainCssEl = $$('link[rel="stylesheet"]', document.head).pop();
+  function addStyle(stylePath) {
+    const styleEl = document.createElement('link');
+    styleEl.rel = 'stylesheet';
+    styleEl.href = cdnBaseUrl + stylePath;
+    mainCssEl.insertAdjacentElement('beforebegin', styleEl)
+  }
+  const prismLanguages = [
+    'clike','c','cpp','arduino', 'markup', 'css', 'javascript'
+  ]
+  let css = 'css', js = 'js'  
+  const prismPlugins = {
+    'line-highlight': {css,js},
+    'line-numbers': {css,js},
+    // 'custom-class': {js},
+    'file-highlight': {js},
+    'unescaped-markup': {css,js},
+    'normalize-whitespace': {js},
+  }
+  addScript('/components/prism-core.js', {'data-manual':true});
+  for( lang of prismLanguages ) {
+    addScript(`/components/prism-${lang}.js`)
+  }
+  for( [plugin,{css,js}] of Object.entries(prismPlugins)) {
+    css && addStyle(`/plugins/${plugin}/prism-${plugin}.css`)
+    js && addScript(`/plugins/${plugin}/prism-${plugin}.js`)
+  }
+  document.body.append(...scripts)
+  console.log("setting timeout")
+  function startHighlighterWhenLoaded() {
+    if( window.Prism ) {
+      window.Prism.highlightAll()
+      console.log("Prism started")
+    } else {
+      window.setTimeout(startHighlighterWhenLoaded, 50)
+      console.log("Prism not loaded yet.")
+    }
+  }
+  startHighlighterWhenLoaded()
+}
+
+
 //====== main program ===============================================
 
 console.log("HIYA!")
+
+loadAgenda()
 createYoutubePlayers()
 createAnswerBlocks()
 createTodoBlocks()
-loadAgenda()
+createDownloadButtons()
+addCodeHighlighter()
 
 // change window title to reflect page title
 $('title').textContent = "S4D - " + $('h1').textContent
 
 // configure code highlighter
-window.Prism.plugins.customClass.prefix("p-");
+//window.Prism.plugins.customClass.prefix("p-");
 
 })();  // end of iife construct
 

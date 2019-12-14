@@ -1,6 +1,6 @@
 body {
   font-family: "Zilla Slab";
-  font-size: 14pt;
+  font-size: 14px;
   line-height: 1.4em;
   color: #444;
   margin: 0;
@@ -69,20 +69,8 @@ p.attention::before {
   border: 1px solid #d8d8d8;
   padding: 0.5em;
   display: table;  /* trick to make its width fit its content */
-}
-
-pre,
-pre > code, 
-div.line-highlight,
-.line-numbers-rows > span::before  {
-  font-family: 'Source Code Pro', monospace !important;
-  font-size: 11pt !important;
-  line-height: 1.5em !important;
-  display: block;
-}
-
-pre {
-  white-space:pre-wrap;
+  border-radius: 3px;
+  margin: 4pt 0;
 }
 
 .todo {

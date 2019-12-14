@@ -5,10 +5,10 @@
   <title>Page Title</title>
   <link rel="stylesheet" href="../fonts/ZillaSlab/ZillaSlab.css"/>
   <link rel="stylesheet" href="../fonts/SourceCodePro/SourceCodePro.css"/>
-  <link href="../libraries/prism.css" rel="stylesheet" />
+  <link href="../css/prism-okaidia-custom.css" rel="stylesheet" />
   <link rel="stylesheet" href="../css/main.css"/>
 </head>
-<body>
+<body class="line-numbers">
 <main>
 
   <h1>Chapter 2: Javascript</h1>
@@ -36,8 +36,7 @@
   <section class="assignment">
   <h3>2.3 First page</h3>
   Run both scripts. Can you explain the difference? Which one is correct?
-  <pre>
-    <code class="language-markup">
+  <script type="text/plain" class="language-markup">
       <html>
       <head>
         <title>Birds!</title>
@@ -45,16 +44,14 @@
       <body>
         <script>
           document.getElementById("caption").innerHTML = "Crowned Hornbill"
-        </script>
+        &lt;/script>
         <img src="crowned_hornbill.jpg"  width="500">
         <p id="caption">Nice bird</p>
       </body>
       </html>
-    </code>
-  </pre>
+  </script>
 
-  <pre>
-    <code class="language-markup">
+  <script type="text/plain" class="language-markup">
       <html>
       <head>
         <title>Birds!</title>
@@ -64,13 +61,13 @@
         <p id="caption">Nice bird</p>
         <script>
           document.getElementById("caption").innerHTML = "Crowned Hornbill"
-        </script>
+        &lt;/script>
       </body>
       </html>
-    </code>
-  </pre>
+  </script>      
   <answer noslider buttontext="Mail your code"></answer>
   </section>
+  
   <section class="assignment">
       <h3 class="assignment questions">2.4 Change the image</h3>
       Use the code from assignment 2.3.
@@ -83,8 +80,7 @@
 
 <section class="assignment">
       <h3 class="assignment questions">2.5 read-write</h3>
-        <pre>
-          <code class="language-markup">
+        <script type="text/plain" class="language-markup">            
            <html>
             <head>
               <title>Birds!</title>
@@ -95,11 +91,11 @@
             <script>
               document.getElementById("caption").innerHTML = "Crowned Hornbill"
               alert("alert something")
-            </script>
+            &lt;/script>
             </body>
             </html>
-          </code>
-        </pre>
+        </script>
+
       <p>Use javascript to create an alert that uses the innerHTML of the caption as input for the alert. </p>
     <answer noslider buttontext="Mail your code"></answer>
   </section>
@@ -114,8 +110,7 @@
 
   <section class="assignment">
       <h3 class="assignment questions">2.7 Console</h3>
-        <pre>
-          <code class="language-markup">
+        <script type="text/plain" class="language-markup">            
            <html>
             <head>
               <title>Birds!</title>
@@ -127,11 +122,10 @@
               <script>
                 document.getElementById("Caption").innerHTML = "Crowned Hornbill"
                 document.getElementById("Title").innerHTML = document.getElementById("caption").innerhtml
-              </script>
+              &lt;/script>
             </body>
             </html>
-          </code>
-        </pre>
+          </script>
       <p>The given code has some problems, fix them. The console might help.</p>
       <answer noslider buttontext="Mail your code"></answer>
   </section>
@@ -141,12 +135,10 @@
       <p>
         An elements style can be changed using javascript. Below are two examples. 
       </p>
-      <pre>
-        <code class="language-javascript">
+      <script type="text/plain" class="language-js">          
          document.getElementById("caption").style.backgroundColor = "blue"
          document.getElementById("caption").style.padding = "2pt"
-        </code>
-      </pre>
+      </script>
       <p>
         <i>Notice the background-color property is written as backgroundColor. This is because the "-" dash symbol cannot be used in javascript names.</i>
       </p>
@@ -161,11 +153,9 @@
       <p>
         Let's try something stupid.
       </p>
-      <pre>
-        <code class="language-javascript">
-         document.getElementById("caption").style.padding = "hotdog"
-        </code>
-      </pre>
+      <script type="text/plain" class="language-js">          
+      document.getElementById("caption").style.padding = "hotdog"
+      </script>
       <p>
         How does the browser handle this code? What does the console say?
       </p>
@@ -176,17 +166,14 @@
       <p>
         This assignment is only for people who still find this whole coding thing quite intimidating. On this page, go to the console and use the following code to make coding more fun!
       </p>
-      <pre>
-        <code class="language-javascript">
+      <script type="text/plain" class="language-js">          
          document.body.style.fontFamily = "Comic Sans MS"
-        </code>
-      </pre>
+      </script>   
       </p>
       <answer noslider buttontext="Mail your code"></answer>
   </section>
 </main>  
 <aside id="sidebar"></aside>
-<script src="../libraries/prism.js"></script>
 <script src='../js/chapters.js'></script>
 </body>
 </html>
