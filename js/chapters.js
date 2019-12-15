@@ -26,11 +26,23 @@ function createElement( tagName, attributes={}, innerHTML="") {
   return element
 }
 
+// create unique id, given a prefix. 
+//E.g. newId('button') => 'button-0', 'button-1' ... 'button-154'
 idCounters = {}
 function newId(prefix="id") {
   let count = idCounters[prefix] || 0
   idCounters[prefix] = ++count
   return prefix+"-"+count
+}
+
+
+// escape characters to make string safe for use in HTML.
+function encodeForHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
 }
 
 //======= creating page elements ====================================
@@ -147,7 +159,38 @@ function createTodoBlocks() {
       </div>`
     todoElement.outerHTML = replacementHtml
   })
+}
 
+function createDownloadButtons() {
+  console.log("cDlB")
+  $$('download').forEach( downloadElement =>{
+    console.log('downloadElement :', downloadElement)
+    const downloadLinkId = newId("download-link")
+    const downloadButtonId = newId("download-button")
+    let downloadButtonText = downloadElement.getAttribute("buttonText")
+    let downloadUrl = downloadElement.getAttribute("src")
+    let fileName;
+    if(!downloadUrl){ 
+      const errMessage = `Useless src «${downloadUrl}» for downloadButton`
+      console.error( errMessage, downloadElement)
+      downloadButtonText = errMessage;
+      fileName = ""
+    }
+    if( ! downloadButtonText ) {
+      fileName = downloadUrl.split("/").pop()
+      downloadButtonText = "Download " + fileName
+    }
+    const replacementHtml = `
+      <button id="${downloadButtonId}">
+        <img class="buttonIcon" src="../images/download.svg"> ${downloadButtonText}
+      </button>
+      <a id="${downloadLinkId}" href="${downloadUrl}" download="${fileName}" hidden></a>
+    `
+    downloadElement.outerHTML = replacementHtml;
+    byId(downloadButtonId).addEventListener('click', () =>{
+      byId(downloadLinkId).click()
+    })
+  })
 }
 
 async function loadAgenda() {
