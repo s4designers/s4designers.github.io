@@ -162,16 +162,15 @@ function createTodoBlocks() {
 }
 
 function createDownloadButtons() {
-  console.log("cDlB")
   $$('download').forEach( downloadElement =>{
     console.log('downloadElement :', downloadElement)
     const downloadLinkId = newId("download-link")
     const downloadButtonId = newId("download-button")
     let downloadButtonText = downloadElement.getAttribute("buttonText")
-    let downloadUrl = downloadElement.getAttribute("src")
+    let downloadUrl = downloadElement.getAttribute("href")
     let fileName;
     if(!downloadUrl){ 
-      const errMessage = `Useless src «${downloadUrl}» for downloadButton`
+      const errMessage = `Useless href «${downloadUrl}» for downloadButton`
       console.error( errMessage, downloadElement)
       downloadButtonText = errMessage;
       fileName = ""
@@ -180,6 +179,12 @@ function createDownloadButtons() {
       fileName = downloadUrl.split("/").pop()
       downloadButtonText = "Download " + fileName
     }
+
+    downloadUrl = downloadUrl
+                    .split("/")
+                    .map( (c)=>encodeURIComponent(c) )
+                    .join("/")
+
     const replacementHtml = `
       <button id="${downloadButtonId}">
         <img class="buttonIcon" src="../images/download.svg"> ${downloadButtonText}
