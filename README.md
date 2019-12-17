@@ -6,7 +6,12 @@ Lesmateriaal voor de minor Scripting voor Designers
 
 Dit zijn de custom tags die er zijn voor het maken van hoofdstukken en opdrachten. En de constructies waarin ze gebruikt kunnen worden.
 
+
+
 #### Aantekeningen van auteurs (custom tags)
+
+De eerste twee custom tags, `<todo>` en `<note>` zijn bedoeld voor het schrijfproces, en zouden niet door studenten gezien moeten worden :-).
+
 ```html
 <todo>
   Dit is een heel verhaal over dingen die nog gedaan moeten worden.
@@ -14,6 +19,14 @@ Dit zijn de custom tags die er zijn voor het maken van hoofdstukken en opdrachte
 ```
 
 `<todo>`-tags zijn block-level elementen: hele paragraven, of meer. Kan van allerlei HTML bevatten.
+
+```html
+<note>
+  Dit is een opmerking die specifiek is voor een plek in lopende tekst.
+</note>
+```
+
+`<note>`-tags zijn inline, en bedoeld voor b.v. redactie-opmerkingen. Ze tonen een groen in de lopende tekst, en de inhoud wordt zichtbaar als je je muiscursor boven dat blokje laat zweven. 
 
 #### Video (custom class)
 

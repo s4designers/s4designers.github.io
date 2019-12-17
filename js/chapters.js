@@ -63,18 +63,6 @@ function createYoutubePlayers() {
   })  
 }
 
-
-
-
-/*
-  <answer></answer>                              -- with a slider, and default instructions, default button text.
-  <answer>                                       -- custom instructions
-    Tell us how happy you are <i>before</i> sending in an answer.
-  </answer>    
-  <answer noslider></answer>                     --  no slider
-  <answer buttontext="Mail your code"></answer>  -- custom button text 
-*/
-
 const defaultAnswerInstructionsWithSlider = "First, use the slider to tell us how satisfied you are with your answer. Then use the button to send in your answer.";
 const defaultAnswerInstructionsNoSlider = "Send in your answer using this button:";
 const defaultAnswerButtonText = "Mail your work"
@@ -82,7 +70,6 @@ const defaultAnswerButtonText = "Mail your work"
 const createAnswerBlocks = function() {
   let allAssignmentSections = $$("section.assignment")
   allAssignmentSections.forEach( assignmentSection => {
-    console.log('assignmentSection:', assignmentSection)
     const title = $("*:first-child",assignmentSection).textContent
     const firstSpaceIdx = title.indexOf(' ');
     const assignmentId = title.slice(0,firstSpaceIdx).trim();
@@ -160,6 +147,21 @@ function createTodoBlocks() {
     todoElement.outerHTML = replacementHtml
   })
 }
+
+function createNotes() {
+  $$('note').forEach( noteElement => {
+    const popupId = newId('popup')
+    const noteContent = noteElement.innerHTML
+    console.log("note:", noteContent)
+    const replacementHtml = `<span id="${popupId}" class="note">
+      </span>`
+    noteElement.outerHTML = replacementHtml
+    tippy( byId(popupId), {
+      content: noteContent
+     });
+  })
+}
+
 
 function createDownloadButtons() {
   $$('download').forEach( downloadElement =>{
@@ -252,36 +254,33 @@ function addCodeHighlighter() {
     js && addScript(`/plugins/${plugin}/prism-${plugin}.js`)
   }
   document.body.append(...scripts)
-  console.log("setting timeout")
   function startHighlighterWhenLoaded() {
     if( window.Prism ) {
       window.Prism.highlightAll()
-      console.log("Prism started")
     } else {
       window.setTimeout(startHighlighterWhenLoaded, 50)
-      console.log("Prism not loaded yet.")
     }
   }
   startHighlighterWhenLoaded()
 }
 
 
+
+function adaptPageTitle() {
+  $('title').textContent = "S4D - " + $('h1').textContent
+}
+
 //====== main program ===============================================
 
-console.log("HIYA!")
 
+adaptPageTitle()
 loadAgenda()
 createYoutubePlayers()
 createAnswerBlocks()
 createTodoBlocks()
 createDownloadButtons()
 addCodeHighlighter()
-
-// change window title to reflect page title
-$('title').textContent = "S4D - " + $('h1').textContent
-
-// configure code highlighter
-//window.Prism.plugins.customClass.prefix("p-");
+createNotes()
 
 })();  // end of iife construct
 
