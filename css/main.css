@@ -126,3 +126,45 @@ button:hover:active {
   top: 2px;
   margin: 0px 4px;
 }
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+span.note {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  position: relative;
+  background-color: #0c0;
+  animation: rotation 3s infinite linear;
+  margin-right: 3px;
+  top: 2px;
+  border-radius: 3px;
+}
+
+
+.tippy-tooltip {
+  background-color: #0c0;
+  color: white;
+  font-family: "Comic Sans MS";
+  font-size: 90%;
+}
+
+.tippy-tooltip[data-placement^='top'] .tippy-arrow {
+  border-top-color: #0c0;
+}
+.tippy-tooltip[data-placement^='bottom'] .tippy-arrow {
+  border-bottom-color: #0c0;
+}
+.tippy-tooltip[data-placement^='left'] .tippy-arrow {
+  border-left-color:  #0c0;
+}
+.tippy-tooltip[data-placement^='right'] .tippy-arrow {
+  border-right-color: #0c0;
+}
