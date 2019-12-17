@@ -5,7 +5,7 @@
   <title>Page Title</title>
   <link rel="stylesheet" href="../fonts/ZillaSlab/ZillaSlab.css"/>
   <link rel="stylesheet" href="../fonts/SourceCodePro/SourceCodePro.css"/>
-  <link href="../libraries/prism.css" rel="stylesheet" />
+  <link href="../css/prism-okaidia-custom.css" rel="stylesheet" />
   <link rel="stylesheet" href="../css/main.css"/>
 </head>
 <body class="line-numbers">
@@ -32,30 +32,28 @@
         <li>a) What is the function definition in the code above?</li>
         <li>b) What is a function call in the code above?</li>
         <li>c) How many times is line x executed by the browser?</li>
+        <li>d) What does getElementById do? </li>
       </ul>
       <answer noslider buttontext="Mail your answers"></answer>
   </section>
 
   <section class="assignment">
       <h3 class="assignment questions">2.3 What's in a name?</h3>
-      <pre>
-        <code  class="language-javascript">
+      <script type="text/plain" class="language-javascript">
           function notANiceName(){
             document.getElementById("birdpic").width = "500"
             document.getElementById("birdpic").height = "300"
           }
-        </code>
-      </pre>
+      </script>
       <p>
-         What would be a good name for the code above?
+         What would be a good name for the function in the code above?
       </p>
       <answer noslider buttontext="Mail the name"></answer>
   </section>
 
  <section class="assignment">
       <h3 class="assignment questions">2.4 What's wrong?</h3>
-      <pre>
-        <code  class="language-javascript">
+      <script type="text/plain" class="language-html">
          <html>
           <head>
             <title>Birds!</title>
@@ -67,11 +65,10 @@
                 document.getElementById("birdpic").width = "500"
                 document.getElementById("birdpic").height = "300"
               }
-            </script>
+            &lt;/script>
           </body>
           </html>
-        </code>
-      </pre>
+        </script>
       <p>
          Why, when you test this code, are you still seeing such a large bird? Can you fix this?
       </p>
@@ -79,9 +76,8 @@
   </section>
   
  <section class="assignment">
-      <h3 class="assignment questions">2.5 Create meaningful Function</h3>
-      <pre>
-        <code  class="language-javascript">
+      <h3 class="assignment questions">2.5 Create ameaningful functions</h3>
+      <script type="text/plain" class="language-html">
           <html>
             <head>
               <title>Birds!</title>
@@ -114,21 +110,132 @@
                 document.getElementById("birdpic").style.backgroundColor = "#e50055"
                 document.body.style.backgroundColor = "#000000"
                 document.getElementById("container").style.padding = "10%"
-              </script>
+              &lt;/script>
             </body>
             </html>
-        </code>
-      </pre>
+       </script>
       <p>
          The difficult part of creating functions is knowing which parts belong together. A rule of thumb is: <i>If you can easily give it a meaningful name, you are doing it right</i> 
       </p>
       <p>
-        Group the code above in functions with meaningful names. How many functions do you create?
+        Group the code above using functions with meaningful names. How many functions do you create?
       </p>
       <answer noslider buttontext="Mail your code"></answer>
-  </section>l
+  </section>
 
-<!--
+  <youtube data-ytid="J5adDzb3eu8"></youtube>
+
+  <p>This clip showed how you can make the browser call javascript functions when the user is interacting with elements on the screen.</p>
+
+  <section class="assignment">
+      <h3 class="assignment questions">2.6a to () or not to ()</h3>
+      <p>
+        Try this:
+      </p>
+      <script type="text/plain" class="language-javascript">
+        function writeHelloWorld(){
+          document.body.innerHTML = "Hello World"
+        }
+
+        alert(writeHelloWorld)
+        alert(writeHelloWorld())           
+       </script>
+        <p>
+          Describe what is happening in the two alert statements, can you explain this behaviour?.
+        </p>
+      <answer noslider buttontext="Mail explanation"></answer>
+  </section>
+  <section class="assignment">
+      <h3 class="assignment questions">2.6b</h3>
+      <p>
+        Try this:
+      </p>
+     <script type="text/plain" class="language-html">
+        <button id="helloButton" >Hello there!</button>
+        <script>
+        function writeHelloWorld(){
+          document.body.innerHTML = "Hello World"
+        }
+        document.getElementById("helloButton").onclick = writeHelloWorld()
+        document.getElementById("helloButton").onclick = writeHelloWorld 
+        &lt;/script>      
+        </script>
+        <p>
+          Which line is correct? Can you explain what is happening?
+        </p>
+      <answer noslider buttontext="Mail line number and explanation"></answer>
+  </section>
+
+
+ <section class="assignment">
+      <h3 class="assignment questions">2.7a just joking</h3>
+      <p>
+      Below is an excellent joke function about a leopard. Make a button that calls this joke. 
+      </p>
+      <script type="text/plain" class="language-javascript">
+        function leopardJoke(){
+          alert("Why couldn't the leopard play hide and seek?")
+          alert("Because he was always spotted.")
+        }    
+       </script>
+      <answer buttontext="Mail your code"></answer>
+  </section>
+   <section class="assignment">
+      <h3 class="assignment questions">2.7b more laughs</h3>
+      <p>
+      Change the code in such a way that when the red area is clicked, the leopard joke is shown in the green area.
+      </p>
+      <p>
+      Add your own animal related joke that, when the green area is clicked, is shown in the red area.
+      </p>
+      <script type="text/plain" class="language-html">
+        
+          <html>
+            <head>
+            </head>
+            <body>
+               <div id="redArea" style="margin:100px;
+                                         background-color:red;
+                                         padding:20px;
+                                         colour:white" >
+                  Hello World!
+               </div>
+               <div id="greenArea" style="margin:100px;
+                                          background-color:#0a0;
+                                          padding:20px;
+                                          colour:white" >
+                  Nice and green!
+               </div>
+             
+               <script>
+                   function leopardJoke(){
+                      //Change this function in such a way that the joke is not alerted
+                      //But shown in the green area instead
+                      alert("Why couldn't the leopard play hide and seek?")
+                      alert("Because he was always spotted.")
+                    }   
+               &lt;/script>
+             
+            </body>
+          </html>
+       
+      </script>
+        <p>
+          Hint: In html, for displaying a break (enter) in text, use the < br >  tag.
+        </p>
+      <answer buttontext="Mail your code"></answer>
+  </section>
+
+    <section class="assignment">
+      <h3 class="assignment questions">2.7c toggle laughs</h3>
+      <p>
+        BONUS: Using only javascript we discussed sofar, change the code in such a way that when the red box is first clicked, the first joke is displayed in the red box. If the box is clicked a second time, the second joke should display. If it is clicked the third time, the first joke should be displayed. 
+      </p>
+      <answer buttontext="Mail your code"></answer>
+    </section>
+  <!--
+
+
 hier is een berg herhalende code, maak er functies van. Welke naam geef je?
 Hier zijn een heel stel functies met een stomme naam. geef een goede naam.
 wat is een aanroep?
@@ -141,7 +248,6 @@ kijk wat er gebeurt als je geen haakjes achter de aanroep zet.
  
 </main>  
 <aside id="sidebar"></aside>
-<script src="../libraries/prism.js"></script>
 <script src='../js/chapters.js'></script>
 </body>
 </html>
