@@ -6,6 +6,15 @@ Lesmateriaal voor de minor Scripting voor Designers
 
 Dit zijn de custom tags die er zijn voor het maken van hoofdstukken en opdrachten. En de constructies waarin ze gebruikt kunnen worden.
 
+#### Aantekeningen van auteurs (custom tags)
+```html
+<todo>
+  Dit is een heel verhaal over dingen die nog gedaan moeten worden.
+</todo>
+```
+
+`<todo>`-tags zijn block-level elementen: hele paragraven, of meer. Kan van allerlei HTML bevatten.
+
 #### Video (custom class)
 
 Een youtube video hangen we zo in een hoofdstuk:
