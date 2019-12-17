@@ -102,3 +102,6 @@ Regels kunnen een highlight krijgen door het `data-line="..."` attribuut te gebr
 * `dataline="1,4"` -- highlight regel 1 en 4
 * `dataline="1-3, 5, 9-20"` -- highlight regels 1 t/m 3, regel 5 en regels 9 t/m 20.
 
+## Web preview
+
+The site is currently hosted on Github itself: [https://hanica.github.io/S4D-lesmateriaal/](https://hanica.github.io/S4D-lesmateriaal/)
