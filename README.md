@@ -11,7 +11,7 @@ Dit zijn de custom tags die er zijn voor het maken van hoofdstukken en opdrachte
 Een youtube video hangen we zo in een hoofdstuk:
 
 ```html
-  <youtube data-ytid="RKs3r-uXTUc"/></youtube>
+  <youtube ytid="RKs3r-uXTUc"/></youtube>
 ```
 
 Het `<youtube>`-element kan geen content bevatten tussen de tags.

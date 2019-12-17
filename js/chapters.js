@@ -52,7 +52,7 @@ function createYoutubePlayers() {
   allYoutubeElements.forEach( ytElement =>{
     let width = 800
     let height = width * 9/16
-    let youtubeId = ytElement.getAttribute('data-ytid')
+    let youtubeId = ytElement.getAttribute('ytid')
     let embedCode = `
       <iframe width="${width}" height="${height}" 
               src="https://www.youtube-nocookie.com/embed/${youtubeId}" frameborder="0" 
