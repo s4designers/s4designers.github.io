@@ -50,6 +50,16 @@ h1 {
   font-weight: normal;
   font-size: 4em;
   margin-top: 150px;
+  line-height: 1.2em;
+}
+h1 > .chapter-num {
+  font-size: 14px;
+  line-height: 1em;
+  font-family: 'Avenir Next';
+  font-weight: bold;
+  color: #e50056;
+  letter-spacing: 4px;
+  margin-bottom: 10px;
 }
 
 .attention {

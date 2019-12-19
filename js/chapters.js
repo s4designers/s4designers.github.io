@@ -35,7 +35,6 @@ function newId(prefix="id") {
   return prefix+"-"+count
 }
 
-
 // escape characters to make string safe for use in HTML.
 function encodeForHtml(str) {
   return String(str)
@@ -264,9 +263,20 @@ function addCodeHighlighter() {
   startHighlighterWhenLoaded()
 }
 
-
-
 function adaptPageTitle() {
+  const titleElement = $('h1')
+  let title = titleElement.innerHTML
+  console.log('title :', title)
+  const titleRegex = /^\s*(?:Chapter)?\s*(\d+):?\s*(.*)$/
+  const titleSegments = title.match(titleRegex);
+  if(titleSegments.length == 3){
+    const chapterNum = titleSegments[1]
+    const chapterTitle = titleSegments[2]
+    titleElement.innerHTML = `<div class="chapter-num">
+        CHAPTER ${chapterNum}
+      </div>
+      ${chapterTitle}`
+  }
   $('title').textContent = "S4D - " + $('h1').textContent
 }
 
