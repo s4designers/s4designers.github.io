@@ -58,7 +58,7 @@
         var carName = brand + " " + type
       </script>
       <p>Calculations can also be done with strings. The code above concatonates three strings: "Seat", a space character, and "Léon".</p>
-      <p>Calling concatonations calculations is a bit of a stretch. A better term for calculation is <i>expression</i>. An expression in a variable assignment is everything to the right of the "=" sign. In previous examples, we also used expressions between the parentheses of a function call.  An expression always resolves to a single value that can be stored in a variable, or used with a function call like alert("Seat" + " " + "Léon") or console.log(17/4 + 8)).</p>
+      <p>Calling concatonations calculations is a bit of a stretch. A better term for calculation is <i>expression</i>. An expression in a variable assignment is everything to the right of the "=" sign. In previous examples, we also used expressions between the parentheses of a function call.  An expression always results in a single value that can be stored in a variable, or used with a function call like alert("Seat" + " " + "Léon") or console.log(17/4 + 8)).</p>
 
       <script type="text/plain" class="language-javascript">
         var lecturer = "Robert"
@@ -67,7 +67,9 @@
         var votesForLecturer2 = 30
       </script>
       <p>Using the variables above in single expression, create an alert that outputs: "Jille is the favourite lecturer after 59 votes were counted. Robert lost by 1 vote." </p>
-      <p><i>Tip: Good to know: not all quotation marks play well with code. Note the difference between: ' , " and “.  </i></p>
+      
+      <section class="attention">
+      <p>Tip: Good to know: not all quotation marks play well with code. Note the difference between: ' , " and “.  </p>
 
       <script type="text/plain" class="language-javascript">
         var a = "This is a string"
@@ -75,9 +77,191 @@
         var c = "This is not a string as you cannot mix two different types of string'
         var d = “This is not a string, it is very easy to accidently introduce these cursive quotationmarks when copying code from word, the web or email.“
       </script>
+    </section> 
       <answer noslider buttontext="Mail the expression"></answer>
   </section>
 
+<youtube ytid="9y7-PCjdyj4"></youtube>
+<section class="assignment">
+      <h3 class="assignment questions">4.5 Photoshop</h3>
+<script type="text/plain" class="language-javascript">
+  <html>
+<head>
+  <meta charset="UTF-8">
+  <title>Safari with Jille</title>
+  <style>
+    body {
+      background-color: khaki;
+      padding: 40px;
+    }
+    #product1, #product2, #shoppingCart {
+      margin: 40px;
+      padding: 40px;
+      background-color: black;
+      color: khaki;
+      float: left;
+    }
+    #photo1, #photo2 {
+      width: 300px;
+    }
+    #buyButton1, #buyButton2 {
+      float: right;
+      padding: 4px;
+    }
+    #shoppingCart {
+      background-color: darkkhaki;
+      color: black;
+    }
+    #orderLine1, #orderLine2, #totalLine {
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="headline">Jille's Photo Shop</h1>
+
+  <div id="product1">
+    <img id="photo1" src="sunbird.jpg"/>
+    <p id="caption1">Sunbird: €200 <button id="buyButton1">Buy photo</button><p>
+  </div>
+  <div id="product2">
+    <img id="photo2" src="giraffe.jpg"/>
+    <p id="caption2">Giraffe: €5000 <button id="buyButton2">Buy photo</button><p>
+  </div> 
+  <div id="shoppingCart">
+    <h3>Your order:</h3>
+    <p id="orderLine1">
+      0 * sunbird = 0 euro
+    </p>
+    <p id="orderLine2">
+      0 * giraffe = 0 euro
+    </p>
+    <p id="discountLine">
+      Discount: 
+      <select id="discountSelect">
+        <option>0</option>
+        <option>10</option>
+        <option>50</option>
+      </select>%
+    </p>
+    <hr>
+    <p id="totalLine">
+      total = 0 euro
+    </p>
+  </div>
+
+</body>
+<script>
+
+var birdsBought = 0
+var giraffesBought = 0
+
+function updateShoppingCard(){
+  document.getElementById("orderLine1").innerHTML = birdsBought + " * sunbird = " + birdsBought * 200 + " euro"
+  document.getElementById("orderLine2").innerHTML = giraffesBought + " * giraffe = " + giraffesBought * 5000 + " euro"
+}
+
+function buyBirdPhoto() {
+  birdsBought = birdsBought + 1
+  updateShoppingCard()
+}
+function buyGiraffePhoto() {
+  giraffesBought = giraffesBought + 1
+  updateShoppingCard()
+  
+  
+}
+
+document.getElementById("buyButton1").onclick = buyBirdPhoto
+document.getElementById("buyButton2").onclick = buyGiraffePhoto
+&lt;/script>
+</html>
+</script>
+<p>This is the code from the video with one addition: a selectbox that allows a user to select the amount of discount he things he should get on his purchase.</p>
+<ul>
+  <li>Using the console, experiment with the selectbox, how can you get to the selected value?</li>
+  <li>Everytime a new picture is bought, the totalLine should be updated to the appropriate amount, taking into account the number of giraffe pictures bought, the number of bird pictures bought aswell as the selected discount.</li>
+</ul>
+<answer noslider buttontext="Mail the your code"></answer>
+</section>
+
+
+<section class="assignment">
+      <h3 class="assignment questions">4.6 Variables in arduino</h3>
+      <script type="text/plain" class="language-arduino">
+        int outerCounter = 0;
+
+        void setup() {
+          Serial.begin(9600);
+        }
+
+        void loop() {
+          int innerCounter = 0;
+
+          Serial.print("Outer Counter: ");
+          Serial.println(outerCounter);
+          Serial.print("Inner Counter: ");
+          Serial.println(innerCounter);
+
+          innerCounter = innerCounter + 1;
+          outerCounter = outerCounter + 1;
+
+          Serial.print("Outer Counter: ");
+          Serial.println(outerCounter);
+          Serial.print("Inner Counter: ");
+          Serial.println(innerCounter);
+
+          innerCounter = innerCounter + 1;
+          outerCounter = outerCounter + 1;
+
+          Serial.print("Outer Counter: ");
+          Serial.println(outerCounter);
+          Serial.print("Inner Counter: ");
+          Serial.println(innerCounter);
+
+          innerCounter = innerCounter + 1;
+          outerCounter = outerCounter + 1;
+          delay(300);
+        }
+      </script>
+      <p>
+        In Arduino, the "int" keyword is used to declare a variable that can only contain a whole number (int is short for integer).
+      </p>
+      <p>
+        Run the code on your arduino. Can you explain the difference in behaviour of the innerCounter and the outerCounter? 
+      </p>
+      <answer noslider buttontext="Mail your explanation"></answer>
+  </section>
+
+<section class="assignment">
+      <h3 class="assignment questions">4.7 Magnetdetector</h3>
+      <script type="text/plain" class="language-arduino">
+        #include "breadboard.h"
+        int initialMagnetValue;
+         
+        void setup() {
+          Serial.begin(9600);
+          //1. Calibrate our magnet detector by assigning a value to the "initialMagnetValue" variable in the setup.
+        }
+
+        void loop() {
+          //2. Make a new variable that has the current magnet reading as a value.
+          //3. Maka a new variable that calculates the difference between the control value and the current value. Use the abs() function to make the value always be positive. abs(-100) is 100.
+          //4. Use arduino's tone(pin, frequency) function to make sound corresponding with the proximity of a magnet. Maybe you need to multiply the difference variable by a factor of 6 or 8 to make machine workable.
+
+          
+        }
+      </script>
+      <p>
+        Use the plan in code above to create a magnetdetector in arduino. 
+        <ul>
+          <li>tone(BUZZER, 1000); //makes a tone at 1000 hertz.</li>
+          <li>abs() takes the <i>absolute</i> value an input. This means abs(-2) is the same as abs(2). If you don't understand where you can use this, don't worry. You can still get a sort of ok solution without it.</li>
+        </ul>
+      </p>
+      <answer noslider buttontext="Mail your explanation"></answer>
+  </section>
 
   
   <todo><pre>
