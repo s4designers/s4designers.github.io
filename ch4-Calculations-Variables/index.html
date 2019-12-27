@@ -37,7 +37,7 @@
       <answer noslider buttontext="Mail your explanations"></answer>
   </section>
 <section class="assignment">
-      <h3 class="assignment questions">4.3 The Appropriate Date</h3>
+      <h3 class="assignment questions">4.3 An Appropriate Date</h3>
       <script type="text/plain" class="language-javascript">
         var ageSteven = 20
         var ageJanice = 30
@@ -47,7 +47,6 @@
       </script>
       <p>According to the <a href="http://www.onehalfplusseven.com/home/about-the-half-your-age-plus-seven-rule" >one half plus seven rule</a>, it is approriate to date some one that is older than your age devided by two, plus seven. In the code, this rule is correctly demonstrated for Janice. </p>
       <p>Steven likes older women. How old can they be before they break the rule? The formula on line 4 doesn't seem to work. Why is this? Fix it.</p>
-      <p></p>
       <answer noslider buttontext="Mail your fix"></answer>
   </section>
 
@@ -59,20 +58,31 @@
         var carName = brand + " " + type
       </script>
       <p>Calculations can also be done with strings. The code above concatonates three strings: "Seat", a space character, and "Léon".</p>
-      <p>Calling concatonations calculations is a bit of a stretch. A better term for calculation is <i>expression</i>. An expression in a variable assignment is everything to the right of the "=" sign. In previous examples, we used expressions between the parentheses of a function call.  An expression always resolves to a single value that can be stored in a variable, or used with a function call like alert("Seat" + " " + "Léon") or console.log(17/4 + 8)).</p>
+      <p>Calling concatonations calculations is a bit of a stretch. A better term for calculation is <i>expression</i>. An expression in a variable assignment is everything to the right of the "=" sign. In previous examples, we also used expressions between the parentheses of a function call.  An expression always resolves to a single value that can be stored in a variable, or used with a function call like alert("Seat" + " " + "Léon") or console.log(17/4 + 8)).</p>
+
       <script type="text/plain" class="language-javascript">
         var lecturer = "Robert"
         var lecturer2 = "Jille"
         var votesForLecturer1 = 29
         var votesForLecturer2 = 30
-
       </script>
-      Using the variables above in single expression, create an alert that outputs: "Jille is the favourite lecturer after 59 votes were counted. Robert lost by 1 vote."
+      <p>Using the variables above in single expression, create an alert that outputs: "Jille is the favourite lecturer after 59 votes were counted. Robert lost by 1 vote." </p>
+      <p><i>Tip: Good to know: your keyboard has different quotation marks that don't all play well with code. Note the difference between: ` , ' and ".  </i></p>
+
+      <script type="text/plain" class="language-javascript">
+        var a = "This is a string"
+        var b = 'In javascript this is also a correct string. In arduino it means something different'
+        var c = "This is not a string as you cannot mix two different types of string'
+        var d = `This is not a string, it is very easy to accidently introduce these cursive quotationmarks when copying code from word, the web or email.`
+      </script>
       <answer noslider buttontext="Mail the expression"></answer>
   </section>
+
+
   
   <todo><pre>
       Video 7: berekeningen in JS -- slider; oninput; berekeningen om inputwaardes aan te passen aan output-doel; prioriteit van * boven -; toewijzing
+      //tussenstap
 
       Video 8a: basis variabelen -- term variabele; syntax declaratie met var; lezen van waarde; gebruiken in berekening; toewijzen; functie die globale var verandert; belang van goede naamgeving; 
       Opdrachten: 
@@ -88,6 +98,8 @@
       
       Opdrachten?rol als tijdelijke accumulator; state variabele met beperkte waardenset (enum)
       
+
+      NOTE warning signs you are doing it wrong!!! --> Change global variable with a function instead of return
   </pre></todo>
 
   <!--
