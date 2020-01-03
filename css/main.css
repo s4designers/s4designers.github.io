@@ -80,10 +80,19 @@ h6 {
   font-family: "Avenir Next", "Avenir", sans-serif;
   content: "attention";
   display: block;
-  color: #ff3280;
+  color: #e50056;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 5px;
+}
+
+span.inline-note {
+  font-family: "Avenir Next", "Avenir", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #e50056;
+  letter-spacing: 3px;
+  font-size: smaller;
 }
 
 .assignment-block {
@@ -127,6 +136,10 @@ button {
 
 button:hover, button:active {
   background: #c7004c;
+}
+
+button[disabled] {
+  background: #999 !important;
 }
 
 button:hover:active {
