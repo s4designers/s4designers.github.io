@@ -68,10 +68,10 @@ h6 {
 }
 
 .attention {
-  background-color: #757575;
-  border: 1px solid #656565;
-  color: white;
-  padding: 1em;
+  background-color: #ccc;
+  /* border: 1px solid #b8b8b8; */
+  color: black;
+  padding: 2em;
   border-radius: 3px;
   margin: 3em 0 1em 0;
 }
