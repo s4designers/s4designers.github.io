@@ -190,40 +190,40 @@ document.getElementById("buyButton2").onclick = buyGiraffePhoto
 <section class="assignment">
       <h3 class="assignment questions">4.6 Variables in arduino</h3>
       <script type="text/plain" class="language-arduino">
-        int outerCounter = 0;
+int outerCounter = 0;
 
-        void setup() {
-          Serial.begin(9600);
-        }
+void setup() {
+  Serial.begin(9600);
+}
 
-        void loop() {
-          int innerCounter = 0;
+void loop() {
+  int innerCounter = 0;
 
-          Serial.print("Outer Counter: ");
-          Serial.println(outerCounter);
-          Serial.print("Inner Counter: ");
-          Serial.println(innerCounter);
+  Serial.print("Outer Counter: ");
+  Serial.println(outerCounter);
+  Serial.print("Inner Counter: ");
+  Serial.println(innerCounter);
 
-          innerCounter = innerCounter + 1;
-          outerCounter = outerCounter + 1;
+  innerCounter = innerCounter + 1;
+  outerCounter = outerCounter + 1;
 
-          Serial.print("Outer Counter: ");
-          Serial.println(outerCounter);
-          Serial.print("Inner Counter: ");
-          Serial.println(innerCounter);
+  Serial.print("Outer Counter: ");
+  Serial.println(outerCounter);
+  Serial.print("Inner Counter: ");
+  Serial.println(innerCounter);
 
-          innerCounter = innerCounter + 1;
-          outerCounter = outerCounter + 1;
+  innerCounter = innerCounter + 1;
+  outerCounter = outerCounter + 1;
 
-          Serial.print("Outer Counter: ");
-          Serial.println(outerCounter);
-          Serial.print("Inner Counter: ");
-          Serial.println(innerCounter);
+  Serial.print("Outer Counter: ");
+  Serial.println(outerCounter);
+  Serial.print("Inner Counter: ");
+  Serial.println(innerCounter);
 
-          innerCounter = innerCounter + 1;
-          outerCounter = outerCounter + 1;
-          delay(300);
-        }
+  innerCounter = innerCounter + 1;
+  outerCounter = outerCounter + 1;
+  delay(300);
+}
       </script>
       <p>
         In Arduino, the "int" keyword is used to declare a variable that can only contain a whole number (int is short for integer).
@@ -237,27 +237,25 @@ document.getElementById("buyButton2").onclick = buyGiraffePhoto
 <section class="assignment">
       <h3 class="assignment questions">4.7 Magnetdetector</h3>
       <script type="text/plain" class="language-arduino">
-        #include "breadboard.h"
-        int initialMagnetValue;
-         
-        void setup() {
-          Serial.begin(9600);
-          //1. Calibrate our magnet detector by assigning a value to the "initialMagnetValue" variable in the setup.
-        }
+#include "breadboard.h"
+int initialMagnetValue;
+ 
+void setup() {
+  Serial.begin(9600);
+  //1. Calibrate our magnet detector by assigning a value to the "initialMagnetValue" variable in the setup.
+}
 
-        void loop() {
-          //2. Make a new variable that has the current magnet reading as a value.
-          //3. Maka a new variable that calculates the difference between the control value and the current value. Use the abs() function to make the value always be positive. abs(-100) is 100.
-          //4. Use arduino's tone(pin, frequency) function to make sound corresponding with the proximity of a magnet. Maybe you need to multiply the difference variable by a factor of 6 or 8 to make machine workable.
-
-          
-        }
+void loop() {
+  //2. Make a new variable that has the current magnet reading as a value.
+  //3. Maka a new variable that calculates the difference between the control value and the current value. Use the abs() function to make the value always be positive. abs(-100) is 100.
+  //4. Use arduino's tone(pin, frequency) function to make sound corresponding with the proximity of a magnet. Maybe you need to multiply the difference variable by a factor of 6 or 8 to make machine workable.
+}
       </script>
       <p>
         Use the plan in code above to create a magnetdetector in arduino. 
         <ul>
           <li>tone(BUZZER, 1000); //makes a tone at 1000 hertz.</li>
-          <li>abs() takes the <i>absolute</i> value an input. This means abs(-2) is the same as abs(2). If you don't understand where you can use this, don't worry. You can still get a sort of ok solution without it.</li>
+          <li>abs() makes the <i>absolute</i> value from an input. This means abs(-2) is the same as abs(2). If you don't understand where you can use this, don't worry. You can still get a sort of ok solution without it.</li>
         </ul>
       </p>
       <answer noslider buttontext="Mail your explanation"></answer>
@@ -280,9 +278,7 @@ document.getElementById("buyButton2").onclick = buyGiraffePhoto
       
       Video xx Variabelen in Arduino -- rol als constante; rol als tussenwaarde om complexe expressie te splitsen en leesbaar te maken; Datatypes incl. float,
       
-      Opdrachten?rol als tijdelijke accumulator; state variabele met beperkte waardenset (enum)
-      
-
+      Opdrachten? rol als tijdelijke accumulator; state variabele met beperkte waardenset (enum)
       NOTE warning signs you are doing it wrong!!! --> Change global variable with a function instead of return
   </pre></todo>
 
