@@ -1,17 +1,16 @@
 /*==================================    
 
   TODO: 
+    * een <answer> voor meerdere korte vragen.
     * hint element;
     * promise based script loading;
     * answer instruction should be visible 
       with <answer.../> instead of <answer...></answer>
     * tweak margin between h2 and attention-block (ch2)
-    * een <answer> voor meerdere korte vragen.
     * Attention blocks can have different headings
-    
+    * Check 'mail your' button labels.
+    * Bedenk welke opdrachten 'noslider' moeten hebben.
   ==================================*/
-
-
 
 // iife to prevent creating global variables
 (function () {
@@ -56,6 +55,47 @@ function encodeForHtml(str) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
+}
+
+function loadScript(url, extraAttrs={}) {
+  return new Promise((resolve, reject) => {
+    const attrs = { 
+      type: 'text/javascript',
+      async: false,
+      src: url,
+      ...extraAttrs
+    }
+    var scriptElement = createElement('script', attrs)
+
+    scriptElement.onload = () => {
+      resolve(url)
+    }
+    scriptElement.onerror = () => {
+      reject(url)
+    }
+    document.body.append(scriptElement);
+  })
+}
+
+
+const mainCssEl = $$('link[rel="stylesheet"]', document.head).pop();
+function loadStylesheet(url) {
+  return new Promise((resolve, reject) => {
+    const attrs = { 
+      type: 'text/css',
+      rel: 'stylesheet',
+      href: url
+    }
+    var styleElement = createElement('link', attrs)
+
+    styleElement.onload = () => {
+      resolve(url)
+    }
+    styleElement.onerror = () => {
+      reject(url)
+    }
+    mainCssEl.insertAdjacentElement('beforebegin', styleElement);
+  })
 }
 
 //======= creating page elements ====================================

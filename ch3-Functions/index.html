@@ -53,13 +53,13 @@
       <p>
         Answer the following questions about the code above.
       </p>
-      <ul>
-        <li>a) What is the function definition in the code above?</li>
-        <li>b) What is a function call in the code above?</li>
-        <li>c) How many times is the highlighted line executed by the browser?</li>
-        <li>d) What does getElementById do? </li>
-        <li>e) Why is the code only displaying "Hallo" and "Toedels" only once in the browser?</li>
-      </ul>
+      <ol type="a">
+        <li>On which lines, in the code above, are the function definitions?</li>
+        <li>On which lines, in the code above, are the function calls?</li>
+        <li>How many times is the highlighted line executed by the browser?</li>
+        <li>What does <code>getElementById</code> do?</li>
+        <li>Why is the code only displaying "Hallo" and "Toedels" only once in the browser?</li>
+      </ol>
       <answer noslider buttontext="Mail your answers"></answer>
   </section>
 
@@ -78,26 +78,26 @@
   </section>
 <section class="attention">
     <p>The next assignments use the following image:</p> 
-    <p><img height=150 src="giant_heron.jpg"> and <img height=150 src="crowned_hornbill.jpg"></p>
-    <p>Save them to the same directory as your html file: <download href="giant_heron.jpg"></download></b></p>
-
+    <p><img height=150 src="giant_heron.jpg"></p>
+    <p>Save it to the same directory as your html file: <download href="giant_heron.jpg"></download></b></p>
+</section>
  <section class="assignment">
       <h3 class="assignment questions">3.4 What's wrong?</h3>
       <script type="text/plain" class="language-html">
-         <html>
-          <head>
-            <title>Birds!</title>
-          </head>
-          <body>
-            <img id="birdpic" src="giant_heron.jpg">
-            <script>
-              function notANiceName(){
-                document.getElementById("birdpic").width = "500"
-                document.getElementById("birdpic").height = "300"
-              }
-            &lt;/script>
-          </body>
-          </html>
+<html>
+<head>
+  <title>Birds!</title>
+</head>
+<body>
+  <img id="birdpic" src="giant_heron.jpg">
+  <script>
+    function notANiceName(){
+      document.getElementById("birdpic").width = "500"
+      document.getElementById("birdpic").height = "300"
+    }
+  &lt;/script>
+</body>
+</html>
         </script>
       <p>
          Why, when you test this code, are you still seeing such a large bird? Can you fix this?
@@ -106,7 +106,7 @@
   </section>
   
  <section class="assignment">
-      <h3 class="assignment questions">3.5 Create ameaningful functions</h3>
+      <h3 class="assignment questions">3.5 Create meaningful functions</h3>
       <script type="text/plain" class="language-html">
           <html>
             <head>
@@ -145,42 +145,93 @@
             </html>
        </script>
       <p>
-         The difficult part of creating functions is knowing which parts belong together. A rule of thumb is: <i>If you can easily give it a meaningful name, you are doing it right</i> 
+         A difficult part of creating multiple functions is knowing which parts belong together. A rule of thumb is: <i>If you can easily give it a meaningful name, you are doing it right</i> 
       </p>
       <p>
-        Group the code above using functions with meaningful names. How many functions do you create?
+        Create a new version of the HTML file above with the code grouped into functions with meaningful names. How many functions do you create?
       </p>
-      <answer noslider buttontext="Mail your code"></answer>
+      <answer noslider buttontext="Mail your entire file."></answer>
   </section>
 
-  <youtube data-ytid="J5adDzb3eu8"></youtube>
+  <youtube ytid="J5adDzb3eu8"></youtube>
 
-  <p>This clip showed how you can make the browser call javascript functions when the user is interacting with elements on the screen.</p>
+  <p>This clip showed how you can make the browser call <em>your</em> javascript functions when the user is interacting with elements on the screen.</p>
 
+  <h3>3.6 Functions with or without value</h3>
+      <p>The <code>alert()</code> function has a sister called "<code>prompt()</code>". You use it if you want to ask the user a question.</p>
+      <p>Create an empty HTML-file, like this:</p>
+      <script type="text/plain" class="language-html">
+        <html>
+          <head>
+            <meta charset='utf-8'>
+            <title>No Title Yet...</title>
+          </head>
+          <body>
+            
+            <script>
+
+            &lt;/script>
+          </body>
+        </html>    
+      </script> 
+      <p><em>Many assignments ask you to try or create some Javascript code. You can use this empty HTML example to add Javascript code to the &lt;script> element to try it out.</em></p>
+      <p>Now, using the HTML above, try this in your browser:</p>
+      <script type="text/plain" class="language-js">
+        document.body.style.backgroundColor = prompt('Give a color name (e.g. "white", "green")')
+      </script>
+      <p>Note how the color name that you entered becomes the new value for the background color of the page.</p>
+      <div class="theory">
+        <ul>
+          <li>
+            <b>Some functions result in a value</b> (a bit of information) after they've been called. You've seen examples in the Arduino chapter, like <b><code>analogRead()</code></b>. 
+            <br>Here in Javascript, <b><code>prompt()</code></b> is also a ‘value-creator’ function.</li>
+          <li>
+            <b>Some functions <i>do not result</i> in a value.</b> 
+            They do other things, such as showing things on screen, making sound, or sending stuff over the internet. 
+            <br>In Arduino, <b><code>Serial.println()</code></b> is one of those, as is <b><code>digitalWrite()</code></b>.
+            <br>In Javascript, the function <b><code>console.log()</code></b> is also a ‘no-value’ function. And so is <b><code>alert()</code></b>. It is similar to <code>prompt()</code>, but unlike <code>prompt()</code>, it does not result in any interesting information.
+          </li>
+        </ul>
+      </div>  
+      As an experiment, try to use a no-value function in a situation where a value is needed:
+      <script type="text/plain" class="language-js">
+        console.log( "The value of this experiment is:", alert(30+3) )
+      </script>
+      <p>Here, we're giving <code>console.log()</code> <i>two inputs</i>. That's fine. You can use any number of inputs with <code>console.log()</code> (You can't with <code>Serial.println()</code>, though: that one accepts only one input).</p>
+      <p>Notice how <code>console.log()</code> did show something after the first input! 
+      <div class="theory">
+        <p>In Javascript, whenever a value is needed, but not supplied, a dummy-value is used instead.</p>
+        <p>This value is written and printed as: <b><code>undefined</code></b>.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <h3 class="assignment questions">3.7 To () or not to ()</h3>
+  <p>In Javascript, a function you created can be executed, but you can <em>also use its name without having the code be executed</em>.
   <section class="assignment">
-      <h3 class="assignment questions">3.6a to () or not to ()</h3>
+      <h4>3.7a What do the () actually mean?</h4>
       <p>
-        Try this:
-      </p>
+        Try this:<note>kunnen we dit code block niet beter een complete file laten zijn?</note>
       <script type="text/plain" class="language-javascript">
         function writeHelloWorld(){
           document.body.innerHTML = "Hello World"
         }
 
-        alert(writeHelloWorld)
-        alert(writeHelloWorld())           
+        alert( writeHelloWorld )
+        alert( writeHelloWorld() )           
        </script>
         <p>
-          Describe what is happening in the two alert statements, can you explain this behaviour?.
+          Describe what is happening in the both alert statements; can you explain this behaviour?.
         </p>
-      <answer noslider buttontext="Mail explanation"></answer>
+      <answer noslider buttontext="Mail your explanation"></answer>
   </section>
   <section class="assignment">
-      <h3 class="assignment questions">3.6b</h3>
+      <h4 class="assignment questions">3.7b When (not) to call...</h4>
       <p>
-        Try this:
+        Try this:<note>kunnen we dit code block niet beter een complete file laten zijn?</note>
       </p>
-     <script type="text/plain" class="language-html">
+     <script type="text/plain" class="language-html" data-line="6,7">
         <button id="helloButton" >Hello there!</button>
         <script>
         function writeHelloWorld(){
@@ -191,14 +242,17 @@
         &lt;/script>      
         </script>
         <p>
-          Which line is correct? Can you explain what is happening?
+          Only one of the two highlighted lines (6 and 7) will do what we want. 
+          <ol type="a">
+            <li>Which line is correct?</li>
+            <li>Can you explain what is happening on the other, incorrect line? What makes it go wrong?</li> 
+          </ol>
         </p>
       <answer noslider buttontext="Mail line number and explanation"></answer>
   </section>
 
-
  <section class="assignment">
-      <h3 class="assignment questions">3.7a just joking</h3>
+      <h3 class="assignment questions">3.8a just joking</h3>
       <p>
       Below is an excellent joke function about a leopard. Make a button that calls this joke. 
       </p>
@@ -211,7 +265,7 @@
       <answer buttontext="Mail your code"></answer>
   </section>
    <section class="assignment">
-      <h3 class="assignment questions">3.7b more laughs</h3>
+      <h3 class="assignment questions">3.8b more laughs</h3>
       <p>
       Change the code in such a way that when the red area is clicked, the leopard joke is shown in the green area.
       </p>
@@ -257,9 +311,15 @@
   </section>
 
     <section class="assignment">
-      <h3 class="assignment questions">3.7c toggle laughs</h3>
+      <h3 class="assignment questions">3.8c toggle laughs</h3>
       <p>
-        BONUS: Using only javascript we discussed sofar, change the code in such a way that when the red box is first clicked, the first joke is displayed in the red box. If the box is clicked a second time, the second joke should display in the same box. If it is clicked the third time, the process should repeat itself. 
+        BONUS: Using only Javascript we discussed sofar, create e new version of the code in such a way that:</p>
+        <ul>
+          <li>There is only one area. Delete the other one.</li>
+          <li>When the area is first clicked, the first joke is displayed in the area itself.</li>
+          <li>If the area is clicked a second time, the second joke should display in the same area. </li>
+          <li>When the user clicks some more, the process repeats itself: the joke changes with each click.</li>
+        </ul>   
       </p>
       <answer buttontext="Mail your code"></answer>
     </section>

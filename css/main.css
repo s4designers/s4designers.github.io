@@ -62,28 +62,47 @@ h1 > .chapter-num {
   margin-bottom: 10px;
 }
 
+h4 {
+  color: #666;
+  margin-top: 2em;
+}
+
 h6 {
   margin: 1em 0 0 0;
   /* position: relative; */
 }
 
-.attention {
+.attention, .theory {
   background-color: #ccc;
   /* border: 1px solid #b8b8b8; */
   color: black;
-  padding: 2em;
+  padding: 3em 2em 2em 2em;
   border-radius: 3px;
   margin: 3em 0 1em 0;
+  position: relative;
 }
 
-.attention::before {
+.attention::before, .theory::before {
   font-family: "Avenir Next", "Avenir", sans-serif;
-  content: "attention";
-  display: block;
-  color: #e50056;
+  display: inline-block;
+  color: white;
+  padding: 0.7em 2em;
+  position: absolute;
+  top: 0;
+  left: 0;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 5px;
+}
+
+.attention::before {
+  content: "attention";
+  background-color: #e50056;
+}
+
+.theory::before {
+  content: "more to know";
+  background-color: #76c58c;
 }
 
 span.inline-note {
