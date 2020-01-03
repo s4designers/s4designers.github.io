@@ -12,9 +12,180 @@
  <main>
 
   <h1>Chapter 5: Russian dolls for data: variables inside variables</h1>
+   <p>This chapter introduces two topics: Arrays and Objects.</p>
+   <ul>
+     <li>Arrays are a type of variable used to group information that is of a similar type</li>
+     <ul>
+      <li>Elements are stored in the order they were put into the array and can be accessed with an index</li>
+      <li>Example: var studentNames = ["Joyce", "Patrick", "Hank", "Naomi"]</li>
+      <li>Indexes start at 0. <pre>studentNames[0]</pre> results in "Joyce", <pre>studentNames[2]</pre> results in "Hank".</li>
+    </ul>
+     <li>Objects are a type of variable used to group information that is of different types, but have a relationship with eachother</li>
+   </ol>
+
+    <section class="assignment">
+      <h3 class="assignment questions">5.1a Objects</h3>
+      <script type="text/plain" class="language-javascript">
+var course = {
+  title: "Scripting 4 Designers",
+  shortTitle: "S4d",
+  description: "Learn how to create working prototypes using code",
+  admittance: "Open for all students that don't know how to program."
+}
+      </script>
+      <ol type="a">
+        <li>What in the code above is the value of the course variable?</li>
+        <li>What in the code above is the value of the title property?</li>
+        <li>Write code that console logs the description of the course.</li>
+        <li>Write code that changes the title of the course into something a bit more 2020.</li>
+      </ol>
+    
+      <answer noslider buttontext="Mail the answers and code"></answer>
+  </section>
+
+    <section class="assignment">
+      <h3 class="assignment questions">5.1b moving Objects</h3>
+      <script type="text/plain" class="language-javascript">
+var course1 = {
+  title: "Scripting 4 Designers",
+  shortTitle: "S4d",
+  description: "Learn how to create working prototypes using code",
+  admittance: "Open for all students that don't know how to program."
+}
+
+var course2 = {
+  title: "Game",
+  shortTitle: "Game",
+  description: "Create a triple A game with a large group of students using Unity",
+  admittance: "Open for all students."
+}
+
+var course3 = course1
+      </script>
+      <ol type="a">
+        <li>What is the value of the course3 variable? </li>
+        <li>Write code to validate your answer.</li>
+      </ol>
+
+      <answer noslider buttontext="Mail the answer and the code"></answer>
+  </section>
+    <section class="assignment">
+      <h3 class="assignment questions">5.2 writing Objects</h3>
+      <script type="text/plain" class="language-javascript">
+var state = "delivered"
+var toAddress = "Ruitenberglaan 26"
+var fromAddress = "Kapitelweg 31"
+var name = "Marco van Basten"
+var jobTitle = "Football player"
+var weight = 85
+var state2 = "retired"
+var name2 = "Robert Holwerda"
+      </script>
+      <p>
+        The code above is a bit confusing. Organise the code using any number of meaningful objects.
+      </p>
+      <answer noslider buttontext="Mail the code"></answer>
+  </section>
+    <section class="assignment">
+      <h3 class="assignment questions">5.1b moving Objects</h3>
+      <script type="text/plain" class="language-javascript">
+var name1 = "Harry"
+var name2 = "Ron"
+var name3 = "Cho"
+var name4 = "Trevor"
+      </script>
+      <p>
+        Is it useful to reorganise the code above using objects? Explain.
+      </p>
+
+      <answer noslider buttontext="Mail the answer and explanation"></answer>
+  </section>
+<!-- video over arrays -->
+
+   <section class="assignment">
+      <h3 class="assignment questions">5.2 Arrays in javascript</h3>
+      <script type="text/plain" class="language-javascript">
+var names = ["Harry", "Ron", "Cho", "Trevor"]
+      </script>
+      <ol type="a">
+        <li>What is the value of the names variable? </li>
+        <li>What is the index of "Harry"?</li>
+        <li>What is the value of index 2?</li>
+        <li>What is the third item of the array?</li>
+      </ol>
+
+      <answer noslider buttontext="Mail the answers"></answer>
+  </section>
+   <section class="assignment">
+      <h3 class="assignment questions">5.3 Arrays in arduino</h3>
+      <script type="text/plain" class="language-arduino">
+int lottoNumbers[5] = [33,12,66,11,77];
+
+      </script>
+      <ol type="a">
+        <li>What is the third item in the array?</li>
+        <li>What does the [5] on the left side of the equals sign stand for?</li>
+        <li>Add code that changes the third item of the array.</li>
+        <li>Create an array that with "Harry", "Ron", "Cho" and "Trevor" as the values.</li>
+      </ol>
+      <answer noslider buttontext="Mail the answers and the code"></answer>
+  </section>
+
+  <section class="assignment">
+      <h3 class="assignment questions">5.4 Group with array or with object</h3>
+      <script type="text/plain" class="language-javascript">
+var spell1 = "Expecto Patronum"
+var spell2 = "Wingardium Levioso"
+var spell3 = "Accio"
+var spell4 = "Expelliarmus"
+var name = "Luna Lovegood"
+var skill = 45
+var house = "Gryffindor"
+var alignment = "Good"
+      </script>
+      <p>
+        The code above is a bit confusing. Organise the code using any number of meaningful objects and/or arrays.
+      </p>
+      <answer noslider buttontext="Mail the code"></answer>
+  </section>
+
+  <section class="assignment">
+      <h3 class="assignment questions">5.5 arrays in objects</h3>
+      
+      <p>
+        A variable can contain an array as its value. A property of an object can also contain an array as its value. Suppose the four spells are the spells Luna knows. Add an array of spells to the "spells" property of luna. 
+      </p>
+      <p>
+        <i>If you are succesfull, the following code would work to access the first spell: console.log(wizard.spells[0]), where wizard is the name of the variable containing the object.</i>
+      </p>
+      <answer noslider buttontext="Mail the code"></answer>
+  </section>
+
+  <section class="assignment">
+      <h3 class="assignment questions">5.6 objects in arrays</h3>
+      
+      <p>
+        A variable can contain an object as its value. An array can also contain multiple objects as values. Make a "wizards" array containing not only Luna (and all her properties), but also another wizard (and all of his/her properties). 
+      </p>
+      <p>
+        <i>If you are succesfull, the following code would work to access the second wizards name: console.log(wizards[1].name).</i>
+      </p>
+      <answer noslider buttontext="Mail the code"></answer>
+  </section>
+
+  <section class="assignment">
+      <h3 class="assignment questions">5.7</h3>
+      
+      <p>
+       In the 9th Harry Potter book Luna turns out to be a snitch. Using the wizards array, can you change Luna's second spell to "Avada Kadavra" and her alignment to "evil"?
+      </p>
+      <answer noslider buttontext="Mail the code"></answer>
+  </section>
+
 
 
   <todo><pre>
+    - naam 1, leeftijd 1, 
       Video xx Intro Objecten in JS -- starten met object literal; punt-syntax; waarom niet in Arduino
         Opdracht: bakfiets met coordinaten.
       
