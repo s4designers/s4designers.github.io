@@ -11,9 +11,26 @@
 <body class="line-numbers">
 <main>
 
-  <h1>Chapter 2: Javascript</h1>
+
+
+  <h1>Chapter 2: Intro to Javascript</h1>
 
   <p>This chapter introduces the Javascript -- a language that is used to make websites interactive. In this chapter we are going to use javascript commands to change the html that is displayed in the browser.</p>
+
+  <div class="attention">
+    <p>Do you have some knowlegde of HTML and CSS? These are computer languages for creating web pages. They are not programming languages; HTML describes the content and structure of a web page, and CSS is used to describe the colors, fonts, sizes and other visual design properties of the elements in the HTML file. </p>
+    <p>Because you can't write computer programs in HTML/CSS, this course is not going to invest time teaching them. But to be able to use Javascript for interesting things, a little bit of very basic knowledge about HTML and CSS is required.</p>
+    <p>If you're unsure about your HTML/CSS knowlegde, check out the online course on the Kahn Academy on HTML and CSS: <a href="https://www.khanacademy.org/computing/computer-programming/html-css">Intro to HTML/CSS: Making webpages</a></p>
+    <p>For our course, you only need the first four chapters of their course:</p>
+    <ol>
+      <li><a href="https://www.khanacademy.org/computing/computer-programming/html-css/intro-to-html/v/making-webpages-intro">Intro to HTML</a></li>
+      <li><a href="https://www.khanacademy.org/computing/computer-programming/html-css/intro-to-css/pt/css-basics">Intro to CSS</a></li>
+      <li><a href="https://www.khanacademy.org/computing/computer-programming/html-css/html-tags-continued/pt/html-links">More HTML tags</a></li>
+      <li><a href="https://www.khanacademy.org/computing/computer-programming/html-css/css-text-properties/v/css-zen-garden">CSS text properties</a></li>
+    </ol>
+    The rest of the course is interesting too, but not needed for this programming course.
+  </div>
+
 
   <section class="attention">
     <p>Before you start watching the video below, make sure you have a texteditor or a physical notepad ready to use. <b>Write down all the words you did not understand.</b></p>
@@ -33,15 +50,17 @@
       <answer noslider buttontext="Mail your word list"></answer>
   </section>
 
+  <section class="assignment">
+  <h3>2.3 First page</h3> 
   <section class="attention">
-    <p>The next assignments use the following images:</p> 
+    <p>This assignment and the next ones use the following images:</p> 
     <p><img height=150 src="green_pidgeon.jpg"> and <img height=150 src="crowned_hornbill.jpg"></p>
     <p>Save them to the same directory as your html file: <download href="green_pidgeon.jpg"></download><download href="crowned_hornbill.jpg"></download></b></p>
   </section>
-  <section class="assignment">
-  <h3>2.3 First page</h3>
-  Run both scripts. Can you explain the difference? Which one is correct?
-  <script type="text/plain" class="language-html" data-line="3-5,7,9-11">
+  Below are two similar HTML-pages. Use your text editor to copy-paste them to two HTML-files on your laptop. Then open both of them in Firefox. They will show the same image, but with a different caption below it.
+  <p>Can you explain the difference? In which one is the Javascript code not working correctly?
+  <h6>birds-1.html:</h6>
+  <script type="text/plain" class="language-html">
       <html>
       <head>
         <title>Birds!</title>
@@ -55,7 +74,7 @@
       </body>
       </html>
   </script>
-
+  <h6>birds-2.html:</h6>
   <script type="text/plain" class="language-html">
       <html>
       <head>
@@ -70,22 +89,22 @@
       </body>
       </html>
   </script>      
-  <answer noslider buttontext="Mail your code"></answer>
+  <answer noslider buttontext="Mail your explanation"></answer>
   </section>
   
   <section class="assignment">
       <h3 class="assignment questions">2.4 Change the image</h3>
-      Use the code from assignment 2.3.
+      Use the best version of the code from assignment 2.3.
       <ul>
-        <li>Give the image an id.</li>
-        <li>Use this id to change the image to a green pidgeon using javascript. </li>
+        <li>Add an <em>id</em> to the image element in the HTML code.</li>
+        <li>Use this id to change the image to a green pidgeon using Javascript. </li>
       </ul>
       <answer noslider buttontext="Mail your code"></answer>
   </section> 
 
 <section class="assignment">
-      <h3 class="assignment questions">2.5 read-write</h3>
-        <script type="text/plain" class="language-html">            
+      <h3 class="assignment questions">2.5 read what you wrote</h3>
+        <script type="text/plain" class="language-html" data-line="10">            
            <html>
             <head>
               <title>Birds!</title>
@@ -100,22 +119,21 @@
             </body>
             </html>
         </script>
-
-      <p>Use javascript to create an alert that uses the innerHTML of the caption as input for the alert. </p>
-    <answer noslider buttontext="Mail your code"></answer>
+      <p>Change the Javascript on line 10 to create an alert that reads the innerHTML of the caption and passes it as input to the <code>alert</code> command. </p>
+    <answer buttontext="Mail your code"></answer>
   </section>
 
   <youtube ytid="RKs3r-uXTUc"/></youtube>
   
   <section class="assignment">
-      <h3 class="assignment questions">2.6 Console</h3>
-       Use the console to create some alerts. Can you find a trick that repeats the previous statement? 
+      <h3 class="assignment questions">2.6 Console Trick</h3>
+       Use the console to create some alerts. Can you find a trick to recall the previous command without having to type it again? 
       <answer noslider buttontext="Mail your trick"></answer>
   </section>
 
   <section class="assignment">
-      <h3 class="assignment questions">2.7 Console</h3>
-        <script type="text/plain" class="language-html">            
+      <h3 class="assignment questions">2.7 Using the Console for Finding Errors.</h3>
+        <script type="text/plain" class="language-html" data-line="11,12">            
            <html>
             <head>
               <title>Birds!</title>
@@ -125,27 +143,28 @@
               <p id="Title">Nice bird</p>
               <p id="caption"></p>
               <script>
+                console.log( document.getElementById("Caption") )
                 document.getElementById("Caption").innerHTML = "Crowned Hornbill"
                 document.getElementById("Title").innerHTML = document.getElementById("caption").innerhtml
               &lt;/script>
             </body>
             </html>
           </script>
-      <p>The given code has some problems, fix them. The console might help.</p>
+      <p>Both line 10 and line 11 have problems and fail to work. Fix the errors. <code>console.log()</code> commands will be very useful (see the example on line 10).</p>
       <answer noslider buttontext="Mail your code"></answer>
   </section>
 
     <section class="assignment">
       <h3 class="assignment questions">2.8 style</h3>
       <p>
-        An element's style can be changed using javascript. Below are two examples. 
+        An element's CSS-style can be changed using Javascript. Below are two examples: 
       </p>
       <script type="text/plain" class="language-js">          
          document.getElementById("caption").style.backgroundColor = "blue"
          document.getElementById("caption").style.padding = "2pt"
       </script>
       <p>
-        <i>Notice the background-color property is written as backgroundColor. This is because the "-" dash symbol cannot be used in javascript names.</i>
+        <span class="inline-note">Note:</span>All style properties known to CSS can be changed this way. But, sometimes, the spelling needs to be different in Javascript. In a CSS-file, you would write <code>background-color</code>. Notice that in this Javascript example the <code>background-color</code> property is written as <strong><code>backgroundColor</code></strong>. This is because the "-" dash symbol cannot be used in Javascript names.</i>
       </p>
       <p>
         Use javascript to add style to the caption element, making the background "HAN Pink" (#e50055) and the text color white.
@@ -156,7 +175,7 @@
     <section class="assignment">
       <h3 class="assignment questions">2.9 Whoops</h3>
       <p>
-        Let's try something stupid.
+        Let's try something silly.
       </p>
       <script type="text/plain" class="language-js">          
       document.getElementById("caption").style.padding = "hotdog"
@@ -164,7 +183,7 @@
       <p>
         How does the browser handle this code? What does the console say?
       </p>
-      <answer noslider buttontext="Mail your code"></answer>
+      <answer noslider buttontext="Mail Your observations"></answer>
   </section>
   <section class="assignment">
       <h3 class="assignment questions">2.10 style</h3>

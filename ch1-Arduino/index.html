@@ -11,7 +11,7 @@
 <body class="line-numbers">
  <main>
 
-  <h1>Chapter 1: Arduino</h1>
+  <h1>Chapter 1: Introduction to the Arduino</h1>
 
   <p>This first chapter introduces the Arduino -- a tiny computer that is often used to control all kinds of hardware, including robots, drones and art-installations.</p>
 
@@ -73,10 +73,15 @@
   <section class="assignment">
       <h3 class="assignment questions">1.3 Calculations</h3>
       <pre>
-      OLED.print(analogRead(POTENTIOMETER) * 4 + 100)
+      Serial.println(analogRead(POTENTIOMETER) * 4 + 100);
       </pre>
       <p>Given the following code, describe the order in which parts of the command are executed by the arduino</p>
   </section>
+
+<todo>verschil println en print</todo>
+
+<todo>Meer opdrachten</todo>
+
 
    <h2>The S4d Breadboard</h2>
 
@@ -103,10 +108,11 @@ void loop() {
       <p>For the scientology church, we are building their new so called "<a href="https://en.wikipedia.org/wiki/E-meter" target="_blank">E-meter</a>" using our arduino's magnet sensor. </p>
       <ul>
         <li>Make sure to include your s4d_breadboard.h file in your project.</li>
-        <li>Experiment with the magnetsensor. What happens to the value when the magnet is near? What happens when the magnet is far?</li>
+        <li>Experiment with the magnetsensor. What happens to the value when the magnet is near? What happens when the magnet is far?<note>Deze eerste twee bullits een andere opdracht laten zijn.</note></li>
         <li>Modify the provided code so the light blinks a bit faster when the magnet is near.</li>
-        <li>Can you think of a trick (calculation) that would amplify the difference between the sensor being close and far?</li>
+        <li>Can you think of a trick (calculation) that would amplify the difference <note>"amplify difference" lijkt me niet begrijpelijk genoeg.</note>between the sensor being close and far?<note>Try to implement your trick. If that fails, just describe your idea in comments in the program.</note></li>
       </ul>
+      <answer buttontext="Mail Your Code"></answer>
   </section>
 
 </main>  

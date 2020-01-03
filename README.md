@@ -28,6 +28,19 @@ De eerste twee custom tags, `<todo>` en `<note>` zijn bedoeld voor het schrijfpr
 
 `<note>`-tags zijn inline, en bedoeld voor b.v. redactie-opmerkingen. Ze tonen een groen in de lopende tekst, en de inhoud wordt zichtbaar als je je muiscursor boven dat blokje laat zweven. 
 
+#### Hoofdstuk titels
+
+Het eerste <H1>-element wordt als hoofdstuktitel gezien. Het wordt geacht te beginnen met een nummer. Achter dat nummer kan een dubbele punt staan en ervoor kan het woord "Chapter" staan. Dubbele punt en "Chapter" zijn beide optioneel.
+
+```html
+<h1>23 Monads are Monoids in the Category of Endofunctors</h1>
+```
+of
+```html
+<h1>Chapter 23: Monads are Monoids in the Category of Endofunctors</h1>
+```
+
+
 #### Video (custom class)
 
 Een youtube video hangen we zo in een hoofdstuk:

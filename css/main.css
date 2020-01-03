@@ -34,7 +34,7 @@ main {
 }
 
 a {
-  color: #f0f;
+  color: #e50056;
   text-decoration: none;
 }
 
@@ -62,11 +62,16 @@ h1 > .chapter-num {
   margin-bottom: 10px;
 }
 
+h6 {
+  margin: 1em 0 0 0;
+  /* position: relative; */
+}
+
 .attention {
-  background-color: #757575;
-  border: 1px solid #656565;
-  color: white;
-  padding: 1em;
+  background-color: #ccc;
+  /* border: 1px solid #b8b8b8; */
+  color: black;
+  padding: 2em;
   border-radius: 3px;
   margin: 3em 0 1em 0;
 }
@@ -75,10 +80,19 @@ h1 > .chapter-num {
   font-family: "Avenir Next", "Avenir", sans-serif;
   content: "attention";
   display: block;
-  color: #ff3280;
+  color: #e50056;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 5px;
+}
+
+span.inline-note {
+  font-family: "Avenir Next", "Avenir", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #e50056;
+  letter-spacing: 3px;
+  font-size: smaller;
 }
 
 .assignment-block {
@@ -122,6 +136,10 @@ button {
 
 button:hover, button:active {
   background: #c7004c;
+}
+
+button[disabled] {
+  background: #999 !important;
 }
 
 button:hover:active {

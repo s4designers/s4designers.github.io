@@ -1,3 +1,17 @@
+/*==================================    
+
+  TODO: 
+    * hint element;
+    * promise based script loading;
+    * answer instruction should be visible 
+      with <answer.../> instead of <answer...></answer>
+    * tweak margin between h2 and attention-block (ch2)
+    * een <answer> voor meerdere korte vragen.
+    * Attention blocks can have different headings
+    
+  ==================================*/
+
+
 
 // iife to prevent creating global variables
 (function () {
@@ -104,12 +118,12 @@ const createAnswerBlocks = function() {
         `
       }
       buttonText = answerElement.getAttribute("buttontext") || defaultAnswerButtonText
-      const buttonHidden = needsSlider ? "hidden" : ''
+      const buttonDisabled = needsSlider ? "disabled" : ''
       const assignmentBlock = `
         <div class="assignment-block" >
           ${answerInstructions}
           ${sliderHTML}
-          <button id=${buttonId} class="mail-button" ${buttonHidden}>${buttonText}</button>
+          <button id=${buttonId} class="mail-button" ${buttonDisabled}>${buttonText}</button>
         </div>  
       `
       answerElement.outerHTML = assignmentBlock
@@ -118,7 +132,7 @@ const createAnswerBlocks = function() {
       const mailButton = byId(buttonId)
       if(needsSlider) {
         satisfactionSlider.addEventListener("change", (evt) => {
-          mailButton.hidden = false
+          mailButton.disabled = false
         })
         satisfactionSlider.addEventListener("input", (evt) => {
           sliderDisplay.textContent = satisfactionSlider.value
