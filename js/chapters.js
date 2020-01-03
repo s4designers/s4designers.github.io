@@ -1,3 +1,17 @@
+/*==================================    
+
+  TODO: 
+    * hint element;
+    * promise based script loading;
+    * answer instruction should be visible 
+      with <answer.../> instead of <answer...></answer>
+    * tweak margin between h2 and attention-block (ch2)
+    * een <answer> voor meerdere korte vragen.
+    * Attention blocks can have different headings
+    
+  ==================================*/
+
+
 
 // iife to prevent creating global variables
 (function () {
