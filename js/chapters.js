@@ -127,7 +127,20 @@ const createAnswerBlocks = function() {
     const firstSpaceIdx = title.indexOf(' ');
     const assignmentId = title.slice(0,firstSpaceIdx).trim();
     const assignmentTitle = title.slice(firstSpaceIdx).trim();
-    const answerElement = assignmentSection.querySelector("answer")
+    const answerElement = $("answer",assignmentSection)
+    
+    let subQuestions = $$('ol[type="a"] > li', assignmentSection)
+    const chars = (function *() {
+      let currChar = "a"
+      while(true) {
+        yield currChar
+        currChar = String.fromCharCode(currChar.charCodeAt(0)+1)
+      }
+    })()
+    subQuestions = subQuestions.map( el => {
+      return chars.next().value + ") " + el.textContent + "\n\n\n"
+    })
+    console.log("SUBQ: ", subQuestions)
 
     const buttonId = newId("button")
 
@@ -185,7 +198,8 @@ const createAnswerBlocks = function() {
       } else {
         mailButton.addEventListener("click", (evt) => {
           let subject = encodeURIComponent( `s4d_${assignmentId} ${assignmentTitle}`)
-          window.open(`mailto:s4designers@gmail.com?subject=${subject}`)
+          let messageBody = encodeURIComponent( subQuestions.join("") )
+          window.open(`mailto:s4designers@gmail.com?subject=${subject}&body=${messageBody}`)
         })
       }
     }
