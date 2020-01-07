@@ -72,7 +72,9 @@ h6 {
   /* position: relative; */
 }
 
-.attention, .theory {
+.attention, 
+.theory,
+.instruction {
   background-color: #ccc;
   /* border: 1px solid #b8b8b8; */
   color: black;
@@ -82,17 +84,22 @@ h6 {
   position: relative;
 }
 
-.attention::before, .theory::before {
+.attention::before, 
+.theory::before, 
+.instruction::before {
   font-family: "Avenir Next", "Avenir", sans-serif;
   display: inline-block;
   color: white;
-  padding: 0.7em 2em;
+  padding: 0.5em 2em;
   position: absolute;
   top: 0;
   left: 0;
   font-weight: bold;
+  font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 5px;
+  border-top-left-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 .attention::before {
@@ -105,13 +112,26 @@ h6 {
   background-color: #76c58c;
 }
 
-span.inline-note {
+.instruction::before {
+  content: "instruction";
+  background-color: #61c2ee;
+}
+
+
+span.inline-note, span.inline-bonus {
   font-family: "Avenir Next", "Avenir", sans-serif;
   font-weight: bold;
   text-transform: uppercase;
   color: #e50056;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   font-size: smaller;
+}
+
+span.inline-note {
+  color: #e50056;
+}
+span.inline-bonus {
+  color: #61c2ee;
 }
 
 .assignment-block {
