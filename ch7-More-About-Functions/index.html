@@ -68,7 +68,7 @@ int stabilizedMagnetValue(){
         <li>add(4,3)</li>
         <li>displayStartScreen()</li>
         <li>Math.random()</li>
-        <li>getFirstNumberFromString("ufd4dsfsal34daf")</li>
+        <li>firstNumberFromString("ufd4dsfsal34daf")</li>
         <li>alert()</li>
         <li>Serial.println("Hello!");</li>
       </ol>
@@ -76,14 +76,39 @@ int stabilizedMagnetValue(){
   </section>
 
    <section class="assignment">
-      <h3 class="assignment questions">7.3a</h3>
-          <script type="text/plain" class="language-javascript" dataline="10">
+      <h3 class="assignment questions">7.3 squared</h3>
+      <script type="text/plain" class="language-javascript" >
+            function twelveSquared() {
+              return 12 * 12
+            }
+
+            function elevenSquared() {
+              return 11 * 11
+            }
+
+            function tenSquared() {
+              return 10 * 10
+            }
+
+            console.log(tenSquared()) 
+            console.log(elevenSquared())  
+            console.log(twelveSquared()) 
+                
+        </script>
+        <p>The given functions look a lot alike. Make a function that can square any number.</p>
+      <answer noslider buttontext="Mail the answers"></answer>
+  </section>
+
+
+   <section class="assignment">
+      <h3 class="assignment questions">7.4a</h3>
+          <script type="text/plain" class="language-javascript">
             function createPassword(passPhrase) {
               var cryptoPhrase = "a7" + btoa(passPhrase) + "%H";
               return cryptoPhrase
             }      
         </script>
-      <p>The createPassword() function above creates a better password from weak, but memorable, password. This is how the function works:</p>
+      <p>The createPassword() function above uses a weak, but memorable, password to create a stronger password. This is how the function works:</p>
       <ul>
         <li>The function takes the passphrase and using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowBase64/Base64_encoding_and_decoding">btoa() function</a>, encodes it to a random looking string.</li>
         <li>the function than adds "a7" to the front of the string, and adds "%H" to the end of it to make the password confirm to most site's requrements.</li>
@@ -94,8 +119,8 @@ int stabilizedMagnetValue(){
       <answer noslider buttontext="Mail the generated passphrase"></answer>
   </section>
 <section class="assignment">
-      <h3 class="assignment questions">7.3b</h3>  
-      <p>Make a website that uses this function to change simple passwords in to stronger ones.</p>
+      <h3 class="assignment questions">7.4b</h3>  
+      <p>Make a page that uses this function to change simple passwords in to stronger ones.</p>
       <ul>
         <li>Make an input field where a user can enter an easy to remember passphrase</li>
         <li>Make a div that is meant to dislay the generated passphrase</li>
@@ -106,16 +131,58 @@ int stabilizedMagnetValue(){
           <li>Uses the output of the createPassword() function to display the generated passphrase in the div.</li>
         </ul>
       </ul>
-      <answer noslider buttontext="Mail the generated passphrase"></answer>
+      <answer noslider buttontext="Mail the code"></answer>
   </section>
-
+<section class="assignment">
+      <h3 class="assignment questions">7.4c</h3>  
+      <p>It would be even cooler if the script would use the service the password is used for as an additional secret parameter to make the passwords given to different services unique. </p>
+        <ul>
+          <li>Use the code below to add a dropdown to your HTML.</li>
+          <li>Modify the createPassword() function so it takes an additional parameter called service </li>
+          <li>and append the service to the value that is encoded by btoa(). </li>
+          <li>Don't forget to pass the selected item of the selectbox to the createPassword() function as an argument. </li>
+        </ul>
+ <script type="text/plain" class="language-html" >
+<select id="services">
+  <option value="Google">Google</option>
+  <option value="Han Account" selected>Han Account</option>
+  <option value="Twitter">Twitter</option>
+  <option value="Bank">Bank</option>
+</select>
+</script>
+      <answer noslider buttontext="Mail the code"></answer>
+  </section>
   <section class="assignment">
-      <h3 class="assignment questions">7.4 Sum</h3>
-      <p> Make a javascript function that calculates the sum of three values. The function should be called like this:</p>
+      <h3 class="assignment questions">7.4d</h3>  
+      <p>The function below puts the string in the parameter on the clipboard, ready to be pasted by the user. Add this functionality to your program.</p>
+ <script type="text/plain" class="language-javascript">
+function putOnClipboard(text) {
+  navigator.clipboard.writeText(text)
+}
+</script>
+      <answer noslider buttontext="Mail the code"></answer>
+  </section>
+ <section class="assignment">
+      <h3 class="assignment questions">7.4e</h3>  
+      <p>Create a function that reverses the encryption process. You may have to use the substring function:</p>
+ <script type="text/plain" class="language-javascript">
+var str = "Hello world!";
+var res = str.substring(1, 4); // outputs "ell"
+</script>
+      <answer noslider buttontext="Mail the code"></answer>
+  </section>
+  <section class="assignment">
+      <h3 class="assignment questions">7.5 Arduino Sum</h3>
+      <p> Make an arduino function that calculates the sum of three values. The function should be called like this:</p>
       <script type="text/plain" class="language-arduino">
-console.log(sum(4,3,4)) // outputs 11
-console.log(sum(12,8,3)) // outputs 23
-console.log(sum(41,13,20)) // outputs 74
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println(sum(4,3,4)); // outputs 11
+  Serial.println(sum(12,8,3)); // outputs 23
+  Serial.println(sum(41,13,20)); // outputs 74
+}
+
       </script>
        <section class="attention">
       <p>Tip: Does the sum function have a return value or a side effect? Does it have parameters?</p>
