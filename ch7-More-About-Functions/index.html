@@ -12,6 +12,116 @@
  <main>
 
   <h1>Chapter 7: More about functions</h1>
+  <section class="assignment">
+      <h3 class="assignment questions">7.1a Explain</h3>
+      <p>
+       Answer the following questions in your own words:
+      </p>
+      <ol type="a">
+        <li>What is a return value?</li>
+        <li>What is a side-effect?</li>
+        <li>What is a parameter?</li>
+        <li>What is an argument?</li>
+        <li>What is the difference between an argument and a parameter?</li>
+        <li>What is the difference between a variable and a parameter?</li>
+      </ol>
+      <answer noslider buttontext="Mail the answers"></answer>
+  </section>
+  <section class="assignment">
+      <h3 class="assignment questions">7.1b point</h3>
+      <script type="text/plain" class="language-arduino">
+#include "s4d_breadboard.h"
+
+void setup() {
+  Serial.begin(9600);
+  initializeBreadboard();
+}
+
+void loop() {
+  mapSensorToPin(MAGNETSENSOR, LED_GREEN);
+  mapSensorToPin(2, 10);
+  Serial.println(stabilizedMagnetValue());
+}
+
+void mapSensorToPin(int sensorPin, int ledPin){
+  analogWrite(ledPin, analogRead(sensorPin) / 4);
+}
+
+int stabilizedMagnetValue(){
+  return analogRead(MAGNETSENSOR) / 100;
+}
+      </script>
+      <ol type="a">
+        <li>Does the mapSensorToPin function have a side effect and/or a return value?</li>
+        <li>Does the stabilizedMagnetValue function have a side effect and/or a return value?</li>
+        <li>Name the parameters in the code</li>
+        <li>Name the arguments in the code</li>
+      </ol>
+      <answer noslider buttontext="Mail the answers"></answer>
+  </section>
+   <section class="assignment">
+      <h3 class="assignment questions">7.2 side effect or return</h3>
+      <p>
+        Below are some function calls. Based on the name of the called function, try to explain why you think the function has a side-effect or a return value.
+      </p>
+      <ol type="a">
+        <li>add(4,3)</li>
+        <li>displayStartScreen()</li>
+        <li>Math.random()</li>
+        <li>getFirstNumberFromString("ufd4dsfsal34daf")</li>
+        <li>alert()</li>
+        <li>Serial.println("Hello!");</li>
+      </ol>
+      <answer noslider buttontext="Mail the answers"></answer>
+  </section>
+
+   <section class="assignment">
+      <h3 class="assignment questions">7.3a</h3>
+          <script type="text/plain" class="language-javascript" dataline="10">
+            function createPassword(passPhrase) {
+              var cryptoPhrase = "a7" + btoa(passPhrase) + "%H";
+              return cryptoPhrase
+            }      
+        </script>
+      <p>The createPassword() function above creates a better password from weak, but memorable, password. This is how the function works:</p>
+      <ul>
+        <li>The function takes the passphrase and using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowBase64/Base64_encoding_and_decoding">btoa() function</a>, encodes it to a random looking string.</li>
+        <li>the function than adds "a7" to the front of the string, and adds "%H" to the end of it to make the password confirm to most site's requrements.</li>
+        <li>the function proceeds to return the string for you to use as a password.</li>
+      </ul>
+
+       <p>Call the function with your name as an argument to see how it works.</p>
+      <answer noslider buttontext="Mail the generated passphrase"></answer>
+  </section>
+<section class="assignment">
+      <h3 class="assignment questions">7.3b</h3>  
+      <p>Make a website that uses this function to change simple passwords in to stronger ones.</p>
+      <ul>
+        <li>Make an input field where a user can enter an easy to remember passphrase</li>
+        <li>Make a div that is meant to dislay the generated passphrase</li>
+        <li>Make a button that triggers a function that: </li>
+        <ul>
+          <li>Reads the contents of the password field</li>
+          <li>Calls the createPassword() function with the contents of the field as the argument</li>
+          <li>Uses the output of the createPassword() function to display the generated passphrase in the div.</li>
+        </ul>
+      </ul>
+      <answer noslider buttontext="Mail the generated passphrase"></answer>
+  </section>
+
+  <section class="assignment">
+      <h3 class="assignment questions">7.4 Sum</h3>
+      <p> Make a javascript function that calculates the sum of three values. The function should be called like this:</p>
+      <script type="text/plain" class="language-arduino">
+console.log(sum(4,3,4)) // outputs 11
+console.log(sum(12,8,3)) // outputs 23
+console.log(sum(41,13,20)) // outputs 74
+      </script>
+       <section class="attention">
+      <p>Tip: Does the sum function have a return value or a side effect? Does it have parameters?</p>
+    </section>
+      <answer noslider buttontext="Mail the answers"></answer>
+  </section>
   <todo><pre>
       Video xx Functies in Arduino -- expressies expliciet maken; expressies in functie; parameters; return & return type; 
       Opdrachten:  
