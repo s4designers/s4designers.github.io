@@ -53,16 +53,26 @@ Het `<youtube>`-element kan geen content bevatten tussen de tags.
 Net als alle andere custom-tags, moet je een separate eind-tag gebruiken, ondanks dat er geen content in je `<youtube>` tag zit. Dus niet `<youtube />` of domweg `<youtube>`, maar `<youtube></youtube>`.
 
 
-#### Attention (css class)
-Een class om een `<section>` te maken met afwijkende kleuren waarvan de inhoud extra aandacht moet opeisen.
+#### Attention, Theory, Instruction (css classes)
+Een class om een `<section>` (of <div> o.i.d.) te maken met afwijkende kleuren waarvan de inhoud extra aandacht moet opeisen.
 
 ```html
-<section class="attention">
-  <p> This text should be read carefully!!</p>
-</section>
+<div class="attention">
+  <p>This text should be read carefully!!</p>
+</div>
+```
+```html
+<div class="theory">
+  <p>You should know this.</p>
+</div>
+```
+```html
+<div class="instruction">
+  <p>You should do things like this.</p>
+</div>
 ```
 
-Qua verticale spacing is het het mooiste als content in `.attention`-element in block-elementen (e.g `<p>`, `<h3>`, `<table>`, etc) is verpakt. Zie voorbeeld hierboven.
+Qua verticale spacing is het het mooiste als content in een extra-aandacht-element in verpakt is in block-elementen (e.g `<p>`, `<h3>`, `<table>`, etc). Zie voorbeelden hierboven.
 
 #### Assigments (css class)
 Een section die een huiswerkvraag aan gebruikers presenteert.
@@ -81,6 +91,18 @@ Een assignment bevat typisch drie dingen:
 
 1. **De content van de opdrachtbeschrijving**. Kan van alles zijn.
 1. Optioneel: **een `<answer>` element** dat nadere specs bevat over het inlever-blokje in de opdracht. Zie volgend tussenkopje. Als het `<answer>`-element ontbreekt wordt er een default element aan het einde toegevoegd. 
+
+#### Subquestions (HTML pattern)
+Sommige opdrachten bestaan uit een aantal sub-vragen. Die subvragen kunnen opgenomen worden in de antwoord-mail door ze te verpakken in een specifiek soort lijst:
+
+```html
+<ol type="a">
+  <li>Where were you on the night of the murder?</li>
+  <li>Where did you hide the body?</li>
+  <li>Why did you do it?</li>
+</ol>
+```
+Het type-attribuut (type="a") is belangrijk. Dat moet er zijn, _en_ de waarde "a" hebben. Anders wordt de lijst niet opgepikt als een set subvragen.
 
 #### Answers (custom tag)
 `<answer>`-elementen moeten in assignment-secties zitten. Ze gebruiken het nummer vooran in het eertse child-element van de assignment-sectie om het opdrachtnummer uit te destilleren. Een `<answer>`-element kan een paar attributen en content krijgen, die allemaal optioneel zijn:
