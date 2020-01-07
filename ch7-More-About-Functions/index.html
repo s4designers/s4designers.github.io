@@ -12,6 +12,7 @@
  <main>
 
   <h1>Chapter 7: More about functions</h1>
+  <todo>Video about functions with returns and parameters in both javascript and arduino</todo>
   <section class="assignment">
       <h3 class="assignment questions">7.1a Explain</h3>
       <p>
@@ -38,12 +39,12 @@ void setup() {
 }
 
 void loop() {
-  mapSensorToPin(MAGNETSENSOR, LED_GREEN);
-  mapSensorToPin(2, 10);
+  mapSensorToLed(MAGNETSENSOR, LED_GREEN);
+  mapSensorToLed(2, 10);
   Serial.println(stabilizedMagnetValue());
 }
 
-void mapSensorToPin(int sensorPin, int ledPin){
+void mapSensorToLed(int sensorPin, int ledPin){
   analogWrite(ledPin, analogRead(sensorPin) / 4);
 }
 
@@ -52,7 +53,7 @@ int stabilizedMagnetValue(){
 }
       </script>
       <ol type="a">
-        <li>Does the mapSensorToPin function have a side effect and/or a return value?</li>
+        <li>Does the mapSensorToLed function have a side effect and/or a return value?</li>
         <li>Does the stabilizedMagnetValue function have a side effect and/or a return value?</li>
         <li>Name the parameters in the code</li>
         <li>Name the arguments in the code</li>
@@ -96,10 +97,12 @@ int stabilizedMagnetValue(){
                 
         </script>
         <p>The given functions look a lot alike. Make a function that can square any number.</p>
-      <answer noslider buttontext="Mail the answers"></answer>
+      <answer buttontext="Mail the code"></answer>
   </section>
 
-
+  <section class="attention">
+      <p>The following excerse is about functions and parameters, not about security. Do not use code from this assignment in commercial applications.</p>
+    </section>
    <section class="assignment">
       <h3 class="assignment questions">7.4a</h3>
           <script type="text/plain" class="language-javascript">
@@ -108,15 +111,15 @@ int stabilizedMagnetValue(){
               return cryptoPhrase
             }      
         </script>
-      <p>The createPassword() function above uses a weak, but memorable, password to create a stronger password. This is how the function works:</p>
+      <p>The createPassword() function above takes a weak, but memorable password and turns it into a stronger password. This is how the function works:</p>
       <ul>
         <li>The function takes the passphrase and using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowBase64/Base64_encoding_and_decoding">btoa() function</a>, encodes it to a random looking string.</li>
         <li>the function than adds "a7" to the front of the string, and adds "%H" to the end of it to make the password confirm to most site's requrements.</li>
         <li>the function proceeds to return the string for you to use as a password.</li>
       </ul>
 
-       <p>Call the function with your name as an argument to see how it works.</p>
-      <answer noslider buttontext="Mail the generated passphrase"></answer>
+       <p>Use the console to call the function with your name as an argument to see how it works.</p>
+      <answer buttontext="Mail the generated passphrase"></answer>
   </section>
 <section class="assignment">
       <h3 class="assignment questions">7.4b</h3>  
@@ -131,15 +134,15 @@ int stabilizedMagnetValue(){
           <li>Uses the output of the createPassword() function to display the generated passphrase in the div.</li>
         </ul>
       </ul>
-      <answer noslider buttontext="Mail the code"></answer>
+      <answer buttontext="Mail the code"></answer>
   </section>
 <section class="assignment">
       <h3 class="assignment questions">7.4c</h3>  
-      <p>It would be even cooler if the script would use the service the password is used for as an additional secret parameter to make the passwords given to different services unique. </p>
+      <p>It would be even cooler if the user could use the same simple password to generate different passwords for different services. Add a "service" parameter to the createPassword() function and add a dropdown with different services to the webpage. </p>
         <ul>
           <li>Use the code below to add a dropdown to your HTML.</li>
           <li>Modify the createPassword() function so it takes an additional parameter called service </li>
-          <li>and append the service to the value that is encoded by btoa(). </li>
+          <li>Append the value of the service parameter to the value that is encoded by btoa(). </li>
           <li>Don't forget to pass the selected item of the selectbox to the createPassword() function as an argument. </li>
         </ul>
  <script type="text/plain" class="language-html" >
@@ -150,7 +153,7 @@ int stabilizedMagnetValue(){
   <option value="Bank">Bank</option>
 </select>
 </script>
-      <answer noslider buttontext="Mail the code"></answer>
+      <answer buttontext="Mail the code"></answer>
   </section>
   <section class="assignment">
       <h3 class="assignment questions">7.4d</h3>  
@@ -160,17 +163,18 @@ function putOnClipboard(text) {
   navigator.clipboard.writeText(text)
 }
 </script>
-      <answer noslider buttontext="Mail the code"></answer>
+      <answer buttontext="Mail the code"></answer>
   </section>
  <section class="assignment">
-      <h3 class="assignment questions">7.4e</h3>  
-      <p>Create a function that reverses the encryption process. You may have to use the substring function:</p>
+      <h3 class="assignment questions">7.4e <span class="inline-bonus">BONUS:</span> Reverse engineer</h3>  
+      <p>Somebody used your script for something nefarious. The police is interested in recovering the original password created by this script. Create a function that reverses the encryption process. You may have to use the substring function:</p>
  <script type="text/plain" class="language-javascript">
 var str = "Hello world!";
 var res = str.substring(1, 4); // outputs "ell"
 </script>
-      <answer noslider buttontext="Mail the code"></answer>
+      <answer buttontext="Mail the code"></answer>
   </section>
+
   <section class="assignment">
       <h3 class="assignment questions">7.5 Arduino Sum</h3>
       <p> Make an arduino function that calculates the sum of three values. The function should be called like this:</p>
@@ -187,8 +191,10 @@ void setup() {
        <section class="attention">
       <p>Tip: Does the sum function have a return value or a side effect? Does it have parameters?</p>
     </section>
-      <answer noslider buttontext="Mail the answers"></answer>
+      <answer buttontext="Mail the answers"></answer>
   </section>
+
+   <todo>Video about build in functions in arduino</todo>
   <todo><pre>
       Video xx Functies in Arduino -- expressies expliciet maken; expressies in functie; parameters; return & return type; 
       Opdrachten:  
