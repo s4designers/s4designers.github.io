@@ -203,6 +203,32 @@ button:hover:active {
   }
 }
 
+@keyframes pausedRotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  95% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+main::after {
+  content: "";
+  display: block;
+  margin: 10em auto 15em auto;
+  height: 16px;
+  width: 16px;
+  background-color: #ccc;
+  animation: pausedRotation 10s infinite linear;
+  border-radius: 3px;
+}
+
+
+
+
 span.note {
   display: inline-block;
   width: 13px;
