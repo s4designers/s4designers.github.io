@@ -62,37 +62,76 @@ h1 > .chapter-num {
   margin-bottom: 10px;
 }
 
+h4 {
+  color: #666;
+  margin-top: 2em;
+}
+
 h6 {
   margin: 1em 0 0 0;
   /* position: relative; */
 }
 
-.attention {
+.attention, 
+.theory,
+.instruction {
   background-color: #ccc;
   /* border: 1px solid #b8b8b8; */
   color: black;
-  padding: 2em;
+  padding: 3em 2em 2em 2em;
   border-radius: 3px;
   margin: 3em 0 1em 0;
+  position: relative;
+}
+
+.attention::before, 
+.theory::before, 
+.instruction::before {
+  font-family: "Avenir Next", "Avenir", sans-serif;
+  display: inline-block;
+  color: white;
+  padding: 0.5em 2em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-weight: bold;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  border-top-left-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 .attention::before {
-  font-family: "Avenir Next", "Avenir", sans-serif;
   content: "attention";
-  display: block;
-  color: #e50056;
+  background-color: #e50056;
+}
+
+.theory::before {
+  content: "more to know";
+  background-color: #76c58c;
+}
+
+.instruction::before {
+  content: "instruction";
+  background-color: #61c2ee;
+}
+
+
+span.inline-note, span.inline-bonus {
+  font-family: "Avenir Next", "Avenir", sans-serif;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 5px;
+  color: #e50056;
+  letter-spacing: 2px;
+  font-size: smaller;
 }
 
 span.inline-note {
-  font-family: "Avenir Next", "Avenir", sans-serif;
-  font-weight: bold;
-  text-transform: uppercase;
   color: #e50056;
-  letter-spacing: 3px;
-  font-size: smaller;
+}
+span.inline-bonus {
+  color: #61c2ee;
 }
 
 .assignment-block {
@@ -163,6 +202,32 @@ button:hover:active {
     transform: rotate(359deg);
   }
 }
+
+@keyframes pausedRotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  95% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+main::after {
+  content: "";
+  display: block;
+  margin: 10em auto 15em auto;
+  height: 16px;
+  width: 16px;
+  background-color: #ccc;
+  animation: pausedRotation 10s infinite linear;
+  border-radius: 3px;
+}
+
+
+
 
 span.note {
   display: inline-block;

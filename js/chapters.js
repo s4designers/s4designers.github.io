@@ -1,17 +1,16 @@
 /*==================================    
 
   TODO: 
+    * een <answer> voor meerdere korte vragen.
     * hint element;
     * promise based script loading;
     * answer instruction should be visible 
       with <answer.../> instead of <answer...></answer>
     * tweak margin between h2 and attention-block (ch2)
-    * een <answer> voor meerdere korte vragen.
     * Attention blocks can have different headings
-    
+    * Check 'mail your' button labels.
+    * Bedenk welke opdrachten 'noslider' moeten hebben.
   ==================================*/
-
-
 
 // iife to prevent creating global variables
 (function () {
@@ -58,6 +57,47 @@ function encodeForHtml(str) {
     .replace(/"/g, '&quot;')
 }
 
+function loadScript(url, extraAttrs={}) {
+  return new Promise((resolve, reject) => {
+    const attrs = { 
+      type: 'text/javascript',
+      async: false,
+      src: url,
+      ...extraAttrs
+    }
+    var scriptElement = createElement('script', attrs)
+
+    scriptElement.onload = () => {
+      resolve(url)
+    }
+    scriptElement.onerror = () => {
+      reject(url)
+    }
+    document.body.append(scriptElement);
+  })
+}
+
+
+const mainCssEl = $$('link[rel="stylesheet"]', document.head).pop();
+function loadStylesheet(url) {
+  return new Promise((resolve, reject) => {
+    const attrs = { 
+      type: 'text/css',
+      rel: 'stylesheet',
+      href: url
+    }
+    var styleElement = createElement('link', attrs)
+
+    styleElement.onload = () => {
+      resolve(url)
+    }
+    styleElement.onerror = () => {
+      reject(url)
+    }
+    mainCssEl.insertAdjacentElement('beforebegin', styleElement);
+  })
+}
+
 //======= creating page elements ====================================
 
 function createYoutubePlayers() {
@@ -87,7 +127,20 @@ const createAnswerBlocks = function() {
     const firstSpaceIdx = title.indexOf(' ');
     const assignmentId = title.slice(0,firstSpaceIdx).trim();
     const assignmentTitle = title.slice(firstSpaceIdx).trim();
-    const answerElement = assignmentSection.querySelector("answer")
+    const answerElement = $("answer",assignmentSection)
+    
+    let subQuestions = $$('ol[type="a"] > li', assignmentSection)
+    const chars = (function *() {
+      let currChar = "a"
+      while(true) {
+        yield currChar
+        currChar = String.fromCharCode(currChar.charCodeAt(0)+1)
+      }
+    })()
+    subQuestions = subQuestions.map( el => {
+      return chars.next().value + ") " + el.textContent + "\n\n\n"
+    })
+    console.log("SUBQ: ", subQuestions)
 
     const buttonId = newId("button")
 
@@ -145,7 +198,8 @@ const createAnswerBlocks = function() {
       } else {
         mailButton.addEventListener("click", (evt) => {
           let subject = encodeURIComponent( `s4d_${assignmentId} ${assignmentTitle}`)
-          window.open(`mailto:s4designers@gmail.com?subject=${subject}`)
+          let messageBody = encodeURIComponent( subQuestions.join("") )
+          window.open(`mailto:s4designers@gmail.com?subject=${subject}&body=${messageBody}`)
         })
       }
     }
@@ -223,14 +277,15 @@ async function loadAgenda() {
 function addCodeHighlighter() {
   const ghUser = 'rbrtrbrt'
   const ghRepo = 'prism'
-  const ghRelease = 'v1.17.1.3'
+  const ghRelease = 'v1.17.1.4'
   const cdnBaseUrl = `https://cdn.jsdelivr.net/gh/${ghUser}/${ghRepo}@${ghRelease}`
 
   const scripts = []
   function addScript(scriptPath, extraAttrs) {
     const scriptEl = document.createElement('script');
     scriptEl.type = 'text/javascript';
-    scriptEl.src = cdnBaseUrl + scriptPath;
+    scriptEl.src = '/js/prism' + scriptPath;
+    // scriptEl.src = cdnBaseUrl + scriptPath;
     scriptEl.async = false;
     if(extraAttrs) {
       for( [name, value] of Object.entries(extraAttrs)){
@@ -243,7 +298,8 @@ function addCodeHighlighter() {
   function addStyle(stylePath) {
     const styleEl = document.createElement('link');
     styleEl.rel = 'stylesheet';
-    styleEl.href = cdnBaseUrl + stylePath;
+    styleEl.href = '/js/prism' + stylePath;
+    // styleEl.href = cdnBaseUrl + stylePath;
     mainCssEl.insertAdjacentElement('beforebegin', styleEl)
   }
   const prismLanguages = [
@@ -258,20 +314,27 @@ function addCodeHighlighter() {
     'unescaped-markup': {css,js},
     'normalize-whitespace': {js},
   }
-  addScript('/components/prism-core.js', {'data-manual':true});
+  addScript('/prism-core.js', {'data-manual':true});
+  // addScript('/components/prism-core.js', {'data-manual':true});
   for( lang of prismLanguages ) {
-    addScript(`/components/prism-${lang}.js`)
+    addScript(`/prism-${lang}.js`)
+    // addScript(`/components/prism-${lang}.js`)
   }
   for( [plugin,{css,js}] of Object.entries(prismPlugins)) {
-    css && addStyle(`/plugins/${plugin}/prism-${plugin}.css`)
-    js && addScript(`/plugins/${plugin}/prism-${plugin}.js`)
+    css && addStyle(`/prism-${plugin}.css`)
+    // css && addStyle(`/plugins/${plugin}/prism-${plugin}.css`)
+    js && addScript(`/prism-${plugin}.js`)
+    // js && addScript(`/plugins/${plugin}/prism-${plugin}.js`)
   }
-  document.body.append(...scripts)
+  scripts.forEach( s => document.body.append(s) );
+//  document.body.append(...scripts)
   function startHighlighterWhenLoaded() {
     if( window.Prism ) {
+      console.log("prism started")
       window.Prism.highlightAll()
     } else {
-      window.setTimeout(startHighlighterWhenLoaded, 50)
+      console.log("prism start delayed")
+      window.setTimeout(startHighlighterWhenLoaded, 300)
     }
   }
   startHighlighterWhenLoaded()
