@@ -76,8 +76,31 @@ int stabilizedMagnetValue(){
       <answer noslider buttontext="Mail the answers"></answer>
   </section>
 
+ <section class="assignment">
+      <h3 class="assignment questions">7.3a Area code</h3>
+      <script type="text/plain" class="language-javascript" >
+            var area = 0;
+
+            function calculateArea(length, height) {
+              area = length * height
+            }
+
+            calculateArea(12,44)
+            console.log(area)
+                
+        </script>
+        <p>Why doesn't console.log(calculateArea(12,44)) work?</p>
+      <answer buttontext="Mail your answer"></answer>
+  </section>
+
+ <section class="assignment">
+      <h3 class="assignment questions">7.3b Area recode</h3>
+       <p>Change the area function in such a way that console.log(calculateArea(12,44)) would output 528. What would be a better name for this function?
+      <answer buttontext="Mail your code"></answer>
+  </section>
+
    <section class="assignment">
-      <h3 class="assignment questions">7.3 squared</h3>
+      <h3 class="assignment questions">7.3c squared</h3>
       <script type="text/plain" class="language-javascript" >
             function twelveSquared() {
               return 12 * 12
@@ -96,15 +119,15 @@ int stabilizedMagnetValue(){
             console.log(twelveSquared()) 
                 
         </script>
-        <p>The given functions look a lot alike. Make a function that can square any number.</p>
+        <p>The given functions look a lot alike. This is usually a sign parameters can be used to make functions more generic. Make a function that can square any number.</p>
       <answer buttontext="Mail the code"></answer>
   </section>
 
   <section class="attention">
-      <p>The following excerse is about functions and parameters, not about security. Do not use code from this assignment in commercial applications.</p>
+      <p>The following exercise is about functions with parameters, not about security. Do not use code from this assignment in commercial applications.</p>
     </section>
    <section class="assignment">
-      <h3 class="assignment questions">7.4a</h3>
+      <h3 class="assignment questions">7.4a Password manager</h3>
           <script type="text/plain" class="language-javascript">
             function createPassword(passPhrase) {
               var cryptoPhrase = "a7" + btoa(passPhrase) + "%H";
@@ -122,7 +145,7 @@ int stabilizedMagnetValue(){
       <answer buttontext="Mail the generated passphrase"></answer>
   </section>
 <section class="assignment">
-      <h3 class="assignment questions">7.4b</h3>  
+      <h3 class="assignment questions">7.4b Password Manager 2</h3>  
       <p>Make a page that uses this function to change simple passwords in to stronger ones.</p>
       <ul>
         <li>Make an input field where a user can enter an easy to remember passphrase</li>
@@ -137,8 +160,8 @@ int stabilizedMagnetValue(){
       <answer buttontext="Mail the code"></answer>
   </section>
 <section class="assignment">
-      <h3 class="assignment questions">7.4c</h3>  
-      <p>It would be even cooler if the user could use the same simple password to generate different passwords for different services. Add a "service" parameter to the createPassword() function and add a dropdown with different services to the webpage. </p>
+      <h3 class="assignment questions">7.4c Password Manager 3</h3>  
+      <p>It would be even cooler if the user could use the same simple password to generate different passwords for different services. Add a "service" parameter to the createPassword() function and use this parameter to add an extra component to our encryption. For convenience, add a dropdown with different services to the webpage. </p>
         <ul>
           <li>Use the code below to add a dropdown to your HTML.</li>
           <li>Modify the createPassword() function so it takes an additional parameter called service </li>
@@ -156,7 +179,7 @@ int stabilizedMagnetValue(){
       <answer buttontext="Mail the code"></answer>
   </section>
   <section class="assignment">
-      <h3 class="assignment questions">7.4d</h3>  
+      <h3 class="assignment questions">7.4d Password Manager 4</h3>  
       <p>The function below puts the string in the parameter on the clipboard, ready to be pasted by the user. Add this functionality to your program.</p>
  <script type="text/plain" class="language-javascript">
 function putOnClipboard(text) {
@@ -167,10 +190,13 @@ function putOnClipboard(text) {
   </section>
  <section class="assignment">
       <h3 class="assignment questions">7.4e <span class="inline-bonus">BONUS:</span> Reverse engineer</h3>  
-      <p>Somebody used your script for something nefarious. The police is interested in recovering the original password created by this script. Create a function that reverses the encryption process. You may have to use the substring function:</p>
+      <p>Somebody used your script for something nefarious. The police is interested in recovering original passwords created by the script. Create a function that reverses the encryption process. You may have to use the substring function and the atob() function</p>
  <script type="text/plain" class="language-javascript">
 var str = "Hello world!";
 var res = str.substring(1, 4); // outputs "ell"
+
+var encodedString = btoa("Hello World") //outputs: "SGVsbG8gV29ybGQ="
+var normalString = atob(encodedString) //outputs: "Hello World!"
 </script>
       <answer buttontext="Mail the code"></answer>
   </section>
@@ -194,7 +220,109 @@ void setup() {
       <answer buttontext="Mail the answers"></answer>
   </section>
 
-   <todo>Video about build in functions in arduino</todo>
+
+
+<section class="assignment">
+<h3 class="assignment questions">7.5</h3>  
+ <script type="text/plain" class="language-arduino">
+#include "s4d_breadboard.h"
+
+void setup() {
+  initializeBreadboard();
+}
+
+int turnLEDsOn() {
+  analogWrite(LED_BLUE, 255);
+  analogWrite(LED_RED, 255);
+  analogWrite(LED_GREEN, 255);
+}
+
+int turnLEDsOff() {
+  analogWrite(LED_RED, 0);
+  analogWrite(LED_GREEN, 0);
+  analogWrite(LED_BLUE, 0);
+}
+
+// duration of pulses is dependend on the position of the potentiometer.
+// minimum duration is 50ms.
+int shortOnDuration() {
+  return analogRead(POTENTIOMETER) + 50;
+}
+
+// duration of the pause between two pulses is halve the duration of the short pulse.
+int shortOffDuration() {
+  return shortOnDuration() / 2;
+}
+
+// longOnDuration is three times the shortOnDuration
+int longOnDuration() {
+  return 3 * shortOnDuration();
+}
+
+// longOffDuration is halve the longOnDuration
+int longOffDuration() {
+  return longOnDuration() / 2;
+}
+
+void loop() {
+  int pauseDuration = 2000;
+
+  turnLEDsOn();
+  delay( shortOnDuration() );
+  turnLEDsOff();
+  delay( shortOffDuration() );
+
+  turnLEDsOn();
+  delay( shortOnDuration() );
+  turnLEDsOff();
+  delay( shortOffDuration() );
+
+  turnLEDsOn();
+  delay( shortOnDuration() );
+  turnLEDsOff();
+  delay( shortOffDuration() );
+//------------------------------
+  turnLEDsOn();
+  delay( longOnDuration() );
+  turnLEDsOff();
+  delay( longOffDuration() );
+
+  turnLEDsOn();
+  delay( longOnDuration() );
+  turnLEDsOff();
+  delay( longOffDuration() );
+
+  turnLEDsOn();
+  delay( longOnDuration() );
+  turnLEDsOff();
+  delay( longOffDuration() );
+//------------------------------
+  turnLEDsOn();
+  delay( shortOnDuration() );
+  turnLEDsOff();
+  delay( shortOffDuration() );
+
+  turnLEDsOn();
+  delay( shortOnDuration() );
+  turnLEDsOff();
+  delay( shortOffDuration() );
+
+  turnLEDsOn();
+  delay( shortOnDuration() );
+  turnLEDsOff();
+  delay( shortOffDuration() );
+//------------------------------
+  delay( pauseDuration );
+}
+</script>
+</section>
+  
+
+
+
+   <todo>Video about build-in functions in javascript and arduino</todo>
+
+
   <todo><pre>
       Video xx Functies in Arduino -- expressies expliciet maken; expressies in functie; parameters; return & return type; 
       Opdrachten:  
