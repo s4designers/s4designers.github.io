@@ -263,14 +263,15 @@ async function loadAgenda() {
 function addCodeHighlighter() {
   const ghUser = 'rbrtrbrt'
   const ghRepo = 'prism'
-  const ghRelease = 'v1.17.1.3'
+  const ghRelease = 'v1.17.1.4'
   const cdnBaseUrl = `https://cdn.jsdelivr.net/gh/${ghUser}/${ghRepo}@${ghRelease}`
 
   const scripts = []
   function addScript(scriptPath, extraAttrs) {
     const scriptEl = document.createElement('script');
     scriptEl.type = 'text/javascript';
-    scriptEl.src = cdnBaseUrl + scriptPath;
+    scriptEl.src = '/js/prism' + scriptPath;
+    // scriptEl.src = cdnBaseUrl + scriptPath;
     scriptEl.async = false;
     if(extraAttrs) {
       for( [name, value] of Object.entries(extraAttrs)){
@@ -283,7 +284,8 @@ function addCodeHighlighter() {
   function addStyle(stylePath) {
     const styleEl = document.createElement('link');
     styleEl.rel = 'stylesheet';
-    styleEl.href = cdnBaseUrl + stylePath;
+    styleEl.href = '/js/prism' + stylePath;
+    // styleEl.href = cdnBaseUrl + stylePath;
     mainCssEl.insertAdjacentElement('beforebegin', styleEl)
   }
   const prismLanguages = [
@@ -298,20 +300,27 @@ function addCodeHighlighter() {
     'unescaped-markup': {css,js},
     'normalize-whitespace': {js},
   }
-  addScript('/components/prism-core.js', {'data-manual':true});
+  addScript('/prism-core.js', {'data-manual':true});
+  // addScript('/components/prism-core.js', {'data-manual':true});
   for( lang of prismLanguages ) {
-    addScript(`/components/prism-${lang}.js`)
+    addScript(`/prism-${lang}.js`)
+    // addScript(`/components/prism-${lang}.js`)
   }
   for( [plugin,{css,js}] of Object.entries(prismPlugins)) {
-    css && addStyle(`/plugins/${plugin}/prism-${plugin}.css`)
-    js && addScript(`/plugins/${plugin}/prism-${plugin}.js`)
+    css && addStyle(`/prism-${plugin}.css`)
+    // css && addStyle(`/plugins/${plugin}/prism-${plugin}.css`)
+    js && addScript(`/prism-${plugin}.js`)
+    // js && addScript(`/plugins/${plugin}/prism-${plugin}.js`)
   }
-  document.body.append(...scripts)
+  scripts.forEach( s => document.body.append(s) );
+//  document.body.append(...scripts)
   function startHighlighterWhenLoaded() {
     if( window.Prism ) {
+      console.log("prism started")
       window.Prism.highlightAll()
     } else {
-      window.setTimeout(startHighlighterWhenLoaded, 50)
+      console.log("prism start delayed")
+      window.setTimeout(startHighlighterWhenLoaded, 300)
     }
   }
   startHighlighterWhenLoaded()
