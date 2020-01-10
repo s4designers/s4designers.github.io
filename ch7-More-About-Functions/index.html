@@ -317,14 +317,75 @@ void loop() {
   delay( pauseDuration );
 }
 </script>
+
+<ol type="a">
+  <li>What sort of function is longOnDuration()? Does it have a return value, or a side-effect?</li>
+  <li>What is the return type of longOnDuration()?</li>
+  <li>What is the value coming from longOnDuration() being used for?</li>
+  <li>What is the value coming from longOnDuration() dependent on? </li>
+</ol>
+<answer buttontext="Mail the answers"></answer>
 </section>
   
+<section class="assignment">
+<h3 class="assignment questions">7.6</h3>  
+<p>The pause between signals is now dependant on a set value. (see lines 41 and 88)</p>
+<p>Make a function called pause() which returns a a value that is the sum of the shortOnDuration() and the longOnDuration() </p>
+<answer buttontext="Mail the code"></answer>
+</section>
 
+<section class="assignment">
+<h3 class="assignment questions">7.7</h3>  
+<p>The script contains unnecessary duplicate code. Change the loop to the following and add the corresponding functions. The result should function the same way the old script did.</p>
+ <script type="text/plain" class="language-arduino">
+void loop() {
+   threeShortPulses();
+   threeLongPulses();
+   threeShortPulses();
+   delay( pause() );
+}
+  </script>
+<answer buttontext="Mail the code"></answer>
+</section>
 
+<section class="assignment">
+<h3 class="assignment questions">7.8</h3>  
+<p>The time the LED is off after a pulse, is always half the duration of the pulse. The shortOffDuration() and the longOffDuration() functions are very similar in nature. Make a new function called "offDuration" which takes the duration of the pulse as a parameter, and returns that value divided by two. </p>
+ <script type="text/plain" class="language-arduino">
 
+   offDuration(300); // output: 150
+   offDuration(shortOnDuration()); // output: half the duration of the short pulse
+   offDuration(longOnDuration()); // output: half the duration of the long pulse
+
+  </script>
+  <p>Throw away the two unnecessary functions and replace the calls to them to calls to your new function. The result should function as follows:</p>
+<answer buttontext="Mail the code"></answer>
+</section>
+
+<section class="assignment">
+<h3 class="assignment questions">7.9</h3>  
+<p>Make a new function called threePulses() to replace the threeShortPulses() and the threeLongPulses() functions. This new function should take the pulse duration as a parameter and output three pulses of its length. When you are done, your loop looks like this: </p>
+ <script type="text/plain" class="language-arduino">
+
+   void loop() {
+    threePulses( shortOnDuration() );
+    threePulses( longOnDuration() );
+    threePulses( shortOnDuration() );
+    delay( pause() );
+}
+
+  </script>
+ 
+<answer buttontext="Mail the code"></answer>
+</section>
+
+<section class="assignment">
+<h3 class="assignment questions">7.10</h3>  
+<p>Try to summarize what you learned about functions using the output of other functions.</p>
+ 
+<answer buttontext="Mail the code"></answer>
+</section>
    <todo>Video about build-in functions in javascript and arduino</todo>
-
-
   <todo><pre>
       Video xx Functies in Arduino -- expressies expliciet maken; expressies in functie; parameters; return & return type; 
       Opdrachten:  
