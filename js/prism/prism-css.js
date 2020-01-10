@@ -1,4 +1,4 @@
-console.log("PRISM CSS start");
+// console.log("PRISM CSS start");
 
 (function (Prism) {
 	
@@ -59,5 +59,5 @@ console.log("PRISM CSS start");
 	}(Prism));
 	
 	
-	console.log("PRISM CSS done");
+	// console.log("PRISM CSS done");
 	

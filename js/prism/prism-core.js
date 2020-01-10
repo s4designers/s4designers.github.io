@@ -1,4 +1,4 @@
-console.log("PRISM-CORE start");
+// console.log("PRISM-CORE start");
 
 var _self = (typeof window !== 'undefined')
 	? window   // if in browser
@@ -622,4 +622,4 @@ if (typeof global !== 'undefined') {
 	global.Prism = Prism;
 }
 
-console.log("PRISM-CORE end")
+// console.log("PRISM-CORE end")

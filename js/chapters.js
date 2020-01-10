@@ -140,7 +140,6 @@ const createAnswerBlocks = function() {
     subQuestions = subQuestions.map( el => {
       return chars.next().value + ") " + el.textContent + "\n\n\n"
     })
-    console.log("SUBQ: ", subQuestions)
 
     const buttonId = newId("button")
 
@@ -219,7 +218,6 @@ function createNotes() {
   $$('note').forEach( noteElement => {
     const popupId = newId('popup')
     const noteContent = noteElement.innerHTML
-    console.log("note:", noteContent)
     const replacementHtml = `<span id="${popupId}" class="note">
       </span>`
     noteElement.outerHTML = replacementHtml
@@ -232,7 +230,6 @@ function createNotes() {
 
 function createDownloadButtons() {
   $$('download').forEach( downloadElement =>{
-    console.log('downloadElement :', downloadElement)
     const downloadLinkId = newId("download-link")
     const downloadButtonId = newId("download-button")
     let downloadButtonText = downloadElement.getAttribute("buttonText")
@@ -315,19 +312,14 @@ function addCodeHighlighter() {
     'normalize-whitespace': {js},
   }
   addScript('/prism-core.js', {'data-manual':true});
-  // addScript('/components/prism-core.js', {'data-manual':true});
   for( lang of prismLanguages ) {
     addScript(`/prism-${lang}.js`)
-    // addScript(`/components/prism-${lang}.js`)
   }
   for( [plugin,{css,js}] of Object.entries(prismPlugins)) {
     css && addStyle(`/prism-${plugin}.css`)
-    // css && addStyle(`/plugins/${plugin}/prism-${plugin}.css`)
     js && addScript(`/prism-${plugin}.js`)
-    // js && addScript(`/plugins/${plugin}/prism-${plugin}.js`)
   }
   scripts.forEach( s => document.body.append(s) );
-//  document.body.append(...scripts)
   function startHighlighterWhenLoaded() {
     if( window.Prism ) {
       console.log("prism started")
@@ -343,7 +335,6 @@ function addCodeHighlighter() {
 function adaptPageTitle() {
   const titleElement = $('h1')
   let title = titleElement.innerHTML
-  console.log('title :', title)
   const titleRegex = /^\s*(?:Chapter)?\s*(\d+):?\s*(.*)$/
   const titleSegments = title.match(titleRegex);
   if(titleSegments.length == 3){

@@ -1,4 +1,4 @@
-console.log("PRISM-CPP start");
+// console.log("PRISM-CPP start");
 
 
 Prism.languages.cpp = Prism.languages.extend('c', {
@@ -23,4 +23,4 @@ Prism.languages.insertBefore('cpp', 'string', {
 	}
 });
 
-console.log("PRISM-CPP done")
+// console.log("PRISM-CPP done")

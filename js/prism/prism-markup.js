@@ -1,4 +1,4 @@
-console.log("PRISM Markup start");
+// console.log("PRISM Markup start");
 
 Prism.languages.markup = {
 	'comment': /<!--[\s\S]*?-->/,
@@ -104,4 +104,4 @@ Prism.languages.html = Prism.languages.markup;
 Prism.languages.mathml = Prism.languages.markup;
 Prism.languages.svg = Prism.languages.markup;
 
-console.log("PRISM Markup end")
+// console.log("PRISM Markup end")

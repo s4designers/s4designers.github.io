@@ -1,4 +1,4 @@
-console.log("PRISM FILE-HIGHLIGHT start");
+// console.log("PRISM FILE-HIGHLIGHT start");
 
 (function () {
 	if (typeof self === 'undefined' || !self.Prism || !self.document || !document.querySelector) {
@@ -90,4 +90,4 @@ console.log("PRISM FILE-HIGHLIGHT start");
 	
 })();
 
-console.log("PRISM FILE-HIGHLIGHT done")
+// console.log("PRISM FILE-HIGHLIGHT done")

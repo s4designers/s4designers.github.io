@@ -1,4 +1,4 @@
-console.log("PRISM-C start");
+// console.log("PRISM-C start");
 
 Prism.languages.c = Prism.languages.extend('clike', {
 	'class-name': {
@@ -37,4 +37,4 @@ Prism.languages.insertBefore('c', 'string', {
 
 delete Prism.languages.c['boolean'];
 
-console.log("PRISM-C done")
+// console.log("PRISM-C done")

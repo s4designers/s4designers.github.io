@@ -1,4 +1,4 @@
-console.log("PRISM NORMALIZE-WHITESPACE start");
+// console.log("PRISM NORMALIZE-WHITESPACE start");
 
 (function() {
 	
@@ -191,4 +191,4 @@ console.log("PRISM NORMALIZE-WHITESPACE start");
 	
 }());
 
-console.log("PRISM NORMALIZE-WHITESPACE done")
+// console.log("PRISM NORMALIZE-WHITESPACE done")

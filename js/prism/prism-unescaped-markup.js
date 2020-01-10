@@ -1,4 +1,4 @@
-console.log("PRISM UNESCAPED-MARKUP start");
+// console.log("PRISM UNESCAPED-MARKUP start");
 
 (function () {
 	
@@ -45,4 +45,4 @@ console.log("PRISM UNESCAPED-MARKUP start");
 	});
 }());
 
-console.log("PRISM UNESCAPED-MARKUP done")
+// console.log("PRISM UNESCAPED-MARKUP done")

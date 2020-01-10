@@ -1,4 +1,4 @@
-console.log("PRISM LINE-HIGHLIGHT start");
+// console.log("PRISM LINE-HIGHLIGHT start");
 
 (function () {
 	
@@ -215,4 +215,4 @@ console.log("PRISM LINE-HIGHLIGHT start");
 	
 })();
 
-console.log("PRISM LINE-HIGHLIGHT done")
+// console.log("PRISM LINE-HIGHLIGHT done")
