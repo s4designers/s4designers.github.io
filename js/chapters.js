@@ -264,11 +264,55 @@ function createDownloadButtons() {
   })
 }
 
-async function loadAgenda() {
-  const response = await fetch('../agenda.html')
-  const content = await response.text()
-  const agendaElement = createElement( 'div', {class: 'agenda'}, content);
-  $('#sidebar').appendChild(agendaElement)
+async function loadIncludes() {
+  const allIncludeElements = $$('*[include]').map( async includeElement => {
+    try {
+      const [url, id] = includeElement.getAttribute('include').split("#");
+      if( ! url ) {
+        throw { msg: "An 'include' attribute does not contain an url.", 
+                element: includeElement}
+      }
+      const selector = includeElement.getAttribute('select')
+      const rejector = includeElement.getAttribute('reject')
+
+      const response = await fetch(url)
+      if( ! response.ok ) {
+        throw { msg: `Could not get html file at "${url}": ${response.status} ${response.statusText}`,
+                element: includeElement, 
+                response} 
+      }
+      const content = await response.text()
+      const resultDocument = new DOMParser().parseFromString(content, 'text/html')
+      if( resultDocument.firstElementChild.tagName == "parsererror") {
+        throw new XMLSerializer().serializeToString(resultDocument)
+      }
+      if( rejector ) {
+        for( node of resultDocument.querySelectorAll(rejector)) {
+          node.remove();
+        }
+      }
+
+      let selectedNodes
+      if( id && selector ) {
+        selectedNodes = Array.from(resultDocument.getElementById(id).querySelectorAll(selector))
+      } else if( id ) {
+        selectedNodes = [ resultDocument.getElementById(id) ]
+      } else if( selector ) {
+        selectedNodes = Array.from(resultDocument.querySelectorAll(selector))      
+      } else {
+        selectedNodes = Array.from(resultDocument.body.childNodes)
+      }
+      selectedNodes.forEach( node => {
+        if( node.ownerDocument == document ) { return }; // node is child of node that was already transferred to main document.        
+        includeElement.appendChild(node)
+      })
+    }
+    catch(err) {
+      console.log(err.msg)
+      console.error(err)
+    }
+  })
+  await Promise.all(allIncludeElements)
 }
 
 function addCodeHighlighter() {
@@ -351,14 +395,18 @@ function adaptPageTitle() {
 //====== main program ===============================================
 
 
-adaptPageTitle()
-loadAgenda()
-createYoutubePlayers()
-createAnswerBlocks()
-createTodoBlocks()
-createDownloadButtons()
-addCodeHighlighter()
-createNotes()
+async function setupChapter() {
+  await loadIncludes()
+  adaptPageTitle()
+  createYoutubePlayers()
+  createAnswerBlocks()
+  createTodoBlocks()
+  createDownloadButtons()
+  addCodeHighlighter()
+  createNotes()  
+}
+
+setupChapter();
 
 })();  // end of iife construct
 

@@ -6,9 +6,7 @@ Lesmateriaal voor de minor Scripting voor Designers
 
 Dit zijn de custom tags die er zijn voor het maken van hoofdstukken en opdrachten. En de constructies waarin ze gebruikt kunnen worden.
 
-
-
-#### Aantekeningen van auteurs (custom tags)
+### Aantekeningen van auteurs (custom tags)
 
 De eerste twee custom tags, `<todo>` en `<note>` zijn bedoeld voor het schrijfproces, en zouden niet door studenten gezien moeten worden :-).
 
@@ -28,7 +26,7 @@ De eerste twee custom tags, `<todo>` en `<note>` zijn bedoeld voor het schrijfpr
 
 `<note>`-tags zijn inline, en bedoeld voor b.v. redactie-opmerkingen. Ze tonen een groen in de lopende tekst, en de inhoud wordt zichtbaar als je je muiscursor boven dat blokje laat zweven. 
 
-#### Hoofdstuk titels
+### Hoofdstuk titels
 
 Het eerste <H1>-element wordt als hoofdstuktitel gezien. Het wordt geacht te beginnen met een nummer. Achter dat nummer kan een dubbele punt staan en ervoor kan het woord "Chapter" staan. Dubbele punt en "Chapter" zijn beide optioneel.
 
@@ -41,7 +39,7 @@ of
 ```
 
 
-#### Video (custom class)
+### Video (custom class)
 
 Een youtube video hangen we zo in een hoofdstuk:
 
@@ -53,7 +51,7 @@ Het `<youtube>`-element kan geen content bevatten tussen de tags.
 Net als alle andere custom-tags, moet je een separate eind-tag gebruiken, ondanks dat er geen content in je `<youtube>` tag zit. Dus niet `<youtube />` of domweg `<youtube>`, maar `<youtube></youtube>`.
 
 
-#### Attention, Theory, Instruction (css classes)
+### Attention, Theory, Instruction (css classes)
 Een class om een `<section>` (of <div> o.i.d.) te maken met afwijkende kleuren waarvan de inhoud extra aandacht moet opeisen.
 
 ```html
@@ -74,7 +72,7 @@ Een class om een `<section>` (of <div> o.i.d.) te maken met afwijkende kleuren w
 
 Qua verticale spacing is het het mooiste als content in een extra-aandacht-element in verpakt is in block-elementen (e.g `<p>`, `<h3>`, `<table>`, etc). Zie voorbeelden hierboven.
 
-#### Assigments (css class)
+### Assigments (css class)
 Een section die een huiswerkvraag aan gebruikers presenteert.
 
 ```html
@@ -92,7 +90,7 @@ Een assignment bevat typisch drie dingen:
 1. **De content van de opdrachtbeschrijving**. Kan van alles zijn.
 1. Optioneel: **een `<answer>` element** dat nadere specs bevat over het inlever-blokje in de opdracht. Zie volgend tussenkopje. Als het `<answer>`-element ontbreekt wordt er een default element aan het einde toegevoegd. 
 
-#### Subquestions (HTML pattern)
+### Subquestions (HTML pattern)
 Sommige opdrachten bestaan uit een aantal sub-vragen. Die subvragen kunnen opgenomen worden in de antwoord-mail door ze te verpakken in een specifiek soort lijst:
 
 ```html
@@ -104,7 +102,7 @@ Sommige opdrachten bestaan uit een aantal sub-vragen. Die subvragen kunnen opgen
 ```
 Het type-attribuut (type="a") is belangrijk. Dat moet er zijn, _en_ de waarde "a" hebben. Anders wordt de lijst niet opgepikt als een set subvragen.
 
-#### Answers (custom tag)
+### Answers (custom tag)
 `<answer>`-elementen moeten in assignment-secties zitten. Ze gebruiken het nummer vooran in het eertse child-element van de assignment-sectie om het opdrachtnummer uit te destilleren. Een `<answer>`-element kan een paar attributen en content krijgen, die allemaal optioneel zijn:
 
 ```html
@@ -118,7 +116,7 @@ Het type-attribuut (type="a") is belangrijk. Dat moet er zijn, _en_ de waarde "a
 
 Net als alle andere custom-tags, moet je een separate eind-tag gebruiken, ook als er geen content in je `<answer>` tag zit. Dus niet `<answer />` of domweg `<answer>`, maar `<answer></answer>`.
 
-#### Download button (custom tag)
+### Download button (custom tag)
 De `<download ...></download>`-tag maakt een knop waarmee gebruikers files kunnen downloaden naar hun eigen computer. Er zijn twee attributen:
 
 ```html
@@ -130,7 +128,7 @@ De `<download ...></download>`-tag maakt een knop waarmee gebruikers files kunne
 Het `<download>`-element kan geen content bevatten tussen de tags.
 Net als alle andere custom-tags, moet je een separate eind-tag gebruiken, ondanks dat er geen content in je `<download>` tag zit. Dus niet `<download />` of domweg `<download>`, maar `<download></download>`.
 
-#### Code blokken (speciaal html patroon + attribuut)
+### Code blokken (speciaal html patroon + attribuut)
 
 Code blokken zien er nu zo uit:
 
@@ -158,6 +156,43 @@ Regels kunnen een highlight krijgen door het `data-line="..."` attribuut te gebr
 * `dataline="1-5"` -- highlight regel 1 t/m 5
 * `dataline="1,4"` -- highlight regel 1 en 4
 * `dataline="1-3, 5, 9-20"` -- highlight regels 1 t/m 3, regel 5 en regels 9 t/m 20.
+
+### including HTML (custom attributes)
+Stukken van andere HTML pagina's (of hele pagina's) kunnen worden ingeladen als deel van de huidige pagina.
+
+```html
+<div include="../cheatsheet.html#data-types"></div>
+```
+
+De gevraagde HTML-file wordt ge-ajaxed, en ingevoegd als innerHTML van de tag met het include attribuut. In dit voorbeeld eindigt de URL met een _fragment identifier_ (`#data-types`), waardoor alleen het element (in de geladen HTML) met het `id` dat overeenkomt met de fragment identifier wordt opgenomen in de huidige pagina.
+
+Als de URL geen fragment identifier bevat, wordt de inhoud van de hele body opgenomen.
+
+__Note__: Javascript en CSS uit de op te nemen HTML-file wordt genegeerd.
+
+__Note__: De huidige implementatie van het `include`-attribuut werkt alleen voor HTML content. Je kunt het niet gebruiken om b.v. source-code op te nemen.
+
+
+#### select- en reject-attributen
+
+Flexibeler dan fragment identifiers is het `select`-attribuut dat naast het `include`-attribuut gebruikt kan worden. 
+
+```html
+<div include="../cheatsheet.html" select="#for-loops .arduino, #while-loops .arduino" ></div>
+```
+
+In dit voorbeeld zouden alle elementen in de `for-loop` en `while-loop` secties worden opgenomen met de class 'arduino`. Alle CSS selectoren kunnen gebruikt worden.
+
+Ook het `reject`-attribuut kan gebruikt worden met het `include` element, en verwacht een CSS3-selector als waarde. Elementen die matchen met de `reject`-selector worden verwijderd uit het resultaat voordat het wort opgenomen in de pagina.
+
+```html
+<div include="../agenda.html" reject=".unpublished"></div>
+```
+
+Dit zal alle elementen met class 'unpublished' verwijderen uit de op te nemen HTML.
+
+__Note__: Het `reject`-attribuut kan worden gecombineerd met een fragment identifier of een `select`-attribuut. Het `reject`-attribuut wint altijd.
+
 
 ## Web preview
 
