@@ -68,9 +68,11 @@ function loadScript(url, extraAttrs={}) {
     var scriptElement = createElement('script', attrs)
 
     scriptElement.onload = () => {
+      console.log(`loaded ${url}`)
       resolve(url)
     }
-    scriptElement.onerror = () => {
+    scriptElement.onerror = (err) => {
+      console.error(`could not load ${url}`, err)
       reject(url)
     }
     document.body.append(scriptElement);
@@ -89,9 +91,11 @@ function loadStylesheet(url) {
     var styleElement = createElement('link', attrs)
 
     styleElement.onload = () => {
+      console.log(`loaded ${url}`)
       resolve(url)
     }
-    styleElement.onerror = () => {
+    styleElement.onerror = (err) => {
+      console.error(`could not load ${url}`,err)
       reject(url)
     }
     mainCssEl.insertAdjacentElement('beforebegin', styleElement);
@@ -214,7 +218,9 @@ function createTodoBlocks() {
   })
 }
 
-function createNotes() {
+async function createNotes() {
+  await loadScript(`https://unpkg.com/popper.js`)
+  await loadScript(`https://unpkg.com/tippy.js@5/dist/tippy-bundle.iife.js`)
   $$('note').forEach( noteElement => {
     const popupId = newId('popup')
     const noteContent = noteElement.innerHTML
@@ -315,65 +321,15 @@ async function loadIncludes() {
   await Promise.all(allIncludeElements)
 }
 
-function addCodeHighlighter() {
-  const ghUser = 'rbrtrbrt'
-  const ghRepo = 'prism'
-  const ghRelease = 'v1.17.1.4'
-  const cdnBaseUrl = `https://cdn.jsdelivr.net/gh/${ghUser}/${ghRepo}@${ghRelease}`
-
-  const scripts = []
-  function addScript(scriptPath, extraAttrs) {
-    const scriptEl = document.createElement('script');
-    scriptEl.type = 'text/javascript';
-    scriptEl.src = '/js/prism' + scriptPath;
-    // scriptEl.src = cdnBaseUrl + scriptPath;
-    scriptEl.async = false;
-    if(extraAttrs) {
-      for( [name, value] of Object.entries(extraAttrs)){
-        scriptEl.setAttribute(name, value);
-      }
-    }
-    scripts.push(scriptEl)
-  }
-  const mainCssEl = $$('link[rel="stylesheet"]', document.head).pop();
-  function addStyle(stylePath) {
-    const styleEl = document.createElement('link');
-    styleEl.rel = 'stylesheet';
-    styleEl.href = '/js/prism' + stylePath;
-    // styleEl.href = cdnBaseUrl + stylePath;
-    mainCssEl.insertAdjacentElement('beforebegin', styleEl)
-  }
-  const prismLanguages = [
-    'clike','c','cpp','arduino', 'markup', 'css', 'javascript'
-  ]
-  let css = 'css', js = 'js'  
-  const prismPlugins = {
-    'line-highlight': {css,js},
-    'line-numbers': {css,js},
-    // 'custom-class': {js},
-    'file-highlight': {js},
-    'unescaped-markup': {css,js},
-    'normalize-whitespace': {js},
-  }
-  addScript('/prism-core.js', {'data-manual':true});
-  for( lang of prismLanguages ) {
-    addScript(`/prism-${lang}.js`)
-  }
-  for( [plugin,{css,js}] of Object.entries(prismPlugins)) {
-    css && addStyle(`/prism-${plugin}.css`)
-    js && addScript(`/prism-${plugin}.js`)
-  }
-  scripts.forEach( s => document.body.append(s) );
-  function startHighlighterWhenLoaded() {
-    if( window.Prism ) {
-      console.log("prism started")
-      window.Prism.highlightAll()
-    } else {
-      console.log("prism start delayed")
-      window.setTimeout(startHighlighterWhenLoaded, 300)
-    }
-  }
-  startHighlighterWhenLoaded()
+async function addCodeHighlighter() {
+  window.Prism = window.Prism || {};
+  window.Prism.manual = true;
+  await Promise.all([
+    loadStylesheet('/js/prism/custom-prims.css'),
+    loadScript('/js/prism/custom-prism.js')  
+  ])
+  console.log("doing the highlight")  
+  window.Prism.highlightAll()
 }
 
 function adaptPageTitle() {

@@ -1,3 +1,6 @@
+@import '../fonts/ZillaSlab/ZillaSlab.css';
+@import '../fonts/SourceCodePro/SourceCodePro.css';
+
 body {
   font-family: "Zilla Slab";
   font-size: 14px;
