@@ -77,11 +77,12 @@ h6 {
 
 .attention, 
 .theory,
-.instruction {
+.instruction,
+.hint-content {
   background-color: #ccc;
   /* border: 1px solid #b8b8b8; */
   color: black;
-  padding: 3em 2em 2em 2em;
+  padding: 3em 1em 2em 2em;
   border-radius: 3px;
   margin: 3em 0 1em 0;
   position: relative;
@@ -89,7 +90,8 @@ h6 {
 
 .attention::before, 
 .theory::before, 
-.instruction::before {
+.instruction::before,
+.hint-content::before {
   font-family: "Avenir Next", "Avenir", sans-serif;
   display: inline-block;
   color: white;
@@ -119,7 +121,15 @@ h6 {
   content: "instruction";
   background-color: #61c2ee;
 }
+.hint-content {
+  margin-top: 4pt;
+}
 
+.hint-content::before {
+  content: "hint";
+  color: #666;
+  background-color: #fde051;
+}
 
 span.inline-note, span.inline-bonus {
   font-family: "Avenir Next", "Avenir", sans-serif;
@@ -137,7 +147,8 @@ span.inline-bonus {
   color: #61c2ee;
 }
 
-.assignment-block {
+.assignment-block,
+.hint-block {
   font-family: "Avenir Next", "Avenir", sans-serif;
   font-size: 80%;
   line-height: 1.3em;
@@ -148,6 +159,37 @@ span.inline-bonus {
   border-radius: 3px;
   margin: 4pt 0;
 }
+
+.hint-content .hint-content {
+  background-color: #00000010;
+  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.hint-block-wrapper,
+.hint-content-wrapper {
+  transition: max-height 1000ms ease, opacity 1000ms ease;
+  overflow-y: hidden;
+  box-sizing: border-box;
+}
+
+.hint-block > .cancel-button {
+  background: none;
+  color: #444;
+  display: inline;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.hint-block.step0 > .cancel-button {
+  display: none;
+}
+
+.hint-block > .hint-button {
+  color: #444;
+  background-color: #fde051;
+  border: 1px solid #ecc919;
+}
+
 
 .todo {
   color: white;

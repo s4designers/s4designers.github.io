@@ -68,7 +68,6 @@ function loadScript(url, extraAttrs={}) {
     var scriptElement = createElement('script', attrs)
 
     scriptElement.onload = () => {
-      console.log(`loaded ${url}`)
       resolve(url)
     }
     scriptElement.onerror = (err) => {
@@ -91,7 +90,6 @@ function loadStylesheet(url) {
     var styleElement = createElement('link', attrs)
 
     styleElement.onload = () => {
-      console.log(`loaded ${url}`)
       resolve(url)
     }
     styleElement.onerror = (err) => {
@@ -113,7 +111,7 @@ function createYoutubePlayers() {
     let embedCode = `
       <iframe width="${width}" height="${height}" 
               src="https://www.youtube-nocookie.com/embed/${youtubeId}" frameborder="0" 
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+              allow="" allowfullscreen>
       </iframe>
     `
     ytElement.outerHTML = embedCode
@@ -206,6 +204,73 @@ const createAnswerBlocks = function() {
         })
       }
     }
+  })
+}
+
+const hintSteps = [
+  { prompt: "Try to solve the problem by yourself. But if you're stuck, use the button for a hint:",
+    buttonLabel: "<b>?</b>"
+  },
+  { prompt: "Sure?",
+    buttonLabel: "Yes." 
+  },
+  { prompt: "If you really, <i>really</i>, need the hint...",
+    buttonLabel: "Give me the hint!"
+  }
+]
+
+function createHintBlocks() {
+  const hintElements = $$("hint")
+  hintElements.forEach( hintElement => {
+    const maxSteps = Math.min(hintSteps.length, hintElement.getAttribute("steps") || 1)
+    const hintContentId = newId('hint-content')
+    const hintContentBlock = createElement(`div`, {id: hintContentId, class:'hint-content'},
+      `<div>`)
+      hintContentBlock.append(...hintElement.childNodes)
+    const hintContentWrapper = createElement(`div`,{class: "hint-content-wrapper"})
+    hintContentWrapper.append(hintContentBlock)
+    hintContentWrapper.style.maxHeight = '0px'  
+    hintContentWrapper.style.opacity = 0        
+    hintElement.insertAdjacentElement('afterend', hintContentWrapper)
+    const hintBlockId  = newId('hint-block')
+    const hintPromptId = newId('hint-block-prompt')
+    const hintButtonId = newId('hint-block-button')
+    const hintCancelId = newId('hint-block-cancel')
+    const hintButtonBlock = createElement(`div`, {id: hintBlockId, class:"hint-block"},
+     `<span  id=${hintPromptId}></span>
+      <button id=${hintButtonId} class="hint-button"></button>
+      <button id=${hintCancelId} class="cancel-button">&times;</button>`)
+    const hintButtonWrapper = createElement(`div`,{class: "hint-block-wrapper"})
+    hintButtonWrapper.append(hintButtonBlock)
+    hintElement.insertAdjacentElement('afterend', hintButtonWrapper)
+    hintButtonWrapper.style.maxHeight = hintButtonWrapper.scrollHeight+'px'
+    hintButtonWrapper.style.opacity = 1
+    hintElement.remove()
+    let hintStepCount = 0;
+    function showStep() {
+      console.log('hintStepCount :', hintStepCount)
+      if(hintStepCount == maxSteps){
+        // show content and hide prompt & button
+        console.log("maxReached")
+        hintButtonWrapper.style.maxHeight = '0px'
+        hintButtonWrapper.style.opacity = 0
+        hintContentWrapper.style.maxHeight = hintContentWrapper.scrollHeight + 'px'
+        hintContentWrapper.style.opacity = 1
+        hintContentWrapper.addEventListener('transitionend',()=>{
+          hintContentWrapper.style.maxHeight = 'none'
+          console.log("transitionend")
+        })
+      } else {
+        hintButtonBlock.classList.remove('step'+(hintStepCount-1))
+        hintButtonBlock.classList.add('step'+hintStepCount)
+        byId(hintPromptId).innerHTML = hintSteps[hintStepCount].prompt
+        byId(hintButtonId).innerHTML = hintSteps[hintStepCount].buttonLabel
+        console.log('hintSteps[hintStepCount].prompt :', hintSteps[hintStepCount].prompt)
+      }
+    }
+    showStep();
+    byId(hintButtonId).onclick = () => { hintStepCount++;   showStep() }
+    byId(hintCancelId).onclick = () => { hintStepCount = 0; showStep() }
   })
 }
 
@@ -328,7 +393,6 @@ async function addCodeHighlighter() {
     loadStylesheet('/js/prism/custom-prims.css'),
     loadScript('/js/prism/custom-prism.js')  
   ])
-  console.log("doing the highlight")  
   window.Prism.highlightAll()
 }
 
@@ -344,8 +408,10 @@ function adaptPageTitle() {
         CHAPTER ${chapterNum}
       </div>
       ${chapterTitle}`
+      $('title').textContent = `S4D ${chapterNum}: ${chapterTitle}`
+  } else {
+    $('title').textContent = "S4D: " + $('h1').textContent
   }
-  $('title').textContent = "S4D - " + $('h1').textContent
 }
 
 //====== main program ===============================================
@@ -354,6 +420,7 @@ function adaptPageTitle() {
 async function setupChapter() {
   await loadIncludes()
   adaptPageTitle()
+  createHintBlocks()
   createYoutubePlayers()
   createAnswerBlocks()
   createTodoBlocks()
