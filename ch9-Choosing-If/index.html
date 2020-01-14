@@ -48,6 +48,64 @@ if(isMale){
 </section>
 
 
+<section class="assignment">
+<h3 class="assignment questions">9.2 Order, order!</h3>  
+ <script type="text/plain" class="language-arduino">
+void setup(){
+	Serial.begin(9600);
+	Serial.print("The fine is going to be about ");
+	Serial.print(estimateFine(120,50));
+	Serial.println(" euros.");
+}
+// Function roughly estimates the amount of money a speeding ticket is going to cost.
+int estimateFine(int actualSpeed, int speedLimit){
+	estimatedFine = 0;
+	if(actualSpeed - speedLimit > 5){
+		estimatedFine = 20;
+	}else if(actualSpeed - speedLimit > 20){
+		estimatedFine = 200;
+	}else if(actualSpeed - speedLimit > 30){
+		estimatedFine = 400;
+	}else if(actualSpeed - speedLimit > 40){
+		estimatedFine = 600;
+	}
+	return estimatedFine;
+}
+
+  </script>
+  <p>Run the code. There is a problem. Fix it.</p>
+  
+<answer buttontext="Mail the code"></answer>
+</section>
+
+<section class="assignment">
+<h3 class="assignment questions">9.3 tables</h3>  
+ <script type="text/plain" class="language-arduino">
+void setup(){
+	Serial.begin(9600);
+
+}
+// Function roughly estimates the amount of money a speeding ticket is going to cost.
+int estimateFine(int actualSpeed, int speedLimit){
+	estimatedFine = 0;
+	if(actualSpeed - speedLimit > 5){
+		estimatedFine = 20;
+	}else if(actualSpeed - speedLimit > 20){
+		estimatedFine = 200;
+	}else if(actualSpeed - speedLimit > 30){
+		estimatedFine = 400;
+	}else if(actualSpeed - speedLimit > 40){
+		estimatedFine = 600;
+	}
+	return estimatedFine;
+}
+
+  </script>
+  <p>Run the code. There is a problem. Fix it.</p>
+  
+<answer buttontext="Mail the code"></answer>
+</section>
+
 
   <section class="assignment">
       <h3 class="assignment questions">4.5 Austin Powers</h3>
