@@ -81,7 +81,7 @@
 <youtube ytid="9y7-PCjdyj4"></youtube>
 <section class="assignment">
       <h3 class="assignment questions">4.5 Photoshop</h3>
-<script type="text/plain" class="language-javascript">
+<script type="text/plain" class="language-markup">
   <html>
 <head>
   <meta charset="UTF-8">
@@ -137,10 +137,10 @@
     <p id="discountLine">
       Discount: 
       <select id="discountSelect">
-        <option>0</option>
-        <option>10</option>
-        <option>50</option>
-      </select>%
+        <option value=0>none</option>
+        <option value=10>a bit</option>
+        <option value=50>a lot</option>
+      </select>
     </p>
     <hr>
     <p id="totalLine">
@@ -257,41 +257,6 @@ void loop() {
       </p>
       <answer noslider buttontext="Mail your explanation"></answer>
   </section>
-
-  
-  <todo><pre>
-      Video 7: berekeningen in JS -- slider; oninput; berekeningen om inputwaardes aan te passen aan output-doel; prioriteit van * boven -; toewijzing
-      //tussenstap
-
-      Video 8a: basis variabelen -- term variabele; syntax declaratie met var; lezen van waarde; gebruiken in berekening; toewijzen; functie die globale var verandert; belang van goede naamgeving; 
-      Opdrachten: 
-      * Variabelen met strings en concatenatie
-      * Quotes en curly-quotes uit word of outlook o.i.d.
-      
-      Video 8b: variabelen in Photo Shop: --  
-      Opdrachten: 
-      * Op basis van photo shop code
-      * Totaalberekening maken
-      
-      Video xx Variabelen in Arduino -- rol als constante; rol als tussenwaarde om complexe expressie te splitsen en leesbaar te maken; Datatypes incl. float,
-      
-      Opdrachten? rol als tijdelijke accumulator; state variabele met beperkte waardenset (enum)
-      NOTE warning signs you are doing it wrong!!! --> Change global variable with a function instead of return
-  </pre></todo>
-
-  <!--
-  <youtube ytid=""></youtube>
-
-  <section class="assignment">
-    <h3 class=""></h3>
-    <answer></answer>
-  </section>
-  <todo>
-  </todo>
-
-  <script type="text/plain" class="language-html">    
-  </script>  
-  -->
 </main>  
 <aside id="sidebar" include="../agenda.html" reject=".secret"></aside>
 <script src='../js/chapters.js'></script>

@@ -13,40 +13,56 @@
 
 <section class="assignment">
 <h3 class="assignment questions">9.1</h3>  
-<p>The following code is used in the application form for a rowing team.</p>
+<p>The following code is used in the application form for the A-team.</p>
  <script type="text/plain" class="language-javascript">
-var length = 180
-var squattingWeight = 150
-var isLargerThan190cm = length > 200
-var canSquatMoreThan150kg = squattingWeight > 150
-var isMale = true
 
-if(isMale){
-  if(isLargerThan190kg){
-    if(canSquatMoreThan150kg){
-      console.log("You are most welcome!")
-    }else{
-      console.log("Keep training")
-    }
-  }else{
-      console.log("You don't stand a chance.")
+  function canJoinTheATeam( person ) {
+    var isLargerThan190cm = person.length > 200
+    var canSquatMoreThan150kg = person.squattingWeight > 150
+    if(person.isMale) {
+      if(isLargerThan190kg){
+        if(canSquatMoreThan150kg) {
+          return true
+        } else {
+          return false
+        }
+      } else {
+        return false
+      }
+    } else {
+      return false
+    }  
   }
-}else{
-  console.log("try again in the womans team")
-}
+  
+  let jille = { length: 198, 
+                squattingWeight: 20, 
+                isMale: true 
+              }
+  let robert = { length: 187, 
+                 squattingWeight: 230, 
+                 isMale: true 
+               }
+  
+  console.log("Can Jille join the A-team?",  canJoinTheATeam(jille) )
+  console.log("Can Robert join the A-team?",  canJoinTheATeam(robert) )
+
 
   </script>
   <p>Without running the code, answer the following questions:</p>
   <ol type="a">
-    <li>What is the value of the isLargerThan190cm variable on line 3? </li>
-    <li>What is the value of the canSquadMoreThan150kg variable on line 4? </li>
+    <li>What is the value of the isLargerThan190cm variable on line 2? </li>
+    <li>What is the value of the canSquadMoreThan150kg variable on line 3? </li>
     <li>Which console log is being printed?</li>
-    <li>The expressions on lines 3 and 4 result in a boolean value. What does that mean?</li>
-    <li>You don't need to use all of the variables to get a working program. Change the code in such a way that you can do without the once that are not necessary. </li>
+    <li>The expressions on lines 2 and 3 result in a boolean value. What does that mean?</li>
+    <li>You don't need to use all of the variables to get a working program. Change the code in such a way that you can do without the ones that are not necessary. </li>
   </ol>
 <answer buttontext="Mail the code"></answer>
 </section>
 
+<section class="assignment">
+  <h3 class="assignment questions">9.2 Point of one return</h3>  
+  It is usually nicer if a function has just one single return-statement. Can you rewrite the code to work exactly the same way, but uses a variable to replace the 4 return-statments with a single one?
+</section>  
 
 <section class="assignment">
 <h3 class="assignment questions">9.2 Order, order!</h3>  
@@ -122,56 +138,7 @@ int estimateFine(int actualSpeed, int speedLimit){
       </ul> 
       <answer noslider buttontext="Mail your fix"></answer>
   </section>
-  <todo><pre>
-    
-  Video xx if statements en booleans in JS -- Variabele ‘let isHighest =  score > highscore’; true en false; wat heb je daaraan; if-statements waarvan de conditie een bool var is;
-	
-  Video xx if-statements in Arduino -- true == 1, false == 0 (ref. HIGH,LOW); reageren op knoppen; else;
-    Opdrachten:
-      Vingeroefening: Austin Powers
-      Detecteren wanneer knop wordt losgelaten of ingerukt. (buzzer)
-  
-  Video xx complexere condities: Vergelijkingen; not; Strings in condities; expressies zijn berekeningen die ook over booleans en strings kunnen gaan;
-    And en or in opdrachten;
-    Sidebar voor goede studenten: shortcutting en het gebruik ervan;
-    
-  Video xx functies om herhaalde code te abstraheren incl. gebruik parameters voor nog meer abstractie.
-  
-  
-  Video xx: combinaties van if-statements -- nesting vs and/or; 
-    Opdrachten: 
-      * De guard met lege return;
-      * Bedenk het pad dat door de code wordt gelopen;
-  
-      * Dealen met overlappende condities;
-      * Verschil tussen     if(...) {                if(...) {        
-                              …                        
-                            }               en       } else if(...) {
-                            if(...) {                  …        
-                              …                      }   
-                            }                        
-      * Complexe condities omschrijven naar geneste if en omgekeerd;
-      * Bedenk test-cases die 100% test-coverage opleveren
-      * Van specificatie naar cases naar code
 
-
-    </pre></todo>
-  
-    <!--
-    <youtube ytid=""></youtube>
-  
-    <section class="assignment">
-      <h3 class=""></h3>
-      <answer></answer>
-    </section>
-    <todo>
-    </todo>
-  
-    <script type="text/plain" class="language-html">    
-    </script>  
-    -->
-  
-  <youtube ytid=""></youtube>
 
 </main>  
 <aside id="sidebar" include="../agenda.html" reject=".secret"></aside>
