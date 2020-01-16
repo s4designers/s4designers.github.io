@@ -103,14 +103,15 @@ void setup(){
 }
 // Function roughly estimates the amount of money a speeding ticket is going to cost.
 int estimateFine(int actualSpeed, int speedLimit){
-	estimatedFine = 0;
-	if(actualSpeed - speedLimit > 5){
+	int estimatedFine = 0;
+	int speedAboveLimit = actualSpeed - speedLimit; 
+	if(speedAboveLimit > 5){
 		estimatedFine = 20;
-	}else if(actualSpeed - speedLimit > 20){
+	}else if(speedAboveLimit > 20){
 		estimatedFine = 200;
-	}else if(actualSpeed - speedLimit > 30){
+	}else if(speedAboveLimit > 30){
 		estimatedFine = 400;
-	}else if(actualSpeed - speedLimit > 40){
+	}else if(speedAboveLimit > 40){
 		estimatedFine = 600;
 	}
 	return estimatedFine;
