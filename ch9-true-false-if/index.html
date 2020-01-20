@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Page Title</title>
+  <link rel="stylesheet" href="../css/main.css"/>
+</head>
+<body class="line-numbers">
+ <main>
+
+  <h1>chapter 9: <i>true</i>, <i>false</i>, and choosing with <i>if-statements</i></h1>
+  
+<section class="assignment">
+<h3 class="assignment questions">9.1</h3>  
+<p>The following code is used in the application form for the A-team.</p>
+ <script type="text/plain" class="language-javascript">
+
+  function canJoinTheATeam( person ) {
+    var isLargerThan190cm = person.length > 200
+    var canSquatMoreThan150kg = person.squattingWeight > 150
+    if(person.isMale) {
+      if(isLargerThan190kg){
+        if(canSquatMoreThan150kg) {
+          return true
+        } else {
+          return false
+        }
+      } else {
+        return false
+      }
+    } else {
+      return false
+    }  
+  }
+  
+  let jille = { length: 198, 
+                squattingWeight: 20, 
+                isMale: true 
+              }
+  let robert = { length: 187, 
+                 squattingWeight: 230, 
+                 isMale: true 
+               }
+  
+  console.log("Can Jille join the A-team?",  canJoinTheATeam(jille) )
+  console.log("Can Robert join the A-team?",  canJoinTheATeam(robert) )
+
+
+  </script>
+  <p>Without running the code, answer the following questions:</p>
+  <ol type="a">
+    <li>What is the value of the isLargerThan190cm variable on line 2? </li>
+    <li>What is the value of the canSquadMoreThan150kg variable on line 3? </li>
+    <li>Which console log is being printed?</li>
+    <li>The expressions on lines 2 and 3 result in a boolean value. What does that mean?</li>
+    <li>You don't need to use all of the variables to get a working program. Change the code in such a way that you can do without the ones that are not necessary. </li>
+  </ol>
+<answer buttontext="Mail the code"></answer>
+</section>
+
+<section class="assignment">
+  <h3 class="assignment questions">9.2 Point of one return</h3>  
+  It is usually nicer if a function has just one single return-statement. Can you rewrite the code to work exactly the same way, but uses a variable to replace the 4 return-statments with a single one?
+</section>  
+
+<section class="assignment">
+<h3 class="assignment questions">9.2 Order, order!</h3>  
+ <script type="text/plain" class="language-arduino">
+void setup(){
+	Serial.begin(9600);
+	Serial.print("The fine is going to be about ");
+	Serial.print(estimateFine(120,50));
+	Serial.println(" euros.");
+}
+// Function roughly estimates the amount of money a speeding ticket is going to cost.
+int estimateFine(int actualSpeed, int speedLimit){
+	estimatedFine = 0;
+	if(actualSpeed - speedLimit > 5){
+		estimatedFine = 20;
+	}else if(actualSpeed - speedLimit > 20){
+		estimatedFine = 200;
+	}else if(actualSpeed - speedLimit > 30){
+		estimatedFine = 400;
+	}else if(actualSpeed - speedLimit > 40){
+		estimatedFine = 600;
+	}
+	return estimatedFine;
+}
+
+  </script>
+  <p>Run the code. There is a problem. Fix it.</p>
+  
+<answer buttontext="Mail the code"></answer>
+</section>
+
+<section class="assignment">
+<h3 class="assignment questions">9.3 tables</h3>  
+ <script type="text/plain" class="language-arduino">
+void setup(){
+	Serial.begin(9600);
+
+}
+// Function roughly estimates the amount of money a speeding ticket is going to cost.
+int estimateFine(int actualSpeed, int speedLimit){
+	int estimatedFine = 0;
+	int speedAboveLimit = actualSpeed - speedLimit; 
+	if(speedAboveLimit > 5){
+		estimatedFine = 20;
+	}else if(speedAboveLimit > 20){
+		estimatedFine = 200;
+	}else if(speedAboveLimit > 30){
+		estimatedFine = 400;
+	}else if(speedAboveLimit > 40){
+		estimatedFine = 600;
+	}
+	return estimatedFine;
+}
+
+  </script>
+  <p>Run the code. There is a problem. Fix it.</p>
+  
+<answer buttontext="Mail the code"></answer>
+</section>
+
+
+  <section class="assignment">
+      <h3 class="assignment questions">4.5 Austin Powers</h3>
+      <youtube ytid="z-5iCygFd9M"></youtube>
+
+      <p>Mustaffa has to tell the truth if a question is asked three times. Create a script that mimmicks Mustaffa.</p>
+
+      <ul>
+        <li>Add a picture of Mustaffa to your page.</li>
+        <li>Make a function that is called when someone clicks on Mustaffa</li>
+        <li>Outside of the function, create a variable that serves as a counter, assign the value 0 to it.</li>
+        <li>The first and second time Mustaffa is clicked, tell the user some lie with an alert. Make sure to increase the counter by one.</li>
+        <li>The third time Mustaffa is clicked, tell the user your biggest secret. Reset the counter.</li>
+      </ul> 
+      <answer noslider buttontext="Mail your fix"></answer>
+  </section>
+
+
+</main>  
+<aside id="sidebar" include="../agenda.html" reject=".secret"></aside>
+<script src='../js/chapters.js'></script>
+</body>
+</html>
