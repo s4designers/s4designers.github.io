@@ -33,7 +33,26 @@ main {
   font-size: 9pt;
 }
 #sidebar h1 {
+  margin-top: 200px;
   font-size: 12pt;
+}
+#sidebar h2 {
+  margin-top: 1em;
+  font-size: 14px;
+}
+#sidebar h3 {
+  margin-top: 0.5em;
+  margin-bottom: 0em;
+  font-size: 14px;
+  font-weight: 400;
+}
+#sidebar .lesson-content {
+  padding-left: 1.5em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#sidebar .lesson-content li::marker {
+  color: #888;
 }
 
 a {
