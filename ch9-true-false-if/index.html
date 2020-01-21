@@ -68,16 +68,16 @@
   <ol type="a">
     <li>What is the value of the isLargerThan190cm variable on line 2? </li>
     <li>What is the value of the canSquadMoreThan150kg variable on line 3? </li>
-    <li>Which console log is being printed?</li>
+    <li>Who can join the A-team?</li>
     <li>The expressions on lines 2 and 3 result in a boolean value. What does that mean?</li>
-    <li>You don't need to use all of the variables to get a working program. Change the code in such a way that you can do without the ones that are not necessary. </li>
+    <li>You don't need to use all of the variables to get a working program. You can expressions that result in a boolean directly into the condition part of the if-statement. Do this. </li>
   </ol>
 <answer buttontext="Mail the code"></answer>
 </section>
 
 <section class="assignment">
   <h3 class="assignment questions">9.2b Point of one return</h3>  
-  It is usually nicer if a function has just one single return-statement. Can you rewrite the code to work exactly the same way, but uses a variable to replace the 4 return-statments with a single one?
+  It is usually nicer if a function has just one single return-statement. Can you rewrite the code to work exactly the same way, but uses a variable to replace the 4 return-statements with a single one?
   <answer buttontext="Mail the code"></answer>
 </section>  
 
@@ -88,11 +88,11 @@
 	var calories = 1000
 
 	if(   ……   ){
-	    console.log(“.....”)
+	    console.log(".....")
 	}else if (  ……… ){
-	   console.log(“......”)
+	   console.log("......")
 	}else{
-	   console.log(“......”)
+	   console.log("......")
 	}
 
   </script>
@@ -110,70 +110,37 @@
 
 
 <section class="assignment">
-<h3 class="assignment questions">9.2 Order, order!</h3>  
+<h3 class="assignment questions">9.4 Order, order!</h3>  
  <script type="text/plain" class="language-arduino">
 void setup(){
-	Serial.begin(9600);
-	Serial.print("The fine is going to be about ");
-	Serial.print(estimateFine(120,50));
-	Serial.println(" euros.");
-}
-// Function roughly estimates the amount of money a speeding ticket is going to cost.
-int estimateFine(int actualSpeed, int speedLimit){
-	estimatedFine = 0;
-	if(actualSpeed - speedLimit > 5){
-		estimatedFine = 20;
-	}else if(actualSpeed - speedLimit > 20){
-		estimatedFine = 200;
-	}else if(actualSpeed - speedLimit > 30){
-		estimatedFine = 400;
-	}else if(actualSpeed - speedLimit > 40){
-		estimatedFine = 600;
-	}
-	return estimatedFine;
-}
-
-  </script>
-  <p>Run the code. There is a problem. Fix it.</p>
-  
-<answer buttontext="Mail the code"></answer>
-</section>
-
-
-
-
-<section class="assignment">
-<h3 class="assignment questions">9.3 tables</h3>  
- <script type="text/plain" class="language-arduino">
-void setup(){
-	Serial.begin(9600);
+  Serial.begin(9600);
 
 }
 // Function roughly estimates the amount of money a speeding ticket is going to cost.
 int estimateFine(int actualSpeed, int speedLimit){
-	int estimatedFine = 0;
-	int speedAboveLimit = actualSpeed - speedLimit; 
-	if(speedAboveLimit > 5){
-		estimatedFine = 20;
-	}else if(speedAboveLimit > 20){
-		estimatedFine = 200;
-	}else if(speedAboveLimit > 30){
-		estimatedFine = 400;
-	}else if(speedAboveLimit > 40){
-		estimatedFine = 600;
-	}
-	return estimatedFine;
+  int estimatedFine = 0;
+  int speedAboveLimit = actualSpeed - speedLimit; 
+  if(speedAboveLimit > 5){
+    estimatedFine = 20;
+  }else if(speedAboveLimit > 20){
+    estimatedFine = 200;
+  }else if(speedAboveLimit > 30){
+    estimatedFine = 400;
+  }else if(speedAboveLimit > 40){
+    estimatedFine = 600;
+  }
+  return estimatedFine;
 }
-
   </script>
   <p>Run the code. There is a problem. Fix it.</p>
   
-<answer buttontext="Mail the code"></answer>
+<answer buttontext="Mail the fixed code"></answer>
 </section>
+
 
 
   <section class="assignment">
-      <h3 class="assignment questions">4.5 Austin Powers</h3>
+      <h3 class="assignment questions">9.5 Austin Powers</h3>
       <youtube ytid="z-5iCygFd9M"></youtube>
 
       <p>Mustaffa has to tell the truth if a question is asked three times. Create a script that mimmicks Mustaffa.</p>
@@ -187,6 +154,121 @@ int estimateFine(int actualSpeed, int speedLimit){
       </ul> 
       <answer noslider buttontext="Mail your fix"></answer>
   </section>
+
+ <div class="attention">
+    The following assignments are part of a bigger project that is continued in the next chapter. 
+  </div>
+  <section class="assignment">
+      <h3 class="assignment questions">9.6 Mexican</h3>
+      <p>Mexican is a popular drinking game which is usually called "mex-en" in Dutch. We are going to make an online version. The <a href="https://www.webtender.com/handbook/games/mexican.game">rules</a> are a bit complicated.</p>
+      <ul>
+        <li>The game is played with two or more people.</li>
+        <li>The game is played with two dices.</li>
+        <li>A player first throws 2 dices. This results in a score (the scoring is explained later).</li>
+        <ul>
+          <li>If the player is happy with his score, the player passes the turn to the next player.</li>
+          <li>If the player is unhappy with his score, the player can throw one, or both of the dices again. </li>
+          <li>The maximum number of tries is 3. </li>
+        </ul>
+        <li>The next player now tries to better the previous player's score. He can use as many tries as the first player used.</li>
+        <li>The first player that can't better the previous player's score loses (and drinks a number of shots that is dependent on some factors).</li>
+        <li>If the last player did not lose, the game continues with the first player.</li>
+      </ul>
+       <script type="text/plain" class="language-html">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mexican</title>
+  <style type="text/css">
+.button {
+  font-size: 16px;
+}
+.score{
+  font-size: 2em;
+  }
+  </style>
+
+</head>
+<body>
+  <div style="margin: 8%;">
+    <div id="scoreToBeatDiv">Score to beat = 0</div><br>
+    <div id="maxTriesDiv">max tries = 3</div><br>
+    <div id="currentTriesDiv">current tries = 0</div><br>
+    <button id="rollBothButton" class="button">Roll both</button><br>
+    <button id="nextPlayerButton" class="button">Next player</button><br>
+    <div id="scoreDiv" class="score">0</div> 
+  </div>
+<script type="text/javascript">
+var scoreToBeat = 0
+var maxNumberOfTries = 3
+var isFirstPlayer = true
+var currentTries = 0
+var currentScore = 0
+
+function calculateScore(){
+  return Math.floor(Math.random() * 600) + 1 // generates a random number between 1 and 600
+}
+
+function nextPlayer(){
+  if(isFirstPlayer){
+    maxNumberOfTries = currentTries
+    document.getElementById("maxTriesDiv").innerHTML = "current tries = " + maxNumberOfTries
+    isFirstPlayer = false
+  }
+  resetForNewTurn()
+   
+}
+
+function rollBoth(){
+  currentScore = calculateScore() 
+  document.getElementById("scoreDiv").innerHTML = currentScore
+  currentTries += 1;
+  document.getElementById("currentTriesDiv").innerHTML = "current tries = " + currentTries
+}
+
+function resetForNewTurn(){
+  currentTries = 0
+  currentScore = 0
+  document.getElementById("nextPlayerButton").disabled = false
+  document.getElementById("rollBothButton").disabled = false
+  document.getElementById("currentTriesDiv").innerHTML = "current tries = " + currentTries
+  document.getElementById("scoreToBeatDiv").innerHTML = "Score to beat = " + scoreToBeat
+  document.getElementById("scoreDiv").innerHTML = currentScore
+}
+ document.getElementById("rollBothButton").onclick = rollBoth
+ document.getElementById("nextPlayerButton").onclick = nextPlayer
+ 
+ &lt;/script>
+</body>
+</html>
+  </script>
+  <p>The code above provides a starting point for our program. Note that, for now, the complicated scoring system is simplified with a random number generator. Give the code a try. </p>
+  <p>Add code to the nextPlayer() function in such a way that if the currentScore is higher than the score in the scoreToBeat variable, scoreToBeat is updated.</p>
+      <answer noslider buttontext="Mail your code"></answer>
+  </section>
+
+  <section class="assignment">
+      <h3 class="assignment questions">9.7 Mexican disable</h3>
+     <script type="text/plain" class="language-javascript">
+      document.getElementById("nextPlayerButton").disabled = true // this code disables the nextPlayerButton
+     </script>
+
+  <p>Change the rollBoth() function in such a way that when the currentScore is higher than the scoreToBeat variable, the nextPlayerButton is enabled, but that the button is disabled in all other cases. </p>
+      <answer noslider buttontext="Mail your code"></answer>
+  </section>
+
+  <section class="assignment">
+      <h3 class="assignment questions">9.8 Mexican limit</h3>
+  <p>Players cannot try more than the original number of tries. Change the rollBoth() function in such a way that the currentTries is more than or the same as the maximumNumberOfTries, the rollBothButton is disabled. Note that the maxNumberOfTries variable starts at 3 for the first player</p>
+   <p>When you are done with this step, the game should sort of work. You cannot continue to the next player unless you have more than the previous player. You cannot throw more dice than the first player did. Whoever loses should not have any button to click. In the next chapter, the scoring system is going to be build. </p>
+      <answer noslider buttontext="Mail your code"></answer>
+  </section>
+
+
+
+
+
+ 
 
 
 </main>  
