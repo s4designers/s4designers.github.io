@@ -28,7 +28,7 @@ De eerste twee custom tags, `<todo>` en `<note>` zijn bedoeld voor het schrijfpr
 
 ### Hoofdstuk titels
 
-Het eerste <H1>-element wordt als hoofdstuktitel gezien. Het wordt geacht te beginnen met een nummer. Achter dat nummer kan een dubbele punt staan en ervoor kan het woord "Chapter" staan. Dubbele punt en "Chapter" zijn beide optioneel.
+Het eerste `<h1>`-element wordt als hoofdstuktitel gezien. Het wordt geacht te beginnen met een nummer. Achter dat nummer kan een dubbele punt staan en ervoor kan het woord "Chapter" staan. Dubbele punt en "Chapter" zijn beide optioneel.
 
 ```html
 <h1>23 Monads are Monoids in the Category of Endofunctors</h1>
@@ -106,7 +106,7 @@ Het type-attribuut (type="a") is belangrijk. Dat moet er zijn, _en_ de waarde "a
 `<answer>`-elementen moeten in assignment-secties zitten. Ze gebruiken het nummer vooran in het eertse child-element van de assignment-sectie om het opdrachtnummer uit te destilleren. Een `<answer>`-element kan een paar attributen en content krijgen, die allemaal optioneel zijn:
 
 ```html
-<answer noslider butontext="Send in your poem">Use this elegant button to share your art:</answer>
+<answer noslider buttontext="Send in your poem">Use this elegant button to share your art:</answer>
 ```
 
 * _Optioneel:_ De **inhoud tussen de tags** is de instructie die getoond wordt boven de button (en de optionele slider). Er zijn default instructies voor zowel de versie zonder slider, als de versie met slider.
