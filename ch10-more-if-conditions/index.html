@@ -9,6 +9,137 @@
  <main>
 
   <h1>Chapter 10: more about if statements and conditions</h1>
+  <todo>Video, Vingeroefeningen, tabel met !=, && , ||, etc</todo>
+
+  <div class="hint-content">
+    The following hint gives you the ending point of the previous code. It's usually better to use your own code, with the names that make sense to you. If for some reason you don't want to, you can use the hint below.
+    <hint id="hintB" steps=2>
+             <script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mexican</title>
+  <style type="text/css">
+.button {
+  font-size: 16px;
+}
+.score{
+  font-size: 2em;
+  }
+  </style>
+
+</head>
+<body>
+ <div style="margin: 8%;">
+  	<div id="scoreToBeatDiv">Score to beat = 0</div><br>
+    <div id="maxTriesDiv">max tries = 3</div><br>
+    <div id="currentTriesDiv">current tries = 0</div><br>
+    <button id="rollBothButton" class="button">Roll both</button><br>
+    <button id="nextPlayerButton" class="button">Next player</button><br>
+    <div id="scoreDiv" class="score">0</div> 
+  </div>
+<script type="text/javascript">
+var scoreToBeat = 0
+var maxNumberOfTries = 3
+var isFirstPlayer = true
+var currentTries = 0
+var currentScore = 0
+
+function calculateScore(){
+  return Math.floor(Math.random() * 600) + 1 // generates a random number between 1 and 600
+}
+
+function nextPlayer(){
+  if(isFirstPlayer){
+    maxNumberOfTries = currentTries
+    document.getElementById("maxTriesDiv").innerHTML = "current tries = " + maxNumberOfTries
+    isFirstPlayer = false
+  }
+  if(currentScore > scoreToBeat){
+  	scoreToBeat = currentScore
+  }
+
+  resetForNewTurn()
+   
+}
+
+function rollBoth(){
+  currentScore = calculateScore() 
+  document.getElementById("scoreDiv").innerHTML = currentScore
+  currentTries += 1;
+  document.getElementById("currentTriesDiv").innerHTML = "current tries = " + currentTries
+  if(currentScore <= scoreToBeat){
+  	  document.getElementById("nextPlayerButton").disabled = true
+  }else{
+  	  document.getElementById("nextPlayerButton").disabled = false
+  }
+  if(currentTries >= maxNumberOfTries){
+  	  document.getElementById("rollBothButton").disabled = true
+  }else{
+  	  document.getElementById("rollBothButton").disabled = false
+  }
+}
+
+function resetForNewTurn(){
+  currentTries = 0
+  currentScore = 0
+  document.getElementById("nextPlayerButton").disabled = false
+  document.getElementById("rollBothButton").disabled = false
+  document.getElementById("currentTriesDiv").innerHTML = "current tries = " + currentTries
+  document.getElementById("scoreToBeatDiv").innerHTML = "Score to beat = " + scoreToBeat
+
+  document.getElementById("scoreDiv").innerHTML = currentScore
+}
+document.getElementById("rollBothButton").onclick = rollBoth
+document.getElementById("nextPlayerButton").onclick = nextPlayer
+ 
+ &lt;/script>
+</body>
+</html>
+  </script>
+      
+    </hint>
+    
+  </div>
+
+  <section class="assignment">
+    <h3 class="assignment summary">10.3 Return of the Mexican</h3>
+    <p>In Mexican, the score is based on two dices. Let's add some code that represents those two dices.
+    	<ul>
+    		<li>Add two buttons to the body. One for each dice. </li>
+    		<li>For each button, Make a corresponding function that is called when the button is clicked. </li>
+    		<li>In both functions, generate a random number between 1 and 6 to simulate a dice roll. Store the value in a global variable representing the corresponding dice. Later on, we'll use those values to calculate the score.</li>
+    		<li>Increase the currentTries variable by one whenever a dice is clicked.</li>
+    		<li>Finally, in the function, change the innerHTML of the button that was clicked to the generated number.</li>
+
+    	</ul>
+    <answer buttontext="Mail your code"></answer>
+  </section>
+
+    <section class="assignment">
+    <h3 class="assignment summary">10.4 Mexican double roll</h3>
+    <ul>
+    	<li>Change the rollBoth() function to generate two random numbers between 1 an 6 that are stored in the global variables you created in 10.3, update the dice buttons to represent the numbers that were rolled.  </li>
+    	<li>The first roll each term, the seperate dice buttons should be disabled so a player can only roll both dices at once, other rolls can be done one at a time.</li>
+    </ul>
+  
+    <answer buttontext="Mail your code"></answer>
+  </section>
+    <section class="assignment">
+    <h3 class="assignment summary">10.5 Mexican scoring</h3>
+    <p>The calculateScore() function is not what it should be. Change it to accommodate the rules:</p>
+    <ul>
+        <li>The function should return the score. </li>
+        <li>When a 1 and a 2 are rolled, the score should be the maximum. (In javascript this is Number.MAX_SAFE_INTEGER)</li>
+        <li>When both dice rolls are the same (for example a 6 and a 6, or a 5 and a 5), the score should be that number times 100.</li>
+        <li>When both dice rolls are different, but not 1 and 2, the score should be the dice rolls concatonated as a string, beginning with the highest one. (For example, a 3 and a 5 becomes 53. a 3 and a 2 becomes 32)</li>
+    </ul> 
+    <p>Turn a number into a string using:</p>
+  
+    <answer buttontext="Mail your code"></answer>
+  </section>
+ <ul>
+        
 
 </main>  
 <aside id="sidebar" include="../agenda.html" reject=".secret"></aside>

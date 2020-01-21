@@ -399,7 +399,7 @@ async function addCodeHighlighter() {
 function adaptPageTitle() {
   const titleElement = $('h1')
   let title = titleElement.innerHTML
-  const titleRegex = /^\s*(?:Chapter)?\s*(\d+):?\s*(.*)$/
+  const titleRegex = /^\s*(?:Chapter)?\s*(\d+):?\s*(.*)$/i
   const titleSegments = title.match(titleRegex);
   if(titleSegments.length == 3){
     const chapterNum = titleSegments[1]
