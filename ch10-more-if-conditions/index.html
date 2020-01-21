@@ -32,7 +32,7 @@
 <body>
  <div style="margin: 8%;">
   	<div id="scoreToBeatDiv">Score to beat = 0</div><br>
-    <div id="maxTriesDiv">max tries = 3</div><br>
+    <div id="maxTriesDiv">maximum tries = 3</div><br>
     <div id="currentTriesDiv">current tries = 0</div><br>
     <button id="rollBothButton" class="button">Roll both</button><br>
     <button id="nextPlayerButton" class="button">Next player</button><br>
@@ -52,7 +52,7 @@ function calculateScore(){
 function nextPlayer(){
   if(isFirstPlayer){
     maxNumberOfTries = currentTries
-    document.getElementById("maxTriesDiv").innerHTML = "current tries = " + maxNumberOfTries
+    document.getElementById("maxTriesDiv").innerHTML = "maximum tries = " + maxNumberOfTries
     isFirstPlayer = false
   }
   if(currentScore > scoreToBeat){
@@ -129,18 +129,52 @@ document.getElementById("nextPlayerButton").onclick = nextPlayer
     <h3 class="assignment summary">10.5 Mexican scoring</h3>
     <p>The calculateScore() function is not what it should be. Change it to accommodate the rules:</p>
     <ul>
-        <li>The function should return the score. </li>
+        <li>The function should return the score. Use the variables you created  </li>
         <li>When a 1 and a 2 are rolled, the score should be the maximum. (In javascript this is Number.MAX_SAFE_INTEGER)</li>
         <li>When both dice rolls are the same (for example a 6 and a 6, or a 5 and a 5), the score should be that number times 100.</li>
-        <li>When both dice rolls are different, but not 1 and 2, the score should be the dice rolls concatonated as a string, beginning with the highest one. (For example, a 3 and a 5 becomes 53. a 3 and a 2 becomes 32)</li>
+        <li>When both dice rolls are different, but not 1 and 2, the score should be the dice rolls concatonated as a string, beginning with the highest one. (For example, a 3 and a 5 becomes 53. a 3 and a 2 becomes 32).</li>
     </ul> 
     <p>Turn a number into a string using:</p>
-  
+<script type="text/plain" class="language-javascript">
+    var a = 5
+    var b = 3
+    console.log( a + b ) // logs : 8
+    console.log( a.toString() + b.toString() ) // logs : 53
+  </script>
     <answer buttontext="Mail your code"></answer>
   </section>
- <ul>
-        
 
+    <section class="assignment">
+    <h3 class="assignment summary">10.6 Mexican scumbag</h3>
+    <p>Some edge cases in the rules should now be added to the script:</p>
+    <ul>
+        <li>If a user throws 31 (Scumbag), an alert should warn the user he has to take a drink. The user must rethrow both dices, it does not count as a try. </li>
+        <li>If a user scores 21 (Mexican), the stakes (the number of shots) are increased by one. A player throwing a mexican never loses, he can always pass the turn to the next player, even if the previous player threw mexican as well. </li>
+        <ul>
+        	<li>Add a variable that represents the number of shots.</li>
+        	<li>Add a div that shows the number of shots.</li>
+        	<li>Add the logic where you see fit.</li>
+        </ul>
+    </ul> 
+    <answer buttontext="Mail your code"></answer>
+  </section>
+  
+    <section class="assignment">
+    <h3 class="assignment summary">10.7 Mexican reset</h3>
+    <p>Add a button that can be clicked after a player loses to reset the game.</p>
+    <answer buttontext="Mail your code"></answer>
+  </section>
+  
+  <section class="assignment">
+    <h3 class="assignment summary">10.7 Mexican double code</h3>
+    <p>The amount of code used in this game can be greatly reduced by introducing some variables. Do this.</p>
+    <answer buttontext="Mail your code"></answer>
+  </section>
+  <section class="assignment">
+    <h3 class="assignment summary">10.8 Mexican beauty</h3>
+    <p>The game is ugly. Make it beautiful.</p>
+    <answer buttontext="Mail your code"></answer>
+  </section>
 </main>  
 <aside id="sidebar" include="../agenda.html" reject=".secret"></aside>
 <script src='../js/chapters.js'></script>
