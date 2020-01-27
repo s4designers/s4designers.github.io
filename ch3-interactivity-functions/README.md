@@ -1,4 +1,4 @@
-# teacher notes s4d for Chapter 3: Functions
+# teacher notes for Chapter 3: Functions
 
 
 ## 3.2e Why is the code only displaying "Hallo" and "Toedels" only once in the browser?
@@ -36,4 +36,20 @@ They only execute _when the function is called_. Students need to understand the
 1. A third style of adding event-functions is shown: .addEventListener(...). It is preferred by professional developers because you can add multiple functions to an event. But it is more typing so we don't use it.
 
 
+
+Video 7:
+ 1. Html pagina met een hhtml-input type=range
+ 1. There's als a photo
+ 1. And a funtion "logSliderValue" that gets the value of the slider, and prints it to the console.
+ 1. the function is assigned to `oninput` of the slider.
+ 1. Such things are called _event listener_ 
+ 1. the slider has min=0, max=100
+ 1. open page in browser, see that it does print the value of the slider.
+ 1. add a calculation to the console.log: value - 100
+ 1. see that it works
+ 1. the width of the photo can be changed based on the slider.
+ 1. it works, but max is 100, which is very low (orig=600)
+ 1. add a second picture, make it change inversely.
+ 1. parenthesis are used for grouping calculations. You may use them even if they are not needed.
+ 1. width = calc vs. print(calc) is not JS vs Arduino, but assignment vs command
 

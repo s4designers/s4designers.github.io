@@ -105,15 +105,17 @@ function loadStylesheet(url) {
 function createYoutubePlayers() {
   let allYoutubeElements = $$("youtube")
   allYoutubeElements.forEach( ytElement =>{
-    let width = 800
+    let width = 650
     let height = width * 9/16
     let youtubeId = ytElement.getAttribute('ytid')
     let embedCode = `
-      <iframe width="${width}" height="${height}" 
-              src="https://www.youtube-nocookie.com/embed/${youtubeId}" frameborder="0" 
-              allow="" allowfullscreen>
-      </iframe>
-    `
+      <div class="videoWrapper">
+        <iframe width="${width}" height="${height}" 
+                src="https://www.youtube-nocookie.com/embed/${youtubeId}" frameborder="0" 
+                allow="" allowfullscreen>
+        </iframe>
+      </div>
+      `
     ytElement.outerHTML = embedCode
   })  
 }
@@ -132,17 +134,10 @@ const createAnswerBlocks = function() {
     const answerElement = $("answer",assignmentSection)
     
     let subQuestions = $$('ol[type="a"] > li', assignmentSection)
-    const chars = (function *() {
-      let currChar = "a"
-      while(true) {
-        yield currChar
-        currChar = String.fromCharCode(currChar.charCodeAt(0)+1)
-      }
-    })()
-    subQuestions = subQuestions.map( el => {
-      return chars.next().value + ") " + el.textContent + "\n\n\n"
+    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    subQuestions = subQuestions.map( (el,idx) => {
+      return chars.charAt(idx) + ") " + el.textContent + "\n\n\n"
     })
-
     const buttonId = newId("button")
 
     if( !answerElement ) {
@@ -156,7 +151,8 @@ const createAnswerBlocks = function() {
       const mailButton = byId(buttonId)
       mailButton.addEventListener("click", (evt) => {
         let subject = encodeURIComponent( `s4d_${assignmentId} ${assignmentTitle}`)
-        window.open(`mailto:s4designers@gmail.com?subject=${subject}`)
+        let messageBody = encodeURIComponent( subQuestions.join("") )
+        window.open(`mailto:s4designers@gmail.com?subject=${subject}&body=${messageBody}`)
       })
     } else {  // answerElement exists
       const noSliderValue = answerElement.getAttribute("noslider")
@@ -194,7 +190,8 @@ const createAnswerBlocks = function() {
         mailButton.addEventListener("click", (evt) => {
           let satisfactionPrefix = `(${satisfactionSlider.value}) `
           let subject = encodeURIComponent( satisfactionPrefix + `s4d_${assignmentId} ${assignmentTitle}`)
-          window.open(`mailto:s4designers@gmail.com?subject=${subject}`)
+          let messageBody = encodeURIComponent( subQuestions.join("") )
+          window.open(`mailto:s4designers@gmail.com?subject=${subject}&body=${messageBody}`)
         })
       } else {
         mailButton.addEventListener("click", (evt) => {
@@ -207,7 +204,7 @@ const createAnswerBlocks = function() {
   })
 }
 
-const hintSteps = [
+const defaultHintSteps = [
   { prompt: "Try to solve the problem by yourself. But if you're stuck, use the button for a hint:",
     buttonLabel: "<b>?</b>"
   },
@@ -222,7 +219,15 @@ const hintSteps = [
 function createHintBlocks() {
   const hintElements = $$("hint")
   hintElements.forEach( hintElement => {
-    const maxSteps = Math.min(hintSteps.length, hintElement.getAttribute("steps") || 1)
+    const hintStepElements = $$("hintStep",hintElement);
+    let hintSteps = defaultHintSteps
+    let maxSteps = 3;
+    if(hintStepElements.length > 0) {
+      hintSteps = hintStepElements.map( el => ({ prompt: el.innerHTML, buttonLabel: el.getAttribute("buttontext") || "?"}))
+      maxSteps = Math.min(hintSteps.length, hintElement.getAttribute("steps") || 10000);
+    } else {
+      maxSteps = Math.min(hintSteps.length, hintElement.getAttribute("steps") || 1)
+    }
     const hintContentId = newId('hint-content')
     const hintContentBlock = createElement(`div`, {id: hintContentId, class:'hint-content'},
       `<div>`)
@@ -248,24 +253,20 @@ function createHintBlocks() {
     hintElement.remove()
     let hintStepCount = 0;
     function showStep() {
-      console.log('hintStepCount :', hintStepCount)
       if(hintStepCount == maxSteps){
         // show content and hide prompt & button
-        console.log("maxReached")
         hintButtonWrapper.style.maxHeight = '0px'
         hintButtonWrapper.style.opacity = 0
         hintContentWrapper.style.maxHeight = hintContentWrapper.scrollHeight + 'px'
         hintContentWrapper.style.opacity = 1
         hintContentWrapper.addEventListener('transitionend',()=>{
           hintContentWrapper.style.maxHeight = 'none'
-          console.log("transitionend")
         })
       } else {
         hintButtonBlock.classList.remove('step'+(hintStepCount-1))
         hintButtonBlock.classList.add('step'+hintStepCount)
         byId(hintPromptId).innerHTML = hintSteps[hintStepCount].prompt
         byId(hintButtonId).innerHTML = hintSteps[hintStepCount].buttonLabel
-        console.log('hintSteps[hintStepCount].prompt :', hintSteps[hintStepCount].prompt)
       }
     }
     showStep();
