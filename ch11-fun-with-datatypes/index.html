@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Page Title</title>
+  <link rel="stylesheet" href="../css/main.css"/>
+</head>
+<body class="line-numbers">
+ <main>
+
+  <h1>Chapter 11: fun with datatypes</h1>
+  
+  <p>In arduino, it is necessary to specify what sort of value a variable is expected to hold. So far we used integers and Strings. This chapter shows some other possibilities and shows a specific type of bug called "overflow" which can cause unexpected behaviour in your program.</p>
+
+<section class="assignment">
+<h3 class="assignment questions">11.1 Rockets</h3>  
+<p>The following program is used inside of a rocket.</p>
+<script type="text/plain" class="language-arduino">
+#include "s4d_breadboard.h"
+int altitude = 0;
+int acceleration = 8;
+int speedMps = 0;
+void setup() {
+  initializeBreadboard();
+  Serial.begin(9600);
+  speedMps = 1;
+}
+
+void burnExtraTakeOffFuel(){
+  Serial.println("Burning an explosive amount of fuel");
+}
+
+void compensateWithSideThrusters(){
+  Serial.println("compensating vibrations using side thrusters");
+}
+
+void loop() {
+  delay(1000);
+  speedMps = speedMps * acceleration;
+  altitude += speedMps
+  
+  if(altitude < 100){
+    burnExtraTakeOffFuel();
+  }
+  
+  if(altitude > 40000){
+    compensateWithSideThrusters();
+  }
+}
+
+</script>
+<p>Run the program on your arduino. Open the Serial monitor and observe what is going on. Is this what you would expect?</p>
+  <answer buttontext="Mail the reasons"></answer>
+</section>
+
+<section class="assignment">
+<h3 class="assignment questions">11.2 Arianne 5</h3>  
+<p>In many languages, including arduino, when you need to </p>
+
+
+<h5>Some datatypes:</h5>
+  <table>
+  	<tr>
+  		<td><h5>type</h5></td>
+  		<td><h5>possible values</h5></td>
+  	</tr>
+  	<tr>
+  		<td>bool</td>
+  		<td>true, false</td>
+  	</tr>
+  	<tr>
+  		<td>byte</td>
+  		<td>0 to 255</td>
+  	</tr>
+  	 <tr>
+  		<td>int</td>
+  		<td>-32768 to 32767</td>
+  	</tr>
+  	<tr>
+  		<td>long</td>
+  		<td>-2.147.483.648 to 2.147.483.647</td>
+  	</tr>
+  	<tr>
+  		<td>unsigned long</td>
+  		<td>0 to 4.294.967.295</td>
+  	</tr>
+  	<tr>
+  		<td>char</td>
+  		<td>any single character</td>
+  	</tr>
+  	<tr>
+  		<td>String</td>
+  		<td>Any Multiple Characters</td>
+  	</tr>
+  </table>
+
+
+<section class="assignment">
+<h3 class="assignment questions">11.1b</h3>  
+<h5>Some datatypes:</h5>
+<p>a <code>long</code> can store smaller and bigger numbers than <code>int</code> variables. Why would you ever use <code>int</code>? Or even <code>byte</code>?</p>
+  <answer buttontext="Mail the Explanation"></answer>
+</section>
+ 
+</main>  
+<aside id="sidebar" include="../agenda.html" reject=".secret"></aside>
+<script src='../js/chapters.js'></script>
+</body>
+</html>
