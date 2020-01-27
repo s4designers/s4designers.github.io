@@ -63,7 +63,7 @@
 </ul>
 <p>For this course, there is another reason why Arduino is very interesting. While there are thousands of programming languages, almost all of the mainstream languages fit on a spectrum that has Javascript on one end, and Arduino's programming language (C++) on the other end. If you want, or need, to learn a different language, say PHP, Swift, Java, or Python, you will find that many (if not all) aspects of this new language are either similar to Javascript, or similar to Arduino C++ (or a bit of both). And by seeing the many similarities between Arduino and Javascript, you are learning the properties that are fundamental fundamental to most other languages.</p>
 <p>By teaching you both Javascript and Arduino, <b>we are preparing you for programming in almost all other useful programming languages.</b> No introductory course that uses just one language can do that just as effectively. And this course could not do this <i>in a fun way</i> without the Arduino.</p>
-<p>How much fun is the Arduino? That is, basically, up to you. But have a look at these two video's, that show some Arduino projects, and give you a sense of what Arduino enthusiasts like to use it for:</p>
+<p>How much fun is the Arduino? That is, basically, up to you. But do have a look at these two video's, that show some Arduino projects, and give you a sense of what Arduino enthusiasts like to use it for:</p>
 <p><i>This video is specifically about Arduino in design and art projects:</i></p>
 <youtube ytid="pn_hxGk-6LA"></youtube>
 <p><i>This video is for creative tinkerers who don't consider themselves artists:</i></p>
@@ -74,19 +74,124 @@
   <p>The following three video's explain the basics of programming the arduino. Watch them and make the assignments in the order they appear.</p>
     
   <youtube ytid="frNjjdKZGvk"/></youtube>
+   <br>
+
+   <section class="assignment">
+    <h3 class="assignment questions">1.4 Your first Arduino program</h3>
+    <p>A poet has created a witty poem.</p>
+    <p>Write an Arduino program that prints the following poem to the Serial Monitor:</p>
+
+    <i>The limerick packs laughs anatomical</i><br>
+    <i>Into space that is quite economical.</i><br>
+    <i>But the good ones I’ve seen</i><br>
+    <i>So seldom are clean</i><br>
+    <i>And the clean ones so seldom are comical.</i><br>
+
+    <p>(It is also OK to use a different multi-line poem or joke)<br>
+    Use five print commands, and make sure that the poem is <b>only printed once</b>.</p>
+  </section>  
+
+  <h3 class="assignment questions">1.5 Extending your Arduino program</h3>
+  <p>The audience finds the poem hilarious, and starts laughing out loud.</p>
+  <section class="assignment">
+    <p><b>1.5.a) Use the program you just made, and extend it with the following behaviour:</b></p>
+    <ul>
+      <li>After the poem has been printed, the program will start printing "ha ha" repeatedly.</li>
+      <li>Between each "ha ha", there is a small delay of 200 milliseconds.</li>
+      <li>After hearing the poem/joke, the audience needs some time to think about it. Have the program pause between the poem and the laughter for 1.5 seconds.</li>
+    </ul>
+    <p><span class="inline-note">TIP:</span>Test your program after writing the code for each bullit in the list.</p>
+  </section>
+  <section class="assignment">
+    <p><b>1.5.b) Experiment</b></p>
+    <div class="theory">
+      <p>There is a second command in Arduino to print text to the USB-port:</p>
+      <script type="text/plain" class="language-arduino">
+        Serial.print("hello world");
+      </script>
+      <p>Notice that this variant is called "Serial.<i>print</i>" instead of "Serial.print<b><i>ln</i></b>"</p>
+    </div>
+    <p>Change your program to use this <code>Serial.print</code> variant in a few places, and observe the change in behaviour.</p>
+    <ol type="a">
+      <li>What is the difference in behaviour between <i>Serial.println</i> and <i>Serial.print</i>?</li>
+      <li>The "ln" in "Serial.println" is an abbreviation. What do you think it stands for? Give your best guess.</li>
+    </ol>
+  </section>
+
+  <p>&nbsp;</p>
+
+  <youtube ytid="FCzx0USCvdc"/></youtube>
+
+  <div class="theory">
+    <p>For calculations, programming languages use symbols that are available on keyboards, and some are different from what you've learned at school:</p>
+    <table>
+      <tr><td style="width: 5em;">
+           <code>22 <b>+</b> 33</code>
+        </td><td>
+           adding
+      </td></tr>
+      <tr><td>
+          <code>22 <b>-</b> 33</code>
+        </td><td>
+          substracting
+      </td></tr>
+      <tr><td>
+          <code>22 <b>*</b> 33</code>
+        </td><td>
+          multiplying is done with a <b>*</b>, because &times; does not exist on keyboards, and the letter <i>x</i> would confuse the compiler.
+      </td></tr>
+      <tr><td>
+          <code>22 <b>/</b> 33</code>
+        </td><td>
+          dividing is done with a <b>/</b>, because &divide; does not exist on keyboards, and 2D formulas like <img src="fraction.png" style="vertical-align: middle;height:2em;"> can't be used in text files.
+      </td></tr>
+      <tr><td colspan="2">
+        There are many more <b>operators</b> like this in programming languages, such as:<br>
+        ^, ||, >, <=, !, ||, &, ==, etc. 
+      </td></tr>
+    </table>
+    <p>You'll learn all the important ones in the coming weeks.</p>
+  </div>
+
+  <div class="theory">
+    <p><i>Syntax</i> is the word we use for the set of rules about how you write things in a programmming language. Every language has it's own <i>syntax</i>, but many aspects of syntax are shared among most languages. Here a a few basic rules found in many languages:</p>
+    <ul>
+      <li><b>names</b> for commands (and other things) must start with a letter, and cannot contain spaces or symbols (like + or % or ;).</li>
+      <li><b>operators</b> for calculations (see box above) cannot contain letters or numbers. They are made with one or more symbols.</li>
+      <li><b>strings</b> denote pieces of text that a program uses <i>as text</i>. They are written inside quotation marks, like <i>"hello world"</i> in the command `Serial.println("hello world").</li>
+      <li><b>comments</b> denote pieces of text that a program <i>will not use</i>. Use them to add explanations to the code in your own language, or to disable certain lines of the program. Most often, comments start with // .</li>
+      <li><b>braces and paenthesis</b> denote pieces of text that a program <i>will not use</i>. Use them to add explanations to the code in your own language, or to disable certain lines of the program. Most often, comments start with // .</li>
+    </ul>
+    <p><b>Space characters</b> are only used to keep items in your program apart. That is why you can't have names or numbers with a space in them: the compiler will think you have two names, and get confused. Often they are optional. In the line <code>Serial.println("game over");</code>, no spaces are needed to keep the names, the symbols and the string apart. They are, however allowed: <code>Serial .  println (    "game over" ) ;</code> is exactly the same.</p>
+    <p>Wherever a space is allowed (or required), you're free to add multiple spaces. You can also use line-end characters (a.k.a. newlines) in such places, or tab characters. So the following lines still mean the exacte same thing as the example in the previous paragraph:</p>
+    <script type="text/plain" class="language-arduino">
+          Serial .               
+            println    ( 
+              
+            
+          "game over"  // like paragraph-ends and tabs in MS-Word, line-ends and 
+                )      // tabs count as characters, and can be deleted and copy-pasted.
+            ;
+    </script>
+    <p>But please, write code like this :-). It doesn't confuse the compiler, but it will confuse your teachers, your teammates, and even you yourself (after a few days).</p>
+  </div>
+  <section class="assignment">
+    <h3 class="assignment questions">1.6 Exceptions to rules</h3>
+    <p>In programming, like life, rules tend to have exceptions.</p>
+    <ol type=a>
+      <li>The rule about <b>spaces</b>, dicussed above, has an exception. There actually is a situation where it matters if you have one, or two, or more spaces.<br> Can you write a variant of the <code>Serial.println("game over");</code> command where an extra space changes the result of the command?</li>
+      <li>Also, the rule that says that newlines can be added where spaces are allowed, has an exception.<br> Look at the multi-line example above. Can you point to a place in the code where replacing a space with a newline would make the program incorrect?<br> <span class="inline-note">TIP:</span>Test your solution with the Arduino IDE by trying to cause red error messages to appear (when clicking the Upload button) just because you added a newline.</li>
+    </ol>
+  </section>
 
   <section class="assignment">
-      <h3 class="assignment questions">1.3 Calculations</h3>
+      <h3 class="assignment questions">1.9 Calculations</h3>
       <pre>
       Serial.println(analogRead(POTENTIOMETER) * 4 + 100);
       </pre>
       <p>Given the following code, describe the order in which parts of the command are executed by the arduino</p>
-  </section>
-
-<todo>verschil println en print</todo>
 
 <todo>Meer opdrachten</todo>
-
 
    <h2>The S4d Breadboard</h2>
 
