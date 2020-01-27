@@ -1,15 +1,8 @@
 /*==================================    
-
   TODO: 
-    * een <answer> voor meerdere korte vragen.
-    * hint element;
-    * promise based script loading;
     * answer instruction should be visible 
       with <answer.../> instead of <answer...></answer>
     * tweak margin between h2 and attention-block (ch2)
-    * Attention blocks can have different headings
-    * Check 'mail your' button labels.
-    * Bedenk welke opdrachten 'noslider' moeten hebben.
   ==================================*/
 
 // iife to prevent creating global variables
