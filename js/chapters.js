@@ -105,15 +105,17 @@ function loadStylesheet(url) {
 function createYoutubePlayers() {
   let allYoutubeElements = $$("youtube")
   allYoutubeElements.forEach( ytElement =>{
-    let width = 800
+    let width = 650
     let height = width * 9/16
     let youtubeId = ytElement.getAttribute('ytid')
     let embedCode = `
-      <iframe width="${width}" height="${height}" 
-              src="https://www.youtube-nocookie.com/embed/${youtubeId}" frameborder="0" 
-              allow="" allowfullscreen>
-      </iframe>
-    `
+      <div class="videoWrapper">
+        <iframe width="${width}" height="${height}" 
+                src="https://www.youtube-nocookie.com/embed/${youtubeId}" frameborder="0" 
+                allow="" allowfullscreen>
+        </iframe>
+      </div>
+      `
     ytElement.outerHTML = embedCode
   })  
 }
