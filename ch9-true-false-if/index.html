@@ -163,11 +163,11 @@ int estimateFine(int actualSpeed, int speedLimit){
       <p>Mexican is a popular drinking game which is usually called "mex-en" in Dutch. We are going to make an online version. The <a href="https://www.webtender.com/handbook/games/mexican.game">rules</a> are a bit complicated.</p>
       <ul>
         <li>The game is played with two or more people.</li>
-        <li>The game is played with two dices.</li>
-        <li>A player first throws 2 dices. This results in a score (the scoring is explained later).</li>
+        <li>The game is played with two dice.</li>
+        <li>A player first throws 2 dice. This results in a score (the scoring is explained later).</li>
         <ul>
           <li>If the player is happy with his score, the player passes the turn to the next player.</li>
-          <li>If the player is unhappy with his score, the player can throw one, or both of the dices again. </li>
+          <li>If the player is unhappy with his score, the player can throw one, or both the dice again. </li>
           <li>The maximum number of tries is 3. </li>
         </ul>
         <li>The next player now tries to better the previous player's score. He can use as many tries as the first player used.</li>
@@ -219,7 +219,7 @@ function nextPlayer(){
    
 }
 
-function rollBoth(){
+function rollBothDice(){
   currentScore = calculateScore() 
   document.getElementById("scoreDiv").innerHTML = currentScore
   currentTries += 1;
@@ -235,14 +235,14 @@ function resetForNewTurn(){
   document.getElementById("scoreToBeatDiv").innerHTML = "Score to beat = " + scoreToBeat
   document.getElementById("scoreDiv").innerHTML = currentScore
 }
- document.getElementById("rollBothButton").onclick = rollBoth
+ document.getElementById("rollBothButton").onclick = rollBothDice
  document.getElementById("nextPlayerButton").onclick = nextPlayer
  
  &lt;/script>
 </body>
 </html>
   </script>
-  <p>The code above provides a starting point for our program. Note that, for now, the complicated scoring system is simplified with a random number generator. Give the code a try. </p>
+  <p>The code above provides a starting point for our program. Note that, for now, the complicated scoring system is simplified with a random number generator. Give the code a try. Also note, the singular for dice is die (some students find this confusing).  </p>
   <p>Add code to the nextPlayer() function in such a way that if the currentScore is higher than the score in the scoreToBeat variable, scoreToBeat is updated.</p>
       <answer noslider buttontext="Mail your code"></answer>
   </section>
