@@ -209,7 +209,7 @@ const createAnswerBlocks = function() {
   })
 }
 
-const hintSteps = [
+const defaultHintSteps = [
   { prompt: "Try to solve the problem by yourself. But if you're stuck, use the button for a hint:",
     buttonLabel: "<b>?</b>"
   },
@@ -224,7 +224,15 @@ const hintSteps = [
 function createHintBlocks() {
   const hintElements = $$("hint")
   hintElements.forEach( hintElement => {
-    const maxSteps = Math.min(hintSteps.length, hintElement.getAttribute("steps") || 1)
+    const hintStepElements = $$("hintStep",hintElement);
+    let hintSteps = defaultHintSteps
+    let maxSteps = 3;
+    if(hintStepElements.length > 0) {
+      hintSteps = hintStepElements.map( el => ({ prompt: el.innerHTML, buttonLabel: el.getAttribute("buttontext") || "?"}))
+      maxSteps = Math.min(hintSteps.length, hintElement.getAttribute("steps") || 10000);
+    } else {
+      maxSteps = Math.min(hintSteps.length, hintElement.getAttribute("steps") || 1)
+    }
     const hintContentId = newId('hint-content')
     const hintContentBlock = createElement(`div`, {id: hintContentId, class:'hint-content'},
       `<div>`)
@@ -250,24 +258,20 @@ function createHintBlocks() {
     hintElement.remove()
     let hintStepCount = 0;
     function showStep() {
-      console.log('hintStepCount :', hintStepCount)
       if(hintStepCount == maxSteps){
         // show content and hide prompt & button
-        console.log("maxReached")
         hintButtonWrapper.style.maxHeight = '0px'
         hintButtonWrapper.style.opacity = 0
         hintContentWrapper.style.maxHeight = hintContentWrapper.scrollHeight + 'px'
         hintContentWrapper.style.opacity = 1
         hintContentWrapper.addEventListener('transitionend',()=>{
           hintContentWrapper.style.maxHeight = 'none'
-          console.log("transitionend")
         })
       } else {
         hintButtonBlock.classList.remove('step'+(hintStepCount-1))
         hintButtonBlock.classList.add('step'+hintStepCount)
         byId(hintPromptId).innerHTML = hintSteps[hintStepCount].prompt
         byId(hintButtonId).innerHTML = hintSteps[hintStepCount].buttonLabel
-        console.log('hintSteps[hintStepCount].prompt :', hintSteps[hintStepCount].prompt)
       }
     }
     showStep();
