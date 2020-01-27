@@ -104,12 +104,12 @@ document.getElementById("nextPlayerButton").onclick = nextPlayer
 
   <section class="assignment">
     <h3 class="assignment summary">10.3 Return of the Mexican</h3>
-    <p>In Mexican, the score is based on two dices. Let's add some code that represents those two dices.
+    <p>In Mexican, the score is based on two dice. Let's add some code that represents those two dice.
     	<ul>
-    		<li>Add two buttons to the body. One for each dice. </li>
+    		<li>Add two buttons to the body. One for each die. </li>
     		<li>For each button, Make a corresponding function that is called when the button is clicked. </li>
-    		<li>In both functions, generate a random number between 1 and 6 to simulate a dice roll. Store the value in a global variable representing the corresponding dice. Later on, we'll use those values to calculate the score.</li>
-    		<li>Increase the currentTries variable by one whenever a dice is clicked.</li>
+    		<li>In both functions, generate a random number between 1 and 6 to simulate a die roll. Store the value in a global variable representing the corresponding die. Later on, we'll use those values to calculate the score.</li>
+    		<li>Increase the currentTries variable by one whenever a die is clicked.</li>
     		<li>Finally, in the function, change the innerHTML of the button that was clicked to the generated number.</li>
 
     	</ul>
@@ -119,10 +119,17 @@ document.getElementById("nextPlayerButton").onclick = nextPlayer
     <section class="assignment">
     <h3 class="assignment summary">10.4 Mexican double roll</h3>
     <ul>
-    	<li>Change the rollBoth() function to generate two random numbers between 1 an 6 that are stored in the global variables you created in 10.3, update the dice buttons to represent the numbers that were rolled.  </li>
-    	<li>The first roll each term, the seperate dice buttons should be disabled so a player can only roll both dices at once, other rolls can be done one at a time.</li>
+    	<li>Change the rollBoth() function to generate two random numbers between 1 an 6 that are stored in the global variables you created in 10.3, update the die buttons to represent the numbers that were rolled.  </li>
+    	<li>The first roll each term, the seperate die buttons should be disabled so a player can only roll both dice at once, other rolls can be done one at a time.</li>
     </ul>
-  
+    <hint id="hintA">
+    The following hint will tell you how to generate a number between 1 and 10.
+    <hint id="hintB" steps=2>
+    	<script type="text/plain" class="language-javascript">
+Math.floor(Math.random() * 10) + 1 // will generate a number between 1 and 10 (including 10)
+   </script>
+  	</hint>
+  </hint>
     <answer buttontext="Mail your code"></answer>
   </section>
     <section class="assignment">
@@ -167,11 +174,14 @@ document.getElementById("nextPlayerButton").onclick = nextPlayer
   
   <section class="assignment">
     <h3 class="assignment summary">10.7 Mexican double code</h3>
-    <p>The amount of code used in this game can be greatly reduced by introducing some variables. Do this.</p>
+    <p>The amount of code used in this game can be greatly reduced by introducing some parameters or creating functions that group common functionality. In this example, the first approach (using parameters) is a bit tricky but introducing an extra function that eliminates double code can work wonders for the readability.</p>
+    <p>In your code, commands that update the UI like <code>document.getElementById("currentTriesDiv").innerHTML =  3</code>, can probably be found all over the place. Make an "updateUI()" function where you place all these UI commands and call the function whenever you need to. </p>
+
+   
     <answer buttontext="Mail your code"></answer>
   </section>
   <section class="assignment">
-    <h3 class="assignment summary">10.8 Mexican beauty</h3>
+    <h3 class="assignment summary">10.8 <span class="inline-bonus">Bonus</span> Mexican beauty</h3>
     <p>The game is ugly. Make it beautiful.</p>
     <answer buttontext="Mail your code"></answer>
   </section>
