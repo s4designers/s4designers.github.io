@@ -134,17 +134,10 @@ const createAnswerBlocks = function() {
     const answerElement = $("answer",assignmentSection)
     
     let subQuestions = $$('ol[type="a"] > li', assignmentSection)
-    const chars = (function *() {
-      let currChar = "a"
-      while(true) {
-        yield currChar
-        currChar = String.fromCharCode(currChar.charCodeAt(0)+1)
-      }
-    })()
-    subQuestions = subQuestions.map( el => {
-      return chars.next().value + ") " + el.textContent + "\n\n\n"
+    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    subQuestions = subQuestions.map( (el,idx) => {
+      return chars.charAt(idx) + ") " + el.textContent + "\n\n\n"
     })
-
     const buttonId = newId("button")
 
     if( !answerElement ) {
@@ -158,7 +151,8 @@ const createAnswerBlocks = function() {
       const mailButton = byId(buttonId)
       mailButton.addEventListener("click", (evt) => {
         let subject = encodeURIComponent( `s4d_${assignmentId} ${assignmentTitle}`)
-        window.open(`mailto:s4designers@gmail.com?subject=${subject}`)
+        let messageBody = encodeURIComponent( subQuestions.join("") )
+        window.open(`mailto:s4designers@gmail.com?subject=${subject}&body=${messageBody}`)
       })
     } else {  // answerElement exists
       const noSliderValue = answerElement.getAttribute("noslider")
@@ -196,7 +190,8 @@ const createAnswerBlocks = function() {
         mailButton.addEventListener("click", (evt) => {
           let satisfactionPrefix = `(${satisfactionSlider.value}) `
           let subject = encodeURIComponent( satisfactionPrefix + `s4d_${assignmentId} ${assignmentTitle}`)
-          window.open(`mailto:s4designers@gmail.com?subject=${subject}`)
+          let messageBody = encodeURIComponent( subQuestions.join("") )
+          window.open(`mailto:s4designers@gmail.com?subject=${subject}&body=${messageBody}`)
         })
       } else {
         mailButton.addEventListener("click", (evt) => {
