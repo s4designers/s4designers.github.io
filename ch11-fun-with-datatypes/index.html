@@ -309,9 +309,9 @@ function isPostalCode(){
   if(inputNoSpaces.length != 6){
     return false;
   }              
-    var firstFourCharacters = inputNoSpaces.substring(0, 4);
+  var firstFourCharacters = inputNoSpaces.substring(0, 4);
   var firstFourNumbers = Number(firstFourCharacters); 
-    var lastTwoDigits = input.substring(4, 6);
+  var lastTwoDigits = input.substring(4, 6);
   
   if(isNaN(firstFourNumbers)){
     return false;
@@ -339,7 +339,7 @@ document.getElementById("submitButton").onclick = submitForm
 </body>
 </html>
 </script>
-<p>Similar to the postalcode validation in the code above, upon submitting the form, make sure the page gives an error when the house number field contains text.</p>  <p><span class="inline-bonus">Bonus</span>: Also make sure the street field does not end with a number.</p>
+<p>Similar to the postalcode validation in the code above, upon submitting the form, make sure the page gives an error when the house number field contains text.</p>  <p><span class="inline-bonus">Bonus</span>: Also, make sure the street field does not end with a number.</p>
 <answer buttontext="Mail your code"></answer>
 </section>
  
