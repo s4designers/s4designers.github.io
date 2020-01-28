@@ -16,12 +16,10 @@
 <h3 class="assignment questions">11.1 Rockets</h3>  
 <p>The following program is used inside of a rocket.</p>
 <script type="text/plain" class="language-arduino">
-#include "s4d_breadboard.h"
 int altitude = 0;
 int acceleration = 8;
 int speedMps = 0;
 void setup() {
-  initializeBreadboard();
   Serial.begin(9600);
   speedMps = 1;
 }
@@ -34,11 +32,17 @@ void compensateWithSideThrusters(){
   Serial.println("compensating vibrations using side thrusters");
 }
 
+void showStatus() {
+  Serial.print("altitude:" + String(altitude));
+  Serial.print(", ");
+  Serial.println("speed:" + String(speedMps));
+}
+
 void loop() {
   delay(1000);
   speedMps = speedMps * acceleration;
-  altitude += speedMps
-  
+  altitude += speedMps;
+  showStatus();
   if(altitude < 100){
     burnExtraTakeOffFuel();
   }
@@ -54,11 +58,10 @@ void loop() {
 </section>
 
 <section class="assignment">
-<h3 class="assignment questions">11.2 Arianne 5</h3>  
-<p>In many languages, including arduino, when you need to </p>
+<h3 class="assignment questions">11.1b Arianne 5</h3>  
+<p>In many languages, including arduino, when you declare a variable, you need to specify what sort of value you expect to use in this variable. This is called a datatype</p>
 
-
-<h5>Some datatypes:</h5>
+<h5>Some datatypes are:</h5>
   <table>
   	<tr>
   		<td><h5>type</h5></td>
@@ -91,17 +94,206 @@ void loop() {
   	<tr>
   		<td>String</td>
   		<td>Any Multiple Characters</td>
+      <td>Note the capital letter in "String"</td>
   	</tr>
   </table>
+  <p>In the code above, an <code>int</code> was used to describe a value that could potentially grow above 32767. This caused our problem. A similar problem caused the crash of the <a href="https://www.bbc.com/future/article/20150505-the-numbers-that-lead-to-disaster" >Arianne 5 rocket in 1996.</a> </p>
+<script type="text/plain" class="language-arduino">
+int carPrice = 32760;
+void setup() {
+  Serial.begin(9600);
+
+}
+void loop(){
+  delay(500);
+  carPrice += 1;
+  Serial.println(carPrice);
+}
+</script>
+<p>The code above shows what happens when a value exceeds the maximum. Experiment with this code and use your findings to explain what happened in the code of 11.1a. Note that this type of error is called an integer overflow.</p>
+ <answer buttontext="Mail the explanation"></answer>
+</section>
 
 
 <section class="assignment">
-<h3 class="assignment questions">11.1b</h3>  
-<h5>Some datatypes:</h5>
-<p>a <code>long</code> can store smaller and bigger numbers than <code>int</code> variables. Why would you ever use <code>int</code>? Or even <code>byte</code>?</p>
+<h3 class="assignment questions">11.1c fix</h3>  
+<p>Fix the code by changing the datatype of the variable. Which one do you choose? Add a comment in your code to explain why.</p>
+  <answer buttontext="Mail the code"></answer>
+</section>
+
+<section class="assignment">
+<h3 class="assignment questions">11.2 time</h3>  
+<p></p>
+<script type="text/plain" class="language-arduino">
+#include "s4d_breadboard.h"
+int timeButtonClicked = 0;
+
+void setup() {
+  intitalizeBreadboard();
+}
+
+//millis() gives the number of milliseconds since the program booted.
+void loop() {
+  if(analogRead(BUTTON1) == HIGH){
+    timeButtonClicked = millis(); 
+  }
+
+  if(millis() > timeButtonClicked + 5000){
+    digitalWrite(LED_BLUE, LOW);
+  }else{
+    digitalWrite(LED_BLUE, HIGH);
+  }
+}
+  </script>
+  <p>The code above contains a similar problem. Fix it. What are the limits of your fix?</p>
   <answer buttontext="Mail the Explanation"></answer>
 </section>
+ <section class="assignment">
+<h3 class="assignment questions">11.3 Experiments with datatypes 1</h3>  
+  <script type="text/plain" class="language-arduino">
+    Serial.print("altitude:" + String(altitude));
+  </script>
+  <p>The line above is taken from the script in 11.1</p>
+  <p>In it, a trick is used to concatonate a String and an integer. By using the String() "function", the altitude integer is converted into a string, which can be concatonated to another String using the "+" operator. Changing the type of a value from an int to a String with an expression is usually called "casting an integer to String"  (Note: String() isn't usually called a function but a constructor, but that is out of scope of this course).</p>
+  <p>Even concatonating two Strings is not straightforward in Arduino. Why this is needs a lot of explaining, or none at all. For now, just accept this is how it's done.</p>
+   <script type="text/plain" class="language-arduino">
+String helloString = "Hello " + "class"; //does not work
+helloString = String("Hello ") + "class"; //works
+helloString = String("Hello ") + String("class"); //works
+  </script>
+<p>The following is an experiment: Mail your observations and for each line, try to explain what you see.</p>
+<script type="text/plain" class="language-arduino">
+void setup() {
+  int number = 4.3;
+  Serial.println("number1: " + String(number));
+  number = 4/5;
+  Serial.println("number2: " + String(number));
+  number = HIGH;
+  Serial.println("number3: " + String(number));
+  float decimalNumber = 4.3;
+  Serial.println("decimal1: " + String(decimalNumber));
+  decimalNumber = 4/5;
+  Serial.println("decimal2: " + String(decimalNumber));
+  bool isCorrect = true;
+  Serial.println("bool1: " + String(isCorrect));
+  isCorrect = 0;
+  Serial.println("bool2: " + String(isCorrect));
+  isCorrect = 1;
+  Serial.println("bool3: " + String(isCorrect));
+  isCorrect = 13;
+  Serial.println("bool4: " + String(isCorrect));
+}
+  </script>
+<ol type="a">
+  <li>int number = 4.3;</li>
+  <li>number = 4/5;</li>
+  <li>number = HIGH;</li>
+  <li>float decimalNumber = 4.3;</li>
+  <li>decimalNumber = 4/5;</li>
+  <li>bool isCorrect = true;</li>
+  <li>isCorrect = 0;</li>
+  <li>isCorrect = 1;</li>
+  <li>isCorrect = 13;</li>
+</ol>
+  <answer buttontext="Mail the observations and conclusions"></answer>
+</section>
+
+<section class="assignment">
+<h3 class="assignment questions">11.4 Experiments with datatypes 2</h3>  
+<p>Try the following:</p>
+<script type="text/plain" class="language-arduino">
+void setup() {
+  Serial.println( 0.1, 16);
+  Serial.println( 0.1 + 0.1, 16);
+  Serial.println( 0.1 + 0.1 + 0.1, 16);
+  Serial.println( 0.1 + 0.1 + 0.1 + 0.1, 16);
+  Serial.println( 0.1 + 0.1 + 0.1 + 0.1 + 0.1, 16);
+  Serial.println( 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1, 16);
+  Serial.println( 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1, 16);
+  Serial.println( 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1+ 0.1, 16);
+}
+</script>
+<p>Run the code and mail your conclusions.</p>
+  <answer buttontext="Mail the observations and conclusions"></answer>
+</section>
+
+<section class="assignment">
+<h3 class="assignment questions">11.5 Experiments with datatypes 3</h3>  
+<p>Try the same thing in javascript: how many times do you have to add 0.1 to itself to get a similar effect?</p>
+  <answer buttontext="Mail the observations"></answer>
+</section>
+
+<section class="assignment">
+<h3 class="assignment questions">11.6 Hidden datatypes in Javascript</h3>  
+<script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<input type="text" id="inputValue">
+<button id="doubleIt!">calculate Double</button>
+
+<script type="text/javascript">
+  function alertDouble(){
+    var value = document.getElementById("inputValue").value
+    alert(value + value)
+  }
+  document.getElementById("doubleIt").onclick = alertDouble
+&lt;/script>
+</body>
+</html>
+</script>  
+<p>Run the code and mail your observations</p>
+<answer buttontext="Mail the observations"></answer>
+</section>
+
+
+<section class="assignment">
+<h3 class="assignment questions">11.7 Hidden datatypes in Javascript 2</h3>  
+
+<p>The problem can be fixed using the Number() expression. Try this. </p>
+<answer buttontext="Mail your code"></answer>
+</section>
+
+<section class="assignment">
+<h3 class="assignment questions">11.8 Hidden datatypes in Javascript 3</h3>  
+<script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<input type="text" id="inputValue">
+<button id="squareIt">calculate square</button>
+
+<script type="text/javascript">
+  function alertSquare(){
+    var value = document.getElementById("inputValue").value
+    alert(value + value)
+  }
+  document.getElementById("squareIt").onclick = alertSquare
+&lt;/script>
+</body>
+</html>
+</script> 
+<p>Return to the code of 11.6. What happens when you enter the string "Three".</p>
+
+<answer buttontext="Mail your observations"></answer>
+</section>
  
+<section class="assignment">
+<h3 class="assignment questions">11.9 Hidden datatypes in Javascript 4</h3>  
+ <p>Sometimes you want to check whether a variable contains a number. One way to do this is using the <code>isNaN()</code> function. This function returns true if the value entered is not a number (NaN stands for Not A Number). This can be a bit confusing as the name has a negative in it. If you want to know if something is a number things get really confusing as you <code>!isNaN(45)</code> will return true. </p>
+<p>Return to the code of 11.8. Use the <code>isNaN()</code> function in an if statement to only alert the square if the value is a number.</p>
+
+<answer buttontext="Mail your code"></answer>
+</section>
+ 
+
+
 </main>  
 <aside id="sidebar" include="../agenda.html" reject=".secret"></aside>
 <script src='../js/chapters.js'></script>
