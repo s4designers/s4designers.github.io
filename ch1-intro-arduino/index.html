@@ -184,21 +184,65 @@
     </ol>
   </section>
 
-  <section class="assignment">
-      <h3 class="assignment questions">1.9 Calculations</h3>
-      <pre>
-      Serial.println(analogRead(POTENTIOMETER) * 4 + 100);
-      </pre>
-      <p>Given the following code, describe the order in which parts of the command are executed by the arduino</p>
 
-<todo>Meer opdrachten</todo>
 
    <h2>The S4d Breadboard</h2>
 
-  <youtube ytid="frNjjdKZGvk"/></youtube> 
+  <youtube ytid="jKQ4R7ype4g"/></youtube> 
+
+  <div class="attention">
+    <p>Although the prototype in the video did have one, the breadboards we use during the course <b>do not have a light sensor</b>.</p>
+    <p>It turns out we did not need them, and the ones we ordered we of low quality. Sorry for that.</p>
+  </div>
+
+  <h3 class="assignment questions">1.7 first blink</h3>
+  <p>Let's create a variant of the blink program that works on your Arduino that uses all four lights.</p>
+  <p>The 4 LEDs are connected to pins <b>5, 9, 10, and 11</b>.</p>
+  <section class="assignment">
+    <p><b>1.7.a) Write a program that turns every LED on...</b></p>
+    <p>...one after the other, with a delay between each step. After all 4 LEDs have been turned on, they are all turned off at once:<br></p>
+    <p><img src="blinks1.gif"></p>
+    <answer buttontext="Mail your program"></answer>
+  </section>
+  <section class="assignment">
+    <p><b>1.7.b) Which color belongs to which pinnumber?</b></p>
+    <ol type=a>
+      <li>The yellow LED has pin number:</li>
+      <li>The green LED has pin number:</li>
+      <li>The red LED has pin number:</li>
+      <li>The blue LED has pin number:</li>
+    </ol>
+    <answer buttontext="Mail your answers"></answer>
+  </section>
+  <section class="assignment">
+    <p><b>1.7.b) Using the potentiometer.</b></p>
+    <p>Write a program that turns every LED <i>on and off</i>, one after the other.<br>The time that a light is turned-on depends on the <i>potentiometer</i>, the knob you can turn.</p>
+    <p><img src="blinks2.gif"></p>
+    <p>The portentiometer is connected to <b>analog pin number 2</b></p>
+    <answer buttontext="Mail your program"></answer>
+  </section>
+
+
+
+
+  <section class="assignment">
+      <h3 class="assignment questions">1.8 Calculations</h3>
+      <pre>
+      Serial.println( 100  +  analogRead(1 + 1)  *  4 );
+      ------1-------      -2- -----3----  -4-   -5- 
+
+      </pre>
+      <p>Below the line of code, we've given numbers to five actions the Arduino has to perform to run the entire command. Describe the order in which parts of the command are executed by the arduino</p>
+  </section>
+
+
+  <h2>the breadboard header file and the tester program</h2>
+
+  
+
 
     <section class="assignment">
-      <h3 class="assignment questions">1.4 Calculations with magnets</h3>
+      <h3 class="assignment questions">1.9 Calculations with magnets</h3>
       <script type="text/plain" class="language-arduino">
 #include "s4d_breadboard.h"
 
@@ -215,12 +259,12 @@ void loop() {
 }
       </script>
 
-      <p>For the scientology church, we are building their new so called "<a href="https://en.wikipedia.org/wiki/E-meter" target="_blank">E-meter</a>" using our arduino's magnet sensor. </p>
+      <p>For the Scientology church, we are building their new so called "<a href="https://en.wikipedia.org/wiki/E-meter" target="_blank">E-meter</a>" using our Arduino's magnet sensor. </p>
       <ul>
         <li>Make sure to include your s4d_breadboard.h file in your project.</li>
-        <li>Experiment with the magnetsensor. What happens to the value when the magnet is near? What happens when the magnet is far?<note>Deze eerste twee bullits een andere opdracht laten zijn.</note></li>
-        <li>Modify the provided code so the light blinks a bit faster when the magnet is near.</li>
-        <li>Can you think of a trick (calculation) that would amplify the difference <note>"amplify difference" lijkt me niet begrijpelijk genoeg.</note>between the sensor being close and far?<note>Try to implement your trick. If that fails, just describe your idea in comments in the program.</note></li>
+        <li>Run the program above. Ignore the blinking LED for now. Experiment with the magnetsensor. What happens to the value when the magnet is near the sensor? What happens when the magnet is far away?</li>
+        <li>Modify the provided code so the light blinks faster (or slower) when the magnet is near.</li>
+        <li>Can you think of a trick (calculation) that would amplify the effect? I.e. can you increase the speedup or slowdown when the magnet gets close? (It is OK if the blink time with no magnet gets larger).<br> Try to implement your trick. If that fails, just describe your idea in comments in the program.</note></li>
       </ul>
       <answer buttontext="Mail Your Code"></answer>
   </section>
