@@ -16,42 +16,43 @@
 <h3 class="assignment questions">11.1 Rockets</h3>  
 <p>The following program is used inside of a rocket.</p>
 <script type="text/plain" class="language-arduino">
-int altitude = 0;
-int acceleration = 8;
-int speedMps = 0;
-void setup() {
-  Serial.begin(9600);
-  speedMps = 1;
-}
-
-void burnExtraTakeOffFuel(){
-  Serial.println("Burning an explosive amount of fuel");
-}
-
-void compensateWithSideThrusters(){
-  Serial.println("compensating vibrations using side thrusters");
-}
-
-void showStatus() {
-  Serial.print("altitude:" + String(altitude));
-  Serial.print(", ");
-  Serial.println("speed:" + String(speedMps));
-}
-
-void loop() {
-  delay(1000);
-  speedMps = speedMps * acceleration;
-  altitude += speedMps;
-  showStatus();
-  if(altitude < 100){
-    burnExtraTakeOffFuel();
-  }
-  
-  if(altitude > 40000){
-    compensateWithSideThrusters();
-  }
-}
-
+	int altitude = 0;
+	int acceleration = 3;
+	int speedMps = 0;
+	void setup() {
+		Serial.begin(9600);
+		speedMps = 1;
+	}
+	
+	void burnExtraTakeOffFuel(){
+		Serial.println("Burning an explosive amount of fuel");
+	}
+	
+	void compensateWithSideThrusters(){
+		Serial.println("compensating vibrations using side thrusters");
+	}
+	
+	void showStatus() {
+		Serial.print("altitude:" + String(altitude));
+		Serial.print(", ");
+		Serial.println("speed:" + String(speedMps));
+	}
+	
+	void loop() {
+		delay(1000);
+		speedMps = speedMps * acceleration;
+		altitude += speedMps;
+	
+		showStatus();
+		
+		if(altitude < 100){
+			burnExtraTakeOffFuel();
+		}
+		
+		if(altitude > 40000){
+			compensateWithSideThrusters();
+		}
+	}
 </script>
 <p>Run the program on your arduino. Open the Serial monitor and observe what is going on. Is this what you would expect?</p>
   <answer buttontext="Mail the reasons"></answer>
