@@ -11,10 +11,11 @@
   <h1>Chapter 11: fun with datatypes</h1>
   
   <p>In arduino, it is necessary to specify what sort of value a variable is expected to hold. So far we used integers and Strings. This chapter shows some other possibilities and shows a specific type of bug called "overflow" which can cause unexpected behaviour in your program.</p>
+    <youtube ytid="PK_yguLapgA"></youtube>
 
 <section class="assignment">
-<h3 class="assignment questions">11.1 Rockets</h3>  
-<p>The following program is used inside of a rocket.</p>
+<h3 class="assignment questions">11.1 Ariane 5 Rocket</h3>  
+<p>A program similar to the one below was used inside of the Ariane 5 rocket.</p>
 <script type="text/plain" class="language-arduino">
 	int altitude = 0;
 	int acceleration = 3;
@@ -59,7 +60,7 @@
 </section>
 
 <section class="assignment">
-<h3 class="assignment questions">11.1b Arianne 5</h3>  
+<h3 class="assignment questions">11.1b 11.1 Ariane 5 Rocket</h3>  
 <p>In many languages, including arduino, when you declare a variable, you need to specify what sort of value you expect to use in this variable. This is called a datatype</p>
 
 <h5>Some datatypes are:</h5>
@@ -98,7 +99,7 @@
       <td>Note the capital letter in "String"</td>
   	</tr>
   </table>
-  <p>In the code above, an <code>int</code> was used to describe a value that could potentially grow above 32767. This caused our problem. A similar problem caused the crash of the <a href="https://www.bbc.com/future/article/20150505-the-numbers-that-lead-to-disaster" >Arianne 5 rocket in 1996.</a> </p>
+  <p>In the code above, an <code>int</code> was used to describe a value that could potentially grow above 32767. This caused our problem. A similar problem caused the crash of the <a href="https://www.bbc.com/future/article/20150505-the-numbers-that-lead-to-disaster" >Ariane 5 rocket back in 1996.</a> </p>
 <script type="text/plain" class="language-arduino">
 int carPrice = 32760;
 void setup() {
@@ -155,7 +156,7 @@ void loop() {
     Serial.print("altitude:" + String(altitude));
   </script>
   <p>The line above is taken from the script in 11.1</p>
-  <p>In it, a trick is used to concatonate a String and an integer. By using the String() "function", the altitude integer is converted into a string, which can be concatonated to another String using the "+" operator. Changing the type of a value from an int to a String with an expression is usually called "casting an integer to String"  (Note: String() isn't usually called a function but a constructor, but that is out of scope of this course).</p>
+  <p>In it, a trick is used to concatonate a String and an integer. By using the <code>String()</code> "function", the altitude integer is converted into a string, which can be concatonated to another String using the "+" operator. Changing the type of a value from an int to a String with an expression is usually called "casting an integer to String"  <i>(Note: <code>String()</code> isn't usually called a function but a constructor, but that is out of scope of this course)</i>.</p>
   <p>Even concatonating two Strings is not straightforward in Arduino. Why this is needs a lot of explaining, or none at all. For now, just accept this is how it's done.</p>
    <script type="text/plain" class="language-arduino">
 String helloString = "Hello " + "class"; //does not work
@@ -273,22 +274,22 @@ void setup() {
 <script type="text/javascript">
   function alertSquare(){
     var value = document.getElementById("inputValue").value
-    alert(value + value)
+    alert(value * value)
   }
   document.getElementById("squareIt").onclick = alertSquare
 &lt;/script>
 </body>
 </html>
 </script> 
-<p>Return to the code of 11.6. What happens when you enter the string "Three".</p>
+<p>On the page above, try what happens when you enter the string "Three". Why does this happen?</p>
 
 <answer buttontext="Mail your observations"></answer>
 </section>
  
 <section class="assignment">
 <h3 class="assignment questions">11.9 Hidden datatypes in Javascript 4</h3>  
- <p>Sometimes you want to check whether a variable contains a number. One way to do this is using the <code>isNaN()</code> function. This function returns true if the value entered is not a number (NaN stands for Not A Number). This can be a bit confusing as the name has a negative in it. If you want to know if something is a number things get really confusing as you <code>!isNaN(45)</code> will return true. </p>
-<p>Return to the code of 11.8. Use the <code>isNaN()</code> function in an if statement to only alert the square if the value is a number.</p>
+ <p>Sometimes you want to check whether a variable contains a number. One way to do this is using the <code>isNaN()</code> function. This function returns true if the value entered is not a number (NaN stands for Not A Number). This can be a bit confusing as the name has a negative in it. If you want to know if something is a number things get really confusing as <code>!isNaN(45)</code> will return true. </p>
+<p>Return to the code of 11.8. Use the <code>isNaN()</code> function in combination with an if statement to only alert the square if the value entered is a number.</p>
 
 <answer buttontext="Mail your code"></answer>
 </section>
