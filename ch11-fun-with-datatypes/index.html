@@ -281,7 +281,7 @@ void setup() {
 </body>
 </html>
 </script> 
-<p>On the page above, try what happens when you enter the string "Three". Why does this happen?</p>
+<p>On the page above, try what happens when you enter the string "Three". Why does this happen? Can this be fixed this using <code>Number()</code>?</p>
 
 <answer buttontext="Mail your observations"></answer>
 </section>
@@ -289,8 +289,57 @@ void setup() {
 <section class="assignment">
 <h3 class="assignment questions">11.9 Hidden datatypes in Javascript 4</h3>  
  <p>Sometimes you want to check whether a variable contains a number. One way to do this is using the <code>isNaN()</code> function. This function returns true if the value entered is not a number (NaN stands for Not A Number). This can be a bit confusing as the name has a negative in it. If you want to know if something is a number things get really confusing as <code>!isNaN(45)</code> will return true. </p>
-<p>Return to the code of 11.8. Use the <code>isNaN()</code> function in combination with an if statement to only alert the square if the value entered is a number.</p>
+<script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<div>Street: <input id="streetField" type="text"></div><br>
+<div>Number: <input id="houseNumberField" type="text"></div><br>
+<div>PostalCode: <input id="postalCodeField" type="text"></div><br>
+<button id="submitButton">Validate</button>
 
+<script type="text/javascript">
+function isPostalCode(){
+  var input = document.getElementById("postalCodeField").value;
+  var inputNoSpaces = input.replace(" ", "");
+
+  if(inputNoSpaces.length != 6){
+    return false;
+  }              
+    var firstFourCharacters = inputNoSpaces.substring(0, 4);
+  var firstFourNumbers = Number(firstFourCharacters); 
+    var lastTwoDigits = input.substring(4, 6);
+  
+  if(isNaN(firstFourNumbers)){
+    return false;
+  }
+  if(!isNaN(Number(lastTwoDigits))){
+    return false;
+  }
+  console.log(inputNoSpaces)   
+  return true;
+}
+
+function submitForm(){
+  if(!isPostalCode()){
+    document.getElementById("postalCodeField").style.border = "2px solid red"
+  }else{
+    document.getElementById("postalCodeField").style.border = "1px solid green"
+  }
+}
+
+document.getElementById("submitButton").onclick = submitForm
+
+&tl;/script>
+
+
+</body>
+</html>
+</script>
+<p>Similar to the postalcode validation in the code above, upon submitting the form, make sure the page gives an error when the house number field contains text.</p>  <p><span class="inline-bonus">Bonus</span>: Also make sure the street field does not end with a number.</p>
 <answer buttontext="Mail your code"></answer>
 </section>
  
