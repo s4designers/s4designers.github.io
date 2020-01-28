@@ -10,6 +10,197 @@
 
   <h1>Chapter 8:  more about functions: <i>local variables</i> and <i>side effects</i></h1>
 
+  <section class="assignment">
+      <h3 class="assignment questions">8.1 Arduino Sum</h3>
+      <p> Make an arduino function that calculates the sum of three values. The function should be called like this:</p>
+      <script type="text/plain" class="language-arduino">
+void setup() {
+  Serial.begin(9600);
+  Serial.println(sum(4,3,4)); // outputs 11
+  Serial.println(sum(12,8,3)); // outputs 23
+  Serial.println(sum(41,13,20)); // outputs 74
+}
+      </script>
+      <answer buttontext="Mail the code"></answer>
+  </section>
+
+  <section class="assignment">
+      <h3 class="assignment questions">8.2 Arduino Calibration</h3>
+      <p> Make an arduino function stores reads a value from the magnetsensor and stores it in a global variable, call this function in the setup.</p>
+      <answer buttontext="Mail the code"></answer>
+  </section>
+  <section class="assignment">
+      <h3 class="assignment questions">8.3 Arduino returns</h3>
+      <p> Make an arduino function that returns true if the magnet is near, and returns false if the magnet is far away. Use the value you set in with the function in 8.2.  Call the function in an if-statement that turns on a lightbulb if the magnet is far, and turns it off when the magnet is near.</p>
+      <answer buttontext="Mail the code"></answer>
+  </section>
+  <section class="assignment">
+      <h3 class="assignment questions">8.4 Side effects</h3>
+      <p> Which functions in the previous assignments have a side-effect, and which have a return value. </p>
+      <answer buttontext="Mail the code"></answer>
+  </section>
+
+
+<section class="assignment">
+<h3 class="assignment questions">8.5</h3>  
+ <script type="text/plain" class="language-arduino">
+#include "s4d_breadboard.h"
+
+void setup() {
+  initializeBreadboard();
+}
+
+int turnLEDsOn() {
+  analogWrite(LED_BLUE, 255);
+  analogWrite(LED_RED, 255);
+  analogWrite(LED_GREEN, 255);
+}
+
+int turnLEDsOff() {
+  analogWrite(LED_RED, 0);
+  analogWrite(LED_GREEN, 0);
+  analogWrite(LED_BLUE, 0);
+}
+
+// duration of pulses is dependend on the position of the potentiometer.
+// minimum duration is 50ms.
+int shortOnDuration() {
+  return analogRead(POTENTIOMETER) + 50;
+}
+
+// duration of the pause between two pulses is halve the duration of the short pulse.
+int shortOffDuration() {
+  return shortOnDuration() / 2;
+}
+
+// longOnDuration is three times the shortOnDuration
+int longOnDuration() {
+  return 3 * shortOnDuration();
+}
+
+// longOffDuration is halve the longOnDuration
+int longOffDuration() {
+  return longOnDuration() / 2;
+}
+
+void loop() {
+  int pauseDuration = 2000;
+
+  turnLEDsOn();
+  delay( shortOnDuration() );
+  turnLEDsOff();
+  delay( shortOffDuration() );
+
+  turnLEDsOn();
+  delay( shortOnDuration() );
+  turnLEDsOff();
+  delay( shortOffDuration() );
+
+  turnLEDsOn();
+  delay( shortOnDuration() );
+  turnLEDsOff();
+  delay( shortOffDuration() );
+//------------------------------
+  turnLEDsOn();
+  delay( longOnDuration() );
+  turnLEDsOff();
+  delay( longOffDuration() );
+
+  turnLEDsOn();
+  delay( longOnDuration() );
+  turnLEDsOff();
+  delay( longOffDuration() );
+
+  turnLEDsOn();
+  delay( longOnDuration() );
+  turnLEDsOff();
+  delay( longOffDuration() );
+//------------------------------
+  turnLEDsOn();
+  delay( shortOnDuration() );
+  turnLEDsOff();
+  delay( shortOffDuration() );
+
+  turnLEDsOn();
+  delay( shortOnDuration() );
+  turnLEDsOff();
+  delay( shortOffDuration() );
+
+  turnLEDsOn();
+  delay( shortOnDuration() );
+  turnLEDsOff();
+  delay( shortOffDuration() );
+//------------------------------
+  delay( pauseDuration );
+}
+</script>
+
+<ol type="a">
+  <li>What sort of function is longOnDuration()? Does it have a return value, or a side-effect?</li>
+  <li>What is the return type of longOnDuration()?</li>
+  <li>What is the value coming from longOnDuration() being used for?</li>
+  <li>What is the value coming from longOnDuration() dependent on? </li>
+</ol>
+<answer buttontext="Mail the answers"></answer>
+</section>
+  
+<section class="assignment">
+<h3 class="assignment questions">8.6</h3>  
+<p>The pause between signals is now dependant on a set value. (see lines 41 and 88)</p>
+<p>Make a function called pause() which returns a a value that is the sum of the shortOnDuration() and the longOnDuration() </p>
+<answer buttontext="Mail the code"></answer>
+</section>
+
+<section class="assignment">
+<h3 class="assignment questions">8.7</h3>  
+<p>The script contains unnecessary duplicate code. Change the loop to the following and add the corresponding functions. The result should function the same way the old script did.</p>
+ <script type="text/plain" class="language-arduino">
+void loop() {
+   threeShortPulses();
+   threeLongPulses();
+   threeShortPulses();
+   delay( pause() );
+}
+  </script>
+<answer buttontext="Mail the code"></answer>
+</section>
+
+<section class="assignment">
+<h3 class="assignment questions">8.8</h3>  
+<p>The time the LED is off after a pulse, is always half the duration of the pulse. The shortOffDuration() and the longOffDuration() functions are very similar in nature. Make a new function called "offDuration" which takes the duration of the pulse as a parameter, and returns that value divided by two. </p>
+ <script type="text/plain" class="language-arduino">
+
+   offDuration(300); // output: 150
+   offDuration(shortOnDuration()); // output: half the duration of the short pulse
+   offDuration(longOnDuration()); // output: half the duration of the long pulse
+
+  </script>
+  <p>Throw away the two unnecessary functions and replace the calls to them to calls to your new function. The result should function as follows:</p>
+<answer buttontext="Mail the code"></answer>
+</section>
+
+<section class="assignment">
+<h3 class="assignment questions">8.9</h3>  
+<p>Make a new function called threePulses() to replace the threeShortPulses() and the threeLongPulses() functions. This new function should take the pulse duration as a parameter and output three pulses of its length. When you are done, your loop looks like this: </p>
+ <script type="text/plain" class="language-arduino">
+
+   void loop() {
+    threePulses( shortOnDuration() );
+    threePulses( longOnDuration() );
+    threePulses( shortOnDuration() );
+    delay( pause() );
+}
+
+  </script>
+ 
+<answer buttontext="Mail the code"></answer>
+</section>
+
+<section class="assignment">
+<h3 class="assignment questions">8.10</h3>  
+<p>Try to summarize what you learned about functions using the output of other functions.</p>
+ 
+<answer buttontext="Mail the code"></answer>
 </main>  
 <aside id="sidebar" include="../agenda.html" reject=".secret"></aside>
 <script src='../js/chapters.js'></script>
