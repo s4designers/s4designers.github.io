@@ -24,18 +24,19 @@
   <youtube ytid="p9X0L_koj7U"></youtube>
 
   <section class="assignment">
-    <h3 class="assignment summary">1.1 Create a short summary</h3>
+    <h3 class="assignment summary">1.1 create a short summary</h3>
     <p>Make a list with <i>3 to 5 bullitpoints</i>, in which you describe <b>the most important parts on the Arduino</b> which were explained in the video.</p>
     <answer part="a" buttontext="Mail your summary"></answer>
   </section>
 
-      <h3 class="assignment questions">1.2 Things we could explain</h3>
+  <section class="assignment">
+      <h3 class="assignment questions">1.2 things we could explain</h3>
       <p>Refer to the notes you took when watching the video. <b>Which words would you like us to explain during class?</b></p>
       <answer noslider buttontext="Mail your word list"></answer>
   </section>
 
 <section class="assignment">
-  <h3>1.3 What's that gizmo do?</h3>
+  <h3>1.3 what's that gizmo do?</h3>
   Here's a list of components on the Arduino board. Use these components as answers to the series of questions below:
   <ul style="column-count: 2;">
     <li>USB port</li>
@@ -54,7 +55,7 @@
   <answer noslider buttontext="Mail your answers">Send in the answers to all four questions:</answer>
 </section>
 
-<h2>Why learn Arduino?</h2>
+<h2>why learn Arduino?</h2>
 <p>The Arduino is one of the most <i>under</i>powered computers you can buy today. Its processor is slow, and it has very little memory (2Kb!). And yet, it is quite popular with both nerds and artists. This is because of three reasons:</p>
 <ul>
   <li><b>It is cheap.</b> At the time of writing, an 'official' Arduino costs a little over 20 euros. Chinese clones can be found for about 5 dollars, and such clones are not flakey fakes: the hardware design of the Arduino is public, and free for everyone to use, and so are the software tools to program Arduino and its clones.</li>
@@ -69,7 +70,7 @@
 <p><i>This video is for creative tinkerers who don't consider themselves artists:</i></p>
 <youtube ytid="eJg3yuAAawA"></youtube>
 
-<h2>Programming the Arduino</h2>
+<h2>programming the Arduino</h2>
 
   <p>The following three video's explain the basics of programming the arduino. Watch them and make the assignments in the order they appear.</p>
     
@@ -77,7 +78,7 @@
    <br>
 
    <section class="assignment">
-    <h3 class="assignment questions">1.4 Your first Arduino program</h3>
+    <h3 class="assignment questions">1.4 your first Arduino program</h3>
     <p>A poet has created a witty poem.</p>
     <p>Write an Arduino program that prints the following poem to the Serial Monitor:</p>
 
@@ -89,9 +90,22 @@
 
     <p>(It is also OK to use a different multi-line poem or joke)<br>
     Use five print commands, and make sure that the poem is <b>only printed once</b>.</p>
+
+    <div class="instruction">
+      <p>In the this exercise, and many, many exercises after this one, you have to send in the code you created.</p>
+      <p>Please follow these two instructions:</p>
+      <ul>
+        <li><b>Copy-paste the program into the mail</b> &mdash; don't add it to the mail as an attachment or a link to some site. </li>
+        <li>Send in <b>the entire code</b> &mdash; not just the part where you've made your changes. </li>
+        <li>Send in <b>an unmodified copy</b> of the program. &mdash; Some programs, such as MS Word or (sometimes) Outlook, try to make text look better by replacing straight qoutes (i.e. ' and ") by curled quoute characters (i.e. ‘’ and “”). Prevent this from happening, because programming tools really don't like curly quotes.</li>
+      </ul>
+      In class, your teacher will select some of the programs that have been sent in, en try them live in class and then discuss them. This works better if it isn't necessary to save attachments, add missing pieces of code or restore quotes in class.
+    </div>
+  
+    <answer buttontext="mail your program"></answer>
   </section>  
 
-  <h3 class="assignment questions">1.5 Extending your Arduino program</h3>
+  <h3 class="assignment questions">1.5 extending your Arduino program</h3>
   <p>The audience finds the poem hilarious, and starts laughing out loud.</p>
   <section class="assignment">
     <p><b>1.5.a) Use the program you just made, and extend it with the following behaviour:</b></p>
@@ -101,6 +115,7 @@
       <li>After hearing the poem/joke, the audience needs some time to think about it. Have the program pause between the poem and the laughter for 1.5 seconds.</li>
     </ul>
     <p><span class="inline-note">TIP:</span>Test your program after writing the code for each bullit in the list.</p>
+    <answer buttontext="mail your entire program"></answer>
   </section>
   <section class="assignment">
     <p><b>1.5.b) Experiment</b></p>
@@ -116,8 +131,14 @@
       <li>What is the difference in behaviour between <i>Serial.println</i> and <i>Serial.print</i>?</li>
       <li>The "ln" in "Serial.println" is an abbreviation. What do you think it stands for? Give your best guess.</li>
     </ol>
+    <answer noslider buttontext="mail your answers"></answer>
   </section>
-
+  <section class="assignment">
+    <p><b>1.5.c) ha ha ha ha ha ha ha</b></p>
+    <p>Make the program print all "ha"s on the same line.</p>
+    <p>Instead of a delay of 200ms after each "ha ha", use a 100ms delay after every single "ha".</p>
+    <answer noslider buttontext="mail your new program"></answer>
+  </section>
   <p>&nbsp;</p>
 
   <youtube ytid="FCzx0USCvdc"/></youtube>
@@ -176,17 +197,18 @@
     <p>But please, write code like this :-). It doesn't confuse the compiler, but it will confuse your teachers, your teammates, and even you yourself (after a few days).</p>
   </div>
   <section class="assignment">
-    <h3 class="assignment questions">1.6 Exceptions to rules</h3>
+    <h3 class="assignment questions">1.6 exceptions to rules</h3>
     <p>In programming, like life, rules tend to have exceptions.</p>
     <ol type=a>
       <li>The rule about <b>spaces</b>, dicussed above, has an exception. There actually is a situation where it matters if you have one, or two, or more spaces.<br> Can you write a variant of the <code>Serial.println("game over");</code> command where an extra space changes the result of the command?</li>
       <li>Also, the rule that says that newlines can be added where spaces are allowed, has an exception.<br> Look at the multi-line example above. Can you point to a place in the code where replacing a space with a newline would make the program incorrect?<br> <span class="inline-note">TIP:</span>Test your solution with the Arduino IDE by trying to cause red error messages to appear (when clicking the Upload button) just because you added a newline.</li>
     </ol>
+    <answer buttontext="mail your answers"></answer>
   </section>
 
 
 
-   <h2>The S4d Breadboard</h2>
+   <h2>the S4D breadboard</h2>
 
   <youtube ytid="jKQ4R7ype4g"/></youtube> 
 
@@ -203,6 +225,7 @@
   <h3>1.7 test your breadboard</h3>
   <p>Test your breadboard with the test program.</p>
   <p>If any component is not functioning correctly, feel if it has come a bit loose. If so, press it a bit more tightly into the breadboard, and see if that helps. Do not use a lot of force!</p>
+  <p><i>No need to mail the results from the test.</i></p>
 
   <h3 class="assignment questions">1.8 first blink</h3>
   <p>Let's create a variant of the blink program that works on your Arduino that uses all four lights.</p>
@@ -212,7 +235,7 @@
     <p>...one after the other, with a delay between each step. After all 4 LEDs have been turned on, they are all turned off at once:<br></p>
     <p><img src="blinks1.gif"></p>
     <p>Do not forget to use <code>pinMode()</code> commands in the setup!</p>
-    <answer buttontext="Mail your program"></answer>
+    <answer buttontext="mail your program"></answer>
   </section>
   <section class="assignment">
     <p><b>1.8.b) Which color belongs to which pinnumber?</b></p>
@@ -222,25 +245,26 @@
       <li>The red LED has pin number:</li>
       <li>The blue LED has pin number:</li>
     </ol>
-    <answer buttontext="Mail your answers"></answer>
+    <answer buttontext="mail your answers"></answer>
   </section>
   <section class="assignment">
     <p><b>1.8.c) Using the potentiometer.</b></p>
     <p>Write a program that turns every LED <i>on and off</i>, one after the other.<br>The time that a light is turned-on depends on the <i>potentiometer</i>, the knob you can turn.</p>
     <p><img src="blinks2.gif"></p>
     <p>The portentiometer is connected to <b>analog pin number 2</b></p>
-    <answer buttontext="Mail your program"></answer>
+    <answer buttontext="mail the complete code of the new version of your program"></answer>
   </section>
 
   <section class="assignment">
-      <h3 class="assignment questions">1.9 one command, several things to do</h3>
+      <h3 class="assignment questions">1.9 one command, so much to do</h3>
       <pre>
          Serial.println( 100  +  analogRead(1 + 1)  *  4 );
       // ------1-------      -2- -----3----  -4-   -5- 
 
       </pre>
       <p>Below the line of code, we've given numbers to five actions the Arduino has to perform to run the entire command. Describe the order in which parts of the command are executed by the arduino.</p>
-  </section>
+      <answer buttontext="mail the action sequence using the numbers"></answer>
+    </section>
 
 
   <h2>the breadboard header file</h2>
@@ -250,7 +274,7 @@
   <youtube ytid="JYx9gEyaXaQ"></youtube>
 
   <section class="assignment">
-    <h3 class="assignment questions">1.9 using the header file</h3>
+    <h3 class="assignment questions">1.10 using the header file</h3>
     <ul>
       <li>Take the blinking program you wrote for exercise 1.8.</li>
       <li>Add the breadboard header file.</li>
@@ -263,11 +287,12 @@
         </ul>
       </li>
     </ul>
+    <answer buttontext="mail the improved program">Send in all the code in the .ino file, but don't send in the header file:</answer>
   </section>
 
 
     <section class="assignment">
-      <h3 class="assignment questions">1.10 Calculations with magnets</h3>
+      <h3 class="assignment questions">1.11 calculations with magnets</h3>
       <script type="text/plain" class="language-arduino">
 #include "s4d_breadboard.h"
 
@@ -291,7 +316,7 @@ void loop() {
         <li>Modify the provided code so the light blinks faster or slower when the magnet is near.</li>
         <li>Can you think of a trick (calculation) that would amplify the effect? I.e. can you increase the speedup or slowdown when the magnet gets close? (It is OK if the blink time with no magnet gets larger).<br> Try to implement your trick. If that fails, just describe your idea in comments in the program.</li>
       </ul>
-      <answer buttontext="Mail Your Code"></answer>
+      <answer buttontext="mail all of your code, but not the header file"></answer>
   </section>
 
 </main>  
