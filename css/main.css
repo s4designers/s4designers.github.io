@@ -145,6 +145,14 @@ td {
   position: relative;
 }
 
+.attention > h3:nth-child(1), 
+.theory > h3:nth-child(1),
+.instruction > h3:nth-child(1),
+.hint-content > h3:nth-child(1) {
+  margin-top: 1em;
+}
+
+
 .attention::before, 
 .theory::before, 
 .instruction::before,
