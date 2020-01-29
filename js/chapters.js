@@ -315,6 +315,11 @@ function createDownloadButtons() {
                     .split("/")
                     .map( (c)=>encodeURIComponent(c) )
                     .join("/")
+    // correct for possible URIencoding of protocol colon                
+    const match = downloadUrl.match( /^(https?)%3A(\/\/.+)/i )
+    if(match) {
+      downloadUrl = match[1] + ":" + match[2]
+    }
 
     const replacementHtml = `
       <button id="${downloadButtonId}">
