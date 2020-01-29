@@ -9,14 +9,19 @@
  <main>
 
   <h1>Chapter 4: calculations and storing results in <i>variables</i></h1>
+  <div class="attention">
+      <p>Don't forget to have a texteditor or a physical notepad ready. <b>Write down the words you did not understand.</b></p>
+  </div>
+
+  <todo>video 8a in english</todo>
 
    <section class="assignment">
-      <h3 class="assignment questions">4.1 Things we could explain</h3>
+      <h3 class="assignment questions">4.1 things we could explain</h3>
       <p>Refer to the notes you took when watching the video. <b>Which words or concepts would you like us to explain during class?</b></p>
       <answer noslider buttontext="Mail your word list"></answer>
   </section>
-   <section class="assignment">
-      <h3 class="assignment questions">4.2 Lingo</h3>
+      <h3 class="assignment questions">4.2 lingo</h3>
+      <p>Here's a code snippet that uses variables:</p>
       <script type="text/plain" class="language-javascript">
         var pasta = "Spagetti"
         var sauce = "Bolognese"
@@ -24,60 +29,93 @@
         cheese = "Parmesan"
         sauce = "Carbonara"
       </script>
-      <p>In the code above, what are the:</p>
-      <ul>
-        <li>Variabel assignments</li>
-        <li>Variabel declarations</li>
-        <li>Values of the variables (at each stage in the script)</li>
-        <li>Names of the variables</li>
-      </ul>
-      <answer noslider buttontext="Mail your explanations"></answer>
-  </section>
+      <section class="assignment">
+        <p><b>4.2.a) In the code above...</b></p>
+        <ol type=a>
+          <li>...which lines have <i>variable assignments</i>?</li>
+          <li>...which lines have <i>variable declarations</i>?</li>
+          <li>...what are the <i>names of the variables</i>?</li>
+        </ol>
+        <answer noslider buttontext="Mail your explanations"></answer>
+      </section>
+      <section class="assignment">
+        <p><b>4.2.b) How do the values change?</b></p>
+        <ul>
+          <li>Copy-paste the above code into a new text file, </li>
+          <li>add a comment at the end of every line,
+          <li>in each comment, write the value of all the variables at that point in the execution of the program.</li>
+        </ul>
+        <answer buttontext="Mail your commented code snippet"></answer>
+      </section>
 <section class="assignment">
-      <h3 class="assignment questions">4.3 An Appropriate Date</h3>
+      <h3 class="assignment questions">4.3 an appropriate date</h3>
       <script type="text/plain" class="language-javascript">
         var ageSteven = 20
         var ageJanice = 30
         var janiceShouldDateAbove = ageJanice / 2 + 7
         var stevenShouldDateBelow = ageSteven - 7 * 2
+        alert( "Janice should date people older than: " + janiceShouldDateAbove )
+        alert( "Steven should date people younger than: " + stevenShouldDateBelow )
 
       </script>
-      <p>According to the <a href="http://www.onehalfplusseven.com/home/about-the-half-your-age-plus-seven-rule" >one half plus seven rule</a>, it is approriate to date some one that is older than your age devided by two, plus seven. In the code, this rule is correctly demonstrated for Janice. </p>
-      <p>Steven likes older women. How old can they be before they break the rule? The formula on line 4 doesn't seem to work. Why is this? Fix it.</p>
-      <answer noslider buttontext="Mail your fix"></answer>
+      <p>According to the <a href="http://www.onehalfplusseven.com/home/about-the-half-your-age-plus-seven-rule" >one half plus seven rule</a>, it is approriate to date someone who is older than your age devided by two, plus seven. In the code, this rule is correctly demonstrated for Janice.</p>
+      <p>Steven likes older women. 
+        <ol type=a>
+          <li>How old can Steven's dates be before they're breaking the rule?</li>
+          <li>The formula on line 4 doesn't seem to work. Why is this?</li>
+          <li>Try to fix Steven's formula on line 4, and send in the code for the fixed program.</li>
+        </ol>
+      <answer buttontext="Mail your answers and your fix"></answer>
   </section>
-
-  <section class="assignment">
-      <h3 class="assignment questions">4.4 Expressions</h3>
-      <script type="text/plain" class="language-javascript">
-        var brand = "Seat"
-        var type = "Léon"
-        var carName = brand + " " + type
-      </script>
-      <p>Calculations can also be done with strings. The code above concatonates three strings: "Seat", a space character, and "Léon".</p>
-      <p>Calling concatonations calculations is a bit of a stretch. A better term for calculation is <i>expression</i>. An expression in a variable assignment is everything to the right of the "=" sign. In previous examples, we also used expressions between the parentheses of a function call.  An expression always results in a single value that can be stored in a variable, or used with a function call like alert("Seat" + " " + "Léon") or console.log(17/4 + 8)).</p>
-
+  <br><br>
+  <div class="theory">    
+    <h3>expressions</h3>
+    <script type="text/plain" class="language-javascript" data-line=3>
+      var brand = "BMW"
+      var type = "Isetta 300"
+      var carName = brand + " " + type
+      alert( carName )
+    </script>
+    <p><i>(that's <a href="http://lousmcleod.blogspot.com/2017/07/bmw-isetta-300-mini-caravan.html">this supercar</a>)</i></p>
+    <p>Calculations can also be done with pieces of text. Textual data in programs are called <b>strings</b>. The code above creates two variables that have strings ("BMW" and "Isetta 300") as their value. Then, on the highlighted line, it creates a new string by combining those values, with a string containing a single space inbetween. Although the code uses the + symbol, it's not an addition, and we call this operation a <i>string concatenation</i>.</p>
+    <p>It is a bit of a stretch to call string concatenations <i>calculations</i>. The better term any piece of code that creates a new value (text, number or other kinds) is <b><i>expression</i></b>.</p> 
+    <p>An expression in a variable assignment is everything to the right of the "=" sign. In previous examples, we also used expressions between the parentheses of a function call.  An expression always results in a single value that can be stored in a variable, or used as inputs to a function call like <code>alert("BMW" + " " + "Isetta 300")</code> or <code>console.log(17/4 + 8))</code>.</p>
+    
+    <h4>mixing text and numeric expressions</h4>
+    <p>It is very common in programs to have expressions that mix string concatenations with numeric calculations. Here's an example:</p>
+    <script type="text/plain" class="language-javascript">
+      var message = "The movie 'The Irishman' is " + ( 3 * 60 + 29 ) + " minutes long."
+    </script>
+    <p>When you mix text and numeric operations, use parenthesis, i.e. ( and ), to avoid confusion (between + for adding numbers and + for concatenating text).</p>
+    </div>
+      <section class="assignment">
+        <h3>4.4 calculations and strings</h3>
+      <p>Take the following code snippet:</p>
       <script type="text/plain" class="language-javascript">
         var lecturer = "Robert"
         var lecturer2 = "Jille"
         var votesForLecturer1 = 29
         var votesForLecturer2 = 30
       </script>
-      <p>Using the variables above in single expression, create an alert that outputs: "Jille is the favourite lecturer after 59 votes were counted. Robert lost by 1 vote." </p>
+      <p>Add a fifth line that:</p>
+      <ul>
+        <li>Uses the variables above in single expression</li>
+        <li>to create the value "Jille is the favourite lecturer after 59 votes were counted. Robert lost by 1 vote.",</li>
+        <li>and uses result as the input of an alert.</li>
+      </ul>
       
-      <section class="attention">
-      <p>Tip: Good to know: not all quotation marks play well with code. Note the difference between: ' , " and “.  </p>
-
+      <section class="theory">
+      <p>Tip: Not all quotation marks play well with code. Note the difference between: single quotes (') , double quotes (") and curly quotes (“).  </p>
       <script type="text/plain" class="language-javascript">
         var a = "This is a string"
         var b = 'In javascript this is also a correct string. In arduino it means something different'
-        var c = "This is not a string as you cannot mix two different types of string'
-        var d = “This is not a string, it is very easy to accidently introduce these cursive quotationmarks when copying code from word, the web or email.“
+        var c = "This is not a string because it ends with a different quote.'
+        var d = “This is not a string; it is very easy to accidently introduce these curly quotationmarks when copying code from word, the web or email.”
       </script>
     </section> 
-      <answer noslider buttontext="Mail the expression"></answer>
+      <answer noslider buttontext="Mail your expression"></answer>
   </section>
-
+<br><br><br>
 <youtube ytid="9y7-PCjdyj4"></youtube>
 <section class="assignment">
       <h3 class="assignment questions">4.5 Photoshop</h3>
