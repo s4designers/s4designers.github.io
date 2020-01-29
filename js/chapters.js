@@ -115,7 +115,7 @@ function createYoutubePlayers() {
 
 const defaultAnswerInstructionsWithSlider = "First, use the slider to tell us how satisfied you are with your answer. Then use the button to send in your answer.";
 const defaultAnswerInstructionsNoSlider = "Send in your answer using this button:";
-const defaultAnswerButtonText = "Mail your work"
+const defaultAnswerButtonText = "mail your work"
 
 const createAnswerBlocks = function() {
   let allAssignmentSections = $$("section.assignment")
@@ -308,7 +308,7 @@ function createDownloadButtons() {
     }
     if( ! downloadButtonText ) {
       fileName = downloadUrl.split("/").pop()
-      downloadButtonText = "Download " + fileName
+      downloadButtonText = "download " + fileName
     }
 
     downloadUrl = downloadUrl
