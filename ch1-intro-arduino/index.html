@@ -190,22 +190,32 @@
 
   <youtube ytid="jKQ4R7ype4g"/></youtube> 
 
-  <div class="attention">
-    <p>Although the prototype in the video did have one, the breadboards we use during the course <b>do not have a light sensor</b>.</p>
-    <p>It turns out we did not need them, and the ones we ordered we of low quality. Sorry for that.</p>
-  </div>
+    <p>Although the prototype in the video did have one, the breadboards we use during the course <b>do not have a light sensor</b>.
+    It turns out we did not need them, and the ones we ordered we of low quality. Sorry about that.</p>
 
-  <h3 class="assignment questions">1.7 first blink</h3>
+  <p>Before you can start with the exercises using the Arduino breadboard, you need check that every part of the breadboard is connected correctly.</p>
+  
+  <youtube ytid="79HmnUWkw9Q"/></youtube> 
+
+    <p>The breadboard tester can be downloaded from <a href="https://github.com/HANICA/S4D-BreadboardTester">its home page here</a>.
+    You can also use this button: <download buttontext="download Breadboard Tester" href="https://github.com/HANICA/S4D-BreadboardTester/archive/master.zip"></download></p>
+
+  <h3>1.7 test your breadboard</h3>
+  <p>Test your breadboard with the test program.</p>
+  <p>If any component is not functioning correctly, feel if it has come a bit loose. If so, press it a bit more tightly into the breadboard, and see if that helps. Do not use a lot of force!</p>
+
+  <h3 class="assignment questions">1.8 first blink</h3>
   <p>Let's create a variant of the blink program that works on your Arduino that uses all four lights.</p>
   <p>The 4 LEDs are connected to pins <b>5, 9, 10, and 11</b>.</p>
   <section class="assignment">
-    <p><b>1.7.a) Write a program that turns every LED on...</b></p>
+    <p><b>1.8.a) Write a program that turns every LED on...</b></p>
     <p>...one after the other, with a delay between each step. After all 4 LEDs have been turned on, they are all turned off at once:<br></p>
     <p><img src="blinks1.gif"></p>
+    <p>Do not forget to use <code>pinMode()</code> commands in the setup!</p>
     <answer buttontext="Mail your program"></answer>
   </section>
   <section class="assignment">
-    <p><b>1.7.b) Which color belongs to which pinnumber?</b></p>
+    <p><b>1.8.b) Which color belongs to which pinnumber?</b></p>
     <ol type=a>
       <li>The yellow LED has pin number:</li>
       <li>The green LED has pin number:</li>
@@ -215,34 +225,49 @@
     <answer buttontext="Mail your answers"></answer>
   </section>
   <section class="assignment">
-    <p><b>1.7.b) Using the potentiometer.</b></p>
+    <p><b>1.8.c) Using the potentiometer.</b></p>
     <p>Write a program that turns every LED <i>on and off</i>, one after the other.<br>The time that a light is turned-on depends on the <i>potentiometer</i>, the knob you can turn.</p>
     <p><img src="blinks2.gif"></p>
     <p>The portentiometer is connected to <b>analog pin number 2</b></p>
     <answer buttontext="Mail your program"></answer>
   </section>
 
-
-
-
   <section class="assignment">
-      <h3 class="assignment questions">1.8 Calculations</h3>
+      <h3 class="assignment questions">1.9 one command, several things to do</h3>
       <pre>
-      Serial.println( 100  +  analogRead(1 + 1)  *  4 );
-      ------1-------      -2- -----3----  -4-   -5- 
+         Serial.println( 100  +  analogRead(1 + 1)  *  4 );
+      // ------1-------      -2- -----3----  -4-   -5- 
 
       </pre>
-      <p>Below the line of code, we've given numbers to five actions the Arduino has to perform to run the entire command. Describe the order in which parts of the command are executed by the arduino</p>
+      <p>Below the line of code, we've given numbers to five actions the Arduino has to perform to run the entire command. Describe the order in which parts of the command are executed by the arduino.</p>
   </section>
 
 
-  <h2>the breadboard header file and the tester program</h2>
+  <h2>the breadboard header file</h2>
 
-  
+  Some components on the breadboard, like the OLED screen and the volume sensor, require some extra code to create the commands to program them conveniently. This code, along with some other helpful stuff is provided in a <i>header file</i> called '<b>s4d_breadboard.h</b>'. This file is a helper file that you will use in all of the Arduino exercises in this course. 
+
+  <youtube ytid="JYx9gEyaXaQ"></youtube>
+
+  <section class="assignment">
+    <h3 class="assignment questions">1.9 using the header file</h3>
+    <ul>
+      <li>Take the blinking program you wrote for exercise 1.8.</li>
+      <li>Add the breadboard header file.</li>
+      <li>Change your program to use the header file:
+        <ul>
+          <li>add the correct <code>#include</code> line;</li>
+          <li>add the command to initialize the breadboard in the correct spot in your code;</li>
+          <li>remove the initialization commands that aren't needed anymore;</li>
+          <li>replace the pin numbers with the names provided by the helper file.</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
 
 
     <section class="assignment">
-      <h3 class="assignment questions">1.9 Calculations with magnets</h3>
+      <h3 class="assignment questions">1.10 Calculations with magnets</h3>
       <script type="text/plain" class="language-arduino">
 #include "s4d_breadboard.h"
 
@@ -263,8 +288,8 @@ void loop() {
       <ul>
         <li>Make sure to include your s4d_breadboard.h file in your project.</li>
         <li>Run the program above. Ignore the blinking LED for now. Experiment with the magnetsensor. What happens to the value when the magnet is near the sensor? What happens when the magnet is far away?</li>
-        <li>Modify the provided code so the light blinks faster (or slower) when the magnet is near.</li>
-        <li>Can you think of a trick (calculation) that would amplify the effect? I.e. can you increase the speedup or slowdown when the magnet gets close? (It is OK if the blink time with no magnet gets larger).<br> Try to implement your trick. If that fails, just describe your idea in comments in the program.</note></li>
+        <li>Modify the provided code so the light blinks faster or slower when the magnet is near.</li>
+        <li>Can you think of a trick (calculation) that would amplify the effect? I.e. can you increase the speedup or slowdown when the magnet gets close? (It is OK if the blink time with no magnet gets larger).<br> Try to implement your trick. If that fails, just describe your idea in comments in the program.</li>
       </ul>
       <answer buttontext="Mail Your Code"></answer>
   </section>
