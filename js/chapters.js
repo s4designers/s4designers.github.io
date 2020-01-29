@@ -397,17 +397,19 @@ async function addCodeHighlighter() {
 
 function adaptPageTitle() {
   const titleElement = $('h1')
-  let title = titleElement.innerHTML
+  let titleHtml = titleElement.innerHTML
+  let titleText = titleElement.textContent
   const titleRegex = /^\s*(?:Chapter)?\s*(\d+):?\s*(.*)$/i
-  const titleSegments = title.match(titleRegex);
-  if(titleSegments.length == 3){
-    const chapterNum = titleSegments[1]
-    const chapterTitle = titleSegments[2]
+  const htmlSegments = titleHtml.match(titleRegex);
+  if(htmlSegments.length == 3){
+    const textSegments = titleText.match(titleRegex);
+    const chapterNum = textSegments[1]
+    const chapterTitle = htmlSegments[2]
     titleElement.innerHTML = `<div class="chapter-num">
         CHAPTER ${chapterNum}
       </div>
       ${chapterTitle}`
-      $('title').textContent = `S4D ${chapterNum}: ${chapterTitle}`
+      $('title').textContent = `S4D ${textSegments[1]}: ${textSegments[2]}`
   } else {
     $('title').textContent = "S4D: " + $('h1').textContent
   }
