@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="UTF-8"> 
+  <style>
+    img {
+      position: absolute;
+      top:  100px;
+      left: 400px;
+      width: 400px;
+    }
+  </style>	
+</head>
+<body>
+
+  <input id="slider" 
+       type="range" 
+       step="any"    /* this propery is needed to allow slider values with
+                        digits after the decimal point */
+       min="0" 
+       max="1" 
+       value="0" 
+       style="width: 300px;">
+  <hr>
+
+  <img id="firstBird"  src="mousebird.jpg" style="left: 400px">
+  <img id="secondBird" src="crested_crane.jpg" style="left: 800px">
+
+  <script>
+
+    console.log("script started")
+
+    function updateImages(){
+      console.log("updateImages started:", "slider value = ", document.getElementById("slider").valueAsNumber)
+
+      // TODO 1: The first bird should get higher opacity when slider values are high.
+      //         The second bird should get lower opacity when slider values are high.
+
+      // TODO 3: The left of the first bird should move from 400 pixels to 0 pixels 
+      //         when slider values go from 1 to 0.
+      //         The second bird should move from 400 pixels to 800 pixels when slider values
+      //         go from 0 to 1.
+
+      console.log("updateImages ended")
+    }
+
+    document.getElementById("slider").oninput = updateImages
+      
+    // TODO 2: make sure that images are updated when the page is loaded 
+    //         (i.e. before the user has moved the slider).
+
+    console.log("script ended")
+  </script>
+</body>
+</html>

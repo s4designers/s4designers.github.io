@@ -8,7 +8,7 @@
 <body class="line-numbers">
 <main>
 
-  <h1>Chapter 3: interactivity in Javascript with <i>functions</i></h1>
+  <h1>chapter 3: interactivity in Javascript with <i>functions</i></h1>
 
   <p>This chapter introduces two topics: The first is a way to group statements with functions. The other is a way to link those functions to user interaction (like clicking a button).</p>
 
@@ -19,13 +19,13 @@
   <youtube ytid="LIO5asMQctg"></youtube>
 
   <section class="assignment">
-      <h3 class="assignment questions">3.1 Things we could explain</h3>
+      <h3 class="assignment questions">3.1 things we could explain</h3>
       <p>Refer to the notes you took when watching the video. <b>Which words or concepts would you like us to explain during class?</b></p>
-      <answer noslider buttontext="Mail your word list"></answer>
+      <answer noslider buttontext="mail your word list"></answer>
   </section>
 
   <section class="assignment">
-      <h3 class="assignment questions">3.2 Definition</h3>
+      <h3 class="assignment questions">3.2 definition</h3>
       <script type="text/plain" class="language-html" dataline="10">
          <html>
           <head>
@@ -58,14 +58,14 @@
         <li>On which lines, in the code above, are the function definitions?</li>
         <li>On which lines, in the code above, are the function calls?</li>
         <li>How many times is the highlighted line executed by the browser?</li>
-        <li>What does <code>getElementById</code> do?</li>
+        <li>What does <code>document.getElementById</code> do?</li>
         <li>Why is the code only displaying "Hallo" and "Toedels" only once in the browser?</li>
       </ol>
-      <answer noslider buttontext="Mail your answers"></answer>
+      <answer noslider buttontext="mail your answers"></answer>
   </section>
 
   <section class="assignment">
-      <h3 class="assignment questions">3.3 What's in a name?</h3>
+      <h3 class="assignment questions">3.3 what's in a name?</h3>
       <script type="text/plain" class="language-javascript">
           function notANiceName(){
             document.getElementById("birdpic").width = "500"
@@ -75,16 +75,16 @@
       <p>
          What would be a good name for the function in the code above?
       </p>
-      <answer noslider buttontext="Mail the name"></answer>
+      <answer noslider buttontext="mail the name"></answer>
   </section>
-<section class="instruction">
-    <p>The next assignments use the following image:</p> 
-    <p><img height=150 src="giant_heron.jpg"></p>
-    <p>Save it to the same directory as your html file: <download href="giant_heron.jpg"></download></b></p>
-</section>
  <section class="assignment">
-      <h3 class="assignment questions">3.4 What's wrong?</h3>
-      <script type="text/plain" class="language-html">
+      <h3 class="assignment questions">3.4 what's wrong?</h3>
+      <section class="instruction">
+        <p>This assignment uses the following image:</p> 
+        <p><img height=150 src="giant_heron.jpg"></p>
+        <p>Save it to the same directory as your html file: <download href="giant_heron.jpg"></download></b></p>
+    </section>
+          <script type="text/plain" class="language-html">
 <html>
 <head>
   <title>Birds!</title>
@@ -103,11 +103,11 @@
       <p>
          Why, when you test this code, are you still seeing such a large bird? Can you fix this?
       </p>
-      <answer noslider buttontext="Mail the fixed code"></answer>
+      <answer noslider buttontext="mail the fixed code"></answer>
   </section>
   
  <section class="assignment">
-      <h3 class="assignment questions">3.5 Create meaningful functions</h3>
+      <h3 class="assignment questions">3.5 create meaningful functions</h3>
       <script type="text/plain" class="language-html">
           <html>
             <head>
@@ -151,37 +151,69 @@
       <p>
         Create a new version of the HTML file above with the code grouped into functions with meaningful names. How many functions do you create?
       </p>
-      <answer noslider buttontext="Mail your entire file."></answer>
+      <answer noslider buttontext="mail your entire file."></answer>
   </section>
-
+  <h2>functions for interaction</h2>
   <youtube ytid="J5adDzb3eu8"></youtube>
 
-  <h3>3.6 warming up exercises</h3>
-  <section class="assignment">
-    <p>Create an empty HTML file</p>
-  </section>
+  <div class="hint-content">
+    <p>Whenever you have to do a Javascript exercise where we don't give you a complete HTML file, use the following code as a template. Add the code for the exercise in the marked sections for Javascript, HTML, and CSS (if needed).</p>
+    <script type="text/plain" class="language-html">
+      <html>
+        <head>
+          <meta charset='utf-8'>
+          <title>No Title Yet...</title>
+          <style>
 
-  <p>This clip showed how you can make the browser call <em>your</em> javascript functions when the user is interacting with elements on the screen.</p>
+            /* CSS code goes here */
 
-  <h3>3.6 Functions with or without value</h3>
-      <p>The <code>alert()</code> function has a sister called "<code>prompt()</code>". You use it if you want to ask the user a question.</p>
-      <p>Create an empty HTML-file, like this:</p>
-      <script type="text/plain" class="language-html">
-        <html>
-          <head>
-            <meta charset='utf-8'>
-            <title>No Title Yet...</title>
-          </head>
-          <body>
-            
-            <script>
+          </style>
+        </head>
+        <body>
+          
+          <!-- HTML code goes here -->
+          
+          <script>
 
-            &lt;/script>
-          </body>
-        </html>    
-      </script> 
-      <p><em>Many assignments ask you to try or create some Javascript code. You can use this empty HTML example to add Javascript code to the &lt;script> element to try it out.</em></p>
-      <p>Now, using the HTML above, try this in your browser:</p>
+            // Javascript code goes here
+
+          &lt;/script>
+        </body>
+      </html>    
+    </script> 
+    <p>Notice how lines 7, 13 and 17 are all comment lines, but in different languages (CSS, HTML and Javascript), and therefore with different notation. Some concepts, like comments, are common to many programming languages but have different syntax rules&mdash;you write them differently.</p>
+</div>
+
+  <h3>3.6 warming-up exercises</h3>
+    <p>Make a few interactive pages with functions yourself. Create an HTML file (see template above), and add an image to it.</p>
+    <section class="assignment">
+      <h4>3.6.a) clicked</h4>
+      <p>Create a version of the file that runs <code>console.log("Clicked!")</code> when the user clicks the image.</p>
+      <answer noslider buttonText="mail your interactive file">Test your code before sending it in:</answer>
+    </section>
+    <section class="assignment">
+      <h4>3.6.b) inside and out</h4>
+      <p>Create <i>another</i> version of the file that</p>
+      <ul>
+        <li>runs <code>console.log("Mouse in image!")</code> when the user move the mouse inside the image.</li>
+        <li>runs <code>console.log("The mouse has left the image...")</code> when the user move the mouse from inside to outside the image.</li>
+      </ul>
+      <answer noslider buttonText="mail this version too"><i>Always</i> test your code before sending it in:</answer>
+    </section>
+    <section class="assignment">
+      <h4>3.6.c) move it</h4>
+      Create <i>another</i> version of the file that
+      <ul>
+        <li>uses the <code>onmousemove</code> event handler (instead of onclick) to</li>
+        <li>run <code>console.log("Movement detected!");</code></li>
+      </ul>
+      <answer buttonText="mail this version too">Test, then send:</answer>
+    </section>
+
+
+  <h3>3.6 functions with or without value</h3>
+      <p>The <code>alert()</code> function has a sister called "<code>prompt()</code>". You use it if you want to ask the user a question, and use the result in your Javascript code.</p>
+      <p>Now, using the HTML template from the hint above, try this in your browser:</p>
       <script type="text/plain" class="language-js">
         document.body.style.backgroundColor = prompt('Give a color name (e.g. "white", "green")')
       </script>
@@ -214,12 +246,12 @@
   </section>
 
 
-  <h3 class="assignment questions">3.7 To () or not to ()</h3>
+  <h3 class="assignment questions">3.7 to () or not to ()</h3>
   <p>In Javascript, a function you created can be executed, but you can <em>also use its name without having the code be executed</em>.
   <section class="assignment">
-      <h4>3.7a What do the () actually mean?</h4>
+      <h4>3.7a what do the () actually mean?</h4>
       <p>
-        Try this:<note>kunnen we dit code block niet beter een complete file laten zijn?</note>
+        Try this:
       <script type="text/plain" class="language-javascript">
         function writeHelloWorld(){
           document.body.innerHTML = "Hello World"
@@ -231,12 +263,12 @@
         <p>
           Describe what is happening in the both alert statements; can you explain this behaviour?.
         </p>
-      <answer noslider buttontext="Mail your explanation"></answer>
+      <answer noslider buttontext="mail your explanation"></answer>
   </section>
   <section class="assignment">
-      <h4 class="assignment questions">3.7b When (not) to call...</h4>
+      <h4 class="assignment questions">3.7b when (not) to call...</h4>
       <p>
-        Try this:<note>kunnen we dit code block niet beter een complete file laten zijn?</note>
+        Try this:
       </p>
      <script type="text/plain" class="language-html" data-line="6,7">
         <button id="helloButton" >Hello there!</button>
@@ -255,7 +287,7 @@
             <li>Can you explain what is happening on the other, incorrect line? What makes it go wrong?</li> 
           </ol>
         </p>
-      <answer noslider buttontext="Mail line number and explanation"></answer>
+      <answer buttontext="mail line number and explanation"></answer>
   </section>
 
  <section class="assignment">
@@ -269,7 +301,7 @@
           alert("Because he was always spotted.")
         }    
        </script>
-      <answer buttontext="Mail your code"></answer>
+      <answer buttontext="mail your code"></answer>
   </section>
    <section class="assignment">
       <h3 class="assignment questions">3.8b more laughs</h3>
@@ -314,39 +346,134 @@
         <p>
           Hint: In html, for displaying a break (enter) in text, use the < br >  tag.
         </p>
-      <answer buttontext="Mail your code"></answer>
+      <answer buttontext="mail your code"></answer>
   </section>
 
 
-  <div class="instruction">
-    <p>The exercise below is a <b>bonus excercise</b>.</p>
-    <ul>
-      <li>Bonus exercises are <b>half-optional:</b> Spend some time making a start, but quit if you're not getting anywhere after 10 minutes.</li>
-      <li>We don't actually have any bonus prize to award you if you do the exercise. Sorry.</li>
-      <li>These exercises <i>will be discussed</i> in class. So don't ignore them completely. Spend 10 minutes thinking about it. Finish the exercise if, after 10 miniutes, you think you can do it.</li>
-    </ul>
-    
-  </div>
 
     <section class="assignment">
       <h3 class="assignment questions">3.8c <span class="inline-bonus">BONUS:</span> toggle laughs</h3>
-      <p>
+      <div class="instruction">
+        <p>This exercise is a <b>bonus excercise</b>.</p>
+        <ul>
+          <li>Bonus exercises are <b>half-optional:</b> Spend some time making a start, but quit if you're not getting anywhere after 10 minutes.</li>
+          <li>We don't actually have any bonus prize to award you if you do the exercise. Sorry.</li>
+          <li>These exercises <i>will be discussed</i> in class. So don't ignore them completely. Spend 10 minutes thinking about it. Finish the exercise if, after 10 miniutes, you think you can do it.</li>
+        </ul>
+        
+      </div>
+          <p>
         Using only Javascript we discussed sofar, create e new version of the code in such a way that:</p>
         <ul>
           <li>There is only one area. Delete the other one.</li>
           <li>When the area is first clicked, the first joke is displayed in the area itself.</li>
-          <li>If the area is clicked a second time, the second joke should display in the same area. </li>
-          <li>When the user clicks some more, the process repeats itself: the joke changes with each click.</li>
+          <li>When the area is clicked a second time, the second joke should display in the same area. </li>
+          <li>When the area is clicked again, for a third time, the first joke should be shown again in the area. </li>
+          <li>When the user clicks some more, the process repeats itself: the two jokes alternate with each click.</li>
         </ul>   
       </p>
-      <answer buttontext="Mail your code"></answer>
+      <answer buttontext="mail your code"></answer>
     </section>
 
     <h2>calculations in Javascript</h2>
     <p>Like Arduino, we often need calculations to achieve interesting user interaction. The effect created in the following video could not have been created without some calculations.</p>
     <youtube ytid="UA8k9S9-KQM"></youtube>    
+    
+    <section class="assignment">
+      <h3 class="assignment questions">3.9 sliding birds</h3>
+      <p>You're going to create something similar to the birds-slider app in the video. Instead of the width of the pictures changing, two CSS properies change with the slider: <code>opactity</code> and <code>left</code>. Like this:</p> 
+      <youtube ytid="0ewoLCVQyK8"></youtube>
+      <p>Let's approach this in three steps, and use the code below to get started:</p>
+      <script type="text/plain" class="language-markup">
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title></title>
+          <meta charset="UTF-8"> 
+          <style>
+            img {
+              position: absolute; /* this property allows you to set the position
+                                     of the element using left: and top: properties */
+              left: 0px;                       
+              top:  100px;
+              width: 400px;
+            }
+          </style>	
+        </head>
+        <body>
+          <!-- the step="any" attribute is needed to allow 
+               slider values with digits after the decimal point -->
+          <input id="slider" 
+                type="range" 
+                step="any"    
+                min="0" 
+                max="1" 
+                value="0" 
+                style="width: 300px;">
+          <hr>
+        
+          <img id="firstBird"  src="mousebird.jpg" style="left: 400px">
+          <img id="secondBird" src="crested_crane.jpg" style="left: 800px">
+        
+          <script>
+        
+            console.log("script started")
+        
+            function updateImages(){
+              console.log("updateImages started:", "slider value = ", document.getElementById("slider").valueAsNumber)
+        
+              // TODO 1: The first bird should get higher opacity when slider values are high.
+              //         The second bird should get lower opacity when slider values are high.
+        
+              // TODO 3: The left of the first bird should move from 400 pixels to 0 pixels 
+              //         when slider values go from 1 to 0.
+              //         The second bird should move from 400 pixels to 800 pixels when slider values
+              //         go from 0 to 1.
+        
+              console.log("updateImages ended")
+            }
+        
+            document.getElementById("slider").oninput = updateImages
+              
+            // TODO 2: make sure that images are updated when the page is loaded 
+            //         (i.e. before the user has moved the slider).
+        
+            console.log("script ended")
+          &lt;/script>
+        </body>
+        </html>
+              </script>
+      <p>Note these three things about the code:</p>
+      <ul>
+        <li>In this version, the slider values go from 0 (zero) to 1 (one). This is actually useful!</li>
+        <li>There are three comments start start with "TODO". These comments correspond to the three steps describe below.</li>
+        <li>Where the video used <code>document.getElementById( ... ).</code><b><code>value</code></b> to get the slider value, this code uses a variant: <code>document.getElementById( ... ).</code><b><code>valueAsNumber</code></b>. Please use this new variant in your code too! It helps prevent some weird bugs you might encounter.</li>
+      </ul>        
+      <p>Here are the birds: <download href="./mousebird.jpg" ></download>, and <download href="./crested_crane.jpg"></download></p>
 
-    <todo>assignment with calculations and css</todo>
+      <h4>step 1: changing opacity</h4>
+      <p>You make an HTML element <i>transparent</i> by setting it's opactity to a value between 0 and 1:</p>
+      <script type="text/plain" class="language-js">
+        // code template for making an HTML element 70% transparent
+        document.getElementById( ... ).style.opacity = 0.3 
+      </script>
+      <p>An opacity value of 1 means no transparency at all (fully opaque). An opacity value of 0 means completely transparent (invisible).</p>
+      <p>Now, beneath the "TODO 1" comment in the starter code, add two commands that change the opacity of the pictures in the way shown in the video, and described in the comment.</p>
+
+      <h4>step 2: fixing the first moments</h4>
+      <p>While you were testing, you may have noticed that when the page is reloaded in the browser, neither of the images is transparent. This is because the function <code data-language="javascript">updateImages()</code><i>is only called when the slider is moved</i>.</p>
+      <p>Now, add a line of code beneath the "TODO 2" comment to make sure that the styling of the images get updated <i>when the page is loaded</i> too.</p>
+
+      <h4>step 3: moving pictures</h4>
+      <p>The starter code below contains some CSS-code to give images the <code>position: absolute</code> property. That means that it's position can now be controlled by setting it's <code>left:</code> and <code>top:</code> properties.</p>
+          <script type="text/plain" class="language-js">
+            // code template for setting the horizontal position of an element to 250 pixels
+            document.getElementById( ... ).style.left = 250 + "px" 
+          </script>
+          <p>Note that a simple number won't work for <code>left:</code> or <code>top:</code>. You need to append the letters "px" at the end of it. Other length units, like "cm" or "in", will also work. In the example, we append "px" to the value 250, resulting in the text value "250px", which is exactly how CSS likes it.</p>
+          <p>Check the video again to remind yu of the movements, and study as the desciption in the TODO 3 comment. Then add the code that make the pictures move from side-to-side when the user moves the slider.</p>
+      <answer buttontext="mail your program">Send in the program after you're done with all the steps:</answer>
+    </section>
 
 </main>  
 <aside id="sidebar" include="../agenda.html" reject=".secret"></aside>
