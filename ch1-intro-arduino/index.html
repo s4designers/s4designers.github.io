@@ -108,7 +108,7 @@
   <h3 class="assignment questions">1.5 extending your Arduino program</h3>
   <p>The audience finds the poem hilarious, and starts laughing out loud.</p>
   <section class="assignment">
-    <p><b>1.5.a) Use the program you just made, and extend it with the following behaviour:</b></p>
+    <h4>1.5.a) Use the program you just made, and extend it with the following behaviour:</h4>
     <ul>
       <li>After the poem has been printed, the program will start printing "ha ha" repeatedly.</li>
       <li>Between each "ha ha", there is a small delay of 200 milliseconds.</li>
@@ -118,7 +118,7 @@
     <answer buttontext="mail your entire program"></answer>
   </section>
   <section class="assignment">
-    <p><b>1.5.b) Experiment</b></p>
+    <h4>1.5.b) Experiment</h4>
     <div class="theory">
       <p>There is a second command in Arduino to print text to the USB-port:</p>
       <script type="text/plain" class="language-arduino">
@@ -134,7 +134,7 @@
     <answer noslider buttontext="mail your answers"></answer>
   </section>
   <section class="assignment">
-    <p><b>1.5.c) ha ha ha ha ha ha ha</b></p>
+    <h4>1.5.c) ha ha ha ha ha ha ha</h4>
     <p>Make the program print all "ha"s on the same line.</p>
     <p>Instead of a delay of 200ms after each "ha ha", use a 100ms delay after every single "ha".</p>
     <answer noslider buttontext="mail your new program"></answer>
@@ -217,9 +217,10 @@
 
     <h3>one more thing: installing U8g2</h3>
     <p>Oops! The previous video forgot to mention something important. To be able to program the little display on the breadboard, you need to install a 'library' in the Arduino IDE. This is a plugin, called <b>U8g2</b>, that is needed to get the Arduino to work with the OLED display. The short video below show how to install the library. Watch it and do it.</p>
-
-      <todo>video for U8g2</todo>
-    <p><b>You <i>have</i> to install U8g2, before continuing with the rest of this chapter.</b> After installing U8g2, you can forget about it. You won't meet it again, and it isn't important for learning to program.</p>
+    <youtube ytid="AkJNPCRhSk8"></youtube>
+      
+    
+    <p></b>You <i>have</i> to install U8g2, before continuing with the rest of this chapter.</b> After installing U8g2, you can forget about it. You won't meet it again, and it isn't important for learning to program.</p>
     <h2>testing the S4D breadboard</h2>
 
   <p>Before you can start with the exercises using the Arduino breadboard, you need check that every part of the breadboard is connected correctly.</p>
@@ -241,14 +242,14 @@
   <p>Let's create a variant of the blink program that works on your Arduino that uses all four lights.</p>
   <p>The 4 LEDs are connected to pins <b>5, 9, 10, and 11</b>.</p>
   <section class="assignment">
-    <p><b>1.8.a) Write a program that turns every LED on...</b></p>
+    <h4>1.8.a) Write a program that turns every LED on...</h4>
     <p>...one after the other, with a delay between each step. After all 4 LEDs have been turned on, they are all turned off at once:<br></p>
     <p><img src="blinks1.gif"></p>
     <p>Do not forget to use <code>pinMode()</code> commands in the setup!</p>
     <answer buttontext="mail your program"></answer>
   </section>
   <section class="assignment">
-    <p><b>1.8.b) Which color belongs to which pinnumber?</b></p>
+    <h4>1.8.b) Which color belongs to which pinnumber?</h4>
     <ol type=a>
       <li>The yellow LED has pin number:</li>
       <li>The green LED has pin number:</li>
@@ -258,7 +259,7 @@
     <answer buttontext="mail your answers"></answer>
   </section>
   <section class="assignment">
-    <p><b>1.8.c) Using the potentiometer.</b></p>
+    <h4>1.8.c) Using the potentiometer.</h4>
     <p>Write a program that turns every LED <i>on and off</i>, one after the other.<br>The time that a light is turned-on depends on the <i>potentiometer</i>, the knob you can turn.</p>
     <p><img src="blinks2.gif"></p>
     <p>The portentiometer is connected to <b>analog pin number 2</b></p>
