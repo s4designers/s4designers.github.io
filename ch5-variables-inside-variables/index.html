@@ -14,7 +14,7 @@
   <youtube ytid="rS5l2dT_mFQ"></youtube>
 
   <h3 class="assignment summary">5.1 summary and questions</h3>
-  <p>This is where those notes you tokk come in handy...</p>
+  <p>This is where those notes you took come in handy...</p>
   <section class="assignment">
     <answer  buttontext="mail your summary">5.1a Make a list with <i>3 to 5 bulletpoints</i> with the most important or interesting things in the video:</answer>
   </section>
@@ -139,9 +139,11 @@ var name4 = "Trevor L"
       <answer noslider buttontext="Mail the answer and explanation"></answer>
   </section>
 
-  <youtube ytid="ls9pAMhGwWk"></youtube>
-  <h3 class="assignment summary">5.1 summary and questions</h3>
-  <p>This is where those notes you tokk come in handy...</p>
+  <h2>storing data about multiple things in <i>array's</i></h2>
+
+  <p>remember: <img src="note.png" height=64 style="vertical-align: -32px"></p>
+  <youtube ytid="XMFpghc8XqA"></youtube>
+  <h3 class="assignment summary">5.5 summary and questions</h3>
   <section class="assignment">
     <answer  buttontext="mail your summary">5.1a Make a list with <i>3 to 5 bulletpoints</i> with the most important or interesting things in the video:</answer>
   </section>
@@ -150,36 +152,39 @@ var name4 = "Trevor L"
   </section>
 
    <section class="assignment">
-      <h3 class="assignment questions">5.2 Arrays in javascript</h3>
+      <h3 class="assignment questions">5.6 arrays in javascript</h3>
+      <p>In Javascript, arrays exist too. You create them by writing a list of values, separated with comma's, and surrounded by <i>square</i> brackets:</p>
       <script type="text/plain" class="language-javascript">
-var names = ["Harry", "Ron", "Cho", "Trevor"]
+var baddies = ["D. Malfoy", "B. Lestrange", "D. Umbridge", "P. Pettigrew"]
       </script>
+      <p>Like array's in Arduino, indexes (= postition numbers) start from 0.</p>
       <ol type="a">
-        <li>What is the value of the names variable? </li>
-        <li>What is the index of "Harry"?</li>
+        <li>What is the value of the baddies variable? </li>
+        <li>What is the index of "D. Malfoy"?</li>
         <li>What is the value of index 2?</li>
-        <li>What is the third item of the array?</li>
+        <li>What code prints the third item in the array to the console?</li>
+        <li>What code prints the complete array to the console?</li>
       </ol>
 
-      <answer noslider buttontext="Mail the answers"></answer>
+      <answer  buttontext="Mail the answers"></answer>
   </section>
    <section class="assignment">
-      <h3 class="assignment questions">5.3 Arrays in arduino</h3>
+      <h3 class="assignment questions">5.7 arrays in arduino</h3>
       <script type="text/plain" class="language-arduino">
 int lottoNumbers[5] = [33,12,66,11,77];
 
       </script>
       <ol type="a">
         <li>What is the third item in the array?</li>
-        <li>What does the [5] on the left side of the equals sign stand for?</li>
+        <li>What do you think the [5] on the left side of the equals sign stands for?</li>
         <li>Add code that changes the third item of the array.</li>
-        <li>Create an array that with "Harry", "Ron", "Cho" and "Trevor" as the values.</li>
+        <li>Add code that prints all items of the array to the Serial Monitor. (Note that Serial.println only works for strings and numbers&mdash;not for arrays!)</li>
       </ol>
-      <answer noslider buttontext="Mail the answers and the code"></answer>
+      <answer  buttontext="Mail the answers and the code"></answer>
   </section>
 
   <section class="assignment">
-      <h3 class="assignment questions">5.4 Group with array or with object</h3>
+      <h3 class="assignment questions">5.8 group with array or with object</h3>
       <script type="text/plain" class="language-javascript">
 var spell1 = "Expecto Patronum"
 var spell2 = "Wingardium Levioso"
@@ -191,13 +196,13 @@ var house = "Gryffindor"
 var alignment = "Good"
       </script>
       <p>
-        The code above is a bit confusing. Organise the code using any number of meaningful objects and/or arrays.
+        The Javascript code above is a bit confusing. Organise the code using any number of meaningful objects and/or arrays.
       </p>
-      <answer noslider buttontext="Mail the code"></answer>
+      <answer  buttontext="Mail the code"></answer>
   </section>
 
   <section class="assignment">
-      <h3 class="assignment questions">5.5 arrays in objects</h3>
+      <h3 class="assignment questions">5.9 arrays in objects</h3>
       
       <p>
         A variable can contain an array as its value. A property of an object can also contain an array as its value. Suppose the four spells are the spells Luna knows. Add an array of spells to the "spells" property of luna. 
@@ -205,11 +210,11 @@ var alignment = "Good"
       <p>
         <i>If you are succesfull, the following code would work to access the first spell: console.log(wizard.spells[0]), where wizard is the name of the variable containing the object.</i>
       </p>
-      <answer noslider buttontext="Mail the code"></answer>
+      <answer  buttontext="Mail the code"></answer>
   </section>
 
   <section class="assignment">
-      <h3 class="assignment questions">5.6 objects in arrays</h3>
+      <h3 class="assignment questions">5.10 objects in arrays</h3>
       
       <p>
         A variable can contain an object as its value. An array can also contain multiple objects as its items. Make a "wizards" array containing not only Luna (and all her properties), but also another wizard (and all of his/her properties). 
@@ -221,7 +226,7 @@ var alignment = "Good"
   </section>
 
   <section class="assignment">
-      <h3 class="assignment questions">5.7 changing values in arrays in objects in arrays</h3>
+      <h3 class="assignment questions">5.11 changing values in arrays in objects in arrays</h3>
       
       <p>
        In the 9th Harry Potter book Luna turns out to be a snitch. Using the wizards array, can you change Luna's second spell to "Avada Kadavra" and her alignment to "evil"?
@@ -230,7 +235,7 @@ var alignment = "Good"
   </section>
 
   <section class="assignment">
-      <h3 class="assignment questions">5.8 Whoopsie!</h3>
+      <h3 class="assignment questions">5.12 whoopsie!</h3>
       
       <p>
        Experiment: What happens with the followig code? Note the differences between javascript and arduino
@@ -246,10 +251,6 @@ Serial.println(grades[4]);
       <answer noslider buttontext="Mail your findings"></answer>
   </section>
 
-
-
-      <answer noslider buttontext="Mail your findings"></answer>
-  </section>
 
 
 
