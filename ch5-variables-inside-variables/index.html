@@ -224,34 +224,66 @@ Serial.println(grades[4]);
       <answer noslider buttontext="Mail your findings"></answer>
   </section>
 
+  <section class="assignment">
+      <h3 class="assignment questions">5.9 objects and parameters!</h3>
+      
+      <p>
+       You can pass both objects and arrays to a function.
+      </p>
+    
+ <script type="text/plain" class="language-javascript">
+var conan = {
+  name: "Conan",
+  stats: {
+    health: 800,
+    strength: 80,
+    intelligence: 30,
+    personality: 50
+  },
+  weapon: {
+    name: "Sword of endless fury",
+    damage: "15",
+    attack: "2d3 + 15"
+  },
+  class: "Warrior",
+  race: "Barbarian"
+}
+var orc = {
+  name: "Goronack",
+  stats: {
+    health: 50,
+    strength: 8,
+    intelligence: 30,
+    personality: 50
+  },
+  weapon: {
+    name: "Curiass",
+    damage: "5",
+    attack: "2d3 + 15"
+  },
+  class: "Warrior",
+  race: "Orc"
+}
 
-  <todo><pre>
-    - naam 1, leeftijd 1, 
-      Video xx Intro Objecten in JS -- starten met object literal; punt-syntax; waarom niet in Arduino
-        Opdracht: bakfiets met coordinaten.
-      
-      Video xx Intro Arrays in arduino -- wat nou als alle items in collectie zelfde rol hebben: lijst ipv object. initializer syntax;  JS variant;
-        Opdrachten:
-        * Arrays in Javascript
-        * Vingeroefeningen: 
-            index die niet bestaat experiment;
-      
-    </pre></todo>
-  
-    <!--
-    <youtube ytid=""></youtube>
-  
-    <section class="assignment">
-      <h3 class=""></h3>
-      <answer></answer>
-    </section>
-    <todo>
-    </todo>
-  
-    <script type="text/plain" class="language-html">    
-    </script>  
-    -->
-  
+function fight(player, enemy){
+  var damage = enemy.weapon.damage * enemy.stats.strength
+  return player.stats.health - damage
+}
+
+var healthLefAfterFight = fight(conan,orc)
+
+  </script>
+  <p>Notice the fight function takes two objects as a parameter. Right now it returns an integer. This is a bit illogical. It would be better if the fight() function returned a new version of the player where the health has been updated. Change the function in such a way that it returns an updated version of the player after the fight. You should be able to call the fight() function like this:</p>
+ <script type="text/plain" class="language-javascript">
+var conan = fight(conan,orc) 
+  </script>
+
+
+
+      <answer noslider buttontext="Mail your findings"></answer>
+  </section>
+
+
 
 </main>  
 <aside id="sidebar" include="../agenda.html" reject=".secret"></aside>
