@@ -9,17 +9,26 @@
  <main>
 
   <h1>Chapter 6: <i>Debugging</i> code that doesn't work</h1>
-  
-  <todo><pre>
-      Video xx Debuggen in JS (1) -- common error messages; wat als er geen error messages zijn?; console.log; 
+  <p>Even very experienced programmers spend a lot of their time on trying to discover why their program isn't working yet. It is an integral part of the activity of programming. No one with any knowlegde of programming expects anyone create an error-free program from scratch, in a single attempt.</p>
+  <p>So get used to the idea of <i><b>debugging</b></i>, the jargon term for eliminating mistakes from program code. The term was invented after an <a href="https://www.nationalgeographic.org/thisday/sep9/worlds-first-computer-bug/">actual insect caused a computer malfunction</a>. An essential skill required for quickly learning to program well is to <i>find bugs interesting</i>. <b>Do not experience bugs as a kind of failure</b>. Instead, be interested in the cause of the bug: you're a detective, and a bug is messing with your work; whodunnit? That way, debugging can actually become kind-of fun, and you'll learn a lot.</p>
+  <p>Some Javascript programming mistakes will be pointed out to you by the browser when it reads and runs your program. For many other mistakes, you get little help from the browser, you you'll have to learn how to help yourself. This first video is about errors in Javascript. In Arduino the situation is similar, but slightly different: The Arduino compiler (i.e. the Upload button in the IDE) will work much harder trying to analyze your code and spot possible mistakes. That's the subject of the second video. Both videos are about 30 minutes long.</p>
 
-      Video xx Debuggen in Arduino (1) -- compiler messages; silent crashes; serial.println(); 
-      
-      Video xx Arduino compiler vs JS interpreter;
-    
-    </pre></todo>
+  <h2>Errors in Javascript</h2>
+  <p>feel free to take some notes :-)</p>
+  <youtube ytid="-hYMmLw9_S4"></youtube>
+
+  <h3 class="assignment summary">6.1 summary and questions</h3>
+  <section class="assignment">
+    <answer  buttontext="mail your summary">6.1a Make a list with <i>3 to 5 bulletpoints</i> with the most important or interesting things in the video:</answer>
+  </section>
+  <section class="assignment">
+      <answer noslider buttontext="mail your word list">6.1b Which words or concepts would you like us to explain during class?</answer>
+  </section>
+
+
+
 <section class="assignment">
-<h3 class="assignment questions">6.3 dung beatles</h3>  
+<h3 class="assignment questions">6.2 dung beatles</h3>  
 <p>.</p>
       <script type="text/plain" class="language-html">
         
@@ -53,69 +62,149 @@
     <li>What is the correct syntax for the thing being done on this line? How does this differ from the code? </li>
     <li>After you fixed the mistake, do you understand the error message given by the console? </li>
   </ol>
-<answer buttontext="Mail the answers"></answer>
+<answer buttontext="mail your answers"></answer>
 </section>
   
-<section class="assignment">
-<h3 class="assignment questions">6.3 dung beatles</h3>  
-      <script type="text/plain" class="language-html">
-<html>
-  <head>
-  </head>
-  <body>
-     <div id="bugArea" >
-        Bug description should come here.
-     </div>
-     
-   
-     <script>
-    var dungBeatle = {name = "Dungbeatle" , type = "beatle" , color = "black" , food = "dung"}
-    function description(bug){
-      return "a " bug.name + " is a " +bug.type + " is " + bug.color + " and can be seen eating " + bug.food
-    }
-
-    document.getElementById("bugArea").innerHTML = description(dungBeatle)
-     &lt;/script>
-   
-  </body>
-</html>
-       
-  </script>
-  <p>Run the page. It does not print a description of a dungbeatle. </p>
-  <ul>
-    <li>What does the console say? Does this mean anything to you? </li>
-    <li>Is the code broken (syntax problem)? How do you know? </li>
-    <ul>
-      <li>Which line causes the error according to the console?</li>
-      <li>What is the correct syntax for the thing being done on this line? How does this differ from the code? </li>
-      <li>Do the closing accolades correspond with the proper opening accolades? </li>
-      <li>After you fixed the mistake, do you understand the error message given by the console? </li>
-    </ul>
-    <li>Is the syntax correct but does the program not do what you intend it to do? (logic problem)? How do you know? </li>
-    <ul>
-      <li>Up until what point does your code do what it should do? Check by creating console.log() statements at various points</li>
-      <li>If the code is complicated, simplify by creating extra variables or functions.</li>
-      <li>When using strings as id's or other markers in your code, make sure you copy-paste strings to prevent typos.</li>
-      <li>Explain line to line to a friend what your code is doing, start at the beginning. This helps you think about your code.</li>
-    </ul>
-    <li>Spend more than an hour on your problem? Go take a shower. Go hike in the forest. Come back after an hour.</li>
-  </ul>
-<answer buttontext="Mail the answers"></answer>
-</section>
-
-    <!--
-    <youtube ytid=""></youtube>
-  
+<h3 class="assignment questions">6.3 jille's bugs</h3>
+  <img src="gallery-of-bugs.png" style="width: 100%;">  
+  <p>Here's a simple program that contains (we think) 6 bugs. Some of them are syntax errors, some are not. The user should be able to use the button on the right of the photo, as often as she likes, to cycle through all 6 pictures.</p>
+  <p>The CSS is rather long; sorry about that. The bugs are only in the Javascript.</p>
+  <script type="text/plain" class="language-html">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>Slideshow</title>
+      <style>
+    
+        body {
+          background-color: khaki;
+        }
+        
+        #slideShow {
+          position: relative;
+          width: 800px;
+          margin: 100px auto;
+          border: 100px solid white;
+          box-shadow: 3px 3px 18px 0px rgba(0,0,0,0.42);
+        }
+    
+        #title {
+          font-family: "Avenir Next", "Avenir", sans-serif;
+          font-size: 22px;
+          font-weight: bold;
+          color: #ccc;
+          position: absolute;
+          top: -60px;
+          text-align: center;
+          width: 100%;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+        }
+    
+        #mainImage {
+          width: 800px;
+          border: none;
+        }
+    
+        #nextButton {
+          position: absolute;
+          top: 0px;
+          right: 0px;
+          width: 100px;
+          height: 100%;
+          opacity: 0.3;
+          background: none;
+          border: none;
+          font-size: 100px;
+          color: white;
+        }
+    
+        #nextButton:hover {
+          opacity: 0.9;
+          background-color: rgba(255,255,255,0.3);
+        }
+        
+      </style>
+    </head>
+    <body>
+      <div id="slideShow">
+        <div id="title">Jille's Bug Gallery</div>
+        <image id="mainImage" src="bug1.jpg">
+        <button id="nextButton">»</button>  
+      </div>
+      <script>
+    
+        var pictureNames = [ "bug1.jpg",  "bug2.jpg",  "bug3.jpg",  "bug4.jqg",  "bug5.jpg",  "bug6.jpg", ]
+    
+        function showPicture1() 
+          document.getElementById("mainImage").src = pictureNames[1]
+          document.getElementById("nextButton").onclick = showPicture2
+        }
+        function showPicture2() {
+          document.getElementById("mainImage").src = pictureNames[2]
+          document.getElementById("nextButton").onclick = showPicture3
+        }
+        function showPicture3() {
+          document.getElementById("mainImage").src = pictureNames[3]
+          document.getElementById("nextButton").onclick = showPicture4
+        }
+        function showPicture4() {
+          document.getElementById("mainImage').src = pictureNames[4]
+          document.getElementById("nextButtom").onclick = showPicture5
+        }
+        function showPicture5() {
+          document.getElementById("mainImage").src = pictureNames[5]
+          document.getElementById("nextButton").onclick = showPicture6
+        }
+        
+        function showPicture6() {
+          document.getElementById("mainImage).src = pictureNames[6]
+          document.getElementById("nextButton").onclick = showPicture7
+        }
+    
+        showPicture1()
+      </script>
+    </body>
+    </html>  </script>
+    <p>Here are the images: <download href="bugPhotos.zip"></download></p>
+    <p>Run the page. Find the bugs. Fix them</p>
     <section class="assignment">
-      <h3 class=""></h3>
-      <answer></answer>
-    </section>
-    <todo>
-    </todo>
-  
-    <script type="text/plain" class="language-html">    
-    </script>  
-    -->
+  <h4>6.3.a first, describe the bugs</h4>
+  <p>For each bug you find, <b><i>before you start fixing it</i></b>, give a description of the bug. How would you explain the malfunction to a classmate? Describe it in terms of what you're seeing, or how the program is behaving; keep ideas about the causes out of the description. Try to be as clear and precise as you can! When you start programming in teams (a few weeks from now), you really don't want your teammates to be vague or superficial about  problems they want you to help out on.</p>  
+  <answer buttontext="mail all descriptions of the bugs you've found">Collect the descriptions in a single mail before sending the mail in.</answer>
+  </section>
+  <div class="instruction">
+    <p>Here's a set of questions that can guide you when hunting bugs. It isn't complete, but it's a useful start:</p>
+    <ul>
+      <li>What does the console say? Does this mean anything to you? </li>
+      <li>Is the code broken (syntax problem)? How do you know? </li>
+      <ul>
+        <li>Which line causes the error according to the console?</li>
+        <li>What is the correct syntax for the thing being done on this line? How does this differ from the code? </li>
+        <li>Do the closing accolades correspond with the proper opening accolades? </li>
+        <li>After you fixed the mistake, do you understand the error message given by the console? </li>
+      </ul>
+      <li>Is the syntax correct but does the program not do what you intend it to do? How do you know? </li>
+      <ul>
+        <li>Up until what point does your code do what it should do? Check by creating console.log() statements at various points</li>
+        <li>If the code is complicated, simplify by creating extra variables or functions.</li>
+        <li>When using strings as id's or other markers in your code, make sure you copy-paste strings to prevent typos.</li>
+        <li>Explain line to line to a friend what your code is doing, start at the beginning. This helps you think about your code.</li>
+      </ul>
+      <li>Spend more than an hour on your problem? Go take a shower. Go hike in the forest. Go play air guitar for a while. Come back after an hour. Then <a href="https://en.wikipedia.org/wiki/Rubber_duck_debugging">explain it to the duck</a> (<a href="https://medium.com/@katiebrouwers/why-rubber-ducking-is-one-of-your-greatest-resources-as-a-developer-99ac0ee5b70a">really</a>).</li>
+    </ul>
+  </div
+  <section class="assignment">
+    <h4>6.3.b Describe the causes of the bugs</h4>
+    <p></p>
+    <answer buttontext="mail the answers"></answer>
+  </section>
+
+  <h2>errors in Arduino code</h2>
+
+  <youtube ytid="RL7wXSYdIh4"></youtube>
+
   
 
 </main>  
