@@ -97,7 +97,7 @@ h1 {
 h1 > .chapter-num {
   font-size: 14px;
   line-height: 1em;
-  font-family: 'Avenir Next';
+  font-family: "Avenir Next", "Avenir", sans-serif;
   font-weight: bold;
   color: #e50056;
   letter-spacing: 4px;
