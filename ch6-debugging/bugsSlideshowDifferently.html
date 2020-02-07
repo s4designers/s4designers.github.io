@@ -68,12 +68,8 @@
     var pictureNumber = 0
 
     function updatePicture() {
-      var pictureIndex =          // TODO 1: use module to calculate a number
-                                  //         between 0 - 5 from pictureNumber
-                                  
-      document.getElementById("mainImage").src =     // TODO 2: use the pictureIndex to
-                                                     //         get the correct filename 
-                                                     //         from the pictureNames array. 
+      var pictureIndex = pictureNumber % 6;
+      document.getElementById("mainImage").src = pictureNames[ pictureIndex ];
     }
 
     function nextPicture() {
