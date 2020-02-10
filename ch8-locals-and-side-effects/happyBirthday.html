@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <button id="birthday">It's your birthday!</button>
+  <script>
+  var name = "Johanna"
+  var age =  32
+  
+  
+  function updateAge(age){
+    age += 1
+  }
+  
+  function singBirthdaySong(name, age){
+    say("happy birthday dear " + name + ", you are" + age + " years old!") 
+  }
+  
+  function celebrateBirthday(){
+    say(age)
+    updateAge(age)
+    say(age)
+    age += 1
+    singBirthdaySong(name, age)
+  }
+  
+  function say(message){
+    var utterance = new SpeechSynthesisUtterance(message);
+    window.speechSynthesis.speak(utterance);
+  }
+  
+  document.getElementById("birthday").onclick = celebrateBirthday
+  
+  
+  </script>
+    
+</body>
+</html>
