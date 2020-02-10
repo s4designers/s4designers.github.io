@@ -10,37 +10,55 @@
 
   <h1>chapter 7: how functions communicate: <i>parameters</i> and <i>return values</i></h1>
 
-  <todo>video</todo>
+  <p>You've seen quite a few functions by now: functions in the video's, functions that you wrote yourself. And some of the built-in functions that are part of the languages or the browser or the header file. Those built-in functions had two features that our own functions didn't:</p>
+  <ol>
+    <li><code>Serial.println("hello")</code>, <code>alert("hi there")</code>, and <code>digitalWrite(LED_RED, HIGH)</code> are examples of <b>functions that accept extra input</b> when you call them. Sometimes a single input, sometimes two or even more. If you create your own functions that accept extra input, you're creating functions that are <i>very flexible and reusable</i>: one function can replace many sections of code that are similar, but different in the details.</li>
+    <li><code>abs(-100)</code>, <code>analogRead(POTENTIOMETER)</code>, <code>document.getElementById("mainPicture")</code>, and <code>prompt("color:")</code> all take extra input, but they are also functions <b>that produce some output</b>. The output of these functions are values that can be used in calculations/expressions, or stored in variables. The output of one function can even be passed directly as the input of another! You've seen this already in Chapter 1: remember <code>Serial.println( analogRead(0) );</code>?</li>
+  </ol>
+  <p>These first two videos show how to create functions that take input values. The third video shows how to create output from a function.</p>
 
+  <h2>input for functions: giving arguments to parameters</h2>
+
+  <youtube ytid="nMRcFlRrQ7w"></youtube>
+
+  <h3 class="assignment summary">7.1: summary and questions</h3>
   <section class="assignment">
-      <h3 class="assignment questions">7.1a Explain</h3>
-      <p>
-       Answer the following questions in your own words:
-      </p>
-      <ol type="a">
-        <li>What is a return value?</li>
-        <li>What is a side-effect?</li>
-        <li>What is a parameter?</li>
-        <li>What is an argument?</li>
-        <li>What is the difference between an argument and a parameter?</li>
-        <li>What is the difference between a variable and a parameter?</li>
-      </ol>
-      <answer noslider buttontext="Mail the answers"></answer>
+    <answer  buttontext="mail your summary">7.1.a: Make a list with <i>3 to 5 bulletpoints</i> with the most important or interesting things in the video:</answer>
   </section>
   <section class="assignment">
-      <h3 class="assignment questions">7.1b point</h3>
-      <script type="text/plain" class="language-arduino">
+      <answer noslider buttontext="mail your word list">7.1.b: Which words or concepts would you like us to explain during class?</answer>
+  </section>
+
+  <section class="assignment">
+    <h3 class="assignment questions">7.2: explain it yourself</h3>
+    <p>
+     Answer the following questions in your own words:
+    </p>
+    <ol type="a">
+      <!-- <li>What is a return value?</li>
+      <li>What is a side-effect?</li> -->
+      <li>What is a parameter?</li>
+      <li>What is an argument?</li>
+      <li>What is the difference between an argument and a parameter?</li>
+      <li>What is the difference between a variable and a parameter?</li>
+    </ol>
+    <answer noslider buttontext="Mail the answers"></answer>
+</section>
+
+
+  <section class="assignment">
+    <h3 class="assignment questions">7.3: argument or parameter?</h3>
+    <script type="text/plain" class="language-arduino">
 #include "s4d_breadboard.h"
 
 void setup() {
-  Serial.begin(9600);
   initializeBreadboard();
 }
 
 void loop() {
   mapSensorToLed(MAGNETSENSOR, LED_GREEN);
   mapSensorToLed(2, 10);
-  Serial.println(stabilizedMagnetValue());
+  OLED.print("magnet:", stabilizedMagnetValue());
 }
 
 void mapSensorToLed(int sensorPin, int ledPin){
@@ -50,17 +68,79 @@ void mapSensorToLed(int sensorPin, int ledPin){
 int stabilizedMagnetValue(){
   return analogRead(MAGNETSENSOR) / 100;
 }
-      </script>
-      <ol type="a">
-        <li>Does the mapSensorToLed function have a side effect and/or a return value?</li>
-        <li>Does the stabilizedMagnetValue function have a side effect and/or a return value?</li>
-        <li>Name the parameters in the code</li>
-        <li>Name the arguments in the code</li>
-      </ol>
-      <answer noslider buttontext="Mail the answers"></answer>
+    </script>
+    <ol type="a">
+      <!-- <li>Does the <code>mapSensorToLed</code> function have a side effect and/or a return value?</li> -->
+      <!-- <li>Does the <code>stabilizedMagnetValue</code> function have a side effect and/or a return value?</li> -->
+      <li>Point out all the parameters in the code (text and line number)</li>
+      <li>Point out all the arguments in the code (text and line number)</li>
+    </ol>
+    <answer noslider buttontext="Mail the args and params"></answer>
+</section>
+
+  <youtube ytid="fDk15bE4Hkk"></youtube>
+
+  <h3 class="assignment questions">7.4: warming up</h3>
+  <section class="assignment">
+    <p><b>7.4.a: Write a function that hides elements on the page. </b></p>
+    <p>The function takes one input, which is a string and the id of an element on the page. When the function is called, the element named by the argument is made invisible by setting <i>theElement</i><code>.style.opacity = 0</code>.</p>
+    <p>Create a HTML file with a few elements with ids, your new function, and a few calls to the function to hide several alements on the page.</p>
+    <p>Make sure your function has a meaningful name.</p>
+    <answer noslider buttontext="Mail the HTML file with your function"></answer>
   </section>
-   <section class="assignment">
-      <h3 class="assignment questions">7.2 side effect or return</h3>
+  <section class="assignment">
+    <p><b>7.4.b: Write a function that has two parameters, and prints them both to the console.</b></p>
+    <answer noslider buttontext="Mail the function definition"></answer>
+  </section>
+  <section class="assignment">
+    <p>7.4.c: Debugging becomes less of a drag if you give the new console-printing function a really short name. Why is that OK for this situation, but not in almost all other situations?</p>
+    <answer noslider buttontext="Mail your answer"></answer>
+  </section>
+  <section class="assignment">
+    <p><b>7.4.c: Make a function more generally useful</b></p>
+    <script type="text/plain" class="language-javascript">
+function changeImage() {
+  document.getElementById("product-image").src = "sold_out.png"
+}    
+    </script>
+    Change this function into a function that accepts two arguments: an id and a filename, and can change <i>any image element on the page</i> to <i>any new image file</i>.
+    <answer noslider buttontext="Mail the entire HTML file, including function calls you the new version.">Don't mail only the function.</answer>
+  </section>
+  
+  <h2>return values: producing output for expressions</h2>
+  <youtube ytid="JXxpwlEjmMY"></youtube>
+  <p>In Javascript, returning values works the same way as in Arduino. Except you don't have to write if the return value is text, a number, or something else (like what?).</p>
+
+  <h3 class="assignment questions">7.3: how would you like your random?</h3>
+  <p>There is a built-in Javascript function called <code>Math.random()</code>. It takes no arguments, and returns a random number between 0 and 1.</p>
+  <p><b>Use the Javascript console</b> to see what values you get if you call <code>Math.random()</code> several times in a row.</b></p>
+  <section class="assignment">
+    <p><b>7.5.a: Write a function, without parameters, that simply returns the result from <code>Math.random()</code>.</b></p>
+    <p>Give it a meaningful name that is still shorter than "Math.random". Test your function!</p>
+    <answer noslider buttontext="Mail the function definition"></answer>
+  </section>
+  <section class="assignment">
+    <p><b>7.5.b: Increase the range</b></p>
+    <p>Create a similar function, but this one takes 1 parameter, called "<i>max</i>". It returns a random number between 0 and <i>max</i>.</p>
+    <p>Give this function a new name.</p>
+    <hint steps=1><hintStep>If you don't know how to widen the range, expand this hint:</hintStep>Numbers in the range 0-1 can be distributed over a wider range by multiplying them:<br><code>numberInRangeZeroToFive = numberInRangeZeroToOne * 5</code></hint>
+    <answer  buttontext="Mail your enriched random function"></answer>
+  </section>
+  <section class="assignment">
+    <p><b>7.5.c: Another one! now with a minumum</b></p>
+    <p>Again, create a similar function, but this one takes 2 parameters, called "<i>min</i>" and "<i>max</i>". It returns a random number between <i>min</i> and <i>max</i>.</p>
+    <p>Keep the function from the previous exercise (7.5.b) in the same file. It is extra cool if the code for the new function calls the function from the previous exercise.</p>
+    <answer  buttontext="Mail the added min-max random function"></answer>
+  </section>
+  <section class="assignment">
+    <p><b>7.5.d: Last one: create a die</b><img src="white_die.jpg" style="float: right"></p>
+    <p>The built-in function <code>Math.floor(x)</code> can be used to round numbers. For positive numbers, <code>Math.floor</code> will simply throw away everything after the decimal point. E.g. <code>Math.floor(2.35)</code> returns 2 and <code>Math.floor(2.88)</code> also returns 2.</p>
+    <p>Create a new Javascript function, that returns a whole number between 1 and 6. Again, it's extra cool if the code for the new function calls the function from exercise 7.5.c.</p>
+    <answer  buttontext="Mail your entire code">Send in a complete HTML file, with the function, and a few calls to test the function.</answer>
+  </section>
+
+   <!-- <section class="assignment">
+      <h3 class="assignment questions">7.2: side effect or return</h3>
       <p>
         Below are some function calls. Based on the name of the called function, try to explain why you think the function has a side-effect or a return value.
       </p>
@@ -73,60 +153,71 @@ int stabilizedMagnetValue(){
         <li>Serial.println("Hello!");</li>
       </ol>
       <answer noslider buttontext="Mail the answers"></answer>
-  </section>
+  </section> -->
 
- <section class="assignment">
-      <h3 class="assignment questions">7.3a Area code</h3>
+ 
+      <h3 class="assignment questions">7.6: area code</h3>
+     
       <script type="text/plain" class="language-javascript" >
-            var area = 0;
+          var area = 0;
 
-            function calculateArea(length, height) {
-              area = length * height
-            }
+          function calculateArea(length, height) {
+            area = length * height
+          }
 
-            calculateArea(12,44)
-            console.log(area)
-                
-        </script>
-        <p>Why doesn't console.log(calculateArea(12,44)) work?</p>
-      <answer buttontext="Mail your answer"></answer>
-  </section>
-
- <section class="assignment">
-      <h3 class="assignment questions">7.3b Area recode</h3>
-       <p>Change the area function in such a way that console.log(calculateArea(12,44)) would output 528. What would be a better name for this function?
-      <answer buttontext="Mail your code"></answer>
-  </section>
+          calculateArea(12,44)
+          console.log(area)
+          console.log(calculateArea(12,44))    
+      </script>
+      <section class="assignment">
+        <p><b>7.6.a: Why doesn't <code>console.log(calculateArea(12,44))</code> work?</b></p>
+        <answer buttontext="Mail your answer"></answer>
+      </section>
+      <section class="assignment">
+        <p><b>7.6.b: area recode</b></h3>
+        <p>Change the area function in such a way that <code>console.log(calculateArea(12,44))</code> would output 528. What would be a better name for this function?
+        <answer buttontext="Mail your code">Improve the function name before you send in your solution.</answer>
+      </section>
 
    <section class="assignment">
-      <h3 class="assignment questions">7.3c squared</h3>
-      <script type="text/plain" class="language-javascript" >
-            function twelveSquared() {
-              return 12 * 12
-            }
+      <h3 class="assignment questions">7.7: squared</h3>
+      <script type="text/plain" class="language-arduino" >
+#include "s4d_breadboard.h"
 
-            function elevenSquared() {
-              return 11 * 11
-            }
+int twelveSquared() {
+  return 12 * 12;
+}
 
-            function tenSquared() {
-              return 10 * 10
-            }
+int elevenSquared() {
+  return 11 * 11;
+}
 
-            console.log(tenSquared()) 
-            console.log(elevenSquared())  
-            console.log(twelveSquared()) 
-                
+int tenSquared() {
+  return 10 * 10;
+}
+
+void setup() {
+  initializeBreadboard();
+}
+
+void loop() {
+  OLED.print("10 x 10 =", tenSquared());
+  delay(1000);
+  OLED.print("11 x 11 =", elevenSquared());
+  delay(1000);
+  OLED.print("12 x 12 =", twelveSquared());
+  delay(1000);
+}  
         </script>
         <p>The given functions look a lot alike. This is usually a sign parameters can be used to make functions more generic. Make a function that can square any number.</p>
       <answer buttontext="Mail the code"></answer>
   </section>
-
+  <br><br><br>
   <section class="attention">
       <p>The following exercise is about functions with parameters, not about security. Do not use code from this assignment in commercial applications.</p>
     </section>
    <section class="assignment">
-      <h3 class="assignment questions">7.4a Password manager</h3>
+      <h3 class="assignment questions">7.8.a: password manager</h3>
           <script type="text/plain" class="language-javascript">
             function createPassword(passPhrase) {
               var cryptoPhrase = "a7" + btoa(passPhrase) + "%H";
@@ -144,7 +235,7 @@ int stabilizedMagnetValue(){
       <answer buttontext="Mail the generated passphrase"></answer>
   </section>
 <section class="assignment">
-      <h3 class="assignment questions">7.4b Password Manager 2</h3>  
+      <h3 class="assignment questions">7.8.b: password manager 2</h3>  
       <p>Make a page that uses this function to change simple passwords in to stronger ones.</p>
       <ul>
         <li>Make an input field where a user can enter an easy to remember passphrase</li>
@@ -159,7 +250,7 @@ int stabilizedMagnetValue(){
       <answer buttontext="Mail the code"></answer>
   </section>
 <section class="assignment">
-      <h3 class="assignment questions">7.4c Password Manager 3</h3>  
+      <h3 class="assignment questions">7.8.c: password manager 3</h3>  
       <p>It would be even cooler if the user could use the same simple password to generate different passwords for different services. Add a "service" parameter to the createPassword() function and use this parameter to add an extra component to our encryption. For convenience, add a dropdown with different services to the webpage. </p>
         <ul>
           <li>Use the code below to add a dropdown to your HTML.</li>
@@ -178,7 +269,7 @@ int stabilizedMagnetValue(){
       <answer buttontext="Mail the code"></answer>
   </section>
   <section class="assignment">
-      <h3 class="assignment questions">7.4d Password Manager 4</h3>  
+      <h3 class="assignment questions">7.8.d: password manager 4</h3>  
       <p>The function below puts the string in the parameter on the clipboard, ready to be pasted by the user. Add this functionality to your program.</p>
  <script type="text/plain" class="language-javascript">
 function putOnClipboard(text) {
@@ -188,7 +279,7 @@ function putOnClipboard(text) {
       <answer buttontext="Mail the code"></answer>
   </section>
  <section class="assignment">
-      <h3 class="assignment questions">7.4e <span class="inline-bonus">BONUS:</span> Reverse engineer</h3>  
+      <h3 class="assignment questions">7.8.e: <span class="inline-bonus">BONUS:</span> reverse engineer</h3>  
       <p>Somebody used your script for something nefarious. The police is interested in recovering original passwords created by the script. Create a function that reverses the encryption process. You may have to use the substring function and the atob() function</p>
  <script type="text/plain" class="language-javascript">
 var str = "Hello world!";
@@ -201,10 +292,10 @@ var normalString = atob(encodedString) //outputs: "Hello World!"
   </section>
 
   <section class="assignment">
-      <h3 class="assignment questions">7.5 objects and parameters!</h3>
+      <h3 class="assignment questions">7.9: objects and parameters!</h3>
       
       <p>
-       You can pass both objects and arrays to a function.
+       You can pass both complete objects and entire arrays as arguments to a function.
       </p>
     
  <script type="text/plain" class="language-javascript">
@@ -249,7 +340,7 @@ function fight(player, enemy){
 var healthLefAfterFight = fight(conan,orc)
 
   </script>
-  <p>Notice the fight function takes two objects as a parameter. Right now it returns an integer. This is a bit illogical. It would be better if the fight() function returned a new version of the player where the health has been updated. Change the function in such a way that it returns an updated version of the player after the fight. You should be able to call the fight() function like this:</p>
+  <p>Notice the fight function takes two objects as a parameter. Right now it returns an integer. This is a bit illogical. It would be better if the fight() function returned a new version of the player where the health has been updated. <b>Functions can also have objects or arrays as return values.</b> Change the function in such a way that it returns an updated version of the player after the fight. You should be able to call the fight() function like this:</p>
  <script type="text/plain" class="language-javascript">
 var conan = fight(conan,orc) 
   </script>

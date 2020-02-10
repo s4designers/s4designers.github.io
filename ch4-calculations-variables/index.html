@@ -12,16 +12,16 @@
 
   <youtube ytid="gvDQinqZhIc"></youtube>
 
-  <h3 class="assignment summary">4.1 summary and questions</h3>
+  <h3 class="assignment summary">4.1: summary and questions</h3>
   <p>You haven't forgotten to make note, have you?</p>
   <section class="assignment">
-    <answer  buttontext="mail your summary">4.1a Make a list with <i>3 to 5 bulletpoints</i> with the most important or interesting things in the video:</answer>
+    <answer  buttontext="mail your summary">4.1.a: Make a list with <i>3 to 5 bulletpoints</i> with the most important or interesting things in the video:</answer>
   </section>
   <section class="assignment">
-      <answer noslider buttontext="mail your word list">4.1b Which words or concepts would you like us to explain during class?</answer>
+      <answer noslider buttontext="mail your word list">4.1.b: Which words or concepts would you like us to explain during class?</answer>
   </section>
 
-    <h3 class="assignment questions">4.2 lingo</h3>
+    <h3 class="assignment questions">4.2: lingo</h3>
       <p>Variables can also have pieces of text as their value. Here's a code snippet that uses variables with text values:</p>
       <script type="text/plain" class="language-javascript">
         var pasta = "Spagetti"
@@ -31,7 +31,7 @@
         sauce = "Carbonara"
       </script>
       <section class="assignment">
-        <h4>4.2.a) in the code above...</h4>
+        <h4>4.2.a: in the code above...</h4>
         <ol type=a>
           <li>...which lines have <i>variable assignments</i>?</li>
           <li>...which lines have <i>variable declarations</i>?</li>
@@ -40,7 +40,7 @@
         <answer noslider buttontext="mail your explanations"></answer>
       </section>
       <section class="assignment">
-        <h4>4.2.b) how do the values change?</h4>
+        <h4>4.2.b: how do the values change?</h4>
         <ul>
           <li>Copy-paste the above code into a new text file, </li>
           <li>add a comment at the end of every line,
@@ -48,7 +48,7 @@
         </ul>
         <answer buttontext="mail your commented code snippet"></answer>
         <section class="assignment">
-          <h4>4.2.c) to quote or not to quote</h4>
+          <h4>4.2.c: to quote or not to quote</h4>
           <p>Notice how, in the code snippet, text values have quotes around them: "Spagetti", "Carbonara", etc. These quotes are needed to prevent confusion.</p>
           <ol type=a>
             <li>If the value "Spagetti" did not have any quotes around it, how would Javascript misunderstand it? With what kind of thing would Javascript confuse it?</li>
@@ -59,7 +59,7 @@
         </section>
         </section>
 <section class="assignment">
-      <h3 class="assignment questions">4.3 an appropriate date</h3>
+      <h3 class="assignment questions">4.3: an appropriate date</h3>
       <script type="text/plain" class="language-javascript">
         var ageSteven = 20
         var ageJanice = 30
@@ -100,7 +100,7 @@
     <p>When you mix text and numeric operations, use parenthesis, i.e. ( and ), to avoid confusion (between + for adding numbers and + for concatenating text).</p>
     </div>
       <section class="assignment">
-        <h3>4.4 calculations and strings</h3>
+        <h3>4.4: calculations and strings</h3>
       <p>Take the following code snippet:</p>
       <script type="text/plain" class="language-javascript">
         var lecturer = "Robert"
@@ -129,7 +129,7 @@
 <br><br><br>
 <youtube ytid="9y7-PCjdyj4"></youtube>
 <section class="assignment">
-      <h3 class="assignment questions">4.5 Photoshop</h3>
+      <h3 class="assignment questions">4.5: Photoshop</h3>
 <script type="text/plain" class="language-markup" data-line="53-60">
   <html>
 <head>
@@ -232,7 +232,7 @@ document.getElementById("buyButton2").onclick = buyGiraffePhoto
 
 
 <section class="assignment">
-      <h3 class="assignment questions">4.6 variables in Arduino</h3>
+      <h3 class="assignment questions">4.6: variables in Arduino</h3>
       <script type="text/plain" class="language-arduino">
 int outerCounter = 0;
 
@@ -285,7 +285,7 @@ void loop() {
   </section>
 
 <section class="assignment">
-      <h3 class="assignment questions">4.7 magnet detector</h3>
+      <h3 class="assignment questions">4.7: magnet detector</h3>
 
       <p>The HAL sensors from AliExpress can be flakey. On some breadboards they will give a value of around 600 when no magnet is near. On other boards, the no-magnet value is close to 500 or even lower. When a magnet is held close to the sensor, the value may go up, or it may go down.</p>
       <p>We would like an audible magnet detector that will work on different breadboards. So, how do you know, when you read a value of e.g. 600, if there's a magnet coming near the sensor? One trick is to <i>calibrate</i> your program: measure the no-magnet value when to program starts (assuming the magnet is not close when the program starts). Then, to see if a magnet is getting near, you look at the <i>difference</i> between the values you read from the sensor, and the no-magnet value. When these differences become larger, you know a magnet is approaching, regardless of the exact no-magnet value of the sensor on the breadboard.</p>

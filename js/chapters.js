@@ -217,6 +217,7 @@ function createHintBlocks() {
     let maxSteps = 3;
     if(hintStepElements.length > 0) {
       hintSteps = hintStepElements.map( el => ({ prompt: el.innerHTML, buttonLabel: el.getAttribute("buttontext") || "?"}))
+      hintStepElements.forEach( el => el.remove() )
       maxSteps = Math.min(hintSteps.length, hintElement.getAttribute("steps") || 10000);
     } else {
       maxSteps = Math.min(hintSteps.length, hintElement.getAttribute("steps") || 1)

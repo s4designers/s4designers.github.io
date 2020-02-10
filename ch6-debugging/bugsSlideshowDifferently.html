@@ -35,10 +35,10 @@
       border: none;
     }
 
-    #nextButton {
+    #previousButton, #nextButton {
       position: absolute;
-      top: 0px;
       right: 0px;
+      top: 0px;
       width: 100px;
       height: 100%;
       opacity: 0.3;
@@ -48,7 +48,7 @@
       color: white;
     }
 
-    #nextButton:hover {
+   #nextButton:hover {
       opacity: 0.9;
       background-color: rgba(255,255,255,0.3);
     }
@@ -63,34 +63,22 @@
   </div>
   <script>
 
-    var pictureNames = [ "bug1.jpg",  "bug2.jpg",  "bug3.jpg",  "bug4.jqg",  "bug5.jpg",  "bug6.jpg", ]
+    var pictureNames = [ "bug1.jpg",  "bug2.jpg",  "bug3.jpg",  "bug4.jpg",  "bug5.jpg",  "bug6.jpg", ]
 
-    function showPicture1() {
-      document.getElementById("mainImage").src = pictureNames[1]
-      document.getElementById("nextButton").onclick = showPicture2
-    }
-    function showPicture2() {
-      document.getElementById("mainImage").src = pictureNames[2]
-      document.getElementById("nextButton").onclick = showPicture3
-    }
-    function showPicture3() {
-      document.getElementById("mainImage").src = pictureNames[3]
-      document.getElementById("nextButton").onclick = showPicture4
-    }
-    function showPicture4() {
-      document.getElementById("mainImage").src = pictureNames[4]
-      document.getElementById("nextButton").onclick = showPicture5
-    }
-    function showPicture5() {
-      document.getElementById("mainImage').src = pictureNames[5]
-      document.getElementById("nextButton").onclick = showPicture6
-    }
-    function showPicture6() {
-      document.getElementById("mainImage").src = pictureNames[6]
-      document.getElementById("nextButton").onclick = showPicture7
-    
+    var pictureNumber = 0
 
-    showPicture1()
+    function updatePicture() {
+      var pictureIndex = pictureNumber % 6;
+      document.getElementById("mainImage").src = pictureNames[ pictureIndex ];
+    }
+
+    function nextPicture() {
+      pictureNumber = pictureNumber + 1;
+      updatePicture();
+    }
+
+    document.getElementById("nextButton").onclick = nextPicture
+
   </script>
 </body>
 </html>
