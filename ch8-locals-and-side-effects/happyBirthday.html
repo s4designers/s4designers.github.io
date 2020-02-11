@@ -4,25 +4,34 @@
   <meta charset="UTF-8">
 </head>
 <body>
-  <button id="birthday">It's your birthday!</button>
+  your name: <input id="nameInput" type="text"><br>
+  your age: <span id="ageSpan">20</span>
+  <button id="birthday">Birthday!</button>
+
   <script>
-  var name = "Johanna"
-  var age =  32
+  var age = 20
+  var name
   
-  
-  function updateAge(age){
-    age += 1
+  function singBirthdaySong(theName, theAge){
+    var greeting = "A very happy birthday, dear " + theName 
+    var message  = "you are" + theAge + " years old!"
+    say(greeting + ", " + message) 
   }
-  
-  function singBirthdaySong(name, age){
-    say("happy birthday dear " + name + ", you are" + age + " years old!") 
+
+  function updateAge( newAge ) {
+    document.getElementById("ageSpan").innerHTML = newAge
+  }
+
+  function increaseAge( oldAge ) {
+    age = oldAge + 1
   }
   
   function celebrateBirthday(){
-    say(age)
-    updateAge(age)
-    say(age)
-    age += 1
+    console.log( "age before:", age)
+    increaseAge( age )
+    console.log( "age after:", age)
+    var name = document.getElementById("nameInput").value
+    updateAge( age )
     singBirthdaySong(name, age)
   }
   
@@ -31,9 +40,7 @@
     window.speechSynthesis.speak(utterance);
   }
   
-  document.getElementById("birthday").onclick = celebrateBirthday
-  
-  
+  document.getElementById("birthday").onclick = celebrateBirthday  
   </script>
     
 </body>
