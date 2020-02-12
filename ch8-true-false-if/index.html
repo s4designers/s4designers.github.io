@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Page Title</title>
+  <link rel="stylesheet" href="../css/main.css"/>
+</head>
+<body class="line-numbers">
+ <main>
+
+  <h1>chapter 8: <i>true</i>, <i>false</i>, and choosing with <i>if-statements</i></h1>
+
+  <youtube ytid="hDpsr1EYkD0"></youtube>
+  <h3 class="assignment summary">8.1: summary and questions</h3>
+  <section class="assignment">
+    <answer  buttontext="mail your summary">8.1.a: Make a list with <i>3 to 5 bulletpoints</i> with the most important or interesting things in the video:</answer>
+  </section>
+  <section class="assignment">
+      <answer noslider buttontext="mail your word list">8.1.b: Which words or concepts would you like us to explain during class?</answer>
+  </section>
+
+<section class="assignment">
+
+
+<h3 class="assignment questions">8.2: popularity contest</h3>  
+<p>Run this HTML page in your Firefox. There are six ways to compare values in Javascript (and Arduino, and most other languages). This HTML page demonstrates all all of them:</p>
+<script type="text/plain" class="language-markup">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Comparing things</title>
+  <style>
+    body { 
+      margin: 100px;
+    }
+    input[type="range"] {
+      width: 600px;
+    }
+
+    #comparison1Span, #comparison2Span, 
+    #comparison3Span, #comparison4Span, 
+    #comparison5Span, #comparison6Span {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  Jille's votes: 
+  <span id="jilleVotesDisplay"></span><br>
+  <input id="jilleVotesSlider" type="range" value=30>
+    
+  <br><br>
+  Robert's votes: 
+  <span id="robertVotesDisplay"></span><br>
+  <input id="robertVotesSlider" type="range" value=29>
+    
+  <br><br>
+  <div>a) jilleVotes == robertVotes : <span id="comparison1Span"></span></div>
+  <div>b) jilleVotes != robertVotes : <span id="comparison2Span"></span></div>
+  <div>c) jilleVotes &lt; robertVotes : <span id="comparison3Span"></span></div>
+  <div>d) jilleVotes &gt; robertVotes : <span id="comparison4Span"></span></div>
+  <div>e) jilleVotes &lt;= robertVotes : <span id="comparison5Span"></span></div>
+  <div>f) jilleVotes &gt;= robertVotes : <span id="comparison6Span"></span></div>
+
+  <script>
+
+    function getElById( wantedId ) {
+      return document.getElementById( wantedId )
+    }
+
+    function updateComparisons( candidate1Votes, candidate2Votes ) {
+      getElById("comparison1Span").innerHTML =  candidate1Votes == candidate2Votes 
+      getElById("comparison2Span").innerHTML =  candidate1Votes != candidate2Votes 
+      getElById("comparison3Span").innerHTML =  candidate1Votes <  candidate2Votes 
+      getElById("comparison4Span").innerHTML =  candidate1Votes >  candidate2Votes 
+      getElById("comparison5Span").innerHTML =  candidate1Votes <= candidate2Votes 
+      getElById("comparison6Span").innerHTML =  candidate1Votes >= candidate2Votes 
+    }
+
+    function updateAfterChange() {
+      var jilleVotes = getElById("jilleVotesSlider").valueAsNumber
+      var robertVotes = getElById("robertVotesSlider").valueAsNumber
+
+      getElById("jilleVotesDisplay").innerHTML = jilleVotes
+      getElById("robertVotesDisplay").innerHTML = robertVotes
+      
+      updateComparisons( jilleVotes, robertVotes )
+    }
+
+    getElById("jilleVotesSlider").oninput = updateAfterChange
+    getElById("robertVotesSlider").oninput = updateAfterChange
+
+    updateAfterChange() // to show comparison results before user has moved a slider
+
+  &lt;/script>
+</body>
+</html>
+</script>
+<section class="assignment">
+<h4>8.2.a: what do they mean?</h4>
+<p>There are six comparisons in this demonstration. Describe for each of them:</p>
+<ul>
+  <li>a pair of example values where the comparison results in true;</li>
+  <li>a pair of example values where the comparison results in false;</li>
+  <li>what the comparison operator <i>means</i>, in your own words (English or Dutch).</li>
+</ul>
+<ol type=a>
+  <li>examples for, and meaning of: <b>==</b></li>
+  <li>examples for, and meaning of: <b>!=</b></li>
+  <li>examples for, and meaning of: <b>&lt;</b></li>
+  <li>examples for, and meaning of: <b>&gt;</b></li>
+  <li>examples for, and meaning of: <b>&lt;=</b></li>
+  <li>examples for, and meaning of: <b>&gt;=</b></li>
+  <li>can you think of a reason why the first comparison is written with <i>two</i> = symbols?</li>
+  <li>what is the difference between &lt;= and &lt; ?</li>
+</ol>
+</section>
+<section class="assignment">
+  <h4>8.2.b: how about other data types?</h4>
+  <ol type=a>
+    <li>Which of the six comparison operators makes sense to use for comparing <i>string</i> values?</li>
+    <li>Which of the six comparison operators makes sense to use for comparing <i>boolean</i> values?</li>
+  </ol>
+</section>
+
+<h3 class="assignment questions">8.3: play bools</h3>  
+<p></p>
+ <script type="text/plain" class="language-javascript">
+	var age = 10
+	var isAllowedToOrderAlcohol = age > 18
+	
+  </script>
+  <p>Without running the code, answer the following questions:</p>
+  <ol type="a">
+		<li>If the age is 10, what is the value of isAllowedToOrderAlcohol? </li>
+		<li>The age at which you can legally buy alcohol in the Netherlands is 18. Test the script with age 18. There seems to be a problem. Fix the script. </li>
+		<li>Can you think of another way to fix the script? Which one do you think is better? </li>
+	</ol>
+<answer buttontext="mail your answers"></answer>
+</section>
+
+<h2>choices everywhere: if-statements</h2>
+<p>This is about one of the most useful commands in any programming language:</p>
+<youtube ytid="n4SnSNoArvY"></youtube>
+
+<h3 class="assignment summary">8.4: summary and questions</h3>
+<section class="assignment">
+  <answer  buttontext="mail your summary">8.4.a: Make a list with <i>3 to 5 bulletpoints</i> with the most important or interesting things in the video:</answer>
+</section>
+<section class="assignment">
+    <answer noslider buttontext="mail your word list">8.4.b: Which words or concepts would you like us to explain during class?</answer>
+</section>
+
+  <h3 class="assignment questions">8.5 if-statements for buttons</h3>  
+  <section class="assignment">
+    <h4>8.5.a: warming-up exercise</h4>
+    <p>Create a simple Arduino program that will show, on the OLED screen, which buttons are pressed.</p>
+    <ul>
+      <li>If the user presses the first button, it should <b>turn on the blue LED</b></li>
+      <li>If the user presses the second button, it should <b>turn on the yellow LED</b></li>
+      <li>use <code>digitalRead(...)</code> to get a 1 or a 0 indicating the state of the button.</li>
+      <li>It is OK if the LED's don't get turned off by the program. That is the next step.</li>
+    </ul>
+    <answer buttontext="mail your program"></answer>
+  </section>
+  <section class="assignment">
+    <h4>8.5.b: adding elses</h4>
+    <p>Continuing with the program from the previous exercise, change it to:</p>
+    <ul>
+      <li>For each button: if it isn't pressed, turn the corresponding LED off.</li>
+      <li>Add an 'else { ... }' clause to your if statements to do this.</li>
+    </ul>
+    <answer buttontext="mail your improved program"></answer>
+  </section>
+  <section class="assignment">
+    <h4>8.5.c: <span class="inline-bonus">BONUS:</span>just a trick</h4>
+    <p>Can you think of a trick to check, in an if-statement, whether <i>both buttons</i> are pressed, or <i>none at all</i>?</p>
+    <ul>
+      <li>When no button is pressed, the red LED should light up. But it should be off otherwise.</li>
+      <li>When both buttons are pressed at the same time, the green LED should light up, and turn off otherwise.</li>
+    </ul>
+    <answer buttontext="mail your enhanced improved program"></answer>
+  </section>
+
+  <section class="assignment">
+    <h3 class="assignment questions">8.6: Austin Powers</h3>
+    <p>If-statements in Javascript work the identically to if-statements in Arduino. They're also written the same way. Try your hand at making choices in Javascript, by creating a digital version of this Mustaffa:</p>
+    <youtube ytid="z-5iCygFd9M"></youtube>
+
+    <p>Mustaffa has to tell the truth if a question is asked three times. Create a script that mimmicks Mustaffa.</p>
+
+    <ul>
+      <li>Add a picture of Mustaffa to your page.</li>
+      <li>Make a function that is called when someone clicks on Mustaffa</li>
+      <li>Outside of the function, create a variable that serves as a counter, assign the value 0 to it.</li>
+      <li>The first and second time Mustaffa is clicked, tell the user some lie with an alert. Make sure to increase the counter by one.</li>
+      <li>The third time Mustaffa is clicked, tell the user your biggest secret. And reset the counter to zero.</li>
+    </ul> 
+    <answer noslider buttontext="mail your HTML page"></answer>
+</section>
+
+<h2>combining if-statements</h2>
+<p>In the Mustaffa exercise, you used multiple if-statements. Those if-statements could do their job independently from the others. In this video we show you a different way of combining if-statements that can be used to distinguish between overlapping situations.</p>
+<youtube ytid="TbmAG2FcAL8"></youtube>
+
+
+<section class="assignment">
+  <h3 class="assignment questions">8.7: the hip new diet of the month</h3>  
+   <script type="text/plain" class="language-arduino">
+  void loop() { 
+    bool itsChristmas = digitalRead( BUTTON1 );
+    int calories = analogRead( POTENTIOMETER );
+  
+    if(itsChristmas) {
+      Serial.println( "Eating" + String(calories) + "calories at Christmas!");
+    } else {
+      Serial.println( "Eating" + String(calories) + "calories (not Christmas).");
+    }
+
+    if( ……… ) {             // TODO: replace all the ……… 
+      OLED.print( "………" );
+    } else if(  ……… ) {
+      OLED.print( "………" );
+    } else {
+      OLED.print( "………" );
+    }
+  }
+    </script>
+    <p>Diet appliations are commercially interesting. Let's make one based on Jille's rules of living</p>
+    <ul>
+    <li>When it's christmas, you can eat all you like.</li>
+    <li>When a product has fewer than 500 calories, you can always eat it.</li>
+    <li>In all other cases, you can't eat it. </li>
+  </ul>
+    
+  <answer buttontext="mail the code"></answer>
+  </section>
+  
+  
+
+
+<section class="assignment">
+<h3 class="assignment questions">8.8: speeding violations</h3>  
+<p>Let's do some ifs in Javascript.</p>
+<p>Up until now, the conditions in the if-statements we've shown you all had a single boolean variable in their condition, like this: <code>if( tooLow ) {...}</code>. But <b>any expression that results in a boolean value can be the condition of an if-statement</b>! So this would work too, in Arduino: <code>if( potValue < lowThreshold ) {...}</code>. Same thing.</p>
+<p>Back to Javascript&mdash;where you're (of course) also free to use a a comparison expression instead of a variable in your if-statement conditions. Look at this code:</p>
+ <script type="text/plain" class="language-javascript">
+// Function roughly estimates the amount of money a speeding ticket is going to cost.
+function estimateFine(actualSpeed, speedLimit){
+  estimatedFine = 0;
+  speedAboveLimit = actualSpeed - speedLimit; 
+  if(speedAboveLimit > 5){
+    estimatedFine = 20;
+  }else if(speedAboveLimit > 20){
+    estimatedFine = 200;
+  }else if(speedAboveLimit > 30){
+    estimatedFine = 400;
+  }else if(speedAboveLimit > 40){
+    estimatedFine = 600;
+  }
+  return estimatedFine;
+}
+  </script>
+  <p>Run the code, and test the function with some example values. There is a problem. Can you detect it? What is the cause? Fix that bug!</p>
+  
+<answer buttontext="mail the fixed code"></answer>
+</section>
+
+
+
+
+  <h3 class="assignment questions">8.9: fit for the A-team</h3> 
+  <youtube ytid="Cn6kEsloMdE"></youtube>
+  <p>The following code is used in the application form for the A-team.</p>
+  <p>Note how this code uses a new way of combining if-statements. Try to "execute" the code yourself, without a computer. Follow the path that the if-statements choose to understand what it means when an <b>if-statement is nested <i>inside</i> another if-statement</b>.</p>
+   <script type="text/plain" class="language-javascript">
+  
+    function canJoinTheATeam( person ) {
+      var isLargerThan190cm = person.length > 200
+      var canSquatMoreThan150kg = person.squattingWeight > 150
+      if(person.isMale) {
+        if(isLargerThan190kg){
+          if(canSquatMoreThan150kg) {
+            return true
+          } else {
+            return false
+          }
+        } else {
+          return false
+        }
+      } else {
+        return false
+      }  
+    }
+    
+    let jille = { length: 198, 
+                  squattingWeight: 20, 
+                  isMale: true 
+                }
+    let robert = { length: 187, 
+                   squattingWeight: 230, 
+                   isMale: true 
+                 }
+    
+    console.log("Can Jille join the A-team?",  canJoinTheATeam(jille) )
+    console.log("Can Robert join the A-team?",  canJoinTheATeam(robert) )
+  
+  
+    </script>
+    <section class="assignment">
+    <h4>8.9.a without running the code…</h4> 
+    <p>…answer the following questions:</p>
+    <ol type="a">
+      <li>What is the value of the isLargerThan190cm variable on line 2? </li>
+      <li>What is the value of the canSquadMoreThan150kg variable on line 3? </li>
+      <li>Who can join the A-team?</li>
+      <li>The expressions on lines 2 and 3 result in a boolean value. What does that mean?</li>
+      <li>You don't need to use all of the variables to get a working program. You can expressions that result in a boolean directly into the condition part of the if-statement. Do this. </li>
+    </ol>
+  <answer buttontext="mail your answers"></answer>
+  </section>
+  
+  <section class="assignment">
+    <h4 class="assignment questions">8.9.b: point of one return</h4>  
+    It is usually nicer if a function has just one single return-statement. Can you rewrite the code to work exactly the same way, but uses a variable to replace the 4 return-statements with a single one?
+    <answer buttontext="mail the code"></answer>
+  </section>  
+  
+    
+<br><br><br>
+ <div class="attention">
+    The following assignments are part of a bigger project that is continued in the next chapter. 
+  </div>
+  <section class="assignment">
+      <h3 class="assignment questions">8.10: let's play mexican</h3>
+      <p>Mexican is a popular drinking game which is usually called "mex-en" in Dutch. We are going to make an online version. The <a href="https://www.webtender.com/handbook/games/mexican.game">rules</a> are a bit complicated.</p>
+      <ul>
+        <li>The game is played with two or more people.</li>
+        <li>The game is played with two dice.</li>
+        <li>A player first throws 2 dice. This results in a score (the scoring is explained later).</li>
+        <ul>
+          <li>If the player is happy with his score, the player passes the turn to the next player.</li>
+          <li>If the player is unhappy with his score, the player can throw one, or both the dice again. </li>
+          <li>The maximum number of tries is 3. </li>
+        </ul>
+        <li>The next player now tries to better the previous player's score. He can use as many tries as the first player used.</li>
+        <li>The first player that can't better the previous player's score loses (and drinks a number of shots that is dependent on some factors).</li>
+        <li>If the last player did not lose, the game continues with the first player.</li>
+      </ul>
+       <script type="text/plain" class="language-html">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mexican</title>
+  <style type="text/css">
+.button {
+  font-size: 16px;
+}
+.score{
+  font-size: 2em;
+  }
+  </style>
+
+</head>
+<body>
+  <div style="margin: 8%;">
+    <div id="scoreToBeatDiv">Score to beat = 0</div><br>
+    <div id="maxTriesDiv">max tries = 3</div><br>
+    <div id="currentTriesDiv">current tries = 0</div><br>
+    <button id="rollBothButton" class="button">Roll both</button><br>
+    <button id="nextPlayerButton" class="button">Next player</button><br>
+    <div id="scoreDiv" class="score">0</div> 
+  </div>
+<script type="text/javascript">
+var scoreToBeat = 0
+var maxNumberOfTries = 3
+var isFirstPlayer = true
+var currentTries = 0
+var currentScore = 0
+
+function calculateScore(){
+  return Math.floor(Math.random() * 600) + 1 // generates a random number between 1 and 600
+}
+
+function nextPlayer(){
+  if(isFirstPlayer){
+    maxNumberOfTries = currentTries
+    document.getElementById("maxTriesDiv").innerHTML = "current tries = " + maxNumberOfTries
+    isFirstPlayer = false
+  }
+  resetForNewTurn()
+   
+}
+
+function rollBothDice(){
+  currentScore = calculateScore() 
+  document.getElementById("scoreDiv").innerHTML = currentScore
+  currentTries += 1;
+  document.getElementById("currentTriesDiv").innerHTML = "current tries = " + currentTries
+}
+
+function resetForNewTurn(){
+  currentTries = 0
+  currentScore = 0
+  document.getElementById("nextPlayerButton").disabled = false
+  document.getElementById("rollBothButton").disabled = false
+  document.getElementById("currentTriesDiv").innerHTML = "current tries = " + currentTries
+  document.getElementById("scoreToBeatDiv").innerHTML = "Score to beat = " + scoreToBeat
+  document.getElementById("scoreDiv").innerHTML = currentScore
+}
+ document.getElementById("rollBothButton").onclick = rollBothDice
+ document.getElementById("nextPlayerButton").onclick = nextPlayer
+ 
+ &lt;/script>
+</body>
+</html>
+  </script>
+  <p>The code above provides a starting point for our program. Note that, for now, the complicated scoring system is simplified with a random number generator. Give the code a try. Also note, the singular for dice is die (some students find this confusing).  </p>
+  <p>Add code to the nextPlayer() function in such a way that if the currentScore is higher than the score in the scoreToBeat variable, scoreToBeat is updated.</p>
+      <answer noslider buttontext="mail your code"></answer>
+  </section>
+
+  <section class="assignment">
+      <h3 class="assignment questions">8.11: mexican disable</h3>
+     <script type="text/plain" class="language-javascript">
+      document.getElementById("nextPlayerButton").disabled = true // this code disables the nextPlayerButton
+     </script>
+
+  <p>Change the rollBoth() function in such a way that when the currentScore is higher than the scoreToBeat variable, the nextPlayerButton is enabled, but that the button is disabled in all other cases. </p>
+      <answer noslider buttontext="mail your code"></answer>
+  </section>
+
+  <section class="assignment">
+      <h3 class="assignment questions">8.12: mexican limit</h3>
+  <p>Players cannot try more than the original number of tries. Change the rollBoth() function in such a way that the currentTries is more than or the same as the maximumNumberOfTries, the rollBothButton is disabled. Note that the maxNumberOfTries variable starts at 3 for the first player</p>
+   <p>When you are done with this step, the game should sort of work. You cannot continue to the next player unless you have more than the previous player. You cannot throw more dice than the first player did. Whoever loses should not have any button to click. In the next chapter, the scoring system is going to be build. </p>
+      <answer noslider buttontext="mail your code"></answer>
+  </section>
+
+
+
+
+
+ 
+
+
+</main>  
+<aside id="sidebar" include="../agenda.html" reject=".secret"></aside>
+<script src='../js/chapters.js'></script>
+</body>
+</html>

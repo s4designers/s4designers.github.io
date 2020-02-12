@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Comparing things</title>
+  <style>
+    body { 
+      margin: 100px;
+    }
+    input[type="range"] {
+      width: 600px;
+    }
+
+    #comparison1Span, #comparison2Span, 
+    #comparison3Span, #comparison4Span, 
+    #comparison5Span, #comparison6Span {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  Jille's votes: 
+  <span id="jilleVotesDisplay"></span><br>
+  <input id="jilleVotesSlider" type="range" value=30>
+    
+  <br><br>
+  Robert's votes: 
+  <span id="robertVotesDisplay"></span><br>
+  <input id="robertVotesSlider" type="range" value=29>
+    
+  <br><br>
+  <div>comparison1: jilleVotes == robertVotes : <span id="comparison1Span"></span></div>
+  <div>comparison2: jilleVotes != robertVotes : <span id="comparison2Span"></span></div>
+  <div>comparison3: jilleVotes &lt; robertVotes : <span id="comparison3Span"></span></div>
+  <div>comparison4: jilleVotes &gt; robertVotes : <span id="comparison4Span"></span></div>
+  <div>comparison5: jilleVotes &lt;= robertVotes : <span id="comparison5Span"></span></div>
+  <div>comparison6: jilleVotes &gt;= robertVotes : <span id="comparison6Span"></span></div>
+
+  <script>
+
+    function getElById( wantedId ) {
+      return document.getElementById( wantedId )
+    }
+
+    function updateComparisons( candidate1Votes, candidate2Votes ) {
+      getElById("comparison1Span").innerHTML =  candidate1Votes == candidate2Votes 
+      getElById("comparison2Span").innerHTML =  candidate1Votes != candidate2Votes 
+      getElById("comparison3Span").innerHTML =  candidate1Votes <  candidate2Votes 
+      getElById("comparison4Span").innerHTML =  candidate1Votes >  candidate2Votes 
+      getElById("comparison5Span").innerHTML =  candidate1Votes <= candidate2Votes 
+      getElById("comparison6Span").innerHTML =  candidate1Votes >= candidate2Votes 
+    }
+
+    function updateAfterChange() {
+      var jilleVotes = getElById("jilleVotesSlider").valueAsNumber
+      var robertVotes = getElById("robertVotesSlider").valueAsNumber
+
+      getElById("jilleVotesDisplay").innerHTML = jilleVotes
+      getElById("robertVotesDisplay").innerHTML = robertVotes
+      
+      updateComparisons( jilleVotes, robertVotes )
+    }
+
+    getElById("jilleVotesSlider").oninput = updateAfterChange
+    getElById("robertVotesSlider").oninput = updateAfterChange
+
+    updateAfterChange() // to show comparison results before user has moved a slider
+
+  </script>
+</body>
+</html>
