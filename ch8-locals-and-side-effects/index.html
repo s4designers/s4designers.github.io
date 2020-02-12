@@ -13,6 +13,29 @@
   <p>You've seen them before: variables that are created <i>inside</i> a function. Did you wonder what happens to them when the function (call) is done, and its code stops running? <b>They disappear</b>. And when the function is called again, and it's code start running anew? <b>They are created again.</b> Welcome to the most important kind of variable in all programming languages: <i>local variables</i>.</p>
   <youtube ytid="0fs7zljFEa0"></youtube>
 
+
+  <section class="assignment">
+    <h3 class="assignment questions">8.4: side effects arduino </h3>
+    <p>
+      Build a program in javascript that reverses 5 letter words. 
+    </p>
+    <ul >
+      <li>Create with an input field and two buttons</li>
+      <li>Add a label asking for a 5 letter word</li>
+      <li>After the first button is clicked,</li>
+      <li>Making smart use of the substring() function (see below), store the string in reverse order in a variable (it's ok to use the function a couple of times)</li>
+      <li>After the second button is clicked, the reversed string should be outputted.</li>
+    </ul>
+    <p>It's ok if the program does not work if the user inputs something that is not a 5 letter word.</p>
+
+<script type="text/plain" class="language-javascript">
+var completeString = "Hello class"
+var partialString = completeString.substring(1,3) //outputs el
+</script>
+    <answer noslider buttontext="Mail the code"></answer>
+</section> 
+
+  
   <youtube ytid="S4x1qM6p4d0"></youtube>
   <!-- <section class="assignment">
       <h3 class="assignment questions">8.1: Arduino Sum</h3>
@@ -44,7 +67,7 @@ void setup() {
       <answer buttontext="Mail the code"></answer>
   </section> -->
 
-<section class="assignment">
+  <section class="assignment">
     <h3 class="assignment summary">8.1 side effects</h3>
 
     <p>In your own words, explain: </p> 
@@ -148,12 +171,39 @@ return analogRead(MAGNETSENSOR) / 100;
 
 
 
+  <section class="assignment">
+    <h3 class="assignment questions">8.3: side effects </h3>
+    <p>
+      Without running the code, predict what the following code is going to output
+    </p>
+    <script type="text/plain" class="language-javascript">
+var money = 500
+
+function getRandomInt(max) {
+return Math.floor(Math.random() * Math.floor(max));
+}
+
+function goToCasino(money){
+console.log("money in function" + money)
+return getRandomInt(money)
+console.log("money on end of function " + money)
+}
+
+console.log("money before function call" + money)
+money = goToCasino()
+console.log("money after function call" + money)
+
+    </script>
+    <p>Run the code, where you correct?</p>
+    <answer noslider buttontext="Mail the answers"></answer>
+</section> 
+
 
 <section class="assignment">
 <h3 class="assignment questions">8.10:</h3>  
 <p>Try to summarize what you learned about functions using the output of other functions.</p>
  
-<answer buttontext="Mail the code"></answer> -->
+<answer buttontext="Mail the code"></answer>
 </main>  
 <aside id="sidebar" include="../agenda.html" reject=".secret"></aside>
 <script src='../js/chapters.js'></script>
