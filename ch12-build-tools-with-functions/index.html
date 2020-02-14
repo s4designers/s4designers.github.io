@@ -10,7 +10,7 @@
 
   <h1>Chapter 12: build your own toolkit: reusable functions</h1>
 
-
+<todo> let ipv var </todo>
 
 
 
@@ -23,13 +23,13 @@
       initializeBreadboard();
     }
     
-    int turnLEDsOn() {
+    void turnLEDsOn() {
       analogWrite(LED_BLUE, 255);
       analogWrite(LED_RED, 255);
       analogWrite(LED_GREEN, 255);
     }
     
-    int turnLEDsOff() {
+    void turnLEDsOff() {
       analogWrite(LED_RED, 0);
       analogWrite(LED_GREEN, 0);
       analogWrite(LED_BLUE, 0);
