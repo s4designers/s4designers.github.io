@@ -277,6 +277,23 @@ span.inline-bonus {
   letter-spacing: 5px;
 }
 
+main table {
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+main tr {
+  border-top: 1px dotted #888;
+  border-bottom: 1px dotted #888;
+}
+
+main td, main th {
+  padding: 4px 10px;
+}
+main th {
+  background-color: #00000006;
+}
+
 button {
   font-family: "Avenir Next", "Avenir", sans-serif;
   background: #e50056;
