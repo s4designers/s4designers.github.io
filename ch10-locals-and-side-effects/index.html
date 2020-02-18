@@ -8,7 +8,7 @@
 <body class="line-numbers">
  <main>
 
-  <h1>Chapter 8:  more about functions: <i>local variables</i> and <i>side effects</i></h1>
+  <h1>Chapter 10:  more about functions: <i>local variables</i> and <i>side effects</i></h1>
 
   <p>You've seen them before: variables that are created <i>inside</i> a function. Did you wonder what happens to them when the function (call) is done, and its code stops running? <b>They disappear</b>. And when the function is called again, and it's code start running anew? <b>They are created again.</b> Welcome to the most important kind of variable in all programming languages: <i>local variables</i>.</p>
   <youtube ytid="0fs7zljFEa0"></youtube>
@@ -16,7 +16,7 @@
  
   <youtube ytid="S4x1qM6p4d0"></youtube>
   <!-- <section class="assignment">
-      <h3 class="assignment questions">8.1: Arduino Sum</h3>
+      <h3 class="assignment questions">10.1: Arduino Sum</h3>
       <p> Make an arduino function that calculates the sum of three values. The function should be called like this:</p>
       <script type="text/plain" class="language-arduino">
 void setup() {
@@ -30,34 +30,132 @@ void setup() {
   </section> -->
 
   <!-- <section class="assignment">
-      <h3 class="assignment questions">8.2: Arduino Calibration</h3>
+      <h3 class="assignment questions">10.2: Arduino Calibration</h3>
       <p> Make an arduino function reads a value from the magnetsensor and stores it in a global variable, call this function in the setup. We are going to use this reading as a baseline to detect whether or not a magnet is near.</p>
       <answer buttontext="Mail the code"></answer>
   </section>
   <section class="assignment">
-      <h3 class="assignment questions">8.3: Arduino returns</h3>
-      <p> Make an arduino function that returns true if the magnet is near, and returns false if the magnet is far away. Use the value you set in with the function in 8.2.  Call the function in an if-statement that turns on a lightbulb if the magnet is far, and turns it off when the magnet is near.</p>
+      <h3 class="assignment questions">10.3: Arduino returns</h3>
+      <p> Make an arduino function that returns true if the magnet is near, and returns false if the magnet is far away. Use the value you set in with the function in 10.2.  Call the function in an if-statement that turns on a lightbulb if the magnet is far, and turns it off when the magnet is near.</p>
       <answer buttontext="Mail the code"></answer>
   </section>
   <section class="assignment">
-      <h3 class="assignment questions">8.4: Side effects</h3>
+      <h3 class="assignment questions">10.4: Side effects</h3>
       <p> Which functions in the previous assignments have a side-effect, and which have a return value. </p>
       <answer buttontext="Mail the code"></answer>
   </section> -->
 
+  <h3 class="assignment summary">10.1: summary and questions</h3>
   <section class="assignment">
-    <h3 class="assignment summary">8.1 side effects</h3>
+    <answer  buttontext="mail your summary">10.1.a: Make a list with <i>3 to 5 bulletpoints</i> with the most important or interesting things in the video (or the theory textbox above):</answer>
+  </section>
+  <section class="assignment">
+      <answer noslider buttontext="mail your word list">10.1.b: Which words or concepts would you like us to explain during class?</answer>
+  </section>
 
-    <p>In your own words, explain: </p> 
-    <ol type="text">
-      <li>What a local variable is</li>
-      <li>What a global variable is</li>
-    </ol>
-    <answer noslider buttontext="mail your answers"></answer>
+
+  <h3 class="assignment questions">10.2: shadowing global variables</h3>
+  <p>Here's some Javascript code that uses both global and local variables (actually, it uses global variables and parameters; but parameters <i>are</i> local variables):</p>
+  <p><b>Don't run this code yet!</b> Just examine it</p>
+  <script type="text/plain" class="language-javascript">
+    var health = 100;
+    
+    eatSomething( health, nutritionalValue ) {
+      console.log( "$$ health:", health );
+      health = health + nutritionalValue;
+      console.log( "%% health:", health );
+      return health;
+    }
+    
+    console.log("!! health:", health );
+    console.log("@@ return value:", eatSomething(50, 10) );
+    console.log("## health:", health );
+  </script>
+  <section class="assignment">
+    <h4>10.2.a: without running the code, predict what the following code is going to print to the console.</h4>
+    <answer buttonText="mail your predicted output"></answer>
+  </section>
+  <section class="assignment">     
+  <h4>10.2.b: run the code. Were you correct?</h4>
+  <answer noslider buttontext="mail your result"></answer>
+</section> 
+
+<section class="assignment">
+  <h3 class="assignment questions">8.5 Arduino music recorder</h3>
+  <p>The code above makes a musical instrument out of our arduino. You can record notes, and play them back. Try it: while recording, use the potentiometer to change the note.</p>
+  <p><span class="inline-note">NOTE:</span> The program only wants to record notes while you're turning the potentiometer. But perhaps your potentiometer readings change even if you're not turning the knob. In that case, it may keep recording notes.</p>
+  <script type="text/plain" class="language-arduino">
+    #include "s4d_breadboard.h"
+
+    byte notes[200];            // A 'byte' is a small integer: a number between 0 and 255.
+    byte reading = 0;           // We use them here to save memory. An array of normal
+    byte currentReading = 0;    // integers would take twice as much memory. 
+    int previousReading = -1;
+    int toneToPlay = 0;
+    int recordingCounter = 0;
+    int playbackCounter = 0;
+    
+    void setup() {
+      initializeBreadboard();
+    }
+    
+    byte analogReadingAsByte(int sensor){
+      reading = analogRead(sensor) / 16;
+      return reading;
+    }
+    
+    void playNote(int position) {
+      toneToPlay = notes[position] * 24 + 400;
+      OLED.printBottom("tone freq.: ", toneToPlay);
+      tone(BUZZER, toneToPlay );
+      delay(100);
+      noTone(BUZZER);
+    }
+    
+    void loop() {
+      currentReading = analogReadingAsByte(POTENTIOMETER);
+      if(digitalRead(BUTTON1) == HIGH){
+        // record only if potmeter changes and note array not yet full
+        if( currentReading != previousReading && recordingCounter < 200) {
+          OLED.printTop("recording nr:", recordingCounter);
+          digitalWrite( LED_RED, HIGH );
+          digitalWrite( LED_BLUE, LOW );      
+          notes[recordingCounter] = currentReading;
+          playNote( recordingCounter );
+          recordingCounter = recordingCounter + 1;
+          previousReading = currentReading;
+          playbackCounter = 0;
+        } else if( recordingCounter == 200 ) {
+          OLED.printBottom("memory full");
+        }                                      // don't play if there's no recording
+      }else if(digitalRead(BUTTON2) == HIGH && recordingCounter > 0) {
+        OLED.printTop("Playing nr:", playbackCounter);
+        digitalWrite( LED_BLUE, HIGH );
+        digitalWrite( LED_RED, LOW );
+        playNote( playbackCounter );
+        playbackCounter = playbackCounter + 1;
+        if(playbackCounter == recordingCounter) { // pause, than play from beginning
+          OLED.printBottom("end of recording"); 
+          delay(1500);
+          playbackCounter = 0;
+        } 
+      } else {
+        digitalWrite( LED_BLUE, LOW );
+        digitalWrite( LED_RED, LOW );
+        OLED.printTop("B1 to record");
+        if(recordingCounter > 0) {
+          OLED.printBottom("B2 to play back");
+        }
+      }
+    }
+    </script>
+   <p>The potmeter is used to generate a tone. The tones are also stored in an array when you keep pressing BUTTON1. The generated music can be played back while holding BUTTON2. </p>
+   <p>To create this program, loads of global variables were used. Some of these should be global, others should be local variables. <b>Change the program so it uses the least possible number of global variables</b> by turning some variables into local ones.</p>
+  <answer buttontext="mail the code"></answer>
 </section>
-<br><br>
 
 
+<br><br><br>
 <div class="theory">
   <p><i>This textbox wants to convince you of an ancient wisdom among software creators: that to keep complex programs manageble, return values are much better than global variables or other “side effects”. But it is OK to use global variables and other side effects  <u>if you need them</u>.</i></p>
   <h3>side effects versus return values</h3>
@@ -85,7 +183,8 @@ void setup() {
   <p><code>importantValue = complexFunction() + complexFunction()</code></p>
   <p>And somehow the result is different from <code>2 * complexFunction()</code>. How could that be? What could be going on? Well, the function could be reading, and then changing, some hidden information (e.g. a global variable, a file, or a property of an HTML element on a web page). The second time it is called, it reads the data that was changed by the first call of the function, resulting in a different return value. So the global variable acts as a hidden channel of communication that you can't readily see when trying to understand that line of code. Or, to say it more strongly: it acts as a link in hidden chain of cause-and-effect in your program.</p>
   <p>Would you like to debug a large piece of code where such hidden channels are everywhere? <i>Where the meaning of every line of code could be influenced by most of the other lines, and you're unable to see that?</i> This is why every programming course for beginners (including this one) discourages the use of global variables. They may be necessary sometimes, but all code is easier to improve or fix, if you have a few globals as possible. For the same reason, we encourage you to construct your program with, as much as possible, functions that only produce return values. Such functions do not take part in invisble cause-and-effect chains. You can control their effect at the place where you call them, and everyone can easily read how you did that.</p>
-  <p>That said, side effects are unavoidable in useful programs. A program where none of the code has any side effects is similar to that function that only changes its local variables: it drains the battery, and does nothing else (actually, it also heats up your processor chip). So: use all the side effects your program needs, but…</p>
+  <h4>side effects can be great, too</h4>
+  <p>That said, side effects are unavoidable in useful programs. A program where none of the code has any side effects is similar to that function that only changes its local variables: it drains the battery, and does nothing else (actually, it also heats up your processor chip). So: use all the side effects your program needs to be useful (or fun), but…</p>
   <ul>
     <li>…concentrate the side effects in a few functions; have all the other functions only create return values.</li>
     <li>…try to have the communication between parts of your program (i.e. functions) happen using parameters and return values. As much as possible, of course.</li>
@@ -96,7 +195,7 @@ void setup() {
 </div>
 
 <section class="assignment">
-      <h3 class="assignment questions">8.2: side effect or return</h3>
+      <h3 class="assignment questions">10.3: side effect or return</h3>
       <p>
         Below are some function calls. Based on the name of the called function, try to explain why you think the function has a side-effect or a return value.
       </p>
@@ -106,40 +205,17 @@ void setup() {
         <li>Math.random()</li>
         <li>firstNumberFromString("ufd4dsfsal34daf")</li>
         <li>alert()</li>
-        <li>Serial.println("Hello!");</li>
+        <li>Serial.println("Hello!")</li>
+        <li>totalPrice( order )</li>
+        <li>sendMessage( Jille, "Hello!" )</li>
+        <li>rollDice()</li>
       </ol>
-      <answer noslider buttontext="Mail the answers"></answer>
+      <answer noslider buttontext="mail the answers"></answer>
 </section> 
 
-<section class="assignment">
-      <h3 class="assignment questions">8.3: side effects </h3>
-      <p>
-        Without running the code, predict what the following code is going to output
-      </p>
-      <script type="text/plain" class="language-javascript">
-var money = 500
-
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
-}
-
-function goToCasino(money){
-  console.log("money in function" + money)
-  return getRandomInt(money)
-  console.log("money on end of function " + money)
-}
-
-console.log("money before function call" + money)
-money = goToCasino()
-console.log("money after function call" + money)
-
-      </script>
-      <p>Run the code, were you correct?</p>
-      <answer noslider buttontext="Mail the answers"></answer>
-</section> 
 
  <section class="assignment">
-      <h3 class="assignment questions">8.4 Stronger password manager</h3>
+      <h3 class="assignment questions">10.4 Stronger password manager</h3>
           <script type="text/plain" class="language-javascript">
             function createPassword(passPhrase) {
               var cryptoPhrase = "a7" + btoa(passPhrase) + "%H";
@@ -150,71 +226,23 @@ console.log("money after function call" + money)
       <script type="text/plain" class="language-javascript">
             var password = "1234abcd"
             var passLength = password.length // stores 8
-            var firstCharacter = password.substring(0,1) // stores 1
-            var secondCharacter = password.substring(1,2) // stores 2
+            var firstCharacters = password.substring(3,5) // stores "4a"
+            var secondCharacter = password.substring(1,2) // stores "2"
         </script>
         <p>Using local variables, modify the function in such a way that:</p>
       <ul>
-        <li>It generate two random numbers. The first should be between 0 and the length of the password minus one, the second one should be between 0 and 9 </li>
+        <li>It generates two random numbers. The first should be between 0 and the <i>length of the password minus one</i>, the second one should be between 0 and 9 </li>
         <li>It does btoa() on the password that was entered.</li>
         <li>It stores a substring of the first characters. How many are stored depends on the first random number.</li>
         <li>It should also store substring of the rest of the string.</li>
-        <li>Store the concatonation of the firstString, plus the second random number, plus the last string</li>
+        <li>Store the concatenation of the firstString, plus the second random number, plus the last string</li>
         <li>Use btoa() on the new string to make it more complex</li>
         <li>Use subtring() to only use the first 14 characters of the newly generated string</li>
-        <li>Add a captial letter, a number, a small letter and a symbol to the string to make sure it is accepted as a password</li>
+        <li>Add a captial letter, a number, a small letter and a symbol to the string to make sure it is accepted as a password by most websites.</li>
         <li>Return the end result. It should be a lot harder to crack this password. </li>
       </ul>
        <p>Change this function with the function in the page you created in chapter 7.</p>
-      <answer buttontext="Mail the code"></answer>
-  </section>
- <section class="assignment">
-      <h3 class="assignment questions">8.5 Stronger password manager</h3>
-        <script type="text/plain" class="language-arduino">
-#include "breadboard.h"
-byte notes[200] ;
-int counter = 0;
-byte currentReading = 0;
-byte reading = 0;
-int playbackCounter = 0;
-int toneToPlay = 0;
-
-void setup() {
-  initializeBreadboard();
-}
-
-byte analogReadingAsByte(int sensor){
-  reading = analogRead(sensor) / 4;
-  return reading;
-}
-
-void loop() {
-  currentReading = analogReadingAsByte(POTENTIOMETER);
-  if(digitalRead(BUTTON1) != HIGH){
-    if( analogReadingAsByte(POTENTIOMETER) != notes[counter] && counter < 200){
-      notes[counter] = currentReading;
-      toneToPlay = notes[counter] * 7 + 400;
-      tone(BUZZER, toneToPlay );
-      delay(100);
-      noTone(BUZZER);
-      counter = counter + 1;
-    }
-  }else{
-    toneToPlay = notes[playbackCounter] * 7 + 400;
-    tone(BUZZER, toneToPlay );
-    delay(100);
-    noTone(BUZZER);
-    playbackCounter = playbackCounter + 1;
-    if(playbackCounter == counter){
-      playbackCounter = 0;
-    }
-  }
-  
-
-        </script>
-        <p>The code above makes a musical instrument out of our arduino. The potmeter is used to generate a tone. The tone is also stored in an array. The generated music can be played back while holding BUTTON1. </p>
-       <p>To create this script, loads of global variables were used. Some of these should be global, others should not. Change the script so it uses the least possible number of global variables..</p>
-      <answer buttontext="Mail the code"></answer>
+      <answer buttontext="mail your code"></answer>
   </section>
 
 </main>  

@@ -2,6 +2,7 @@
 
 ## inhoud
 * !! H7 eindopdracht aanpassen, niet param object als returnwaarde
+* !! H9: opdr. 9.4 eist "global variables". Herformuleren/uitleggen
 * Ruis verwijderen uit filmpjes
 * Afkaderen per vraag.
 * .length uitleggen bij bonus van password manager (ch7)
