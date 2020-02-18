@@ -229,7 +229,7 @@ void setup() {
             var firstCharacters = password.substring(3,5) // stores "4a"
             var secondCharacter = password.substring(1,2) // stores "2"
         </script>
-        <p>Using local variables, modify the function in such a way that:</p>
+        <p>Using local variables, modify the function in such a way that it becomes harder to crack. Below are a possible idea. Implement it. Or even better: add your own encryption tricks! </p>
       <ul>
         <li>It generates two random numbers. The first should be between 0 and the <i>length of the password minus one</i>, the second one should be between 0 and 9 </li>
         <li>It does btoa() on the password that was entered.</li>
@@ -238,7 +238,7 @@ void setup() {
         <li>Store the concatenation of the firstString, plus the second random number, plus the last string</li>
         <li>Use btoa() on the new string to make it more complex</li>
         <li>Use subtring() to only use the first 14 characters of the newly generated string</li>
-        <li>Add a captial letter, a number, a small letter and a symbol to the string to make sure it is accepted as a password by most websites.</li>
+        <li>Lastly: Add a captial letter, a number, a small letter and a symbol to the string to make sure it is accepted as a password by most websites.</li>
         <li>Return the end result. It should be a lot harder to crack this password. </li>
       </ul>
        <p>Change this function with the function in the page you created in chapter 7.</p>
