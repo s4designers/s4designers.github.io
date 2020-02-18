@@ -50,7 +50,6 @@ void setup() {
 
     <p>In your own words, explain: </p> 
     <ol type="text">
-      <li>What a side effect is</li>
       <li>What a local variable is</li>
       <li>What a global variable is</li>
     </ol>
@@ -169,7 +168,54 @@ console.log("money after function call" + money)
        <p>Change this function with the function in the page you created in chapter 7.</p>
       <answer buttontext="Mail the code"></answer>
   </section>
+ <section class="assignment">
+      <h3 class="assignment questions">8.5 Stronger password manager</h3>
+        <script type="text/plain" class="language-arduino">
+#include "breadboard.h"
+byte notes[200] ;
+int counter = 0;
+byte currentReading = 0;
+byte reading = 0;
+int playbackCounter = 0;
+int toneToPlay = 0;
 
+void setup() {
+  initializeBreadboard();
+}
+
+byte analogReadingAsByte(int sensor){
+  reading = analogRead(sensor) / 4;
+  return reading;
+}
+
+void loop() {
+  currentReading = analogReadingAsByte(POTENTIOMETER);
+  if(digitalRead(BUTTON1) != HIGH){
+    if( analogReadingAsByte(POTENTIOMETER) != notes[counter] && counter < 200){
+      notes[counter] = currentReading;
+      toneToPlay = notes[counter] * 7 + 400;
+      tone(BUZZER, toneToPlay );
+      delay(100);
+      noTone(BUZZER);
+      counter = counter + 1;
+    }
+  }else{
+    toneToPlay = notes[playbackCounter] * 7 + 400;
+    tone(BUZZER, toneToPlay );
+    delay(100);
+    noTone(BUZZER);
+    playbackCounter = playbackCounter + 1;
+    if(playbackCounter == counter){
+      playbackCounter = 0;
+    }
+  }
+  
+
+        </script>
+        <p>The code above makes a musical instrument out of our arduino. The potmeter is used to generate a tone. The tone is also stored in an array. The generated music can be played back while holding BUTTON1. </p>
+       <p>To create this script, loads of global variables were used. Some of these should be global, others should not. Change the script so it uses the least possible number of global variables..</p>
+      <answer buttontext="Mail the code"></answer>
+  </section>
 
 </main>  
 <aside id="sidebar" include="../agenda.html" reject=".secret"></aside>
