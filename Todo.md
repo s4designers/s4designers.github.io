@@ -6,6 +6,7 @@
 * Ruis verwijderen uit filmpjes
 * Afkaderen per vraag.
 * .length uitleggen bij bonus van password manager (ch7)
+* replace downloads of images with absolute links into the site, also update the code with such links.
 * Cheatsheet format
 
 ## site UI

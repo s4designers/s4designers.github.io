@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+<div>Street: <input id="streetField" type="text"></div><br>
+<div>Number: <input id="houseNumberField" type="text"></div><br>
+<div>Postcode: <input id="postcodeField" type="text"></div><br>
+<button id="validateButton">Validate</button>
+
+<script type="text/javascript">
+function isPostcode(inputString) {
+  var inputNoSpaces = inputString.replace(" ", "");
+
+  if(inputNoSpaces.length != 6){
+    return false;
+  }
+  var firstFourCharacters = inputNoSpaces.substring(0, 4);
+  var lastTwoCharacters   = inputNoSpaces.substring(4, 6);
+  var firstFourNumber = Number(firstFourCharacters);
+
+  if(isNaN(firstFourNumber)){
+    return false;
+  }
+  if(!isNaN(Number(lastTwoCharacters))){
+    return false;
+  }
+  return true;
+}
+
+function checkForm(){
+  var postcodeInput = document.getElementById("postcodeField").value;
+  if(!isPostcode(postcodeInput)){
+    document.getElementById("postcodeField").style.backgroundColor = "#fcc"
+  }else{
+    document.getElementById("postcodeField").style.backgroundColor = "#cfc"
+  }
+}
+
+document.getElementById("validateButton").onclick = checkForm
+
+</script>
+
+
+</body>
+</html>

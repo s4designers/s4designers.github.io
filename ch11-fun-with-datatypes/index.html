@@ -8,29 +8,48 @@
 <body class="line-numbers">
  <main>
 
-  <h1>Chapter 11: fun with datatypes</h1>
+  <h1>Chapter 11: fun with data types</h1>
   
-  <p>In arduino, it is necessary to specify what sort of value a variable is expected to hold. So far we used integers and Strings. This chapter shows some other possibilities and shows a specific type of bug called "overflow" which can cause unexpected behaviour in your program.</p>
-    <youtube ytid="PK_yguLapgA"></youtube>
+  <p>In Arduino, and <a href="https://en.wikipedia.org/wiki/Category:Statically_typed_programming_languages">many other languages</a>, it is necessary to specify what sort of value a variable is expected to hold (or a function is expected to return). So far we used whole numbers (<code>int</code>) and text (<code>Strings</code>) as value types. This chapter shows some other possibilities and shows a specific type of bug called "overflow" which can cause unexpected behaviour in your program.</p>
 
+<h3>11.1: rockets with integers inside</h3>
 <section class="assignment">
-<h3 class="assignment questions">11.1.a: Ariane 5 Rocket</h3>  
-<p>A program similar to the one below was used inside of the Ariane 5 rocket.</p>
+<h4 class="assignment questions">11.1.a: the Ariane 5 rocket</h4> 
+<img src="ariane5.jpg" style="width:100%"> 
+<p>In 1996, the Ariane 5 rocket was launched for the very first time, from French Guiana. It used a program "similar" to the one below:</p>
 <script type="text/plain" class="language-arduino">
 	int altitude = 0;
 	int acceleration = 3;
-	int speedMps = 0;
+  int speedMps = 0;     // miles per second
+  
 	void setup() {
 		Serial.begin(9600);
 		speedMps = 1;
 	}
+  
+  void loop() {
+		delay(1000);
+		speedMps = speedMps * acceleration;   // basic physics: acceleration is how much the speed increases
+		altitude += altitude + speedMps;      //                speed is how much the position increases
 	
+		showStatus();
+		
+		if(altitude < 100){
+			burnExtraTakeOffFuel();
+		}
+		if(altitude > 40000){
+			compensateWithSideThrusters();      // when the rocket is very high, 
+		}
+	}
+
 	void burnExtraTakeOffFuel(){
-		Serial.println("Burning an explosive amount of fuel");
+    Serial.println("Burning an explosive amount of fuel");
+    // code left out to keep demo simple
 	}
 	
 	void compensateWithSideThrusters(){
-		Serial.println("compensating vibrations using side thrusters");
+    Serial.println("compensating vibrations using side thrusters");
+    // code left out to keep demo simple
 	}
 	
 	void showStatus() {
@@ -38,68 +57,78 @@
 		Serial.print(", ");
 		Serial.println("speed:" + String(speedMps));
 	}
-	
-	void loop() {
-		delay(1000);
-		speedMps = speedMps * acceleration;
-		altitude += speedMps;
-	
-		showStatus();
-		
-		if(altitude < 100){
-			burnExtraTakeOffFuel();
-		}
-		
-		if(altitude > 40000){
-			compensateWithSideThrusters();
-		}
-	}
 </script>
-<p>Run the program on your arduino. Open the Serial monitor and observe what is going on. Is this what you would expect?</p>
-  <answer buttontext="Mail the reasons"></answer>
+<p>Run the program on your Arduino. Open the Serial monitor and observe what is going on. What is happening? Is this what you would expect?</p>
+  <answer buttontext="mail your observations"></answer>
 </section>
 
-<section class="assignment">
-<h3 class="assignment questions">11.1.b: Ariane 5 Rocket</h3>  
-<p>In many languages, including arduino, when you declare a variable, you need to specify what sort of value you expect to use in this variable. This is called a datatype</p>
+<p>Here's what happened with the Ariane, 37 seconds after it lifted off:</p>
+<youtube ytid="gp_D8r-2hwk?start=7"></youtube>
+<p>Read the BBC's explanation of the programming problem that <a href="https://www.bbc.com/future/article/20150505-the-numbers-that-lead-to-disaster" >caused the explosion.</a> The same thing happened in our Arduino program above.</p>
+<div class="theory">
+  <h3>data types and sizes</h3>
+  <p>In many languages, including Arduino, when you declare a variable, the language requires you to write what kind of information the program will keep in the variable. This is called a <i>data type</i>. Sometimes, different data types are meant to hold very different kinds of information. But in Arduino, there are also several variants of the integer data types. Because larger numbers require more memory, which you don't always need or have.</p>
+  <p>Some data types are:</p>
+    <table>
+      <tr>
+        <th>type</th>
+        <th>possible values</th>
+        <th>amount of memory</th>
+        <th>comment</th>
+      </tr>
+      <tr>
+        <td>bool</td>
+        <td>true, false</td>
+        <td>1 byte</td>
+        <td>somewhat wasteful, but faster than using 1 bit</td>
+      </tr>
+      <tr>
+        <td>byte</td>
+        <td>0 to 255</td>
+        <td>1 byte</td>
+      </tr>
+       <tr>
+        <td>int</td>
+        <td>-32768 to 32767</td>
+        <td>16 bits (2&nbsp;bytes)</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>long</td>
+        <td>-2.147.483.648 to 2.147.483.647</td>
+        <td>32 bits (4&nbsp;bytes)</td>
+        <td>calculations with multi-byte values take multiple steps to execute.</td>
+      </tr>
+      <tr>
+        <td>unsigned long</td>
+        <td>0 to 4.294.967.295</td>
+        <td>32 bits (4&nbsp;bytes)</td>
+      </tr>
+      <tr>
+        <td>float</td>
+        <td>numbers with a decimal point</td>
+        <td>32 bits (4&nbsp;bytes)</td>
+        <td>these values can be very large (about&nbsp;34028234000000000000000000000<wbr>0000000000) and  
+                                very small (about&nbsp;0.000000000000000000000000000<wbr>0034028234), but with limited precision.</td>
+      </tr>
+      <tr>
+        <td>char</td>
+        <td>any single character, like 'a', '%', or '7'.</td>
+        <td>1 byte</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>String</td>
+        <td>Any sequence of 0 or more characters.</td>
+        <td>Note the capital letter in "String"</td>
+      </tr>
+    </table>
+  
+</div>  
 
-<h5>Some datatypes are:</h5>
-  <table>
-  	<tr>
-  		<td><h5>type</h5></td>
-  		<td><h5>possible values</h5></td>
-  	</tr>
-  	<tr>
-  		<td>bool</td>
-  		<td>true, false</td>
-  	</tr>
-  	<tr>
-  		<td>byte</td>
-  		<td>0 to 255</td>
-  	</tr>
-  	 <tr>
-  		<td>int</td>
-  		<td>-32768 to 32767</td>
-  	</tr>
-  	<tr>
-  		<td>long</td>
-  		<td>-2.147.483.648 to 2.147.483.647</td>
-  	</tr>
-  	<tr>
-  		<td>unsigned long</td>
-  		<td>0 to 4.294.967.295</td>
-  	</tr>
-  	<tr>
-  		<td>char</td>
-  		<td>any single character</td>
-  	</tr>
-  	<tr>
-  		<td>String</td>
-  		<td>Any Multiple Characters</td>
-      <td>Note the capital letter in "String"</td>
-  	</tr>
-  </table>
-  <p>In the code above, an <code>int</code> was used to describe a value that could potentially grow above 32767. This caused our problem. A similar problem caused the crash of the <a href="https://www.bbc.com/future/article/20150505-the-numbers-that-lead-to-disaster" >Ariane 5 rocket back in 1996.</a> </p>
+<section class="assignment">
+<h4 class="assignment questions">11.1.b: data types and sizes</h3>  
+  <p>In the code above, an <code>int</code> was used to describe a value that could potentially grow above 32767. This causes the <i>overflow</i>. Here is a simpler example of an overflow-causing program:</p>
 <script type="text/plain" class="language-arduino">
 int carPrice = 32760;
 void setup() {
@@ -112,15 +141,20 @@ void loop(){
   Serial.println(carPrice);
 }
 </script>
-<p>The code above shows what happens when a value exceeds the maximum. Experiment with this code and use your findings to explain what happened in the code of 11.1.a. Note that this type of error is called an integer overflow.</p>
- <answer buttontext="Mail the explanation"></answer>
+<p>The code above shows what happens when a value exceeds the maximum. Experiment with this code and use your findings to explain what happened in the code of 11.1.a.</p>
+ <answer noslider buttontext="mail your explanation"></answer>
 </section>
 
 
 <section class="assignment">
-<h3 class="assignment questions">11.1.c: fix</h3>  
-<p>Fix the code by changing the datatype of the variable. Which one do you choose? Add a comment in your code to explain why.</p>
-  <answer buttontext="Mail the code"></answer>
+<h4 class="assignment questions">11.1.c: fix</h4>  
+<p>You can fix the rocket code by changing the data type of the variable. 
+  <ol type="a">
+    <li>Which data type do you choose?</li>
+    <li>Why?</li>
+    <li>Add your entire code</li>
+  </ol> 
+  <answer buttontext="mail the code"></answer>
 </section>
 
 <section class="assignment">
@@ -128,85 +162,112 @@ void loop(){
 <p></p>
 <script type="text/plain" class="language-arduino">
 #include "s4d_breadboard.h"
-int timeButtonClicked = 0;
+int buttonClickTime = 0;
 
 void setup() {
   intitalizeBreadboard();
 }
 
-//millis() gives the number of milliseconds since the program booted.
+//millis() gives the number of milliseconds since the arduino was powered on, or reset.
 void loop() {
   if(analogRead(BUTTON1) == HIGH){
-    timeButtonClicked = millis(); 
+    buttonClickTime = millis(); 
   }
 
-  if(millis() > timeButtonClicked + 5000){
+  if(millis() > buttonClickTime + 5000){
     digitalWrite(LED_BLUE, LOW);
   }else{
     digitalWrite(LED_BLUE, HIGH);
   }
 }
   </script>
-  <p>The code above contains a similar problem. Fix it. What are the limits of your fix?</p>
-  <answer buttontext="Mail the Explanation"></answer>
+  <p>The code above contains a similar problem. How? Analyze it by running it and adding print-commands. Then:
+    <ol type=a>
+      <li>describe the problem in this code,</li>
+      <li>and fix it.</li>
+      <li>What are the limits of your fix?</li>
+    </ol>
+  <p>Write your answers as if you were explaining the issue to a team mate: someone with about the same knowledge and experience of programming as you. Try to make sure someone like that can understand your explanation clearly.</p>
+  <answer buttontext="mail your description">No code needed: just send in a description of the problem, your fix, and its limits:</answer>
 </section>
  <section class="assignment">
-<h3 class="assignment questions">11.3: Experiments with datatypes 1</h3>  
+<h3 class="assignment questions">11.3: experiments with data types &ndash; part 1</h3>  
   <script type="text/plain" class="language-arduino">
     Serial.print("altitude:" + String(altitude));
   </script>
-  <p>The line above is taken from the script in 11.1</p>
-  <p>In it, a trick is used to concatonate a String and an integer. By using the <code>String()</code> "function", the altitude integer is converted into a string, which can be concatonated to another String using the "+" operator. Changing the type of a value from an int to a String with an expression is usually called "casting an integer to String"  <i>(Note: <code>String()</code> isn't usually called a function but a constructor, but that is out of scope of this course)</i>.</p>
-  <p>Even concatonating two Strings is not straightforward in Arduino. Why this is needs a lot of explaining, or none at all. For now, just accept this is how it's done.</p>
+  <p>The line above is taken from the rocket program in exercise 11.1</p>
+  <p>In it, a trick is used to concatenate a String and an integer. By using the <code>String()</code> function, the <code>altitude</code> integer is converted into a string, which can be concatenated to another String using the "+" operator. Converting of a value from an int to a String in an expression is usually called "casting an integer to String".  <i>(Note: The function <code>String()</code> is often called a "constructor", but that is out of scope of this course)</i>.</p>
+  <p>Even concatenating two Strings is not straightforward in Arduino. Why this is needs a lot of explaining, or none at all. For now, just accept that this is how it's done.</p>
    <script type="text/plain" class="language-arduino">
-String helloString = "Hello " + "class"; //does not work
-helloString = String("Hello ") + "class"; //works
-helloString = String("Hello ") + String("class"); //works
+String helloString;
+helloString = "Hello " + "class";                  //does not work
+helloString  = String("Hello ") + "class";         // works
+helloString  = String("Hello ") + String("class"); // works
+helloString  = "Hello " + String("class");         // works
+numberString = "Hello " + String( 123 )            // also works
   </script>
-<p>The following is an experiment: Mail your observations and for each line, try to explain what you see.</p>
+<p>The following is an experiment that uses this string-conversion-and-concatenation trick. Actually, each pair of commented-out lines is a little experiment in itself. Uncomment each pair in turn, en see what happens. Mail your observations and for each pair of lines, try to explain what you see.</p>
 <script type="text/plain" class="language-arduino">
 void setup() {
-  int number = 4.3;
-  Serial.println("number1: " + String(number));
-  number = 4/5;
-  Serial.println("number2: " + String(number));
-  number = HIGH;
-  Serial.println("number3: " + String(number));
-  float decimalNumber = 4.3;
-  Serial.println("decimal1: " + String(decimalNumber));
-  decimalNumber = 4/5;
-  Serial.println("decimal2: " + String(decimalNumber));
-  bool isCorrect = true;
-  Serial.println("bool1: " + String(isCorrect));
-  isCorrect = 0;
-  Serial.println("bool2: " + String(isCorrect));
-  isCorrect = 1;
-  Serial.println("bool3: " + String(isCorrect));
-  isCorrect = 13;
-  Serial.println("bool4: " + String(isCorrect));
+  Serial.begin(9600);
+
+  int number;
+
+  // int number = 4.3;
+  // Serial.println("number1: " + String(number));
+  
+  // number = 4/5;
+  // Serial.println("number2: " + String(number));
+
+  // number = HIGH;
+  // Serial.println("number3: " + String(number));
+
+  float decimalNumber;
+  
+  // decimalNumber = 4.3;
+  // Serial.println("decimal1: " + String(decimalNumber));
+
+  // decimalNumber = 4/5;
+  // Serial.println("decimal2: " + String(decimalNumber));
+
+  bool isCorrect;
+
+  // isCorrect = true;
+  // Serial.println("bool1: " + String(isCorrect));
+
+  // isCorrect = 0;
+  // Serial.println("bool2: " + String(isCorrect));
+
+  // isCorrect = 1;
+  // Serial.println("bool3: " + String(isCorrect));
+
+  // isCorrect = 13;
+  // Serial.println("bool4: " + String(isCorrect));
+  
 }
   </script>
 <ol type="a">
-  <li>int number = 4.3;</li>
+  <li>number = 4.3;</li>
   <li>number = 4/5;</li>
   <li>number = HIGH;</li>
-  <li>float decimalNumber = 4.3;</li>
+  <li>decimalNumber = 4.3;</li>
   <li>decimalNumber = 4/5;</li>
-  <li>bool isCorrect = true;</li>
+  <li>isCorrect = true;</li>
   <li>isCorrect = 0;</li>
   <li>isCorrect = 1;</li>
   <li>isCorrect = 13;</li>
 </ol>
-  <answer buttontext="Mail the observations and conclusions"></answer>
+  <answer buttontext="mail your observations and conclusions"></answer>
 </section>
 
+<h3 class="assignment questions">11.4: experiments with data types &ndash; part 2</h3>  
 <section class="assignment">
-<h3 class="assignment questions">11.4: Experiments with datatypes 2</h3>  
-<p>Try the following:</p>
+<h4>11.4.a: Try the following in Arduino</h4>
 <script type="text/plain" class="language-arduino">
 void setup() {
-  Serial.println( 0.1, 16);
-  Serial.println( 0.1 + 0.1, 16);
+  Serial.begin(9600);
+  Serial.println( 0.1, 16);             // The 16 means: print 16 digits 
+  Serial.println( 0.1 + 0.1, 16);       // after the decimal point.
   Serial.println( 0.1 + 0.1 + 0.1, 16);
   Serial.println( 0.1 + 0.1 + 0.1 + 0.1, 16);
   Serial.println( 0.1 + 0.1 + 0.1 + 0.1 + 0.1, 16);
@@ -215,80 +276,83 @@ void setup() {
   Serial.println( 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1+ 0.1, 16);
 }
 </script>
-<p>Run the code and mail your conclusions.</p>
-  <answer buttontext="Mail the observations and conclusions"></answer>
+<p>Run the code. Does anything strike you as weird?</p>
+  <answer buttontext="mail your observations."></answer>
 </section>
 
 <section class="assignment">
-<h3 class="assignment questions">11.5: Experiments with datatypes 3</h3>  
-<p>Try the same thing in javascript: how many times do you have to add 0.1 to itself to get a similar effect?</p>
-  <answer buttontext="Mail the observations"></answer>
+<h4 class="assignment questions">11.4.b: Try the same thing in javascript</h4>  
+<p>How many times do you have to add 0.1 to itself in JS to get a similar effect?</p>
+  <answer buttontext="mail your observations"></answer>
 </section>
 
-<section class="assignment">
-<h3 class="assignment questions">11.6: Hidden datatypes in Javascript</h3>  
+<h3 class="assignment questions">11.5: another experiment: hidden data types in Javascript</h3> 
+<p>You don't write data types in Javascript when creating functions or variables. But, hidden from view, they do exist while your program is running.</p> 
 <script type="text/plain" class="language-markup">
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
-<body>
-<input type="text" id="inputValue">
-<button id="doubleIt!">calculate Double</button>
-
-<script type="text/javascript">
-  function alertDouble(){
-    var value = document.getElementById("inputValue").value
-    alert(value + value)
-  }
-  document.getElementById("doubleIt").onclick = alertDouble
-&lt;/script>
-</body>
-</html>
-</script>  
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title></title>
+    </head>
+    <body>
+      <input type="text" id="inputValue">
+      <button id="doubleIt!">Calculate Double</button>
+      
+      <script type="text/javascript">
+        function alertDouble(){
+          var value = document.getElementById("inputValue").value
+          alert(value + value)
+        }
+        document.getElementById("doubleIt").onclick = alertDouble
+      &lt;/script>
+    </body>
+  </html>
+    </script>
+<section class="assignment">
+<h4>11.5.a: Run the code and mail your observations</h4>  
 <p>Run the code and mail your observations</p>
-<answer buttontext="Mail the observations"></answer>
+<answer buttontext="mail the observations"></answer>
 </section>
 
 
 <section class="assignment">
-<h3 class="assignment questions">11.7: Hidden datatypes in Javascript 2</h3>  
-
-<p>The problem can be fixed using the Number() expression. Try this. </p>
-<answer buttontext="Mail your code"></answer>
+<h4 class="assignment questions">11.5.b: solve the problem with a type conversion</h4>  
+<p>Earlier, we introduced the property <code>.valueAsNumber</code> to prevent this error. But most Javascript code you'll find online solves the problem in a different way.</p>
+<p>The problem can be fixed using the Number() function. Try this.</p>
+<answer buttontext="mail your code"></answer>
 </section>
 
-<section class="assignment">
-<h3 class="assignment questions">11.8: Hidden datatypes in Javascript 3</h3>  
+<h3 class="assignment questions">11.6: type errors in calculations</h3>  
 <script type="text/plain" class="language-markup">
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
-<body>
-<input type="text" id="inputValue">
-<button id="squareIt">calculate square</button>
-
-<script type="text/javascript">
-  function alertSquare(){
-    var value = document.getElementById("inputValue").value
-    alert(value * value)
-  }
-  document.getElementById("squareIt").onclick = alertSquare
-&lt;/script>
-</body>
-</html>
-</script> 
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title></title>
+    </head>
+    <body>
+      <input type="text" id="inputValue">
+      <button id="squareIt">calculate square</button>
+      
+      <script type="text/javascript">
+        function alertSquare(){
+          var value = document.getElementById("inputValue").value
+          alert(value * value)
+        }
+        document.getElementById("squareIt").onclick = alertSquare
+      &lt;/script>
+    </body>
+  </html>
+    </script> 
+<section class="assignment">
+<h4>11.6.a: multiplying strings</h4>
 <p>On the page above, try what happens when you enter the string "Three". Why does this happen? Can this be fixed this using <code>Number()</code>?</p>
-
-<answer buttontext="Mail your observations"></answer>
+<answer buttontext="mail your observations"></answer>
 </section>
  
 <section class="assignment">
-<h3 class="assignment questions">11.9: Hidden datatypes in Javascript 4</h3>  
- <p>Sometimes you want to check whether a variable contains a number. One way to do this is using the <code>isNaN()</code> function. This function returns true if the value entered is not a number (NaN stands for Not A Number). This can be a bit confusing as the name has a negative in it. If you want to know if something is a number things get really confusing as <code>!isNaN(45)</code> will return true. </p>
+<h4 class="assignment questions">11.6.b: NaNNaNNaNNaNNaNNaNNaNNaNNaNNaN</h3>  
+ <p>Sometimes you want to check whether a calculation went wrong and the result isn't a useful number. One way to do this, in Javascript, is using the <b><code>isNaN()</code></b> function. This function returns true if its input is not a number (NaN stands for <i>Not A Number</i>). This can be a bit confusing as the name has a negative in it. If you want to know if something is a number things get really confusing as <code>!isNaN(45)</code> will return true. </p>
+ <p>In the Netherlands, ZIP codes are called <i>postcodes</i>, and they have a specific format: 1234AB; four digits, followed by two (capital) letters. Here's code thta tries to check if the user is entering a correct postcode into a form:</p>
 <script type="text/plain" class="language-markup">
 <!DOCTYPE html>
 <html>
@@ -296,51 +360,62 @@ void setup() {
   <title></title>
 </head>
 <body>
+  
 <div>Street: <input id="streetField" type="text"></div><br>
 <div>Number: <input id="houseNumberField" type="text"></div><br>
-<div>PostalCode: <input id="postalCodeField" type="text"></div><br>
-<button id="submitButton">Validate</button>
+<div>Postcode: <input id="postcodeField" type="text"></div><br>
+<button id="validateButton">Validate</button>
 
 <script type="text/javascript">
-function isPostalCode(){
-  var input = document.getElementById("postalCodeField").value;
-  var inputNoSpaces = input.replace(" ", "");
-
-  if(inputNoSpaces.length != 6){
-    return false;
-  }              
-  var firstFourCharacters = inputNoSpaces.substring(0, 4);
-  var firstFourNumbers = Number(firstFourCharacters); 
-  var lastTwoDigits = input.substring(4, 6);
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
   
-  if(isNaN(firstFourNumbers)){
-    return false;
+  <div>Street: <input id="streetField" type="text"></div><br>
+  <div>Number: <input id="houseNumberField" type="text"></div><br>
+  <div>Postcode: <input id="postcodeField" type="text"></div><br>
+  <button id="validateButton">Validate</button>
+  
+  <script type="text/javascript">
+  function isPostcode(inputString) {
+    var inputNoSpaces = inputString.replace(" ", "");
+  
+    if( inputNoSpaces.length != 6 ) {
+      return false;
+    }
+    var firstFourCharacters = inputNoSpaces.substring(0, 4);
+    var lastTwoCharacters   = inputNoSpaces.substring(4, 6);
+    var firstFourNumber = Number(firstFourCharacters);
+  
+    if( isNaN(firstFourNumber) ) {
+      return false;
+    }
+    if( ! isNaN(Number(lastTwoCharacters)) ) {
+      return false;
+    }
+    return true;
   }
-  if(!isNaN(Number(lastTwoDigits))){
-    return false;
+  
+  function checkForm(){
+    var postcodeInput = document.getElementById("postcodeField").value;
+    if( ! isPostcode(postcodeInput) ) {
+      document.getElementById("postcodeField").style.backgroundColor = "#fcc" // light red
+    } else {
+      document.getElementById("postcodeField").style.backgroundColor = "#cfc" // light green
+    }
   }
-  console.log(inputNoSpaces)   
-  return true;
-}
-
-function submitForm(){
-  if(!isPostalCode()){
-    document.getElementById("postalCodeField").style.border = "2px solid red"
-  }else{
-    document.getElementById("postalCodeField").style.border = "1px solid green"
-  }
-}
-
-document.getElementById("submitButton").onclick = submitForm
-
-&tl;/script>
-
-
+  
+  document.getElementById("validateButton").onclick = checkForm
+  
+  &lt;/script>
 </body>
 </html>
 </script>
-<p>Similar to the postalcode validation in the code above, upon submitting the form, make sure the page gives an error when the house number field contains text.</p>  <p><span class="inline-bonus">Bonus</span>: Also, make sure the street field does not end with a number.</p>
-<answer buttontext="Mail your code"></answer>
+<p>Similar to the postalcode validation in the code above, upon submitting the form, make sure the page gives shows an error color when the house number field contains text.</p>  <p><span class="inline-bonus">Bonus</span>: Also, make sure the street field does not end with a number.</p>
+<answer buttontext="mail your code"></answer>
 </section>
  
 
