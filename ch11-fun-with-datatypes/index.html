@@ -38,7 +38,7 @@
 			burnExtraTakeOffFuel();
 		}
 		if(altitude > 40000){
-			compensateWithSideThrusters();      // when the rocket is very high, 
+			compensateWithSideThrusters();     
 		}
 	}
 
@@ -58,7 +58,7 @@
 		Serial.println("speed:" + String(speedMps));
 	}
 </script>
-<p>Run the program on your Arduino. Open the Serial monitor and observe what is going on. What is happening? Is this what you would expect?</p>
+<p>Run the program on your Arduino. Open the Serial Monitor and observe what is going on. What is happening? Is this what you would expect?</p>
   <answer buttontext="mail your observations"></answer>
 </section>
 
@@ -67,7 +67,7 @@
 <p>Read the BBC's explanation of the programming problem that <a href="https://www.bbc.com/future/article/20150505-the-numbers-that-lead-to-disaster" >caused the explosion.</a> The same thing happened in our Arduino program above.</p>
 <div class="theory">
   <h3>data types and sizes</h3>
-  <p>In many languages, including Arduino, when you declare a variable, the language requires you to write what kind of information the program will keep in the variable. This is called a <i>data type</i>. Sometimes, different data types are meant to hold very different kinds of information. But in Arduino, there are also several variants of the integer data types. Because larger numbers require more memory, which you don't always need or have.</p>
+  <p>In many languages, including Arduino, when you declare a variable, the language requires you to write what kind of information the program will keep in the variable. This is called a <i>data type</i>. Sometimes, different data types are meant to hold very different kinds of information, like <code>int</code> and <code>String</code>. But in Arduino, there are also several variants of the integer data types. That is because larger numbers require more memory, and sometimes you really need to store large numbers, while at other times you don't need big numbers, but really need to use less memory. </p>
   <p>Some data types are:</p>
     <table>
       <tr>
@@ -128,7 +128,7 @@
 
 <section class="assignment">
 <h4 class="assignment questions">11.1.b: data types and sizes</h3>  
-  <p>In the code above, an <code>int</code> was used to describe a value that could potentially grow above 32767. This causes the <i>overflow</i>. Here is a simpler example of an overflow-causing program:</p>
+  <p>In the code above, an <code>int</code> was used to describe a value that could potentially grow above 32767. This causes the <i>overflow</i>. Here is a simpler example that demonstrates the exact nature of an overflow more clearly:</p>
 <script type="text/plain" class="language-arduino">
 int carPrice = 32760;
 void setup() {
@@ -197,7 +197,7 @@ void loop() {
   </script>
   <p>The line above is taken from the rocket program in exercise 11.1</p>
   <p>In it, a trick is used to concatenate a String and an integer. By using the <code>String()</code> function, the <code>altitude</code> integer is converted into a string, which can be concatenated to another String using the "+" operator. Converting of a value from an int to a String in an expression is usually called "casting an integer to String".  <i>(Note: The function <code>String()</code> is often called a "constructor", but that is out of scope of this course)</i>.</p>
-  <p>Even concatenating two Strings is not straightforward in Arduino. Why this is needs a lot of explaining, or none at all. For now, just accept that this is how it's done.</p>
+  <p>Even concatenating two Strings is not straightforward in Arduino. The true reasons need a lot of explaining&mdash;or none at all. For now, we can just accept that this is how it's done.</p>
    <script type="text/plain" class="language-arduino">
 String helloString;
 helloString = "Hello " + "class";                  //does not work
