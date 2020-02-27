@@ -6,7 +6,10 @@
   <link rel="stylesheet" href="../css/main.css"/>
 </head>
 <body class="line-numbers">
- <main>
+  <aside id="toc-column"></aside>
+  <aside id="agenda" include="../agenda.html"></aside>
+  <div id="page">
+    <main>
 
   <h1>Chapter 5: russian dolls for data: variables <i>inside</i> variables</h1>
   <p>This chapter introduces two ways of combining multiple variables into <i>data structures</i>: <b>objects</b> and <b>arrays</b>. Such data structures allow you to store many pieces of information in a single variable. Later chapters will also use arrays and objects.</p>
@@ -254,8 +257,8 @@ Serial.println(grades[4]);
 
 
 
-</main>  
-<aside id="sidebar" include="../agenda.html" reject=".secret"></aside>
+    </main>
+  </div>
 <script src='../js/chapters.js'></script>
 </body>
 </html>

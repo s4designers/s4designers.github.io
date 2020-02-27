@@ -6,7 +6,10 @@
   <link rel="stylesheet" href="../css/main.css"/>
 </head>
 <body class="line-numbers">
- <main>
+  <aside id="toc-column"></aside>
+  <aside id="agenda" include="../agenda.html"></aside>
+  <div id="page">
+    <main>
 
   <h1>Chapter 11: fun with data types</h1>
   
@@ -63,7 +66,7 @@
 </section>
 
 <p>Here's what happened with the Ariane, 37 seconds after it lifted off:</p>
-<youtube ytid="gp_D8r-2hwk?start=7"></youtube>
+<youtube ytid="gp_D8r-2hwk?start=7" title="launch of the Ariane 5"></youtube>
 <p>Read the BBC's explanation of the programming problem that <a href="https://www.bbc.com/future/article/20150505-the-numbers-that-lead-to-disaster" >caused the explosion.</a> The same thing happened in our Arduino program above.</p>
 <div class="theory">
   <h3>data types and sizes</h3>
@@ -350,7 +353,7 @@ void setup() {
 </section>
  
 <section class="assignment">
-<h4 class="assignment questions">11.6.b: NaNNaNNaNNaNNaNNaNNaNNaNNaNNaN</h3>  
+<h4 class="assignment questions">11.6.b: NaNNaNNaNNaNNaN&shy;NaNNaNNaNNaNNaN</h3>  
  <p>Sometimes you want to check whether a calculation went wrong and the result isn't a useful number. One way to do this, in Javascript, is using the <b><code>isNaN()</code></b> function. This function returns true if its input is not a number (NaN stands for <i>Not A Number</i>). This can be a bit confusing as the name has a negative in it. If you want to know if something is a number things get really confusing as <code>!isNaN(45)</code> will return true. </p>
  <p>In the Netherlands, ZIP codes are called <i>postcodes</i>, and they have a specific format: 1234AB; four digits, followed by two (capital) letters. Here's code thta tries to check if the user is entering a correct postcode into a form:</p>
 <script type="text/plain" class="language-markup">
@@ -420,8 +423,8 @@ void setup() {
  
 
 
-</main>  
-<aside id="sidebar" include="../agenda.html" reject=".secret"></aside>
+    </main>
+  </div>
 <script src='../js/chapters.js'></script>
 </body>
 </html>

@@ -22,13 +22,29 @@ function byId(id) {
   return window.document.getElementById(id)
 }
 
+function appendToElement(element, children) {
+  if(typeof children === "string"){
+    element.innerHTML = children
+  } else if(children instanceof Element){
+    element.appendChild(children)
+  } else if(children instanceof Array) {
+    for(const child of children) {
+      appendToElement(element, child)
+    }
+  }
+}
+
 // creates a element, but doesn't place it into the DOM
-function createElement( tagName, attributes={}, innerHTML="") {
+function createElement( tagName, attributes={}, children="") {
   const element = document.createElement(tagName);
   for( attrName in attributes ) {
-    element.setAttribute(attrName, attributes[attrName])
+    if(attrName.charAt(0) === '$') {
+      element.style[attrName.substring(1)] = attributes[attrName];
+    } else {
+      element.setAttribute(attrName, attributes[attrName])
+    }
   }
-  element.innerHTML = innerHTML
+  appendToElement(element, children)
   return element
 }
 
@@ -95,14 +111,107 @@ function loadStylesheet(url) {
 
 //======= creating page elements ====================================
 
+const tocLevels = {
+  h1:  1,
+  h2:  2,
+  h3:  3,
+  h4:  4,
+  youtube: 3
+}
+const youtubeOembedUrl = (ytid) => `https://noembed.com/embed?url=http://www.youtube.com/watch?v=${ytid}`
+
+async function createTOC(testData) {
+  const contentElements = testData || $$("h1, h2, h3, h4, youtube")
+  const tocItems = []
+  const youtubePromises = []
+  currentLevel = 0
+  for( contentEl of contentElements ) {
+    const tocItem = { }
+    tocItems.push(tocItem)
+    // determine TOC level
+    tocItem.tocLevel =  tocLevels[contentEl.tagName.toLowerCase()] 
+    // determine title text
+    if( contentEl.tagName.toLowerCase() === 'h1' ) {
+      tocItem.title = contentEl.innerHTML  // perhaps treat h1's differently?
+    } else if(contentEl.tagName.toLowerCase() !== 'youtube') {
+      tocItem.title = contentEl.innerHTML
+    } else if(contentEl.title) {
+      tocItem.title = contentEl.title
+      tocItem.icon = "youtube"
+    } else {
+      // start getting titles for youtube videos
+      const ytid = contentEl.getAttribute('ytid')
+      tocItem.icon = "youtube"
+      tocItem.ytid = ytid
+      promiseForYTVideoTitle = (async () => {
+        const response = await fetch(youtubeOembedUrl(ytid.split("?")[0]))
+        const json = await response.json()
+        return [ytid, json]
+      })()
+      youtubePromises.push( promiseForYTVideoTitle )
+    }
+    // get item id, or create one
+    let id = contentEl.id
+    if( !id || id === "") {
+      id = newId("tocItem")
+      contentEl.id = id
+    } 
+    tocItem.id = id;
+
+    // is this item the first item of a special textbox (attention, theory etc.)?
+    if( contentEl.parentElement.firstElementChild == contentEl) {
+      const parentClasses = contentEl.parentElement.classList 
+      for( className of ["theory", "attention", "instruction"]) {
+        if( parentClasses.contains(className)){
+          tocItem.icon = className
+          // make toc link to textbox, not header
+          let id = contentEl.parentElement.id
+          if( !id || id === "") {
+            id = newId("tocItem")
+            contentEl.parentElement.id = id
+          } 
+          tocItem.id = id;
+        }
+      }
+    }
+  }
+
+  // process youtube titles when they've been received
+  const youtubeResponses = await Promise.all(youtubePromises)
+  for(const [ytid,data] of youtubeResponses) {
+    for(const tocItem of tocItems){
+      if( tocItem.ytid === ytid) {
+        tocItem.title = data.title.split(": ")[1] || data.title
+        break
+      }
+    }
+  }
+
+  // generate toc
+  const tocElements = tocItems.map(tocItem => {
+    const linkEl = createElement("a", {href: "#"+ tocItem.id}, tocItem.title)
+    // if(tocItem.ytid) {
+    //   linkEl.insertAdjacentElement("afterbegin", createElement("img", {src:"../images/youtube.svg", class: "toc-icon"}))
+    // }
+    if(tocItem.icon) {
+      linkEl.insertAdjacentElement("afterbegin", createElement("img", {src:`../images/${tocItem.icon}-icon.svg`, class: "toc-icon"}))
+    }
+    return createElement("div", {class: "tocLine toc"+tocItem.tocLevel}, linkEl )
+  })
+  const tocDiv = createElement("div", {id: "toc"},tocElements)
+  tocDiv.insertAdjacentHTML("afterbegin","<h1>chapter contents</h1>")
+  $("#toc-column").appendChild(tocDiv)
+}
+
 function createYoutubePlayers() {
   let allYoutubeElements = $$("youtube")
   allYoutubeElements.forEach( ytElement =>{
     let width = 650
     let height = width * 9/16
     let youtubeId = ytElement.getAttribute('ytid')
+    let id = ytElement.id
     let embedCode = `
-      <div class="videoWrapper">
+      <div id="${id}" class="videoWrapper">
         <iframe width="${width}" height="${height}" 
                 src="https://www.youtube-nocookie.com/embed/${youtubeId}" frameborder="0" 
                 allow="" allowfullscreen>
@@ -397,11 +506,14 @@ async function addCodeHighlighter() {
 }
 
 function adaptPageTitle() {
-  const titleElement = $('h1')
+  const titleElement = $('main h1')
   let titleHtml = titleElement.innerHTML
   let titleText = titleElement.textContent
   const titleRegex = /^\s*(?:Chapter)?\s*(\d+):?\s*(.*)$/i
   const htmlSegments = titleHtml.match(titleRegex);
+  if(!htmlSegments) {
+    console.log("titleHtml", titleHtml)
+  }
   if(htmlSegments.length == 3){
     const textSegments = titleText.match(titleRegex);
     const chapterNum = textSegments[1]
@@ -416,10 +528,31 @@ function adaptPageTitle() {
   }
 }
 
+let tocVisibleObserver
+function installScrollToTop() {
+  const scrollToTopDiv = createElement('div',{id:"scrollToTop"},"⇧ scroll to top ⇧")
+  scrollToTopDiv.onclick = function() {
+    window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+  }
+  document.body.appendChild(scrollToTopDiv)
+  function tocVisibilityChanged(entries) {
+    entries.forEach( () =>{
+      const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+      const tocBottom = $("#toc").getBoundingClientRect().bottom;
+      // console.log('tocBottom :', tocBottom, viewportHeight/3*2)
+      scrollToTopDiv.classList.toggle('visible', tocBottom < viewportHeight/3*2);
+    })
+  }
+
+  tocVisibleObserver = new IntersectionObserver(tocVisibilityChanged, {root:null, rootMargin: "0px", threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]})
+  tocVisibleObserver.observe($("#toc"))
+}
+
 //====== main program ===============================================
 
 
 async function setupChapter() {
+  await createTOC()          // also async, but no need to await
   await loadIncludes()
   adaptPageTitle()
   createHintBlocks()
@@ -429,6 +562,7 @@ async function setupChapter() {
   createDownloadButtons()
   addCodeHighlighter()
   createNotes()  
+  installScrollToTop()
 }
 
 setupChapter();

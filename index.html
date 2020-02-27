@@ -2,29 +2,30 @@
 <html>
 <head>
   <meta charset='utf-8'>
-  <title>Page Title</title>
+  <title>Scripting for Designers</title>
   <link rel="stylesheet" href="./css/main.css"/>
   <style type="text/css">
     #agenda-pointer {
       font-family: 'Avenir Next';
-      margin: 150px 40px 0 0;
+      margin: 190px 40px 0 0;
       font-size: 18pt;
       text-align: right;
       color: #aaa;
+    }
+    #agenda {
+      opacity: 1 !important;
     }
   
   </style>
 </head>
 <body>
 <!-- <body class="line-numbers"> -->
- <main>
+  <aside id="agenda"></aside>
 
   <div id="agenda-pointer">
     Select a chapter from the time table &nbsp; ⟶
   </div>
 
-</main>  
-<aside id="sidebar"></aside>
 <script language="javascript">
   async function loadAgenda() {
     const response = await fetch('./agenda.html')
@@ -32,7 +33,7 @@
     const agendaElement = document.createElement( 'div')
     agendaElement.className = 'agenda';
     agendaElement.innerHTML = content;
-    document.querySelector('#sidebar').appendChild(agendaElement)
+    document.querySelector('#agenda').appendChild(agendaElement)
   }
   loadAgenda();
 </script>

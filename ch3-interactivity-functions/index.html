@@ -6,7 +6,10 @@
   <link rel="stylesheet" href="../css/main.css"/>
 </head>
 <body class="line-numbers">
-<main>
+  <aside id="toc-column"></aside>
+  <aside id="agenda" include="../agenda.html"></aside>
+  <div id="page">
+    <main>
 
   <h1>chapter 3: interactivity in Javascript with <i>functions</i></h1>
 
@@ -83,13 +86,14 @@
       </p>
       <answer noslider buttontext="mail the name"></answer>
   </section>
+
  <section class="assignment">
       <h3 class="assignment questions">3.5: what's wrong?</h3>
-      <section class="instruction">
+      <div class="instruction">
         <p>This assignment uses the following image:</p> 
         <p><img height=150 src="giant_heron.jpg"></p>
         <p>Save it to the same directory as your html file: <download href="giant_heron.jpg"></download></b></p>
-    </section>
+      </div>
           <script type="text/plain" class="language-html">
 <html>
 <head>
@@ -258,10 +262,7 @@
       <div class="theory">
         <p>In Javascript, whenever a value is needed, but not supplied, a dummy-value is used instead.</p>
         <p>This dummy value is written and printed as: <b><code>undefined</code></b>.</p>
-      </div>
-
-    </div>
-  </section>
+      </div>  
 
 
   <h3 class="assignment questions">3.9: to () or not to ()</h3>
@@ -396,19 +397,19 @@
     <h2>calculations in Javascript</h2>
     <p>Like Arduino, we often need calculations to achieve interesting user interaction. The effect created in the following video could not have been created without some calculations. <b>Remember to make some notes!</b></p>
     <youtube ytid="UA8k9S9-KQM"></youtube>    
-    <h3 class="assignment summary">3.10: summary and questions</h3>
+    <h3 class="assignment summary">3.11: summary and questions</h3>
     <section class="assignment">
-      <answer  buttontext="mail your summary">3.10.a: Make a list with <i>3 to 5 bulletpoints</i> with the most important or interesting things in the video:</answer>
+      <answer  buttontext="mail your summary">3.11.a: Make a list with <i>3 to 5 bulletpoints</i> with the most important or interesting things in the video:</answer>
     </section>
     <section class="assignment">
-        <answer noslider buttontext="mail your word list">3.10.b: Which words or concepts would you like us to explain during class?</answer>
+        <answer noslider buttontext="mail your word list">3.11.b: Which words or concepts would you like us to explain during class?</answer>
     </section>
   
 
 
     
     <section class="assignment">
-      <h3 class="assignment questions">3.11: sliding birds</h3>
+      <h3 class="assignment questions">3.12: sliding birds</h3>
       <p>You're going to create something similar to the birds-slider app in the video. Instead of the width of the pictures changing, two CSS properies change with the slider: <code>opactity</code> and <code>left</code>. Like this:</p> 
       <youtube ytid="0ewoLCVQyK8"></youtube>
       <p>Let's approach this in three steps, and use the code below to get started:</p>
@@ -503,8 +504,7 @@
       <answer buttontext="mail your program">Send in the program after you're done with all the steps:</answer>
     </section>
 
-</main>  
-<aside id="sidebar" include="../agenda.html" reject=".secret"></aside>
+</main></div>
 <script src='../js/chapters.js'></script>
 </body>
 </html>

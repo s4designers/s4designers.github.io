@@ -6,9 +6,11 @@
   <link rel="stylesheet" href="../css/main.css"/>
 </head>
 <body class="line-numbers">
- <main>
+  <aside id="toc-column"></aside>
+  <aside id="agenda" include="../agenda.html"></aside>
+  <div id="page"><main>
 
-  <h1>Chapter 1: introduction to the Arduino</h1>
+  <h1>chapter 1: introduction to the Arduino</h1>
 
   <p>This first chapter introduces the Arduino -- a tiny computer that is often used to control all kinds of hardware, including robots, drones and art-installations.</p>
 
@@ -144,6 +146,7 @@
   <youtube ytid="FCzx0USCvdc"/></youtube>
 
   <div class="theory">
+    <h3>calculating with <i>operators</i></h3>
     <p>For calculations, programming languages use symbols that are available on keyboards, and some are different from what you've learned at school:</p>
     <table>
       <tr><td style="width: 5em;">
@@ -175,6 +178,7 @@
   </div>
 
   <div class="theory">
+    <h3>grammar rules for programming: <i>syntax</i></h3>
     <p><i>Syntax</i> is the word we use for the set of rules about how you write things in a programmming language. Every language has it's own <i>syntax</i>, but many aspects of syntax are shared among most languages. Here a a few basic rules found in many languages:</p>
     <ul>
       <li><b>names</b> for commands (and other things) must start with a letter, and cannot contain spaces or symbols (like + or % or ;).</li>
@@ -330,8 +334,8 @@ void loop() {
       <answer buttontext="mail all of your code, but not the header file"></answer>
   </section>
 
-</main>  
-<aside id="sidebar" include="../agenda.html" reject=".secret"></aside>
+  </main>
+</div>  
 <script src='../js/chapters.js'></script>
 </body>
 </html>

@@ -6,7 +6,10 @@
   <link rel="stylesheet" href="../css/main.css"/>
 </head>
 <body class="line-numbers">
- <main>
+  <aside id="toc-column"></aside>
+  <aside id="agenda" include="../agenda.html"></aside>
+  <div id="page">
+    <main>
 
   <h1>chapter 8: <i>true</i>, <i>false</i>, and choosing with <i>if-statements</i></h1>
 
@@ -187,7 +190,7 @@
   <section class="assignment">
     <h3 class="assignment questions">8.6: Austin Powers</h3>
     <p>If-statements in Javascript work the identically to if-statements in Arduino. They're also written the same way. Try your hand at making choices in Javascript, by creating a digital version of this Mustaffa:</p>
-    <youtube ytid="z-5iCygFd9M"></youtube>
+    <youtube ytid="z-5iCygFd9M" title="Mustaffa in Austin Powers"></youtube>
 
     <p>Mustaffa has to tell the truth if a question is asked three times. Create a script that mimmicks Mustaffa.</p>
 
@@ -272,7 +275,7 @@ function estimateFine(actualSpeed, speedLimit){
 
 
   <h3 class="assignment questions">8.9: fit for the A-team</h3> 
-  <youtube ytid="Cn6kEsloMdE"></youtube>
+  <youtube ytid="Cn6kEsloMdE" title="the A-team leader"></youtube>
   <p>The following code is used in the application form for the A-team.</p>
   <p>Note how this code uses a new way of combining if-statements. Try to "execute" the code yourself, without a computer. Follow the path that the if-statements choose to understand what it means when an <b>if-statement is nested <i>inside</i> another if-statement</b>.</p>
    <script type="text/plain" class="language-javascript">
@@ -446,8 +449,8 @@ function resetForNewTurn(){
  
 
 
-</main>  
-<aside id="sidebar" include="../agenda.html" reject=".secret"></aside>
+    </main>
+  </div>
 <script src='../js/chapters.js'></script>
 </body>
 </html>

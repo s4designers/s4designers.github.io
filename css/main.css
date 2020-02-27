@@ -6,69 +6,156 @@ body {
   font-size: 14px;
   line-height: 1.4em;
   color: #444;
+  background-color: #f8f8f8;
   margin: 0;
   padding: 0;
   display: grid;
   grid-gap: 0px;
-  grid-template-columns: 1fr fit-content(300px);
+  grid-template-columns: fit-content(300px) 1fr fit-content(300px);
   grid-template-areas:
-     "header  header"
-     "content sidebar"
-     "footer  footer";
+     "header  header  header"
+     "leftBar content rightBar"
+     "footer  footer  footer";
+}
+#agenda-pointer {
+  grid-area: content;
+}
+#page {
+  grid-area: content;
+  width: calc(100% - 60px);
+  background-color: white;
+  margin: 4em 30px 20em 30px;
+  box-shadow: 3px 3px 29px 0px rgba(0,0,0,0.3);
 }
 
 main {
   width: 650px;
+  /* margin-top: 4em; */
+  /* margin-bottom: 4em; */
   margin-left: auto;
   margin-right: auto;
-  grid-area: content;
+  
   padding: 3em;
 }
 
-
-#sidebar {
-  background-color: #f8f8f8;
-  grid-area: sidebar;
+#toc-column {
+  grid-area: leftBar;
+  opacity: 0.2;
+  transition: opacity 0.5s;
+}
+#toc-column:hover {
+  opacity: 1;
+}
+#toc {
   padding: 1.5em;
   font-family: "Avenir Next", "Avenir", sans-serif;
   font-size: 9pt;
 }
-#sidebar h1 {
-  margin-top: 200px;
+.toc1 {
+  font-weight: bold;
+  line-height:1.1em;
+  top: 1em;
+  margin-bottom: 1em;
+}
+.toc2 {
+  margin-left: 1.5em;
+  font-weight: bold;
+  margin-top: 1.3em;
+  line-height:1.1em;
+}
+.toc3 {
+  margin-left: 1.5em;
+  position: relative;
+  margin-top: 0.7em;
+  line-height:1.1em;
+}
+.toc4 {
+  margin-top: 0.4em;
+  margin-left: 3em;
+  line-height:1.1em;
+}
+.toc-icon {
+  height: 0.8em;
+  vertical-align: baseline;
+  margin-right: 0.2em;
+  position: relative;
+  top: 1px;
+}
+
+#scrollToTop {
+  position: fixed;
+  height: 30px;
+  padding: 5px 10px;
+  background-color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  /* color: #e50056; */
+  color: #888;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  bottom: -40px;
+  transition: bottom 0.6s;
+  left: 20px;
+  font-family: "Avenir Next", "Avenir", sans-serif;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+#scrollToTop.visible {
+  bottom: 0px;
+}
+#scrollToTop:hover {
+  color: #444;
+}
+
+#agenda {
+  grid-area: rightBar;
+  padding: 1.5em;
+  font-family: "Avenir Next", "Avenir", sans-serif;
+  font-size: 9pt;
+  opacity: 0.2;
+  transition: opacity 0.3s;
+}
+#agenda:hover {
+  opacity: 1;
+}
+
+
+
+#agenda h1, #toc h1 {
+  margin-top: 7em;
   font-size: 12pt;
 }
-#sidebar h2 {
+#agenda h2 {
   margin-top: 1em;
   font-size: 14px;
 }
-#sidebar h3 {
+#agenda h3 {
   margin-top: 0.5em;
   margin-bottom: 0em;
   font-size: 14px;
   font-weight: 400;
 }
-#sidebar .lesson-content {
+#agenda .lesson-content {
   padding-left: 1.5em;
   margin-top: 0;
   margin-bottom: 0;
 }
-#sidebar .lesson-content li::marker {
+#agenda .lesson-content li::marker {
   color: #888;
 }
 
-#sidebar h1 {
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
 @media (max-width: 800px) { 
+  body {
+    grid-template-areas:
+      "header"
+      "leftBar" 
+      "content"
+      "rightBar"
+      "footer";
+  }
   main {
     padding: 1em;
     width: auto;
-  }
-
-  #sidebar {
-    grid-area: footer;
   }
 }
 
@@ -76,6 +163,14 @@ main {
 a {
   color: #e50056;
   text-decoration: none;
+}
+#toc a {
+  color: #444;
+  text-decoration: none;
+}
+a:hover, #toc a:hover { 
+  color: #e50056;
+  text-decoration: underline solid #e5005680 1px;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -90,7 +185,7 @@ h1 {
   margin-bottom: 2em;
   font-weight: normal;
   font-size: 4em;
-  margin-top: 150px;
+  margin-top: 1em;
   line-height: 1.2em;
   font-variant-numeric: lining-nums;
 }
@@ -350,7 +445,7 @@ button:hover:active {
 main::after {
   content: "";
   display: block;
-  margin: 10em auto 15em auto;
+  margin: 8em auto 2em auto;
   height: 16px;
   width: 16px;
   background-color: #ccc;
