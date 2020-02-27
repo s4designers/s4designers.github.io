@@ -787,7 +787,7 @@ Prism.languages.arduino = Prism.languages.extend('cpp', {
 	
 	
 	// console.log("PRISM CSS done");
-	// console.log("PRISM Javascript start");
+	// console.log("PRISM JavaScript start");
 
 Prism.languages.javascript = Prism.languages.extend('clike', {
 	'class-name': [
@@ -881,7 +881,7 @@ Prism.languages.insertBefore('javascript', 'keyword', {
 	
 	Prism.languages.js = Prism.languages.javascript;
 	
-	// console.log("PRISM Javascript done")// console.log("PRISM Markup start");
+	// console.log("PRISM JavaScript done")// console.log("PRISM Markup start");
 
 Prism.languages.markup = {
 	'comment': /<!--[\s\S]*?-->/,

@@ -17,6 +17,6 @@
 * kolommen scollen zelfstandig
 * Copy knop bij code.
 * bookmarklet Gmail copy-paste.
-* Javascript highlighting in html files
+* JavaScript highlighting in html files
 * Inline code: highlighter of css
 * answer instruction should be visible with <answer.../> instead of <answer...></answer>

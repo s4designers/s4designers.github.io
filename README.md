@@ -168,7 +168,7 @@ De gevraagde HTML-file wordt ge-ajaxed, en ingevoegd als innerHTML van de tag me
 
 Als de URL geen fragment identifier bevat, wordt de inhoud van de hele body opgenomen.
 
-__Note__: Javascript en CSS uit de op te nemen HTML-file wordt genegeerd.
+__Note__: JavaScript en CSS uit de op te nemen HTML-file wordt genegeerd.
 
 __Note__: De huidige implementatie van het `include`-attribuut werkt alleen voor HTML content. Je kunt het niet gebruiken om b.v. source-code op te nemen.
 

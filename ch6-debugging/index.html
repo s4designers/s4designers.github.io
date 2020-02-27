@@ -14,9 +14,9 @@
   <h1>Chapter 6: <i>debugging</i> code that doesn't work</h1>
   <p>Even very experienced programmers spend a lot of their time on trying to discover why their program isn't working yet. It is an integral part of the activity of programming. No one with any knowlegde of programming expects anyone create an error-free program from scratch, in a single attempt.</p>
   <p>So get used to the idea of <i><b>debugging</b></i>, the jargon term for eliminating mistakes from program code. The term was invented after an <a href="https://www.nationalgeographic.org/thisday/sep9/worlds-first-computer-bug/">actual insect caused a computer malfunction</a>. An essential skill required for quickly learning to program well is to <i>find bugs interesting</i>. <b>Do not experience bugs as a kind of failure</b>. Instead, be interested in the cause of the bug: you're a detective, and a bug is messing with your work; whodunnit? That way, debugging can actually become kind-of fun, and you'll learn a lot.</p>
-  <p>Some Javascript programming mistakes will be pointed out to you by the browser when it reads and runs your program. For many other mistakes, you get little help from the browser, you you'll have to learn how to help yourself. This first video is about errors in Javascript. In Arduino the situation is similar, but slightly different: The Arduino compiler (i.e. the Upload button in the IDE) will work much harder trying to analyze your code and spot possible mistakes. That's the subject of the second video. Both videos are about 30 minutes long.</p>
+  <p>Some JavaScript programming mistakes will be pointed out to you by the browser when it reads and runs your program. For many other mistakes, you get little help from the browser, you you'll have to learn how to help yourself. This first video is about errors in JavaScript. In Arduino the situation is similar, but slightly different: The Arduino compiler (i.e. the Upload button in the IDE) will work much harder trying to analyze your code and spot possible mistakes. That's the subject of the second video. Both videos are about 30 minutes long.</p>
 
-  <h2>Errors in Javascript</h2>
+  <h2>Errors in JavaScript</h2>
   <p>feel free to take some notes :-)</p>
   <youtube ytid="-hYMmLw9_S4"></youtube>
 
@@ -96,7 +96,7 @@
   <img src="gallery-of-bugs.png" style="width: 100%;">  
   <p>Here's a buggy program that's meant to showcase a set of 6 bug pictures. It doesn't work correctly, so you will have to debug it. The user should be able to use the button on the right-hand side of the photo to cycle, as often as she likes, through all 6 pictures.</p>
   <p>The program code below that contains 4 bugs. Three of them are caused by typos, and you should be able to find an fix them in a reasonable amount of time. The fourth error is a logic error that causes several malfunctions.</p>
-  <p>The CSS is rather long; sorry about that. The bugs are only in the Javascript.</p>
+  <p>The CSS is rather long; sorry about that. The bugs are only in the JavaScript.</p>
   <script type="text/plain" class="language-html">
     <!DOCTYPE html>
     <html lang="en">
@@ -254,7 +254,7 @@
       <li>using the <b>modulo operator</b> (written as %) to calculate a cycling number (i.e. 0-1-2-3-0-1-2-3-0-...) from a counter variable that increases; and</li>
       <li>using a variable to give the position of an array element, i.e. <code>noteFrequency = melodyFrequencies[ noteIndex ]</code></li>
     </ol>
-    <p>These tricks work the same way in Javascript. They can be used to make a very different implementation (=solution in code) of Jille's Gallery of Bugs. Here is some example code:</p>
+    <p>These tricks work the same way in JavaScript. They can be used to make a very different implementation (=solution in code) of Jille's Gallery of Bugs. Here is some example code:</p>
     <script type="text/plain" class="language-js">
     
       var pictureNames = [ "bug1.jpg",  "bug2.jpg",  "bug3.jpg",  "bug4.jpg",  "bug5.jpg",  "bug6.jpg", ]
@@ -277,7 +277,7 @@
   
       document.getElementById("nextButton").onclick = nextPicture
     </script>
-    <p>Use the HTML file from exercise 6.3, and replace it's Javascript with the code above. Then implement both TODO-items in the code.</p>
+    <p>Use the HTML file from exercise 6.3, and replace it's JavaScript with the code above. Then implement both TODO-items in the code.</p>
     <p>Don't worry if you encounter any bugs. Everyone does. All the time :-)</p>
     <answer buttontext="mail your improved gallery."></answer>
   </section>

@@ -12,7 +12,7 @@ Function names do NOT start with a capital letter.
 It is important to emphasize that commands that are wrapped in a function definition will not execute automatically.
 They only execute _when the function is called_. Students need to understand the difference between function definitions and function calls.
 
-## video 6b reacting to user input with Javascript
+## video 6b reacting to user input with JavaScript
 1. The page will get a 'Dark mode'. 
 1. A function to change colors has been added to the script. The function is called "darkMode" ("switchToDarkMode" would have been better :-)  )
 1. A button "Dark Mode" has been added to the HTML, with CSS to position it.
@@ -31,7 +31,7 @@ They only execute _when the function is called_. Students need to understand the
 1. The code is fixed by creating the function.
 1. The function sets style.visibility = "visible" for the caption.
 1. Jille asks about onclick-attributes inside the HTML tag.
-1. Answer: That is almost never done anymore. It is more useful to developers and designers not to mix HTML and Javascript like that.
+1. Answer: That is almost never done anymore. It is more useful to developers and designers not to mix HTML and JavaScript like that.
 1. Students must not add interactivity using event-attributes in the HTML.
 1. A third style of adding event-functions is shown: .addEventListener(...). It is preferred by professional developers because you can add multiple functions to an event. But it is more typing so we don't use it.
 

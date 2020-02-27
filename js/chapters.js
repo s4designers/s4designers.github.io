@@ -407,7 +407,7 @@ function createDownloadButtons() {
   $$('download').forEach( downloadElement =>{
     const downloadLinkId = newId("download-link")
     const downloadButtonId = newId("download-button")
-    let downloadButtonText = downloadElement.getAttribute("buttonText")
+    let downloadButtonText = downloadElement.getAttribute("buttonText") || downloadElement.textContent
     let downloadUrl = downloadElement.getAttribute("href")
     let fileName;
     if(!downloadUrl){ 
@@ -415,22 +415,29 @@ function createDownloadButtons() {
       console.error( errMessage, downloadElement)
       downloadButtonText = errMessage;
       fileName = ""
-    }
-    if( ! downloadButtonText ) {
+    } else {
       fileName = downloadUrl.split("/").pop()
-      downloadButtonText = "download " + fileName
     }
+    console.log('fileName :', fileName)
+    if( ! downloadButtonText ) {
+      if(fileName.includes(" ")){
+        downloadButtonText = 'download "' + fileName + '"'
+      } else {
+        downloadButtonText = "download " + fileName + ""
+      }
+    }
+    console.log('fileName :', fileName)
 
     downloadUrl = downloadUrl
                     .split("/")
                     .map( (c)=>encodeURIComponent(c) )
                     .join("/")
-    // correct for possible URIencoding of protocol colon                
+    // correct for inadvertent URIencoding of protocol colon                
     const match = downloadUrl.match( /^(https?)%3A(\/\/.+)/i )
     if(match) {
       downloadUrl = match[1] + ":" + match[2]
     }
-
+    console.log('fileName :', fileName)
     const replacementHtml = `
       <button id="${downloadButtonId}">
         <img class="buttonIcon" src="../images/download.svg"> ${downloadButtonText}

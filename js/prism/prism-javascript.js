@@ -1,4 +1,4 @@
-// console.log("PRISM Javascript start");
+// console.log("PRISM JavaScript start");
 
 Prism.languages.javascript = Prism.languages.extend('clike', {
 	'class-name': [
@@ -92,4 +92,4 @@ Prism.languages.insertBefore('javascript', 'keyword', {
 	
 	Prism.languages.js = Prism.languages.javascript;
 	
-	// console.log("PRISM Javascript done")
+	// console.log("PRISM JavaScript done")
