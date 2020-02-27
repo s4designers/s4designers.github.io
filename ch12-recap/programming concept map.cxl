@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cmap xmlns:dcterms="http://purl.org/dc/terms/" xmlns="http://cmap.ihmc.us/xml/cmap/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#">
+    <res-meta>
+        <dc:title>Recap</dc:title>
+        <dc:creator>
+            <vcard:FN>Robert Holwerda</vcard:FN>
+            <vcard:EMAIL>robert.holwerda@han.nl</vcard:EMAIL>
+            <vcard:ORG>
+                <vcard:Orgname>HAN</vcard:Orgname>
+            </vcard:ORG>
+        </dc:creator>
+        <dc:contributor>
+            <vcard:FN>Robert Holwerda</vcard:FN>
+            <vcard:EMAIL>robert.holwerda@han.nl</vcard:EMAIL>
+            <vcard:ORG>
+                <vcard:Orgname>HAN</vcard:Orgname>
+            </vcard:ORG>
+        </dc:contributor>
+        <dcterms:rightsHolder>
+            <vcard:FN>Robert Holwerda</vcard:FN>
+            <vcard:EMAIL>robert.holwerda@han.nl</vcard:EMAIL>
+            <vcard:ORG>
+                <vcard:Orgname>HAN</vcard:Orgname>
+            </vcard:ORG>
+        </dcterms:rightsHolder>
+        <dcterms:created>2020-02-27T12:22:07+01:00</dcterms:created>
+        <dcterms:modified>2020-02-27T20:51:12+01:00</dcterms:modified>
+        <dc:language>en</dc:language>
+        <dc:format>x-cmap/x-storable</dc:format>
+        <dc:publisher>FIHMC CmapTools 6.04</dc:publisher>
+        <dc:extent>15387 bytes</dc:extent>
+        <dc:source>cmap:1VJF3TXWQ-1GX94FC-1:1VJF3TZHR-MVMT56-Z:1VJFBMDF5-1BJLSFQ-7V</dc:source>
+    </res-meta>
+    <map width="1194" height="957">
+        <concept-list>
+            <concept id="1VJGC6NZN-4JJN99-DLZ" label="reboot"/>
+            <concept id="1VJGC98JN-221MP78-F5N" label="reset button&#xa; pressed"/>
+            <concept id="1VJG8CZCN-1H2M20B-3QK" label="LED"/>
+            <concept id="1VJG8570J-1CWJX70-2QW" label="assignment"/>
+            <concept id="1VJG84G5J-1C3LCH7-2PL" label="value"/>
+            <concept id="1VJGBWJS4-1VWJ4W1-9JY" label="Arduino Sketch"/>
+            <concept id="1VJG8FN52-XM0RY3-47D" label="function square(n) {&#xa;  return n*n&#xa;}"/>
+            <concept id="1VJG9MYXM-1M1GF2-7KD" label="global&#xa;variable"/>
+            <concept id="1VJG8BW7T-LWPBQ4-3K5" label="chnage the web page"/>
+            <concept id="1VJGC4NFW-H6DBDS-CDG" label="text input"/>
+            <concept id="1VJG7YSK6-19ND1D4-254" label="function"/>
+            <concept id="1VJGC1VBZ-YLGQCW-BSR" label="when HTML page is loaded"/>
+            <concept id="1VJGC49LH-11GGTKN-CC3" label="mouse click"/>
+            <concept id="1VJG7P6NQ-F041MF-1GF" label="Program"/>
+            <concept id="1VJG7SM6X-GHHV5G-1RB" label="statements"/>
+            <concept id="1VJG87V4J-1WKCCFX-2Y0" label="side effects"/>
+            <concept id="1VJG83JS7-KSKW4J-2K1" label="operator"/>
+            <concept id="1VJG7R8T1-1528X6L-1NL" label="commands"/>
+            <concept id="1VJGBVRMW-1S80GY2-9DJ" label="Javascript"/>
+            <concept id="1VJG7VDHG-JPHW97-1WD" label="expression"/>
+            <concept id="1VJG7TNN7-1WLKJRZ-1VG" label="calculations"/>
+            <concept id="1VJG8B4CC-8RLRQY-382" label="change output pin"/>
+            <concept id="1VJGBYYK5-QZR836-B14" label="Adruino-like &#xa;IOT computers"/>
+            <concept id="1VJGBY4RR-15JTJR5-9ZL" label="PDF"/>
+            <concept id="1VJGBYFNB-9KDGMZ-B08" label="Game Engine"/>
+            <concept id="1VJG8355T-5314WZ-2J6" label="variable"/>
+            <concept id="1VJGC57DX-16T2HXT-CFN" label="messages from internet"/>
+            <concept id="1VJGC8C4R-161MJBN-DZY" label="upload of a &#xa;program"/>
+            <concept id="1VJGC3D85-L2Q8ST-CBF" label="event"/>
+            <concept id="1VJG9MJG2-24PZ67G-7HW" label="local &#xa;variable"/>
+            <concept id="1VJG8CMZS-1PNSR96-3P8" label="buzzer"/>
+            <concept id="1VJGCBCMY-1WBK116-FNR" label="Serial Monitor"/>
+            <concept id="1VJG8D4DC-T1STRH-3R5" label="motor"/>
+            <concept id="1VJGBXGD4-27NFGS5-9Y3" label="browser"/>
+            <concept id="1VJG8LX84-1WTKSX0-5NJ" label="data type"/>
+            <concept id="1VJG8JMW9-L4F2TK-56S" label="int square(int n) {&#xa;  return n * n;&#xa;}"/>
+            <concept id="1VJG7XFZ1-HTJYLH-21B" label="function call"/>
+            <concept id="1VJG7WNHC-M747KS-200" label="if-statment"/>
+        </concept-list>
+        <linking-phrase-list>
+            <linking-phrase id="1VJG9PD6S-SJK9QX-7VC" label="defines"/>
+            <linking-phrase id="1VJG89RDD-25WT95Z-377" label="i.e."/>
+            <linking-phrase id="1VJGC8C4S-VR84W5-F01" label="i.e."/>
+            <linking-phrase id="1VJGC49LK-B42MJ3-CC6" label="i.e."/>
+            <linking-phrase id="1VJGBXGD5-2DMVCMV-9Y6" label="run in"/>
+            <linking-phrase id="1VJG9MJG4-1CFBPJ7-7HZ" label="can be"/>
+            <linking-phrase id="1VJG84G5K-21DMB5R-2PP" label="creates"/>
+            <linking-phrase id="1VJG81T86-25V071N-2CC" label="contains"/>
+            <linking-phrase id="1VJG9TTRK-12C4C3Y-8DT" label="are part of"/>
+            <linking-phrase id="1VJG8QKVZ-3GDF0-6F9" label="use in"/>
+            <linking-phrase id="1VJGBVRMY-1JFSL9W-9DM" label="i.e."/>
+            <linking-phrase id="1VJG8CMZV-28C0L8H-3PC" label="effects"/>
+            <linking-phrase id="1VJG8LX86-1GBLSF8-5NM" label="has a"/>
+            <linking-phrase id="1VJG8FN53-1B11306-47H" label="example"/>
+            <linking-phrase id="1VJG87V4K-1L2F7G9-2Y3" label="causing"/>
+            <linking-phrase id="1VJG7R8T2-1131M27-1NP" label="executes"/>
+            <linking-phrase id="1VJGC6NZP-19L11B1-DM2" label="starts after"/>
+            <linking-phrase id="1VJG86MZP-1Y7BGC8-2WV" label="can return a"/>
+            <linking-phrase id="1VJG7YSK8-3J9PMV-257" label="starts"/>
+            <linking-phrase id="1VJG7WNHF-2B58W7R-203" label="i.e."/>
+            <linking-phrase id="1VJG8N8GD-2WT746-5RL" label="has a&#xa;(in arduino)"/>
+            <linking-phrase id="1VJG9S2HW-2963Q5G-83W" label="creates&#xa;custom"/>
+            <linking-phrase id="1VJGC1VC1-1MT49KL-BSV" label="executes &#xa;program when"/>
+            <linking-phrase id="1VJG7VDHJ-21XT8V5-1WH" label="jargon"/>
+            <linking-phrase id="1VJG809JV-1DWCMR5-26Y" label="defines"/>
+            <linking-phrase id="1VJG7SM6Z-2C6241M-1RF" label="jargon"/>
+        </linking-phrase-list>
+        <connection-list>
+            <connection id="1VJGC3D86-2BFR912-CBJ" from-id="1VJGC1VC1-1MT49KL-BSV" to-id="1VJGC3D85-L2Q8ST-CBF"/>
+            <connection id="1VJG9TTRL-63365L-8DX" from-id="1VJG7R8T1-1528X6L-1NL" to-id="1VJG9TTRK-12C4C3Y-8DT"/>
+            <connection id="1VJG8FN54-1YZ1Z2Q-47L" from-id="1VJG7YSK6-19ND1D4-254" to-id="1VJG8FN53-1B11306-47H"/>
+            <connection id="1VJG8QKW0-11GTWH8-6FD" from-id="1VJG84G5J-1C3LCH7-2PL" to-id="1VJG8QKVZ-3GDF0-6F9"/>
+            <connection id="1VJGC8C4T-C7JDH0-F04" from-id="1VJGC6NZN-4JJN99-DLZ" to-id="1VJGC8C4S-VR84W5-F01"/>
+            <connection id="1VJGC6NZQ-XRQXRR-DMC" from-id="1VJGC6NZP-19L11B1-DM2" to-id="1VJGC6NZN-4JJN99-DLZ"/>
+            <connection id="1VJG7WNHG-16048NQ-206" from-id="1VJG7R8T1-1528X6L-1NL" to-id="1VJG7WNHF-2B58W7R-203"/>
+            <connection id="1VJGC1VC2-TPSQV9-BT4" from-id="1VJGC1VC1-1MT49KL-BSV" to-id="1VJGC1VBZ-YLGQCW-BSR"/>
+            <connection id="1VJG84G5L-278JNKK-2PS" from-id="1VJG7TNN7-1WLKJRZ-1VG" to-id="1VJG84G5K-21DMB5R-2PP"/>
+            <connection id="1VJG8LX87-11QJSJM-5NQ" from-id="1VJG84G5J-1C3LCH7-2PL" to-id="1VJG8LX86-1GBLSF8-5NM"/>
+            <connection id="1VJG81T87-20KT2R6-2CG" from-id="1VJG7TNN7-1WLKJRZ-1VG" to-id="1VJG81T86-25V071N-2CC"/>
+            <connection id="1VJG7YSK9-2D13T2Q-25J" from-id="1VJG7YSK8-3J9PMV-257" to-id="1VJG7YSK6-19ND1D4-254"/>
+            <connection id="1VJG9S2HX-1LGNNJ2-83Z" from-id="1VJG7YSK6-19ND1D4-254" to-id="1VJG9S2HW-2963Q5G-83W"/>
+            <connection id="1VJG8N8GF-1DF6LRZ-5RP" from-id="1VJG8355T-5314WZ-2J6" to-id="1VJG8N8GD-2WT746-5RL"/>
+            <connection id="1VJG8355W-1F9PNTF-2J9" from-id="1VJG81T86-25V071N-2CC" to-id="1VJG8355T-5314WZ-2J6"/>
+            <connection id="1VJG86MZR-1QBLT5P-2WY" from-id="1VJG7YSK6-19ND1D4-254" to-id="1VJG86MZP-1Y7BGC8-2WV"/>
+            <connection id="1VJG86MZR-172VPVR-2X4" from-id="1VJG86MZP-1Y7BGC8-2WV" to-id="1VJG84G5J-1C3LCH7-2PL"/>
+            <connection id="1VJG8570L-4WXR5S-2QZ" from-id="1VJG7WNHF-2B58W7R-203" to-id="1VJG8570J-1CWJX70-2QW"/>
+            <connection id="1VJG9MYXN-20VSBRQ-7KH" from-id="1VJG9MJG4-1CFBPJ7-7HZ" to-id="1VJG9MYXM-1M1GF2-7KD"/>
+            <connection id="1VJG9MJG5-9F2TPY-7J2" from-id="1VJG8355T-5314WZ-2J6" to-id="1VJG9MJG4-1CFBPJ7-7HZ"/>
+            <connection id="1VJGBXGD6-MLJ82F-9YH" from-id="1VJGBXGD5-2DMVCMV-9Y6" to-id="1VJGBXGD4-27NFGS5-9Y3"/>
+            <connection id="1VJGC98JP-PY39LC-F5R" from-id="1VJGC8C4S-VR84W5-F01" to-id="1VJGC98JN-221MP78-F5N"/>
+            <connection id="1VJGC6NZQ-1P3TG5F-DM5" from-id="1VJGBWJS4-1VWJ4W1-9JY" to-id="1VJGC6NZP-19L11B1-DM2"/>
+            <connection id="1VJG9TTRL-1N34QSV-8F2" from-id="1VJG9TTRK-12C4C3Y-8DT" to-id="1VJG7YSK6-19ND1D4-254"/>
+            <connection id="1VJG81T87-DX2L4B-2CM" from-id="1VJG81T86-25V071N-2CC" to-id="1VJG7XFZ1-HTJYLH-21B"/>
+            <connection id="1VJG7R8T3-26JZRS6-1NS" from-id="1VJG7P6NQ-F041MF-1GF" to-id="1VJG7R8T2-1131M27-1NP"/>
+            <connection id="1VJGBYYK6-KRZJM-B17" from-id="1VJGBXGD5-2DMVCMV-9Y6" to-id="1VJGBYYK5-QZR836-B14"/>
+            <connection id="1VJGC4NFY-G8RY13-CDK" from-id="1VJGC49LK-B42MJ3-CC6" to-id="1VJGC4NFW-H6DBDS-CDG"/>
+            <connection id="1VJGBWJS5-1HSV9WY-9K1" from-id="1VJGBVRMY-1JFSL9W-9DM" to-id="1VJGBWJS4-1VWJ4W1-9JY"/>
+            <connection id="1VJG7VDHK-1VZK88K-1WL" from-id="1VJG7TNN7-1WLKJRZ-1VG" to-id="1VJG7VDHJ-21XT8V5-1WH"/>
+            <connection id="1VJG89RDG-17NC2X9-37B" from-id="1VJG87V4J-1WKCCFX-2Y0" to-id="1VJG89RDD-25WT95Z-377"/>
+            <connection id="1VJG7VDHK-W5KSK-1WS" from-id="1VJG7VDHJ-21XT8V5-1WH" to-id="1VJG7VDHG-JPHW97-1WD"/>
+            <connection id="1VJGBVRMZ-6VXMS9-9DW" from-id="1VJGBVRMY-1JFSL9W-9DM" to-id="1VJGBVRMW-1S80GY2-9DJ"/>
+            <connection id="1VJG7XFZ3-1D0DPWV-21F" from-id="1VJG7WNHF-2B58W7R-203" to-id="1VJG7XFZ1-HTJYLH-21B"/>
+            <connection id="1VJG8QKW1-1R328RK-6FK" from-id="1VJG8QKVZ-3GDF0-6F9" to-id="1VJG7TNN7-1WLKJRZ-1VG"/>
+            <connection id="1VJGC49LL-1L491H7-CCH" from-id="1VJGC49LK-B42MJ3-CC6" to-id="1VJGC49LH-11GGTKN-CC3"/>
+            <connection id="1VJG8FN55-15L23RQ-47R" from-id="1VJG8FN53-1B11306-47H" to-id="1VJG8FN52-XM0RY3-47D"/>
+            <connection id="1VJG9MJG5-4V0C2J-7J7" from-id="1VJG9MJG4-1CFBPJ7-7HZ" to-id="1VJG9MJG2-24PZ67G-7HW"/>
+            <connection id="1VJG809JX-QTQ1L8-271" from-id="1VJG7P6NQ-F041MF-1GF" to-id="1VJG809JV-1DWCMR5-26Y"/>
+            <connection id="1VJGBY4RS-BHJJPY-9ZP" from-id="1VJGBXGD5-2DMVCMV-9Y6" to-id="1VJGBY4RR-15JTJR5-9ZL"/>
+            <connection id="1VJG8D4DF-1ZYQKRK-3R8" from-id="1VJG8CMZV-28C0L8H-3PC" to-id="1VJG8D4DC-T1STRH-3R5"/>
+            <connection id="1VJG7TNN9-1GBMV4Z-1VK" from-id="1VJG7R8T2-1131M27-1NP" to-id="1VJG7TNN7-1WLKJRZ-1VG"/>
+            <connection id="1VJG9PD6T-217RHNK-7VM" from-id="1VJG9PD6S-SJK9QX-7VC" to-id="1VJG9MJG2-24PZ67G-7HW"/>
+            <connection id="1VJG7R8T4-8Y0J0F-1NZ" from-id="1VJG7R8T2-1131M27-1NP" to-id="1VJG7R8T1-1528X6L-1NL"/>
+            <connection id="1VJG8CMZW-1RJDNJJ-3PN" from-id="1VJG8CMZV-28C0L8H-3PC" to-id="1VJG8CMZS-1PNSR96-3P8"/>
+            <connection id="1VJGC49LK-1CK52FJ-CC9" from-id="1VJGC3D85-L2Q8ST-CBF" to-id="1VJGC49LK-B42MJ3-CC6"/>
+            <connection id="1VJG87V4L-27FX8ML-2Y6" from-id="1VJG7R8T1-1528X6L-1NL" to-id="1VJG87V4K-1L2F7G9-2Y3"/>
+            <connection id="1VJG89RDG-1KZB0TC-37H" from-id="1VJG89RDD-25WT95Z-377" to-id="1VJG8570J-1CWJX70-2QW"/>
+            <connection id="1VJG8CMZW-GQ7QNB-3PG" from-id="1VJG8B4CC-8RLRQY-382" to-id="1VJG8CMZV-28C0L8H-3PC"/>
+            <connection id="1VJG809JX-1DFP3RY-276" from-id="1VJG809JV-1DWCMR5-26Y" to-id="1VJG7YSK6-19ND1D4-254"/>
+            <connection id="1VJG8CZCP-23CZZKM-3QN" from-id="1VJG8CMZV-28C0L8H-3PC" to-id="1VJG8CZCN-1H2M20B-3QK"/>
+            <connection id="1VJG7WNHG-166VNXS-20C" from-id="1VJG7WNHF-2B58W7R-203" to-id="1VJG7WNHC-M747KS-200"/>
+            <connection id="1VJG9P017-TP4Z6H-7V0" from-id="1VJG809JV-1DWCMR5-26Y" to-id="1VJG9MYXM-1M1GF2-7KD"/>
+            <connection id="1VJG8B4CF-26779YK-385" from-id="1VJG89RDD-25WT95Z-377" to-id="1VJG8B4CC-8RLRQY-382"/>
+            <connection id="1VJG8BW7X-V0FYR-3K8" from-id="1VJG89RDD-25WT95Z-377" to-id="1VJG8BW7T-LWPBQ4-3K5"/>
+            <connection id="1VJG9S2HX-1HPHYMJ-844" from-id="1VJG9S2HW-2963Q5G-83W" to-id="1VJG7R8T1-1528X6L-1NL"/>
+            <connection id="1VJG9PD6T-1581TBW-7VG" from-id="1VJG7YSK6-19ND1D4-254" to-id="1VJG9PD6S-SJK9QX-7VC"/>
+            <connection id="1VJGBXGD6-1GNDRVZ-9Y9" from-id="1VJGBVRMW-1S80GY2-9DJ" to-id="1VJGBXGD5-2DMVCMV-9Y6"/>
+            <connection id="1VJGC1VC1-PD9HDG-BSY" from-id="1VJGBXGD4-27NFGS5-9Y3" to-id="1VJGC1VC1-1MT49KL-BSV"/>
+            <connection id="1VJG87V4M-1NGFH4X-2YC" from-id="1VJG87V4K-1L2F7G9-2Y3" to-id="1VJG87V4J-1WKCCFX-2Y0"/>
+            <connection id="1VJG8N8GG-121W7XQ-5RV" from-id="1VJG8N8GD-2WT746-5RL" to-id="1VJG8LX84-1WTKSX0-5NJ"/>
+            <connection id="1VJG7YSK9-6081G9-25B" from-id="1VJG7XFZ1-HTJYLH-21B" to-id="1VJG7YSK8-3J9PMV-257"/>
+            <connection id="1VJGC8C4T-19CC21N-F0B" from-id="1VJGC8C4S-VR84W5-F01" to-id="1VJGC8C4R-161MJBN-DZY"/>
+            <connection id="1VJGBYFNC-HD1YLM-B0C" from-id="1VJGBXGD5-2DMVCMV-9Y6" to-id="1VJGBYFNB-9KDGMZ-B08"/>
+            <connection id="1VJGBVRMY-283BHSL-9DQ" from-id="1VJG7P6NQ-F041MF-1GF" to-id="1VJGBVRMY-1JFSL9W-9DM"/>
+            <connection id="1VJG7SM70-Y8FN0N-1RJ" from-id="1VJG7R8T1-1528X6L-1NL" to-id="1VJG7SM6Z-2C6241M-1RF"/>
+            <connection id="1VJG7SM70-2BSFMTB-1RQ" from-id="1VJG7SM6Z-2C6241M-1RF" to-id="1VJG7SM6X-GHHV5G-1RB"/>
+            <connection id="1VJGC57DY-1WN3RXY-CFR" from-id="1VJGC49LK-B42MJ3-CC6" to-id="1VJGC57DX-16T2HXT-CFN"/>
+            <connection id="1VJG8JMWB-1XRMK2J-56W" from-id="1VJG8FN53-1B11306-47H" to-id="1VJG8JMW9-L4F2TK-56S"/>
+            <connection id="1VJG83JS9-DWVZ39-2K4" from-id="1VJG81T86-25V071N-2CC" to-id="1VJG83JS7-KSKW4J-2K1"/>
+            <connection id="1VJGCBCN0-1FVFDG9-FNV" from-id="1VJGC8C4S-VR84W5-F01" to-id="1VJGCBCMY-1WBK116-FNR"/>
+            <connection id="1VJG84G5M-2D5PTTD-2PY" from-id="1VJG84G5K-21DMB5R-2PP" to-id="1VJG84G5J-1C3LCH7-2PL"/>
+            <connection id="1VJG8LX87-D7MFWM-5NX" from-id="1VJG8LX86-1GBLSF8-5NM" to-id="1VJG8LX84-1WTKSX0-5NJ"/>
+        </connection-list>
+        <concept-appearance-list>
+            <concept-appearance id="1VJGC6NZN-4JJN99-DLZ" x="1273" y="398" width="55" height="25" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255" border-color="76,177,227,255"
+                border-style="solid" border-thickness="1" border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="left" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            <concept-appearance id="1VJGC98JN-221MP78-F5N" x="1296" y="286" width="90" height="42" background-image-style="full" shadow-color="if-stylesheet-has-shadow 238,238,238,0" stylesheet-id="1VJFCRVZP-1LL9MNM-5N7"/>
+            <concept-appearance id="1VJG8CZCN-1H2M20B-3QK" x="710" y="1037" width="40" height="25" background-image-style="full" shadow-color="if-stylesheet-has-shadow 238,238,238,0" stylesheet-id="1VJFCRVZP-1LL9MNM-5N7"/>
+            <concept-appearance id="1VJG8570J-1CWJX70-2QW" x="795" y="843" width="85" height="27" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255" border-color="76,177,227,255"
+                border-style="solid" border-thickness="1" border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            <concept-appearance id="1VJG84G5J-1C3LCH7-2PL" x="1595" y="781" width="48" height="25" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255" border-color="76,177,227,255"
+                border-style="solid" border-thickness="1" border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            <concept-appearance id="1VJGBWJS4-1VWJ4W1-9JY" x="1168" y="513" width="108" height="25" background-image-style="full" shadow-color="if-stylesheet-has-shadow 238,238,238,0" stylesheet-id="1VJFCRVZP-1LL9MNM-5N7"/>
+            <concept-appearance id="1VJG8FN52-XM0RY3-47D" x="950" y="1109" width="184" height="56" background-image-style="full" text-alignment="left" shadow-color="if-stylesheet-has-shadow 238,238,238,0" stylesheet-id="1VJFCKMDJ-10LSH0H-4YQ"/>
+            <concept-appearance id="1VJG9MYXM-1M1GF2-7KD" x="1256" y="901" width="64" height="40" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255" border-color="76,177,227,255"
+                border-style="solid" border-thickness="1" border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="left" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            <concept-appearance id="1VJG8BW7T-LWPBQ4-3K5" x="598" y="898" width="145" height="28" background-image-style="full" shadow-color="if-stylesheet-has-shadow 238,238,238,0" stylesheet-id="1VJFCCP6W-1BYD3B7-405"/>
+            <concept-appearance id="1VJGC4NFW-H6DBDS-CDG" x="948" y="196" width="75" height="27" background-image-style="full" shadow-color="if-stylesheet-has-shadow 238,238,238,0" stylesheet-id="1VJFCCP6W-1BYD3B7-405"/>
+            <concept-appearance id="1VJG7YSK6-19ND1D4-254" x="1071" y="1008" width="65" height="25" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255"
+                border-color="76,177,227,255" border-style="solid" border-thickness="1" border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            <concept-appearance id="1VJGC1VBZ-YLGQCW-BSR" x="815" y="323" width="177" height="28" background-image-style="full" shadow-color="if-stylesheet-has-shadow 238,238,238,0" stylesheet-id="1VJFCCP6W-1BYD3B7-405"/>
+            <concept-appearance id="1VJGC49LH-11GGTKN-CC3" x="861" y="204" width="86" height="25" background-image-style="full" shadow-color="if-stylesheet-has-shadow 238,238,238,0" stylesheet-id="1VJFCCP6W-1BYD3B7-405"/>
+            <concept-appearance id="1VJG7P6NQ-F041MF-1GF" x="1074" y="619" width="95" height="43" background-image-style="full" min-width="95" min-height="35" stylesheet-id="1VJFD3FBW-1TVDBPS-88J"/>
+            <concept-appearance id="1VJG7SM6X-GHHV5G-1RB" x="815" y="736" width="83" height="25" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255" border-color="76,177,227,255"
+                border-style="solid" border-thickness="1" border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            <concept-appearance id="1VJG87V4J-1WKCCFX-2Y0" x="687" y="791" width="84" height="25" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255" border-color="76,177,227,255"
+                border-style="solid" border-thickness="1" border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            <concept-appearance id="1VJG83JS7-KSKW4J-2K1" x="1482" y="879" width="67" height="27" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255" border-color="76,177,227,255"
+                border-style="solid" border-thickness="1" border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            <concept-appearance id="1VJG7R8T1-1528X6L-1NL" x="897" y="789" width="81" height="25" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255" border-color="76,177,227,255"
+                border-style="solid" border-thickness="1" border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            <concept-appearance id="1VJGBVRMW-1S80GY2-9DJ" x="954" y="522" width="76" height="27" background-image-style="full" shadow-color="if-stylesheet-has-shadow 238,238,238,0" stylesheet-id="1VJFCCP6W-1BYD3B7-405"/>
+            <concept-appearance id="1VJG7VDHG-JPHW97-1WD" x="1450" y="720" width="81" height="27" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255" border-color="76,177,227,255"
+                border-style="solid" border-thickness="1" border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            <concept-appearance id="1VJG7TNN7-1WLKJRZ-1VG" x="1368" y="783" width="86" height="25" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255" border-color="76,177,227,255"
+                border-style="solid" border-thickness="1" border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            <concept-appearance id="1VJG8B4CC-8RLRQY-382" x="686" y="958" width="125" height="28" background-image-style="full" shadow-color="if-stylesheet-has-shadow 238,238,238,0" stylesheet-id="1VJFCRVZP-1LL9MNM-5N7"/>
+            <concept-appearance id="1VJGBYYK5-QZR836-B14" x="843" y="574" width="106" height="42" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255" border-color="76,177,227,255"
+                border-style="solid" border-thickness="1" border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="left" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            <concept-appearance id="1VJGBY4RR-15JTJR5-9ZL" x="844" y="442" width="39" height="25" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255" border-color="76,177,227,255"
+                border-style="solid" border-thickness="1" border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="left" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            <concept-appearance id="1VJGBYFNB-9KDGMZ-B08" x="828" y="503" width="96" height="27" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255" border-color="76,177,227,255"
+                border-style="solid" border-thickness="1" border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="left" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            <concept-appearance id="1VJG8355T-5314WZ-2J6" x="1369" y="886" width="64" height="25" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255" border-color="76,177,227,255"
+                border-style="solid" border-thickness="1" border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            <concept-appearance id="1VJGC57DX-16T2HXT-CFN" x="1073" y="238" width="159" height="28" background-image-style="full" shadow-color="if-stylesheet-has-shadow 238,238,238,0" stylesheet-id="1VJFCCP6W-1BYD3B7-405"/>
+            <concept-appearance id="1VJGC8C4R-161MJBN-DZY" x="1415" y="285" width="88" height="42" background-image-style="full" shadow-color="if-stylesheet-has-shadow 238,238,238,0" stylesheet-id="1VJFCRVZP-1LL9MNM-5N7"/>
+            <concept-appearance id="1VJGC3D85-L2Q8ST-CBF" x="942" y="295" width="50" height="25" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255" border-color="76,177,227,255"
+                border-style="solid" border-thickness="1" border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="left" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            <concept-appearance id="1VJG9MJG2-24PZ67G-7HW" x="1254" y="963" width="64" height="40" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255" border-color="76,177,227,255"
+                border-style="solid" border-thickness="1" border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="left" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            <concept-appearance id="1VJG8CMZS-1PNSR96-3P8" x="640" y="1026" width="56" height="25" background-image-style="full" shadow-color="if-stylesheet-has-shadow 238,238,238,0" stylesheet-id="1VJFCRVZP-1LL9MNM-5N7"/>
+            <concept-appearance id="1VJGCBCMY-1WBK116-FNR" x="1405" y="385" width="100" height="25" background-image-style="full" shadow-color="if-stylesheet-has-shadow 238,238,238,0" stylesheet-id="1VJFCRVZP-1LL9MNM-5N7"/>
+            <concept-appearance id="1VJG8D4DC-T1STRH-3R5" x="816" y="1014" width="52" height="25" background-image-style="full" shadow-color="if-stylesheet-has-shadow 238,238,238,0" stylesheet-id="1VJFCRVZP-1LL9MNM-5N7"/>
+            <concept-appearance id="1VJGBXGD4-27NFGS5-9Y3" x="952" y="431" width="64" height="25" background-image-style="full" shadow-color="if-stylesheet-has-shadow 238,238,238,0" stylesheet-id="1VJFCCP6W-1BYD3B7-405"/>
+            <concept-appearance id="1VJG8LX84-1WTKSX0-5NJ" x="1680" y="941" width="73" height="28" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255" border-color="76,177,227,255"
+                border-style="solid" border-thickness="1" border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="left" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            <concept-appearance id="1VJG8JMW9-L4F2TK-56S" x="1178" y="1106" width="176" height="56" background-image-style="full" text-alignment="left" stylesheet-id="1VJFCXTTQ-24K32ZW-6M6"/>
+            <concept-appearance id="1VJG7XFZ1-HTJYLH-21B" x="831" y="923" width="89" height="25" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255" border-color="76,177,227,255"
+                border-style="solid" border-thickness="1" border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            <concept-appearance id="1VJG7WNHC-M747KS-200" x="792" y="881" width="83" height="25" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255" border-color="76,177,227,255"
+                border-style="solid" border-thickness="1" border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+        </concept-appearance-list>
+        <linking-phrase-appearance-list>
+            <linking-phrase-appearance id="1VJG9PD6S-SJK9QX-7VC" x="1160" y="980" width="45" height="11" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJG89RDD-25WT95Z-377" x="681" y="849" width="21" height="11" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJGC8C4S-VR84W5-F01" x="1335" y="346" width="21" height="11" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJGC49LK-B42MJ3-CC6" x="941" y="238" width="21" height="11" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" background-image-style="full"
+                border-color="0,0,0,0" border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none" stylesheet-id="1VJFCCP6W-1BYD3B7-405"/>
+            <linking-phrase-appearance id="1VJGBXGD5-2DMVCMV-9Y6" x="949" y="478" width="37" height="11" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJG9MJG4-1CFBPJ7-7HZ" x="1328" y="925" width="42" height="11" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJG84G5K-21DMB5R-2PP" x="1484" y="816" width="46" height="11" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJG81T86-25V071N-2CC" x="1368" y="832" width="52" height="11" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJG9TTRK-12C4C3Y-8DT" x="944" y="877" width="66" height="14" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJG8QKVZ-3GDF0-6F9" x="1483" y="764" width="38" height="11" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJGBVRMY-1JFSL9W-9DM" x="1073" y="566" width="21" height="11" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJG8CMZV-28C0L8H-3PC" x="708" y="991" width="42" height="11" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJG8LX86-1GBLSF8-5NM" x="1631" y="842" width="34" height="11" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJG8FN53-1B11306-47H" x="1071" y="1055" width="53" height="14" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJG87V4K-1L2F7G9-2Y3" x="792" y="790" width="48" height="13" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJG7R8T2-1131M27-1NP" x="980" y="718" width="55" height="11" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJGC6NZP-19L11B1-DM2" x="1224" y="456" width="69" height="11" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJG86MZP-1Y7BGC8-2WV" x="1556" y="986" width="76" height="11" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJG7YSK8-3J9PMV-257" x="945" y="977" width="36" height="11" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJG7WNHF-2B58W7R-203" x="891" y="838" width="21" height="11" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJG8N8GD-2WT746-5RL" x="1469" y="948" width="74" height="28" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" background-image-style="full"
+                border-color="0,0,0,0" border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none" stylesheet-id="1VJFCRVZP-1LL9MNM-5N7"/>
+            <linking-phrase-appearance id="1VJG9S2HW-2963Q5G-83W" x="1011" y="836" width="46" height="25" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJGC1VC1-1MT49KL-BSV" x="944" y="367" width="90" height="27" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJG7VDHJ-21XT8V5-1WH" x="1421" y="752" width="41" height="13" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJG809JV-1DWCMR5-26Y" x="1095" y="790" width="45" height="11" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+            <linking-phrase-appearance id="1VJG7SM6Z-2C6241M-1RF" x="854" y="764" width="41" height="13" font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0"
+                border-style="solid" border-thickness="1" border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+        </linking-phrase-appearance-list>
+        <connection-appearance-list>
+            <connection-appearance id="1VJGC3D86-2BFR912-CBJ" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG9TTRL-63365L-8DX" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG8FN54-1YZ1Z2Q-47L" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG8QKW0-11GTWH8-6FD" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJGC8C4T-C7JDH0-F04" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJGC6NZQ-XRQXRR-DMC" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG7WNHG-16048NQ-206" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJGC1VC2-TPSQV9-BT4" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG84G5L-278JNKK-2PS" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG8LX87-11QJSJM-5NQ" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG81T87-20KT2R6-2CG" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG7YSK9-2D13T2Q-25J" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG9S2HX-1LGNNJ2-83Z" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG8N8GF-1DF6LRZ-5RP" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG8355W-1F9PNTF-2J9" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG86MZR-1QBLT5P-2WY" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG86MZR-172VPVR-2X4" from-pos="center" to-pos="bottom" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG8570L-4WXR5S-2QZ" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG9MYXN-20VSBRQ-7KH" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG9MJG5-9F2TPY-7J2" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJGBXGD6-MLJ82F-9YH" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJGC98JP-PY39LC-F5R" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJGC6NZQ-1P3TG5F-DM5" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG9TTRL-1N34QSV-8F2" from-pos="center" to-pos="top" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG81T87-DX2L4B-2CM" from-pos="center" to-pos="top-right" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG7R8T3-26JZRS6-1NS" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJGBYYK6-KRZJM-B17" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJGC4NFY-G8RY13-CDK" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept" stylesheet-id="1VJFCCP6W-1BYD3B7-405"/>
+            <connection-appearance id="1VJGBWJS5-1HSV9WY-9K1" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG7VDHK-1VZK88K-1WL" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG89RDG-17NC2X9-37B" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG7VDHK-W5KSK-1WS" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJGBVRMZ-6VXMS9-9DW" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG7XFZ3-1D0DPWV-21F" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG8QKW1-1R328RK-6FK" from-pos="center" to-pos="right" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJGC49LL-1L491H7-CCH" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept" stylesheet-id="1VJFCCP6W-1BYD3B7-405"/>
+            <connection-appearance id="1VJG8FN55-15L23RQ-47R" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG9MJG5-4V0C2J-7J7" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG809JX-QTQ1L8-271" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJGBY4RS-BHJJPY-9ZP" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG8D4DF-1ZYQKRK-3R8" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG7TNN9-1GBMV4Z-1VK" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG9PD6T-217RHNK-7VM" from-pos="center" to-pos="left" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG7R8T4-8Y0J0F-1NZ" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG8CMZW-1RJDNJJ-3PN" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJGC49LK-1CK52FJ-CC9" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept" stylesheet-id="1VJFCCP6W-1BYD3B7-405"/>
+            <connection-appearance id="1VJG87V4L-27FX8ML-2Y6" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG89RDG-1KZB0TC-37H" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG8CMZW-GQ7QNB-3PG" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG809JX-1DFP3RY-276" from-pos="center" to-pos="top" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG8CZCP-23CZZKM-3QN" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG7WNHG-166VNXS-20C" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG9P017-TP4Z6H-7V0" from-pos="center" to-pos="top-left" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG8B4CF-26779YK-385" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG8BW7X-V0FYR-3K8" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG9S2HX-1HPHYMJ-844" from-pos="center" to-pos="bottom-right" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG9PD6T-1581TBW-7VG" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJGBXGD6-1GNDRVZ-9Y9" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJGC1VC1-PD9HDG-BSY" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG87V4M-1NGFH4X-2YC" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG8N8GG-121W7XQ-5RV" from-pos="center" to-pos="left" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG7YSK9-6081G9-25B" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJGC8C4T-19CC21N-F0B" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJGBYFNC-HD1YLM-B0C" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJGBVRMY-283BHSL-9DQ" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG7SM70-Y8FN0N-1RJ" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG7SM70-2BSFMTB-1RQ" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJGC57DY-1WN3RXY-CFR" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept" stylesheet-id="1VJFCCP6W-1BYD3B7-405"/>
+            <connection-appearance id="1VJG8JMWB-1XRMK2J-56W" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG83JS9-DWVZ39-2K4" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJGCBCN0-1FVFDG9-FNV" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG84G5M-2D5PTTD-2PY" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+            <connection-appearance id="1VJG8LX87-D7MFWM-5NX" from-pos="center" to-pos="center" color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+        </connection-appearance-list>
+        <style-sheet-list>
+            <style-sheet id="_Default_">
+                <map-style background-color="255,255,255,255"/>
+                <concept-style font-name="Courier" font-size="14" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="251,234,222,255" background-image-style="full" border-color="255,150,0,255" border-style="dashed"
+                    border-thickness="1" border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+                <linking-phrase-style font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" background-image-style="full" border-color="0,0,0,0" border-style="solid" border-thickness="1"
+                    border-shape="rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+                <connection-style color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept-and-slopes-up"/>
+                <resource-style font-name="SanSerif" font-size="12" font-style="plain" font-color="0,0,0,255" background-color="192,192,192,255"/>
+            </style-sheet>
+            <style-sheet id="_LatestChanges_">
+                <concept-style font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255" border-color="76,177,227,255" border-style="solid" border-thickness="1"
+                    border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="left" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+                <linking-phrase-style font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="1" background-color="0,0,255,0" border-color="0,0,0,0" border-style="solid" border-thickness="1" border-shape="rectangle"
+                    border-shape-rrarc="15.0" text-alignment="center" shadow-color="none"/>
+                <connection-style color="0,0,0,255" style="solid" thickness="1" arrowhead="if-to-concept"/>
+                <resource-style font-name="SanSerif" font-size="12" font-style="plain" font-color="0,0,0,255" background-color="192,192,192,255"/>
+            </style-sheet>
+            <style-sheet id="1VJFCRVZP-1LL9MNM-5N7" name="Arduino concept">
+                <concept-style font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="214,247,197,255" border-color="125,198,89,255" border-style="solid" border-thickness="1"
+                    border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            </style-sheet>
+            <style-sheet id="1VJFCKMDJ-10LSH0H-4YQ" name="JS code">
+                <concept-style font-name="Courier" font-size="14" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="251,234,222,255" border-color="255,150,0,255" border-style="dashed" border-thickness="1"
+                    border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            </style-sheet>
+            <style-sheet id="1VJFCCP6W-1BYD3B7-405" name="JS concept">
+                <concept-style font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="255,200,150,255" border-color="255,100,0,255" border-style="solid" border-thickness="1"
+                    border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            </style-sheet>
+            <style-sheet id="1VJFD3FBW-1TVDBPS-88J" name="general concept">
+                <concept-style font-name="Verdana" font-size="12" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="195,234,253,255" border-color="76,177,227,255" border-style="solid" border-thickness="1"
+                    border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            </style-sheet>
+            <style-sheet id="1VJFCXTTQ-24K32ZW-6M6" name="Arduino code">
+                <concept-style font-name="Courier" font-size="14" font-style="plain" font-color="0,0,0,255" text-margin="4" background-color="236,255,227,255" border-color="136,210,99,255" border-style="dashed" border-thickness="1"
+                    border-shape="rounded-rectangle" border-shape-rrarc="15.0" text-alignment="center" shadow-color="none" min-width="-1" min-height="-1" max-width="-1.0"/>
+            </style-sheet>
+        </style-sheet-list>
+        <extra-graphical-properties-list>
+            <properties-list id="1VJFBMDF5-1BJLSFQ-7V">
+                <property key="StyleSheetGroup_0" value="//*@!#$%%^&amp;*()() No Grouped StyleSheets @:1VJFCCP6W-1BYD3B7-405:1VJFCKMDJ-10LSH0H-4YQ:1VJFCRVZP-1LL9MNM-5N7:1VJFCXTTQ-24K32ZW-6M6:1VJFD3FBW-1TVDBPS-88J"/>
+            </properties-list>
+        </extra-graphical-properties-list>
+    </map>
+</cmap>
