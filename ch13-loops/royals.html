@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Riddle of the Royals</title>
+</head>
+<body>
+  <h1>The Riddle of the Royals</h1>
+  <script>
+    console.log("Riddle of the Royals reloaded.")
+
+    function addHtmlToPage( htmlString ) {
+      document.body.insertAdjacentHTML("beforeend", htmlString)
+    }
+
+    function newOffspring() {
+      if( Math.random() < 0.5 ) {
+        return "princess"
+      } else {
+        return "prince"
+      }
+    }
+
+    function showPrinceOrPrincess(princeOrPrincess) {
+      // images are called "prince.png" and "princess.png"
+      var imageName = princeOrPrincess + ".png"  
+      var imageHTML = '<img src="' + imageName + '">'
+      //addHtmlToPage( imageHTML )
+      // scroll to stuff that was just added to page, 
+      // like the console does (and the Serial Monitor)
+      //window.scrollTo(0,document.body.scrollHeight)
+    }
+
+    function newRoyalFamily() {
+      var princessCounter = 0;
+      var childType = newOffspring()
+      showPrinceOrPrincess(childType)
+      while( childType == "princess" ) {
+        princessCounter++
+        var childType = newOffspring()
+        showPrinceOrPrincess(childType)
+      }
+      //addHtmlToPage("<hr>")
+      return princessCounter
+    }
+
+    function manyFamilies( numberOfFamilies ) {
+      var countResult = { 
+        princesses: 0,
+        princes:    0
+      }
+      var familyCounter = 0
+      while( familyCounter < numberOfFamilies ) {
+        //countResult.princesses = countResult.princesses + newRoyalFamily()
+        countResult.princesses += newRoyalFamily()
+        countResult.princes++
+        familyCounter++
+      }
+      return countResult
+    }
+
+  </script>
+</body>
+</html>

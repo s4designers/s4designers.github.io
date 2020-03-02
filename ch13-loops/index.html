@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Page Title</title>
+  <link rel="stylesheet" href="../css/main.css"/>
+</head>
+<body class="line-numbers">
+  <aside id="toc-column"></aside>
+  <aside id="agenda" include="../agenda.html"></aside>
+  <div id="page">
+    <main>
+
+  <h1>Chapter 13: loops for repeating commands</h1>
+  
+    <p>What if you've taken a step in the right direction, but you're not there yet. <b>You take more steps.</b><br> What if you're trying something, and it works a bit, but not completely? <b>You could try again.</b><br> What if you looked for something, and you haven't found it yet? <b>You continue looking for it elsewhere.</b><br> What if you've got a list of items to do, and you've only done the first few items? <b>You continue with the rest of the list.</b><br> What if you've done something that turned out to be a mistake? <b>You could fix the mistake, and try again</b> (but a bit differently).
+    <p>Repetition is a recurring part of life. One of the cool things about programming is that you get to <i>design the repetition</i>, but you don't have to <i>live the repetition</i>.</p>
+
+    <youtube ytid="aZSBkigiaJI"></youtube>
+    <p>Take a few moment to make up you mind. What is your answer to the puzzle?</p>
+    <youtube ytid="Xn0diy2CfvA"></youtube>
+
+
+    <h3 class="assignment summary">13.1: summary and questions</h3>
+    <section class="assignment">
+      <answer  buttontext="mail your summary">13.1.a: Make a list with <i>3 to 5 bulletpoints</i> with the most important or interesting things in the video:</answer>
+    </section>
+    <section class="assignment">
+        <answer noslider buttontext="mail your word list">13.1.b: Which words or concepts would you like us to explain during class?</answer>
+    </section>
+  
+
+    <h3>13.2 experiencing infinity</h3>
+      <section class="assignment">
+      <h4>13.2.a: the interactive version</h4>
+      <p>Create an HTML file with this code:</p>
+      <script type="text/plain" class="language-html">
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+        </head>
+        <body>
+          <h3>Hi there!</h3>
+        
+          <script>
+            var maxRepetitionsAsString = prompt("How many repetitions would you like?")
+            var maxRepetitionsAsNumber = Number(maxRepetitionsAsString)
+        
+            var repCounter = 0
+            while( repCounter != maxRepetitionsAsNumber ) {
+              alert("Doing repetition nr. " + repCounter + 
+                    "\ncontinuing upto: " + maxRepetitionsAsNumber )
+              repCounter++
+            }
+            document.body.innerHTML = "<h1>Done repetition!</h1>"
+        
+          &lt;/script>
+          
+        </body>
+        </html>      
+      
+      
+      </script>
+      <p>Run it a few times, and enter values like 4, 2 or 10.</p>
+      <ol type="a">
+        <li>Run it again, and enter the value 100. Can you close the browser tab before the while-loop has finished?</li>
+        <li>Run it again, and enter the value -4. How many times does the while-loop run before stopping?</li>
+        <li>What kinds of values could you enter to make the program go wrong?</li>
+      </ol>
+      <answer noslider></answer>
+    </section>
+    <section class="assignment">
+      <h4>13.2.b: the silent killer</h4>
+      <p>Let's freeze a browser. First, take some precautions. You don't want to lose browser tabs or sessions that are valuable to you.</p>
+      <ul>
+        <li>If you have a browser installed that isn't running right now, start it, and use that one.</li>
+        <li>If you haven't, you could download the <a href="https://www.mozilla.org/en-US/firefox/developer/">Developer Edition of Firefox</a>, and install and use that one. Other cool browsers are: <a href="https://brave.com/">Brave</a> and <a href="https://vivaldi.com/">Vivaldi</a></li>
+        <li>If you insist on using a browser that you have already running, here is how to restore all your open tabs after the crash: <a href="https://support.mozilla.org/en-US/kb/restore-previous-session">Firefox</a>, <a href="https://www.howtogeek.com/291019/how-to-restore-your-chrome-tabs-when-theres-no-re-open-last-session-button/">Chrome</a>.</li>
+      </ul>
+      <p>Now, after making sure it's OK if the browser crashes: Replace the <code>alert()</code> command in the code with a <code>console.log()</code> command.</p>
+      <p>Then, reload the script in the browser. First enter the value 1000, and check that you get the expected output.</p> 
+      <p>Finally, reload, and enter the value <i>"S4D is cool"</i> (or something similar).</p>
+      <p>Answer this question: does the browser display the console.logs in the console panel?</p>
+      <p>Here's how to kill a frozen broswer <a href="https://www.lifewire.com/how-to-force-quit-a-program-in-windows-2625781">in Windows</a>, and <a href="https://www.parallels.com/blogs/force-quit-on-a-mac/">on a Mac</a>.</p>
+      <answer noslider></answer>
+    </section>
+    <section class="assignment">
+      <h4>13.2.c: Fixing the bug.</h4>
+      <p>One way of fixing the bug is to get the user to enter a positive whole number before starting the while loop. You can do this with <i>another while-loop!</i>.</p>
+      <ul>
+        <li>
+          Create a function called <code>isPositiveInteger(number)</code> that returns <code>true</code> if the number is safe for the main repetition. Use the following built-in function as part of the new function:<br>
+          <script type="text/plain" class="language-js">
+            Number.isInteger( 3.4   )  // => false
+            Number.isInteger( 3000  )  // => true
+            Number.isInteger( -3    )  // => true
+            Number.isInteger( -3.96 )  // => false
+          </script>
+        </li>
+        <li>After prompting the user for input, you can now check if the number is OK (in the sense that the main while-loop can terminate (=stop running)). Do this with a while-loop that simply asks the user again for a number if the previous input was not OK.</li>
+      </ul>
+      <answer buttontext="mail the improved program"></answer>
+    </section>  
+
+    <h3>13.3 while-loops and arrays</h3>
+    <p>Here is a data structure that could be a playlist for music:</p>
+    <script type="text/plain" class="language-js">
+      // the top 21 of Rolling Stone Magazine's 500 Greatest Songs of All Time
+      // https://www.rollingstone.com/music/music-lists/500-greatest-songs-of-all-time-151127
+      var thePlaylist =
+      [
+        { title: "Like a Rolling Stone",          artist: "Bob Dylan",          album: "Highway 61 Revisited",                   duration: 369,  spotifyId: "3AhXZa8sUQht0UEdBJgpGc",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135381-932d1e7ffbb6e74894243b088dbabd54a60920d8.jpg" },
+        { title: "(I Can't Get No) Satisfaction", artist: "The Rolling Stones", album: "Out Of Our Heads",                       duration: 222,  spotifyId: "57J2znxukXsXzS3XPuZ1TG",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135474-0831507a5835bcabad247ca86d01fe22a00bd28d.jpg" },
+        { title: "Imagine",                       artist: "John Lennon",        album: "Imagine",                                duration: 187,  spotifyId: "7pKfPomDEeI4TPT6EOYjn9",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135475-970456d7020ae1d76fc52d47d84379ddc127d7de.jpg" },
+        { title: "What's Going On",               artist: "Marvin Gaye",        album: "What's Going On",                        duration: 232,  spotifyId: "6h2vZPWSWsRJ0ps91epUgT",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135479-e2ff971367c0b40140a4acb66197807f391b337b.jpg" },
+        { title: "Respect",                       artist: "Aretha Franklin",    album: "I Never Loved a Man the Way I Love You", duration: 147,  spotifyId: "7s25THrKz86DM225dOYwnr",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135481-9fc4d7e00bc5a131a0bd0382295c5a30edc3c9c4.jpg" },
+        { title: "Good Vibrations",               artist: "The Beach Boys",     album: "Smiley Smile/Wild Honey",                duration: 217,  spotifyId: "2oF7FZHIJbzjeEXZ3D0Ku4",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135491-04b899351028bbb03fb423d8b1461a895d3e6883.jpg" },
+        { title: "Johnny B. Goode",               artist: "Chuck Berry",        album: "The Anthology",                          duration: 161,  spotifyId: "3k80YuKn2pV1J02dfQtCVB",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135495-b39e2c030c57d05f17c127ebccb45e9161ed1650.jpg" },
+        { title: "Hey Jude",                      artist: "The Beatles",        album: "1",                                      duration: 425,  spotifyId: "3H7sv3Krffn15BufUuXzf3",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135498-1e0ea8d22030efb2f875509bb15e82262baa3cfc.jpg" },
+        { title: "Smells Like Teen Spirit",       artist: "Nirvana",            album: "Nevermind",                              duration: 301,  spotifyId: "3oTlkzk1OtrhH8wBAduVEi",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135502-e78198df085d95aa1dd378c14cbf0f15d450da17.jpg" },
+        { title: "What'd I Say, Pt. 1 & 2",       artist: "Ray Charles",        album: "The Ultimate Hits Collection",           duration: 304,  spotifyId: "2eB8n7IbMSd0aoh0UtsRZK",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135505-e5ea75da3d8162667d9894c06bee85b807f5d189.jpg" },
+        { title: "My Generation",                 artist: "The Who",            album: "My Generation",                          duration: 201,  spotifyId: "4kxrawSkeAoJiASQArwqYO",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135508-6107f93612ed48c1ff5a7c7dced718ea5d2580a8.jpg" },
+        { title: "A Change Is Gonna Come",        artist: "Sam Cooke",          album: "Portrait of a Legend 1951-1964",         duration: 191,  spotifyId: "7aXPwuC5qjhT0ddjHqe64o",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135512-9cd200d1136820cefc0123d8915a192daf7909ee.jpg" },
+        { title: "Yesterday",                     artist: "The Beatles",        album: "Help!",                                  duration: 125,  spotifyId: "1e0hllQ23AG0QGFgezgLOq",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135514-892128e548dcb6711821ee8c676cce3c5f0e51ea.jpg" },
+        { title: "Blowin' in the Wind",           artist: "Bob Dylan",          album: "The Freewheelin' Bob Dylan",             duration: 165,  spotifyId: "18GiV1BaXzPVYpp9rmOg0E",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135382-eb0a765e70698726b457176819b8deca6bad2706.jpg" },
+        { title: "London Calling",                artist: "The Clash",          album: "London Calling",                         duration: 200,  spotifyId: "2nS1kdlqTxGfWGT9seeaY0",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135547-ca86cd049b90e4f6627995be053097227d3cde2c.jpg" },
+        { title: "I Want To Hold Your Hand",      artist: "The Beatles",        album: "Meet the Beatles!",                      duration: 145,  spotifyId: "4DRBaZ760gyk7LWnaJFqsJ",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135571-63a52e3e01e5a203aa5bb68347dadf0fc3fc4289.jpg" },
+        { title: "Purple Haze",                   artist: "Jimi Hendrix",       album: "Are You Experienced?",                   duration: 170,  spotifyId: "0wJoRiX5K5BxlqZTolB2LD",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135573-f27225624394dca91afe937ab6a80a7424e531a3.jpg" },
+        { title: "Maybellene",                    artist: "Chuck Berry",        album: "The Anthology",                          duration: 143,  spotifyId: "3kjv56LPvBv7HHLvZ8Wwwl",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135575-c9f62436b47ada7410f85aa5a7ff775bf028eba7.jpg" },
+        { title: "Hound Dog",                     artist: "Elvis Presley",      album: "Elvis 30 #1 Hits",                       duration: 137,  spotifyId: "64Ny7djQ6rNJspquof2KoX",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135577-9695cff6528d9c9624d7d095bf98915ef2a2a9d4.jpg" },
+        { title: "Let It Be",                     artist: "The Beatles",        album: "Let It Be",                              duration: 243,  spotifyId: "5V1AHQugSTASVez5ffJtFo",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135579-62eebf7dd401199cf9ac1acd3a3fcacdbe32df38.jpg" },
+        { title: "Born to Run",                   artist: "Bruce Springsteen",  album: "Born To Run",                            duration: 269,  spotifyId: "3JlWTo11ustqpPS1V7Jivs",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135580-2e5773a2a60f763e58b18e817356b20c8afa7435.jpg" }
+      ]    
+
+    </script>
+    <p>This is a very common data structure: an array with objects, and all objects have the same propery names. It is, for example, how information from a database is represented in Javascript.</p>
+    <div class="theory">
+      Here are some interesting built-in functions for arrays in JavaScript:
+      <script type="text/plain" class="language-js">
+      var myList = ["Amsterdam", "Berlin", "London", "Paris", "Rome"]
+
+      myList.length                     // => 5  (not a function, but a property)
+      myList.push("New York")           // adds an item to the end of the array
+      myList.concat(["Arnhem","Velp"])  // adds all items of argument to the array 
+      myList.includes("London")         // => true (checks if argument is in the array)
+      myList.indexOf("London")          // => 2 (returns position of item in the array)
+      
+      </script>
+    </div>
+    <section class="assignment">
+      <h4>13.3.a: print them all</h4>
+      <p>Print all titles and artists (not album, duration or other properties) to the console. Build a function that:</p>
+      <ul>
+        <li>has no return value;</li>
+        <li>uses a while loop with a counter variable;</li>
+        <li>uses the <code>.length</code> property of thePlaylist as the limit for the while-loop;</li>
+        <li>uses the counter as the index for the array. Like this: <code>song = thePlaylist[songCounter]</code>;</li>
+      </ul>
+      <p>Tip: use a(nother) <code>console.log()</code> to see the counter change during the repetition.</p>
+      <answer buttontext="mail your function"></answer>
+    </section>
+    <section class="assignment">
+      <h4>13.3.b: total duration?</h4>
+      <p>Calculate the total duration of the playlist. The duration values in the playlist give the length of each song in seconds. Write a function with a similar while-loop, but:</p>
+      <ul>
+        <li>it does not print title and artist of the songs;</li>
+        <li>it creates a local variable (before the loop) to hold the sum of all durations (what should be its starting value?);</li>
+        <li>it adds the duration of each song to the sum-variable.</li>
+        <li>it has the total duration a its return value.</li>
+      </ul>
+      <p>HINT: the result for this playlist should be 4554 seconds (1 hour, 15 minutes and 54 seconds).</p>
+      <answer buttontext="mail your function"></answer>
+    </section>
+    <section class="assignment">
+      <h4>13.3.c: the first hour</h4>
+      <p>For a hypothetical radio station, there is room for 40 minutes of music in an hour. The rest is for commercials and DJ's talking. Write a function that prints the titles of the first items in the playlist that fit inside those 40 minutes. Use a while-loop that checks if the next song does not cross the 40 minute line.</p>
+      <answer buttontext="mail your function"></answer>
+    </section>
+    <section class="assignment">
+      <h4>13.3.d: separating the algorithm from the side effects</h4>
+      <p>It is often best if a complex calculation is done without side effects. This helps, for example, in testing the code.</p>
+      <p>Create a function that:</p>
+      <ul>
+        <li>also uses a while-loop to find the first songs in a playlist that fit into a maximum duration;</li>
+        <li>takes both the playlist and the maximum duration as arguments;</li>
+        <li>does not print anything to the console;</li>
+        <li>instead, it creates a new empty array, and adds the qualifying songs to this new array (which array function is useful for this?);</li>
+        <li>this array will be the return value.</li>
+      </ul>
+      <p>TIP: if you change the function from 13.3.a to take the play list as an argument, you can use it to print the output of the function you write for this exercise. </p>
+      <answer buttontext="mail your function"></answer>
+    </section>
+
+    <div class="theory">
+      <h2>one more repetition: for loops</h2>
+      <p>There is another repetition statement in most programming languages. It can do the same things as the while-loop, but it's much more popular. It is called the <i>for-loop</i> and it looks like this:</p>
+      <script type="text/plain" class="language-js">
+      // recall from the video that 'myCounter += 2' means 
+      // the same as 'myCounter = myCounter + 2'
+
+      for( var myCounter = 1; myCounter < 10; myCounter += 2 ) {
+        console.log("Doing repetition with myCounter:", myCounter)
+      }
+
+      // Doing repetition with myCounter: 1
+      // Doing repetition with myCounter: 3
+      // Doing repetition with myCounter: 5
+      // Doing repetition with myCounter: 7
+      // Doing repetition with myCounter: 9
+      </script>
+      <p>For-loops are while-loops with extra's. Notice that inside the round parentheses after "for" there are <i>three small pieces of code</i>, separated by ';'.</p>
+      <ul>
+        <li>The first part,<code>var counter=0</code> in the example, is almost always used for <b>setting up a counter variable</b>, and giving it its starting value.</li>
+        <li>The second part, <code>counter < 10</code> in the example, is the <b>condition</b>, which determines if the commands are executed for another round of the loop. <i>Exactly the same</i> as the condition in a while-loop. Usually it compares the counter to the final value at which the loop must end.</li>
+        <li>The third part, <code>counter += 2</code> in the example, is the <code>update command</code>, and its task is to bring the counter variable closer to the end-value.</li>
+      </ul>
+      <p>So this is the general structure of a for-loop:</p>
+      <pre>
+        for( <i>initializer</i> ; <i>condition</i> ; <i>updater</i> ) {
+          <i>commmands to repeat</i>
+        }
+      </pre>
+      <p>A while-loop runs like this:<br>check-condition &ndash; run-commands &ndash; check-condition &ndash; run-commands &ndash; check-condition&hellip; </p>
+      <p>A for-loop runs like this:<br> <i>initializer</i> &ndash; check-condition &ndash; run-commands &ndash; <i>updater</i> &ndash; check-condition &ndash; run-commands &ndash; <i>updater</i> &ndash; check-condition &ndash; run-commands &ndash; <i>updater</i> &ndash; check-condition&hellip;</p>
+
+      <h3>for-loops with arrays</h3>
+      <p>For-loops are particulary useful with arrays. Every time you want to do something with each item in an array spearately (like printing the titles of the songs in a playlist), you need a repetition. Because array's are very common in most software, the following use of for-loops is why for-loops are more popular than while-loops in most software:</p>
+      <script type="text/plain" class="language-js">
+      var cities = ["Zevenaar", "Didam", "Groessen", "Babberich"]
+      for( cityCounter = 0; cityCounter < cities.length; cityCounter++ ) {
+        var currentSong = cities[ cityCounter ];
+        // do cool stuff with the current city
+      }
+      </script>
+      <p>Here, we use the length of the array as the end-value for the loop.</p>
+    </div>
+
+    <section class="assignment">
+      <h3>13.4 feel free to ask questions</h3>
+      <answer noslider buttontext="mail your question(s)">If you have any questions about for-loop, please let us know!</answer>
+    </section>
+
+    <h3>13.5 convert while-loops to for-loops</h3>
+    <section class="assignment">
+      <h4>13.5.a: rewrite 13.3.a and 13.3.b</h4>
+      <p>The first two while-loops for working with the playlist in exercise 13.3 are typically written with for-loops. Go ahead and create for-loop versions of the functions for printing the playlist and for calculating the sum.</p>
+      <answer noslider buttontext="mail your code"></answer>
+    </section>
+    <section class="assignment">
+      <h4>13.5.b: don't rewrite 13.3.c and 13.3.d</h4>
+      <p>The function for deciding which part of the playlist fits in 40 minutes is never written with a for-loop.</p>
+      <p>Do you think it would be possible to use a for-loop in exercise 13.3.c? Explain your anwer.</p>
+      <answer noslider buttontext="mail your answer">If you have any questions about for-loop, please let us know!</answer>
+    </section>
+
+    <section class="assignment">
+    <h3>13.6: code comprehension</h3>
+    <p>Read the following code. What does it do? <b>Don't run the code yet!</b> The point of this exercise is to train code reading skills.</p>
+    <script type="text/plain" class="language-js">
+      function mmmmmm( array ) {
+        var resultUptoNow = array[0]
+        for( var index=1; index < array.length; index++ ) {
+          var currentValue = array[index]
+          if( currentValue > resultUptoNow) {
+            resultUptoNow = currentValue
+          }
+        }
+        return resultUptoNow
+      }
+      
+      var m = mmmmmm( [ 1,5,8,3,1,9,3 ] )
+      
+      console.log("m=", m)
+    </script>
+      <p>Grab pen-and paper (or a text editor), and perform the execution of this code <i>yourself, by hand.</i> Make a table that records the value of the variables <code>resultUptoNow</code>, <code>index</code>, and <code>currentValue</code> in each round of the for-loop.</p>
+      <ol type="a">
+        <li>What does your table look like? Copy-paste it, or attach a photo of your pen-and-paper version.</li>
+        <li>What would be a better name for the function? Make the name describe its return value (so don't start with a verb like "calculate", "find", etc.).</li>
+      </ol>
+    </section>
+
+    <section class="assignment">
+      <h3>13.7 longest song</h3>
+      <p>Use the playlist from exercise 13.3.</p>
+      <p>Write a function that takes a playlist as an argument. It returns the song that has the longest duration. You test it like this:</p>
+      <script type="text/plain" class="language-js">
+        var longestSong = your_function_name( thePlaylist );  // create you own function name
+        console.log( "The longest song is", longestSong.title, "by", longestSong.artist);
+      </script>
+      <div class="theory">
+        <p>Here is another cool function for array's. It creates a new array by selecting a part of anthor array:</p>
+        <script type="text/plain" class="language-js">
+        var theList = ["NL", "DE", "FR", "UK", "US"]
+        var list2 = theList.slice( 1,4 )   // => ["FR", "UK"]  select items 1,2,3   (not 4)
+        var list3 = theList.slice( 0,4 )   // => ["NL", "DE", "FR", "UK"]  
+                                           //                  select items 0,1,2,3 (not 4)
+        var list3 = theList.slice( 2,3 )   // => ["FR", "UK"]  select items 0,1,2,3 (not 4)
+        var list4 = theList.slice( 3,5 )   // => ["UK", "US"]  select items 3,4     (not 5)
+        var list4 = theList.slice( 3 )     // => ["UK", "US"]  select items 3,4     (upto end of list)
+        var list4 = theList.slice( 3,999 ) // => ["UK","US"]   select items 3,4     (upto end of list)
+        </script>
+        <p>You can use this to test your function with parts of the playlist. For example:</p>
+        <script type="text/plain" class="language-js">
+          // longest of first 5 songs:
+          console.log( your_function_name( thePlaylist.slice(0,5) ) )   // Like a Rolling Stone by Bob Dylan
+          
+          // longest of last 4 songs:
+          console.log( your_function_name( thePlaylist.slice(17) ) )    // Born to Run by Bruce Springsteen
+          
+          // longest of songs 10-14                                  
+          console.log( your_function_name( thePlaylist.slice(10,15) ) ) // My Generation by The Who
+        </script>
+      </div>
+    </section>
+
+    <h3>13.7: the template engine</h3>
+    <p>Many web applications use a template engine to generate (parts of) their HTML pages. A template is a piece of HTML code that has places where data should be inserted. This could be a template (with data-placeholders marked between {{ and }}):</p>
+    <script type="text/plain" class="language-js">
+    var postTemplate = 
+      '<div class="post">' +
+      '  <h2>{{title}}</h2>' +
+      '  <h4>by {{author}}</h4>' +
+      '  <p class="postText">' +
+      '    <img src="{{imageURL}}" style="height:6em;">' +
+      '    {{postText}}' +
+      '  </p>' +
+      '  <div class="postFooter">' +
+      '    <a href="mailto:{{author}}@han.nl">contact {{author}}</a> -- ' +
+      '    <a href="mailto:robert.holwerda@han.nl">complain about "{{title}}"</a>' +
+      '  </div>' +
+      '  <hr>' +
+      '</div>'
+    </script>
+    <p>This code concatenates a lot of strings. That is because each literal string value (in double or single quotes) must end on the same line where it was started. So one way of creating a very long string is like the code above.</p>
+    <p>Notice all the placeholders, like {{title}} and {{imageURL}}. They don't mean anything special to HTML or Javascript. If you add this string a webpage, the browser would simply display all the curly braces. We have to create software to replace the placeholders with the actual data. Here is a simple example:</p>
+    <script type="text/plain" class="language-js">
+    var myPosting = { 
+      title: "I visited Uganda again",
+      author: "Jille.Treffers",
+      postText: "Last week, I went to Uganda for a short holiday. " + 
+                "I lived in Uganda for e few years, and it was great to be back. " +
+                "I visisted the town where I ran my own hotel for a while. " +
+                "Two students, who are interning in Rwanda came all the way from Kigali to visit me in Uganda. It was great to see that they were doing well."
+      imageURL: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Uganda_map_de.png"
+    }
+    
+    // "render" in software jargon means to create a visible represenation of some data
+    function renderTemplate() {
+      var resultHTML = postTemplate
+      resultHTML = resultHTML.replace("{{title}}", myPosting.title)
+      resultHTML = resultHTML.replace("{{title}}", myPosting.title)
+      resultHTML = resultHTML.replace("{{author}}", myPosting.author)
+      resultHTML = resultHTML.replace("{{author}}", myPosting.author)
+      resultHTML = resultHTML.replace("{{author}}", myPosting.author)
+      resultHTML = resultHTML.replace("{{postText}}", myPosting.postText)
+      resultHTML = resultHTML.replace("{{imageURL}}", myPosting.imageURL)
+    }
+
+    var postHTML = renderTemplate()
+    console.log( postHTML )
+    </script>
+    <p>The <code>.replace()</code> function creates a new string value, based on the string <i>before the dot</i>, but with the first occurrence of its 1st argument (e.g. "{{author}}) replaced with the text passed in as the 2nd argument (e.g. "Jille.Treffers").</p>
+      <h4>13.7.a: make this a webpage</h4>
+      <p>Use the two pieces of code above (the template, the posting data and the render function), and build an HTML page around it that displays the HTML that the function creates. Spend a little time creating some CSS to make the page look less stupid.</p>
+      <p>You don't have to send anything in yet.</p>
+
+      <section class="assignment">
+        <h4>13.7.b: step 1 &ndash; repeated replacements</h4>
+        <p>The grand project in this series of exercises is to create a general template engine that will render HTML from any template with data from JavaScript object. The code above is nowhere near that kind of flexibility. Let's solve the problem in a few steps.</p>
+        <p>Did you notice that the render function has to call <code>.replace()</code> two times for {{title}}, and three times for {{author}}? That is because the <code>.replace()</code> function will <i>only replace the first occurrence</i> of the search string, not all of them. We need a more general repetition for replacing data placeholders.</p>
+        <p>Create a new function that takes three arguments. It creates a new string, based on <code>baseString</code>, with <i>all occurrences</i> of <code>searchString</code> replaced with the value of <code>replacementString</code>.</p>
+        <script type="text/plain" class="language-js">
+      function your_name( baseString, searchString, replacementString ) {
+         // your code here
+      }
+      var resultString = your_name( "aaa bbb ccc bbb aaa", "bb", "-")
+      console.log(resultString)
+      // =>  "aaa --b ccc --b aaa"
+        </script>
+        <ul>
+          <li>You must replace multiple times. What kind of loop will you use? A while-loop or a for-loop?</li>
+          <li><span class="inline-note">TIP:</span>You are done replacing when the last replacement did not create a new string. So you'll have to check whether the result of the replacement is (not) equal to the value before the replacement.</li>
+          <li>
+            <hint steps=1>
+              <p>create two local variables: <code>currentResult</code> and <code>nextResult</code>. Give them sensible starting values. The loop goes a bit like this:</p>
+              <ol>
+                <li>do one replacement, based on currentResult, and store the new string in nextResult;</li>
+                <li>check whether nextResult is different than currentResult; exit the loop when they are equal;</li>
+                <li>in the loop, after the check, copy newResult into currentResult; and do another replacement.</li>
+              </ol>
+              <hint>
+                <hintstep buttontext="I got very stuck">Use this hint only if you got really, really stuck.</hintstep>
+                <hintstep buttontext="Yes, maybe more.">Did you spend more than 30 minutes trying to solve the problem?</hintstep>
+                <hintstep buttontext="I did, I did!">Did you take a break? Discuss this with classmates?</hintstep>
+                <hintstep buttontext="I admit defeat. Give it to me."><b>SPOILER ALERT:</b> we're giving you the solution, because we want you to be able to do the other exercises.</hintstep>
+                <script type="text/plain" class="language-js">
+                  function replaceAll( baseStr, searchStr, replaceStr ) {
+                    var currentResult = baseStr;
+                    var nextResult = currentResult.replace( searchStr, replaceStr )
+                    while( nextResult != currentResult ) {
+                      currentResult = nextResult;
+                      nextResult = currentResult.replace( searchStr, replaceStr )
+                    }
+                    return currentResult
+                  }
+                </script> 
+                <p>If you need this code, feel free to use it, under one major condition: <b>Experiment with the code. Add console.log() commands at various places. Try very hard to understand how this function works.</b></p>
+              </hint>
+            </hint>
+          </li>
+          <li>Use your new multi-replace function in the render function to eliminate the multiple calls to <code>.replace()</code> for {{title}} and {{author}}.</li>
+        </ul>
+        <answer buttontext="mail the entire HTML file"></answer>
+      </section>
+
+        <h4>13.7.c: step 2 &ndash; parameters for the render function</h4>
+        <p>The current render function works on two global variables. So we cannot re-use the function for other templates and other objects with data. Start making the function reusable by adding two parameters.</p>
+        <ul>
+          <li>One parameter is the input for the template string.</li>
+          <li>The other parameter is the input for the Javascript object containing the data.</li>
+        </ul>
+        <p>Change the render function that in no longer reads the global variables, but works on its parameters instead. Also change how you call the function, to provide values of the global variables as the arguments.</p>
+        <p>No need to send anything in yet. Do test that your code still works correctly.</p>
+      </section>
+
+      <div class="theory">
+        <h4>using objects as array's, sort-of</h4>
+        <p>Values in array's are stored under a index-number. In objects, values are stored under a name. We have seen how you can use variables instead of literal numbers to get items from an array. Could you do something similar with objects?</p>
+        <p>Yes you can:</p>
+        <script type="text/plain" class="language-js">
+        var character = { 
+          name:    "Severus Snape", 
+          house:   "Slytherin", 
+          job:     "professor", 
+          subject: "Potions" 
+        }
+
+        var propertyName = "job"
+        console.log( "The job:", character[propertyName] )
+
+        while( propertyName != null ) {  // prompt() returns null is user presses "Cancel" button
+          propertyName = prompt("Give a property name for the character")
+          console.log( "The value of character." + propertyName, "is:", character[propertyName] )
+        }
+        </script>
+        <p>Copy this code straight into the browser console; see what happens. Experiment a few times with the two commands in the loop. They demonstrate how you can get data out of the object, even if you (the programmer) does not know what property name will be used. What happens if you enter a property name that doesn't exist in the object (e.g. <i>salary</i> or <i>#&@*%</i> )?</p>
+        <p>For this you need the square brackets, making the notation look similar to getting a value from an array. If you use the dot-notation, e.g. <code>character.propertyName</code>, JavaScript will look for a property called "propertyName". After the dot, you need the literal name of the property. Inside square brackets, you can place any expression that results in a string. That string will then be used as the property name.</p>
+        <p>This feature does not exist in Arduino.</p>
+      </div>
+      <p>There's another cool thing we'll use for the template engine:</p>
+      <div class="theory">
+        <p>The built-in function <code>Object.keys(object)</code> (notice the capital letter O) gives you an array with all the property names found in the object. Like this:</p>
+        <script type="text/plain" class="language-js">
+          var character = { 
+            name:    "Remus Lupin", 
+            house:   "Gryffindor", 
+            job:     "professor", 
+            subject: "Defence Against the Dark Arts" 
+          }
+
+          // 'key' is, in the jargon, synonym for 'property name'
+          var propertyNames = Object.keys( character ) 
+          console.log( propertyNames )
+          // => ["name", "house", "job", "subject"]
+        
+          // This comes in very handy with a loop:
+          for( var index = 0; index < propertyNames.length; index++ ) {
+            var propName = propertyNames[index]
+            console.log( "At index",index, "the value of character." + propName, "is:", character[propName] )
+          }
+        </script>
+        <p>The last loop demonstrates how to combine Object.keys() and the array-like notation for objects. That is going to be useful for creating the template engine!</p>
+      </div>
+
+      <section class="assignment">
+        <h4>13.7.d: step 3 &ndash; loops for objects</h4>
+        <p>Now we make the template engine work for all possible templates and all possible objects.</p>
+        <ul>
+          <li>Disable all the replacement commands in the render function (make them comments, or delete them).</li>
+          <li>Add a loop that repeats for every property name in the data-object</li>
+          <li>Inside the loop, call the multi-replacement function to get a version of the template with all placeholders for the current property name replaced by the value of that propert in the data-object.</li>
+          <li>Create another template, with very different placeholders, and another data-object that has values for those placeholders. Test your new template render function with both your new template and the one about Jille's blog posting.</li>
+        </ul>
+        <answer buttontext="mail your complete code">Make sure both templates and both data-objects are tested in the code you send in.</answer>
+      </section>
+
+      <h4>13.7.e: step 4 &ndash; rendering a song</h4>
+      <p>Here's a template you can use with the song objects from the playlist above.</p>
+      <script type="text/plain" class="language-js">
+        var songTemplate = 
+          '<div style="display: inline-block; margin:3em; width: 420px;' +
+          '  <img src="{{imageUrl}}" style="height:150px; float:left; margin-right:0.5em">' +
+          '  <h2>{{title}}</h2>' +
+          '  <h4>by {{artist}}</h4>' +
+          '  <iframe src="https://open.spotify.com/embed/track/{{spotifyId}}" '+
+          '          width="250" height="80" frameborder="0" allowtransparency="true" '+
+          '          allow="encrypted-media">'+
+          '  </iframe>' +
+          '</div>'        
+      </script>
+      <p>The &lt;iframe&gt; element creates a tiny music player for the song, using Spotify. We used the <a href="https://developer.spotify.com/documentation/widgets/generate/play-button/">embed-code from their documentation</a>. Now you know why those spotifyId properties were in the playlist data! If you're logged in to your Spotify account, you can play the song. If you haven't got a Spotify account, you can still listen to 30 seconds of the song.</p>
+      <p>Change your code to render one of the songs from thePlayList.</p>
+      <p>You don't have to send the code in yet.</p>
+
+      <section class="assignment">
+        <h4>13.7.f: step 5 &ndash; rendering the entire list</h4>
+        <p>The new template works for a single song object. Not for the entire list. Let's create a music page with all the songs from the playlist!</p>
+        <p>Create a new function, that takes two arguments:</p>
+        <ol>
+          <li>The first argument is a template string.</li>
+          <li>The second argument is <b>an array of objects</b> (like our playlist).</li>
+        </ol>
+        <p>The function has a loop (which one?) that calls the render function for each object in the array, with the template.</p>
+        <p>All HTML strings returned by the calls to the render function are concatenated in one large HTML string. The large HTML string will be the return value after loop has visited all objects in the array.</p>
+        <p>Write your function in such a way that it can work with any template, any kind of data oject, and arrays of any length. And test it with the playlist and the songTemplate.</p>
+        <answer buttontext="mail your music player software"></answer>
+      </main>
+  </div>
+<script src='../js/chapters.js'></script>
+</body>
+</html>
