@@ -321,7 +321,7 @@ const defaultHintSteps = [
 function createHintBlocks() {
   const hintElements = $$("hint")
   hintElements.forEach( hintElement => {
-    const hintStepElements = $$("hintStep",hintElement);
+    const hintStepElements = $$(":scope > hintstep",hintElement);
     let hintSteps = defaultHintSteps
     let maxSteps = 3;
     if(hintStepElements.length > 0) {
