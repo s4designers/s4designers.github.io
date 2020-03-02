@@ -314,7 +314,7 @@
       </div>
     </section>
 
-    <h3>13.7: the template engine</h3>
+    <h3>13.8: the template engine</h3>
     <p>Many web applications use a template engine to generate (parts of) their HTML pages. A template is a piece of HTML code that has places where data should be inserted. This could be a template (with data-placeholders marked between {{ and }}):</p>
     <script type="text/plain" class="language-js">
     var postTemplate = 
@@ -361,12 +361,12 @@
     console.log( postHTML )
     </script>
     <p>The <code>.replace()</code> function creates a new string value, based on the string <i>before the dot</i>, but with the first occurrence of its 1st argument (e.g. "{{author}}) replaced with the text passed in as the 2nd argument (e.g. "Jille.Treffers").</p>
-      <h4>13.7.a: make this a webpage</h4>
+      <h4>13.8.a: make this a webpage</h4>
       <p>Use the two pieces of code above (the template, the posting data and the render function), and build an HTML page around it that displays the HTML that the function creates. Spend a little time creating some CSS to make the page look less stupid.</p>
       <p>You don't have to send anything in yet.</p>
 
       <section class="assignment">
-        <h4>13.7.b: step 1 &ndash; repeated replacements</h4>
+        <h4>13.8.b: step 1 &ndash; repeated replacements</h4>
         <p>The grand project in this series of exercises is to create a general template engine that will render HTML from any template with data from JavaScript object. The code above is nowhere near that kind of flexibility. Let's solve the problem in a few steps.</p>
         <p>Did you notice that the render function has to call <code>.replace()</code> two times for {{title}}, and three times for {{author}}? That is because the <code>.replace()</code> function will <i>only replace the first occurrence</i> of the search string, not all of them. We need a more general repetition for replacing data placeholders.</p>
         <p>Create a new function that takes three arguments. It creates a new string, based on <code>baseString</code>, with <i>all occurrences</i> of <code>searchString</code> replaced with the value of <code>replacementString</code>.</p>
@@ -414,7 +414,7 @@
         <answer buttontext="mail the entire HTML file"></answer>
       </section>
 
-        <h4>13.7.c: step 2 &ndash; parameters for the render function</h4>
+        <h4>13.8.c: step 2 &ndash; parameters for the render function</h4>
         <p>The current render function works on two global variables. So we cannot re-use the function for other templates and other objects with data. Start making the function reusable by adding two parameters.</p>
         <ul>
           <li>One parameter is the input for the template string.</li>
@@ -474,7 +474,7 @@
       </div>
 
       <section class="assignment">
-        <h4>13.7.d: step 3 &ndash; loops for objects</h4>
+        <h4>13.8.d: step 3 &ndash; loops for objects</h4>
         <p>Now we make the template engine work for all possible templates and all possible objects.</p>
         <ul>
           <li>Disable all the replacement commands in the render function (make them comments, or delete them).</li>
@@ -485,7 +485,7 @@
         <answer buttontext="mail your complete code">Make sure both templates and both data-objects are tested in the code you send in.</answer>
       </section>
 
-      <h4>13.7.e: step 4 &ndash; rendering a song</h4>
+      <h4>13.8.e: step 4 &ndash; rendering a song</h4>
       <p>Here's a template you can use with the song objects from the playlist above.</p>
       <script type="text/plain" class="language-js">
         var songTemplate = 
@@ -504,7 +504,7 @@
       <p>You don't have to send the code in yet.</p>
 
       <section class="assignment">
-        <h4>13.7.f: step 5 &ndash; rendering the entire list</h4>
+        <h4>13.8.f: step 5 &ndash; rendering the entire list</h4>
         <p>The new template works for a single song object. Not for the entire list. Let's create a music page with all the songs from the playlist!</p>
         <p>Create a new function, that takes two arguments:</p>
         <ol>
