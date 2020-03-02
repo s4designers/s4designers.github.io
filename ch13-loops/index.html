@@ -530,6 +530,125 @@
         <p>All HTML strings returned by the calls to the render function are concatenated in one large HTML string. The large HTML string will be the return value after loop has visited all objects in the array.</p>
         <p>Write your function in such a way that it can work with any template, any kind of data oject, and arrays of any length. And test it with the playlist and the songTemplate.</p>
         <answer buttontext="mail your music player software"></answer>
+    </section>
+    <div class="theory">
+        <h3>Using loops in arduino</h3>
+        <p>In arduino loops can be used for reasons similar to those in javascript, but there are some differences. In this theory block, we’ll quickly discuss looping though arrays and a different kind op loop in arduino.</p>
+        <h4>Arrays in arduino</h4>
+        <p>We have seen that for-loops are the best way to loop through arrays. This is also true in arduino, but because arrays in arduino do not have a <code>.length</code> property like in javascript, you'll just have to use the length of the array as a number. Luckily, you already needed this number when declaring the array. In the code below, note the <code>4</code> in the array declaration as well as the <code>4</code> in the for-loop condition.</p>
+        
+        <script type="text/plain" class="language-arduino">
+#include "breadboard.h"
+int ledPins[4] = {LED_RED, LED_YELLOW, LED_BLUE, LED_GREEN};
+
+void setup(){
+initializeBreadboard();
+  for(int i = 0; i < 4; i++){
+    digitalWrite(ledPins[i], HIGH);
+    delay(100);
+    digitalWrite(ledPins[i], LOW);  
+    delay(100);
+  }
+}
+
+void loop(){
+  
+}
+        </script>
+      <h4>Custom loops in arduino</h4>
+      <p>Loops in arduino can also be used to change the mode of your program. An example of a mode change is when you have an alarm clock and you want to change the alarm time. You have to press a button to enter the "change alarm mode", and from that moment on, all buttons get different functions which enable you to change the alarm time. Once you are done, usually after a certain button is pressed or after some time has lapsed, the normal mode is resumed. </p>
+      <p>A version of such a program is shown below. In it, the loop is constantly listening for button presses. If one happens, the program enters the corresponding mode. If BUTTON2 is pressed while in such a mode, something happens, depending on the mode. If BUTTON1 is pressed, the program returns to the loop because the while condition becomes false.</p>
+      <script type="text/plain" class="language-arduino">
+#include "breadboard.h"
+
+void setup(){
+  initializeBreadboard();
+}
+
+void loop(){
+  OLED.print( "Normal mode" ) 
+  if (digitalRead(BUTTON1) == HIGH) {
+    delay(200); // delay is to give user the chance to release the button
+    flashMode();
+  }
+
+  if(digitalRead(BUTTON2) == HIGH){
+    delay(200); // delay is to give user the chance to release the button
+    beepMode();
+  }
+}
+
+void beepMode(){
+  OLED.print( "beepMode" )  
+  while (digitalRead(BUTTON1) == LOW ) {
+    beep(analogRead(POTENTIOMETER) + 200);
+  }
+  delay(200); // delay is to give user the chance to release the button
+}
+
+void blinkMode(){
+  OLED.print( "blinkMode" )  
+  while (digitalRead(BUTTON1) == LOW) {
+    flashRedLED(analogRead(POTENTIOMETER) + 200);
+  }
+  delay(200); // delay is to give user the chance to release the button
+}
+
+void flashRedLED(int pause) {
+  digitalWrite(LED_RED, HIGH);
+  delay(100);
+  digitalWrite(LED_RED, LOW);
+  delay(pause);
+}
+
+void beep(int pause) {
+  tone(BUZZER, 1500 );
+  delay(100);
+  noTone(BUZZER);
+  delay(pause);
+}
+
+  </script>
+</div>  
+ <section class="assignment">
+        <h3>13.9: Kitchen Timer </h3>
+        <p>In this assignment, you'll build a kitchen timer using while loops in arduino.</p>
+        <script type="text/plain" class="language-arduino">
+#include "breadboard.h"
+unsigned long beepAt = 15000;
+
+void setup(){
+  initializeBreadboard();
+}
+
+void loop(){
+  OLED.print((beepAt - millis()) / 1000 )
+  if(millis() > beepAt){
+    beep();
+  }
+}
+
+void beep() {
+  tone(BUZZER, 1500 );
+  delay(100);
+  noTone(BUZZER);
+  delay(100);
+}
+        </script>
+        <p>The given code beeps after 15 seconds have passed.</p>
+<p>Add start/pause functionality to your program using only one program. </p>
+<hint steps=1>
+  <p>Use a global variable to store the time remaining the moment the stop button is clicked. On resume, add it to <code>millis()</code> and store the result in <code>beepAt</code>. Also use a global variable to store the fact the timer is currently paused or not.</p>
+</hint>
+<answer buttontext="mail your code"></answer>
+</section>
+<section class="assignment">
+        <h4>13.9.b: Change time mode</h4>
+        <p>When the other button is clicked, the program should enter the "change time mode".</p>
+        <p>While in "change time mode", the display should show the position of the potmeter * 100. After a button is pressed, the timer should start using the result of the calculation plus the current <code>millis()</code>.</p>
+<answer buttontext="mail your code"></answer>
+</section>
+
       </main>
   </div>
 <script src='../js/chapters.js'></script>
