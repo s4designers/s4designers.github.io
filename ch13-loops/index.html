@@ -687,7 +687,7 @@ void setup(){
 
 void loop(){
   if(digitalRead(BUTTON1) == HIGH){
-    if(!isRunning){
+    if(isRunning){
       OLED.print("paused");
       timeDifference = beepTime - millis();
     }else{
@@ -702,7 +702,7 @@ void loop(){
     if(millis() > beepTime){
       beep();
     }
-  } 
+  }
 }
 
 void beep() {
@@ -712,8 +712,8 @@ void beep() {
   delay(100);
 }
         </script>
-        <p>The given code should beep after 15 seconds have passed.</p>
-        <p>When BUTTON2 is clicked, the program should enter "change time mode".</p>
+        <p>The given code should beep after 15 seconds have passed. There is no option to change the time yet.</p>
+        <p>When BUTTON2 is clicked, the program should enter "change time mode". Make a function with a while-loop that represents this mode.</p>
         <p>While in "change time mode", the display should show the position of the potmeter * 100. If the button is pressed, use this number to update the beepTime variable. Make sure the timer is turned on.</p>
 <answer buttontext="mail your code"></answer>
 </section>
