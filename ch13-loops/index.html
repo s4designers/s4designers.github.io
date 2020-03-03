@@ -609,23 +609,79 @@ void beep(int pause) {
 }
 
   </script>
+  <p>Another thing that sometimes happens in arduino program is using while-loops with no code inside, that repeat "nothing" forever until the condition becomes true. These loops can come in very handy if you want nothing to happen until a button is pressed, or a sensor reading exceeds a certain value. The excersise below is about those loops. </p>
 </div>  
+
+<section class="assignment">
+        <h3>13.9: Waiting game </h3>
+        <p>In this assignment, you'll create a function that pauses the program until a button is pressed.</p>
+        <script type="text/plain" class="language-arduino">
+#include "breadboard.h"
+
+
+void setup(){
+  initializeBreadboard();
+}
+
+void waitForButtonPress(){
+  while( ... ){
+
+  }
+  delay(200);
+}
+
+void loop(){
+  waitForButtonPress();
+  beep();
+  
+}
+
+void beep() {
+  tone(BUZZER, 1500 );
+  delay(100);
+  noTone(BUZZER);
+  delay(100);
+}
+        </script>
+        <p>The given code should pause using an empty while loop.</p>
+<p>Modify the condition of the while loop in such a way that the <code>waitForButtonPress()</code> function pauzes the loop.</p>
+<hint steps=1>
+  <p>Only modify the condition of the while-loop, the code inside of it can remain empty. We don't want anything to happen while we are waiting for the button to be pressed!</p>
+</hint>
+<answer buttontext="mail your code"></answer>
+</section>
+
  <section class="assignment">
-        <h3>13.9: Kitchen Timer </h3>
+        <h3>13.10: Kitchen Timer </h3>
         <p>In this assignment, you'll build a kitchen timer using while loops in arduino.</p>
         <script type="text/plain" class="language-arduino">
 #include "breadboard.h"
 unsigned long beepAt = 15000;
+bool isRunning = true;
+bool timeDifference = 0;
 
 void setup(){
   initializeBreadboard();
 }
 
 void loop(){
-  OLED.print((beepAt - millis()) / 1000 )
-  if(millis() > beepAt){
-    beep();
+  if(digitalRead(BUTTON1) == HIGH){
+    if(!isRunning){
+      timeDifference = beepAt - millis();
+    }else{
+      beepAt = millis() + timeDifference;
+    }
+    isRunning = !isRunning;
+    delay(200); // delay is to give user chance to release button
   }
+
+  if(isRunning){
+    OLED.print((beepAt - millis()) / 1000 )
+    if(millis() > beepAt){
+      beep();
+    }
+  }
+  
 }
 
 void beep() {
@@ -636,16 +692,15 @@ void beep() {
 }
         </script>
         <p>The given code beeps after 15 seconds have passed.</p>
-<p>Add start/pause functionality to your program using only one program. </p>
+        <p>When the other button is clicked, the program should enter the "change time mode".</p>
+        <p>While in "change time mode", the display should show the position of the potmeter * 100. If the button is pressed, use this number to update the beepAt variable. Make sure the timer is turned on.</p>
 <hint steps=1>
-  <p>Use a global variable to store the time remaining the moment the stop button is clicked. On resume, add it to <code>millis()</code> and store the result in <code>beepAt</code>. Also use a global variable to store the fact the timer is currently paused or not.</p>
+  <p> On resume, add it to <code>millis()</code> and store the result in <code>beepAt</code>. Also use a global variable to store whether the timer is currently paused or not.</p>
 </hint>
 <answer buttontext="mail your code"></answer>
 </section>
 <section class="assignment">
-        <h4>13.9.b: Change time mode</h4>
-        <p>When the other button is clicked, the program should enter the "change time mode".</p>
-        <p>While in "change time mode", the display should show the position of the potmeter * 100. After a button is pressed, the timer should start using the result of the calculation plus the current <code>millis()</code>.</p>
+        
 <answer buttontext="mail your code"></answer>
 </section>
 
