@@ -652,7 +652,28 @@ void beep() {
 </section>
 
  <section class="assignment">
-        <h3>13.10: Kitchen Timer </h3>
+        <h3>13.10: Custom Delay </h3>
+        <p>In this assignment, you'll build your own delay function which can listen to user interaction while waiting.</p>
+
+        <p>Make a program that has the following features:</p>
+        <ul>
+          <li>5 seconds after a button is pressed, the RED LED turns on.</li>
+          <li>If a user presses a button before the 5 seconds have passed, a tone should play, notifying the user he/she is too early.</li>
+        </ul>
+        <p>Using the <code>delay(5000)</code> function will not work in this instance as the whole program freezes while the delay is being executed. Build your own custom delay function called <code>waitMode(5000);</code>using the <code>millis()</code> function and a while loop. Note that you don't have to leave the while loop empty. I want to be able to call my function like this <code>waitMode(5000);</code> </p>
+        <hint steps=1>
+  <ul>
+    <li>Does the function called with the <code>waitMode(5000)</code> command have a parameter? </li>
+    <li>Does the function called with the <code>waitMode(5000)</code> command have a return value? </li>
+    <li>What is condition of the while-loop inside the <code>waitMode</code> function? </li>
+    <li>What code should be executed inside of the while-loop? </li>
+</ul>
+</hint>
+<answer buttontext="mail your code"></answer>
+</section>
+
+ <section class="assignment">
+        <h3>13.11: Kitchen Timer </h3>
         <p>In this assignment, you'll build a kitchen timer using while loops in arduino.</p>
         <script type="text/plain" class="language-arduino">
 #include "breadboard.h"
@@ -681,8 +702,7 @@ void loop(){
     if(millis() > beepTime){
       beep();
     }
-  }
-  
+  } 
 }
 
 void beep() {
@@ -697,6 +717,7 @@ void beep() {
         <p>While in "change time mode", the display should show the position of the potmeter * 100. If the button is pressed, use this number to update the beepTime variable. Make sure the timer is turned on.</p>
 <answer buttontext="mail your code"></answer>
 </section>
+
 
 
       </main>
