@@ -566,10 +566,10 @@ void setup(){
 }
 
 void loop(){
-  OLED.print( "Normal mode" ) 
+  OLED.print( "Normal mode" ) ;
   if (digitalRead(BUTTON1) == HIGH) {
     delay(200); // delay is to give user the chance to release the button
-    flashMode();
+    blinkMode();
   }
 
   if(digitalRead(BUTTON2) == HIGH){
@@ -579,33 +579,33 @@ void loop(){
 }
 
 void beepMode(){
-  OLED.print( "beepMode" )  
+  OLED.print( "beepMode" )  ;
   while (digitalRead(BUTTON1) == LOW ) {
-    beep(analogRead(POTENTIOMETER) + 200);
+    beep();
   }
   delay(200); // delay is to give user the chance to release the button
 }
 
 void blinkMode(){
-  OLED.print( "blinkMode" )  
+  OLED.print( "blinkMode" )  ;
   while (digitalRead(BUTTON1) == LOW) {
-    flashRedLED(analogRead(POTENTIOMETER) + 200);
+    flashRedLED();
   }
   delay(200); // delay is to give user the chance to release the button
 }
 
-void flashRedLED(int pause) {
+void flashRedLED() {
   digitalWrite(LED_RED, HIGH);
-  delay(100);
+  delay(40);
   digitalWrite(LED_RED, LOW);
-  delay(pause);
+  delay(20);
 }
 
-void beep(int pause) {
+void beep() {
   tone(BUZZER, 1500 );
-  delay(100);
+  delay(40);
   noTone(BUZZER);
-  delay(pause);
+  delay(20);
 }
 
   </script>
@@ -618,7 +618,6 @@ void beep(int pause) {
         <p>In this assignment, you'll create a function that pauses the program until a button is pressed.</p>
         <script type="text/plain" class="language-arduino">
 #include "breadboard.h"
-
 
 void setup(){
   initializeBreadboard();
@@ -668,7 +667,7 @@ void setup(){
 void loop(){
   if(digitalRead(BUTTON1) == HIGH){
     if(!isRunning){
-      OLED.print("paused")
+      OLED.print("paused");
       timeDifference = beepTime - millis();
     }else{
       beepTime = millis() + timeDifference;
@@ -678,7 +677,7 @@ void loop(){
   }
 
   if(isRunning){
-    OLED.print((beepTime - millis()) / 1000 )
+    OLED.print((beepTime - millis()) / 1000 );
     if(millis() > beepTime){
       beep();
     }
