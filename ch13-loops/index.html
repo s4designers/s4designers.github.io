@@ -609,6 +609,7 @@ void beep(int pause) {
 }
 
   </script>
+  <h4>Empty loops in arduino</h4>
   <p>Another thing that sometimes happens in arduino program is using while-loops with no code inside, that repeat "nothing" forever until the condition becomes true. These loops can come in very handy if you want nothing to happen until a button is pressed, or a sensor reading exceeds a certain value. The excersise below is about those loops. </p>
 </div>  
 
@@ -643,7 +644,7 @@ void beep() {
   delay(100);
 }
         </script>
-        <p>The given code should pause using an empty while loop.</p>
+        <p>The given code should (when complete) wait for a user to press a button until executing the beep command.</p>
 <p>Modify the condition of the while loop in such a way that the <code>waitForButtonPress()</code> function pauses the loop.</p>
 <hint steps=1>
   <p>Only modify the condition of the while-loop, the code inside of it can remain empty. We don't want anything to happen while we are waiting for the button to be pressed!</p>
@@ -692,15 +693,12 @@ void beep() {
   delay(100);
 }
         </script>
-        <p>The given code beeps after 15 seconds have passed.</p>
-        <p>When the BUTTON2 is clicked, the program should enter the "change time mode".</p>
+        <p>The given code should beep after 15 seconds have passed.</p>
+        <p>When BUTTON2 is clicked, the program should enter "change time mode".</p>
         <p>While in "change time mode", the display should show the position of the potmeter * 100. If the button is pressed, use this number to update the beepTime variable. Make sure the timer is turned on.</p>
 <answer buttontext="mail your code"></answer>
 </section>
-<section class="assignment">
-        
-<answer buttontext="mail your code"></answer>
-</section>
+
 
       </main>
   </div>
