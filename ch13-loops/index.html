@@ -644,7 +644,7 @@ void beep() {
 }
         </script>
         <p>The given code should pause using an empty while loop.</p>
-<p>Modify the condition of the while loop in such a way that the <code>waitForButtonPress()</code> function pauzes the loop.</p>
+<p>Modify the condition of the while loop in such a way that the <code>waitForButtonPress()</code> function pauses the loop.</p>
 <hint steps=1>
   <p>Only modify the condition of the while-loop, the code inside of it can remain empty. We don't want anything to happen while we are waiting for the button to be pressed!</p>
 </hint>
@@ -656,7 +656,7 @@ void beep() {
         <p>In this assignment, you'll build a kitchen timer using while loops in arduino.</p>
         <script type="text/plain" class="language-arduino">
 #include "breadboard.h"
-unsigned long beepAt = 15000;
+unsigned long beepTime = 15000;
 bool isRunning = true;
 bool timeDifference = 0;
 
@@ -667,17 +667,18 @@ void setup(){
 void loop(){
   if(digitalRead(BUTTON1) == HIGH){
     if(!isRunning){
-      timeDifference = beepAt - millis();
+      OLED.print("paused")
+      timeDifference = beepTime - millis();
     }else{
-      beepAt = millis() + timeDifference;
+      beepTime = millis() + timeDifference;
     }
     isRunning = !isRunning;
     delay(200); // delay is to give user chance to release button
   }
 
   if(isRunning){
-    OLED.print((beepAt - millis()) / 1000 )
-    if(millis() > beepAt){
+    OLED.print((beepTime - millis()) / 1000 )
+    if(millis() > beepTime){
       beep();
     }
   }
@@ -692,11 +693,8 @@ void beep() {
 }
         </script>
         <p>The given code beeps after 15 seconds have passed.</p>
-        <p>When the other button is clicked, the program should enter the "change time mode".</p>
-        <p>While in "change time mode", the display should show the position of the potmeter * 100. If the button is pressed, use this number to update the beepAt variable. Make sure the timer is turned on.</p>
-<hint steps=1>
-  <p> On resume, add it to <code>millis()</code> and store the result in <code>beepAt</code>. Also use a global variable to store whether the timer is currently paused or not.</p>
-</hint>
+        <p>When the BUTTON2 is clicked, the program should enter the "change time mode".</p>
+        <p>While in "change time mode", the display should show the position of the potmeter * 100. If the button is pressed, use this number to update the beepTime variable. Make sure the timer is turned on.</p>
 <answer buttontext="mail your code"></answer>
 </section>
 <section class="assignment">
