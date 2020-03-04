@@ -341,7 +341,7 @@
       postText: "Last week, I went to Uganda for a short holiday. " + 
                 "I lived in Uganda for e few years, and it was great to be back. " +
                 "I visisted the town where I ran my own hotel for a while. " +
-                "Two students, who are interning in Rwanda came all the way from Kigali to visit me in Uganda. It was great to see that they were doing well."
+                "Two students, who are interning in Rwanda came all the way from Kigali to visit me in Uganda. It was great to see that they were doing well.",
       imageURL: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Uganda_map_de.png"
     }
 
@@ -370,6 +370,7 @@
       resultHTML = resultHTML.replace("{{author}}", myPosting.author)
       resultHTML = resultHTML.replace("{{postText}}", myPosting.postText)
       resultHTML = resultHTML.replace("{{imageURL}}", myPosting.imageURL)
+      return resultHTML
     }
 
     var postHTML = renderTemplate()
