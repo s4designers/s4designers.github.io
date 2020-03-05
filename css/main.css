@@ -214,6 +214,12 @@ h6 {
   /* position: relative; */
 }
 
+img.full-width {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+
 .videoWrapper {
 	position: relative;
 	padding-bottom: 56.25%; /* 16:9 */

@@ -181,7 +181,8 @@ async function createTOC(testData) {
   for(const [ytid,data] of youtubeResponses) {
     for(const tocItem of tocItems){
       if( tocItem.ytid === ytid) {
-        tocItem.title = data.title.split(": ")[1] || data.title
+        tocItem.title = data.title ? data.title.split(": ")[1] || data.title
+                                   : "video "+ ytid
         break
       }
     }
@@ -418,7 +419,6 @@ function createDownloadButtons() {
     } else {
       fileName = downloadUrl.split("/").pop()
     }
-    console.log('fileName :', fileName)
     if( ! downloadButtonText ) {
       if(fileName.includes(" ")){
         downloadButtonText = 'download "' + fileName + '"'
