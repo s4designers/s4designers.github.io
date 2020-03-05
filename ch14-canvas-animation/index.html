@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Page Title</title>
+  <link rel="stylesheet" href="../css/main.css"/>
+</head>
+<body class="line-numbers">
+  <aside id="toc-column"></aside>
+  <aside id="agenda" include="../agenda.html"></aside>
+  <div id="page">
+    <main>
+
+  <h1>Chapter 14: visuals with canvas and animation</h1>
+
+  <p>We're going to make bubbles!</p>
+
+  <p>Actually, we're going to learn about drawing om the <i>canvas</i>, a way of creating visuals without the help of HTML and CSS. HTML is about documents: text combined with other thing, provided that those other things are rectangular. Some kinds of information simply aren't that well suited for the rectangles-next-to-rectangles-inside-rectangles model of HTML.</p>
+
+  <youtube ytid="iey-WcT2QVA"></youtube>
+
+  <h3 class="assignment summary">14.1: summary and questions</h3>
+  <section class="assignment">
+    <answer  buttontext="mail your summary">13.4.a: Make a list with <i>3 to 5 bulletpoints</i> with the most important or interesting things in the video:</answer>
+  </section>
+  <section class="assignment">
+      <answer noslider buttontext="mail your word list">13.4.b: Which words or concepts would you like us to explain during class?</answer>
+  </section>
+
+  <h2>here's Hans Rosling!</h2>
+
+  <p>Hans Rosling was a Swedish doctor who made an incredible impression, during a 2006 TED talk, with a data visualization about how global health developed in the 20th century. It opened the eyes of many to the awesome scale of how human lives improved in the last 150 years. He founded an organization called <a href="">Gapminder</a> that makes the software and the data available. We are going to use their data to create our own version of the data visualization that proved so effective. Hans Rosling died in 2017, and <a href="https://www.gapminder.org/factfulness-book/">his book, "Factfulness"</a>, came out in 2018. Highly reccommended.</p>
+  <p>Watch at least part of his first TED talk (<a href="https://www.ted.com/search?q=rosling">there are more</a>). If you're not interested in the entire talk, watch at least the part from 3:07 to 5:14. That gives you an idea where we're going in this chapter.</p>
+
+  <youtube ytid="hVimVzgtD6w"></youtube>
+
+  <p>We are going to make this graph, including the animation.</p>
+
+  <section class="assignment">
+  <h3>14.2: step 1 &ndash; coordinates and axis</h3>  
+  <p>On almost all 2D computer graphics systems, the x-coordinates go from left to right, and the y-coordinates go from top to bottom. This means that the vertical axis is going the wrong way if you want to draw graphs! That is a problem we can solve with some simple calculations. Also, there's a scaling issue. In the graph, the x-axis goes from 0 to 9 (average children per woman), but you can bet it's actually several hundred of pixels wide. Similar issue for the y-axis. To prevent you from getting bogged down in the arithmetic of these conversions, we created two functions that are incredibly useful:</p>
+  <script type="text/plain" class="language-js">
+    // convert from data-units (number of children per woman) 
+    // to canvas coordinates in canvas-pixels
+    function canvasX(numChildren) {
+      return 30 + numChildren * 100 
+    }
+    // convert from data-units (expected lifespan) to canvas 
+    // coordinates in canvas-pixels
+    function canvasY(age) {
+      return 510 - age * 5
+    }
+
+    // usage example:
+    context.lineTo( canvasX(9), canvasY(0) ) // line to bottom-right of the graph
+    
+  </script>
+  <p>You're going to use these two a lot. Feel free to give them a shorter name while you're working.</p>
+  <p>These functions are designed to create the graph in a canvas of (at least) 940 pixels wide, and 530 pixels high. The graph itself will be 900 &times; 500, and we need some extra space for the numbers along the axes.</p>
+  <ul>
+    <li>Create an HTML page with a canvas of the right dimensions.</li>
+    <li>Add a &lt;script&gt; element for your code.</li>
+    <li>Store the 2d-context for the canvas in a global variable. That's OK, because none of our functions is going to read data from this global variable. It exists for creating side-effects, but those side-effects do not create a hidden communication channel in your program.</li>
+    <li>Write <b>a function</b> that draws the axis, and the grid for the graph.</li>
+  </ul>
+  <img class="full-width" src="./axis.png">
+  <ul>
+    <li>#CCC is a nice grey for the grid lines.</li>
+    <li>But the main axis should be black.</li>
+    <li>Use loops to create the grid lines, and the text labels. The loop counters should be in </li>
+    <li>Don't go fiddling with pixel coordinates (except for the text-labels). Use data-units (numChildren & age) instead of canvas-pixels. You can draw everything using the canvasX() and canvasY() function.</li>
+    <li>The font for the text labels in the image is "normal 10px sans-serif"</li>
+  </ul>
+  <answer buttonText="mail your the code for your graphical masterpiece"></answer>
+  </section>
+  <br><br>
+  <div class="theory">
+    <p>There are several ways of splitting a very large JavaScript program into multiple files. There is a modern, but quite complicated <i>ES6 module system</i>, but there is also an ancient facility built into HTML:</p>
+    <script type="text/plain" class="language-html">
+      <script src="myCoolJavascriptFile.js">&lt;/script>
+      <script src="anotherJavascriptFile.js">&lt;/script>
+      <!-- code in the two JavaScript files is executed as if it 
+           was written inside this HTML-file  -->
+      <script>
+        // Javascript code here can use all functions and global 
+        // variables defined in the two files included by the 
+        // script-tags above.
+
+        alert( functionFromCoolJSFile() + variableFromOtherJSFile )
+        
+      &lt;/script>
+    </script>
+    <p>Note the closing tags after the first two script tags. They're required! Your browser will not understand it you omit them.</p>
+    <p>This way of using external Javascript files is very similar to the <code>#include "..."</code> instruction we use in Arduino. In both cases, the external file is read, and 'inserted' into the file that referred to it.  </p>
+    <p>This facility is useful because the dataset is in a very large Javascript file:<br><download href="./gapminderData.js"></download><br>Download the file, and store it in the same directory as the HTML file you're working on.</p>
+  </div>
+
+  <section class="assignment">
+  <h3>14.3: step 2 &ndash; examining the data file</h3>
+  <p>Open the datafile in your browser. Most of the file is the data. There's a bit of code in front that sorts the data in way that works nicer for our graph.</p>
+  <p>In the HTML file, add a &lt;script src=""&gt;&lt;/script&gt; element above the script that is already there. Make it include the data file into the HTML file.</p>
+  <p>Your code can now access the data using a new global variable called <b><i>countryData</i></b>.</p>
+  <p>Solve the following questions by <b>writing a Javascript function that simply returns the answer</b>:</p>
+  <ol type="a">
+    <li>How many countries are there in the data-file?</li>
+    <li>What, according to this data file, is the <i>region</i> of Australia?</li>
+    <li>Each country has four arrays with data. We are interested in three of them: <code>population</code>, <code>lifeExpectancy</code>, <code>birthsPerWoman</code>. All these arrays are equally long in all countries. How long?</li>
+    <li>Each item in any of the arrays contains the value for a year between 1800 and 2018. The item on position 0 is for 1800, the last item in the array is for the year 2018. What was the population of Argentina in 1990?</li>
+    <li>Actually, we lied. One of the array's in one particular country is not just as long as all the others. Which array, in which country?</li>
+  </ol>
+  <answer buttontext="mail your answers & code">Send in <b>both</b> the answer to the question <i>and</i> the code you used to get the answer.</answer>
+  </section>
+
+  <h3>14.4: step 3 &ndash; bubbles!</h3>
+  <p>Drawing circles is done with the <code>.arc()</code> function, and the maths-people have decided that you need <b>π</b> (pi) for that. For those who don't like trigonometry, here's the code:</p>
+  <script type="text/plain" class="language-js">
+    function drawDisc(x,y,radius,color) {
+      theContext.beginPath()
+      theContext.arc(x,y,radius,0,Math.PI*2,false)
+      theContext.fillStyle = color
+      theContext.fill()
+      // TODO: give the circle a black outline
+    }
+  </script>
+  <p>The variable <code>theContext</code> is the global variable containing the... ...context! If you gave that variable a different name, please change the function code to use your name for the context.</p>
+  <p>The x and y parameters are in canvas-pixels, and point to the center of the disc. Like the color you give to <code>context.fillStyle</code> etc., the color for the disc is a css color in a string (e.g. "red", "#F894BA" or "rgb(100,0,255)")</p>
+  <section class="assignment">
+    <h4>14.4.a: warming up</h4>
+    <p>Change your program to:</p>
+    <ul>
+      <li>draw 5 discs, with different colors and sizes on different locations;</li>
+      <li>draw a 1px black line around each disc.</li>
+    </ul>
+    <answer buttontext="mail your code"></answer>
+  </section>
+  <section class="assignment">
+    <h4>14.4.b: draw a country as a bubble</h4>
+    <p>Countries will be represented in the graph as a disc that Hans Rosling calls a 'bubble'. The position of the bubble is based on the average number of children per woman (horizontal) and the life expectancy (vertical) in a given year. The color is based on the region of the country. Here are some colors that work great:</p>
+    <table>
+      <tr><th>region</th><th>color</th></tr>
+      <tr><td>africa</td><td>rgb(0, 213, 233)</td></tr>
+      <tr><td>americas</td><td>rgb(255, 88, 114)</td></tr>
+      <tr><td>asia</td><td>rgb(127, 235, 0)</td></tr>
+      <tr><td>europe</td><td>rgb(255, 231, 0)</td></tr>
+    </table>
+    <p>Getting the radius right is a bit tricky: We want to reflect the country's population size in the size of the disc. Because of how humans perceive the sizes of circles, it should be <i>the area of the bubble</i> that is proportional to the population. We asked Wolfram Alpha <a href="https://www.wolframalpha.com/input/?i=radius+of+circle+with+area+a">how to calculate a radius from a circle area</a>, and came up with the following function for the bubble radius in our graph:</p>
+    <script type="text/plain" class="language-js">
+      function bubbleRadiusForPopulation(population) {
+        var radius = 0.56419 * Math.sqrt( population ) // According to Wolfram Alpha.
+        var reducedRadius = radius / 500               // Reduce radius to look nice in graph.
+        return reducedRadius
+      }      
+    </script>
+    <p>Use the function above in the code of a new function that draws a country on the graph, based on its population size, birthrate and life expectancy for a given year. You should be able to call it like this:</p>
+    <script type="text/plain" class="language-js">
+      your_function_name(countryData[1], 1800)  // India in 1800
+      your_function_name(countryData[5], 1945)  // Russia after WW2
+      your_function_name(countryData[9], 2018)  // Nigeria in 2018
+    </script>
+    <ul>
+      <li>The first parameter is an object with the data for a country, the second parameter is the year.</li>
+      <li>Don't forget to convert years to usable array positions.</li>
+      <li>Don't change the <code>drawDisc()</code> function. Create a new one.</li>
+    </ul>
+    <answer buttontext="mail your code"></answer>
+  </section>
+  <section class="assignment">
+    <h3>14.5 step 4 &ndash; all together now</h3>
+    <p>Let's draw all countries on the graph! Write a new function that:</p> 
+    <ul>
+      <li>Takes a year as an argument.</li>
+      <li>Draws all countries based on the population, birthrate and life expectancy for the given year.</li>
+      <li>The year is drawn, in a light color and a large font size, in the background of the graph.</li>
+      <li>This new function calls the function you created in the previous exercise.</li>
+    </ul>
+    <p>You should be able to test it like this:</p>
+    <script type="text/plain" class="language-js">
+      your_function_name(1990)
+    </script>
+    <p>and it should look like this:</p>
+    <img class="full-width" src="graph1990.png">
+    <answer buttontext="mail your code"></answer>
+  </section>
+
+  <h2>animation</h2>
+  <p>CSS has some cool features for animations, but those are specific to HTML/CSS. A more generally usesable technique for animation is simply to draw the image multiple times.</p>
+  <youtube ytid="co6xdhDxGoc"></youtube>
+
+  <h3 class="assignment summary">14.6: summary and questions</h3>
+  <section class="assignment">
+      <answer noslider buttontext="mail your word list">13.6.a: Which words or concepts would you like us to explain during class?</answer>
+  </section>
+
+
+  <h3>14.6: step 5 &ndash; animating through two centuries</h3>
+  <h4>14.6.a: warming up</h4>
+  <p>Create you first interval timer in the program you're working on. This is just for warming up.</p>
+  <ul>
+    <li>Add a function to your program called <code>doYearStep()</code></li>
+    <li>Add a global variable called currentYear. Give it an initial value of 1800.</li>
+    <li><code>doYearStep()</code> does not take parameters.</li>
+    <li><code>doYearStep()</code> prints the current year to the console. Then it increases currentYear by 1. That is (for now) all it does. <b>Test it from the console.</b></li>
+    <li>At the end of the script, add a call to <code>setInterval()</code>. Make sure this call is <i>not inside a function definition</i>. Give <code>doYearStep</code> as the first parameter, and something like 500 as the second parameter. This should result in the <code>doYearStep()</code> function being run two times a second. Test your timer.</li>
+  </ul>
+  <p><i>You don't have to send in any code yet.</i></p>
+  <section class="assignment">
+    <h4>14.6.b: stopping a timer</h4>
+    <p>The interval timer you have just created has one major flaw: it never stops! The currentYear variable will continue to increase past 2018, way into the future. It is possible to stop an interval timer:</p>
+    <div class="theory">
+      <p>Every interval timer you start, is given a code number when it is created. That code number (called the <i>timer ID</i>) can be used to stop the timer. Like this:</p>
+      <script type="text/plain" class="language-js">
+        var timerId;  // make this a globale variable
+
+        // somewhere else in your code (possibly inside a function):
+        timerId = setInterval( yourFunction, 300 ) // or another interval duration
+
+        // somewhere else in your code (possibly inside a different function):
+        clearInterval( timerId ) // This stops the timer!
+      </script>
+      <p>You call <code>clearInterval()</code> with the timer ID you received as the return value from <code>setInterval()</code> </p>
+    </div>
+    <ul>
+      <li>Change your program to store the timer Id when it calls <code>setInterval()</code> in a global variable.</li>
+      <li>change your <code>doYearStep()</code> function to stop the timer when the currentYear is larger than 2018.</li>
+    </ul>
+    <p>Now your program should no langer try to travel into the future :-)</p>
+    <answer buttontext="mail your code"></answer>
+  </section>
+  <section class="assignment">
+    <h4>14.6.c: animating the graph</h4>
+    <p>Now that our timer no longer causes the <code>currentYear</code> variable to become higher than 2018, it is safe to use <code>currentYear</code> to draw the entire graph. We can animate the graph!</p>
+    <p>Adapt the function <code>doYearStep()</code> to <b>redraw the graph every time</b> it is called by the timer. Use the <code>currentYear</code> to determine what the year is from which the data should be shown. The function should still stop the timer after <code>currentYear</code> has become 2018. (And not accidentally try to draw the graph for the year 2019!) </p>
+    <p>Decide a nice interval duration for making the entire animation run kinda smooth, but not too fast for the user to follow what is happening.</p>
+    <answer buttontext="mail your impressive data visualization"></answer>
+  </section>
+  
+  <h3>14.7: looking at the 20th century</h3>
+  <p>The data shows human progress on an epic scale. For all the stuff that is bad about the world we live in, this is a good thing to see. The graph also highlights some astonishing tragedies.</p>
+  <section class="assignment">
+    <h4>14.7.a: China</h4>
+    <p>China is easy to follow in the graph. It is the biggest bubbble in the animation. At the end of the 1950's China moves very fast into the lower left corner of the graph. It also moves out quickly again in 1962.</p>
+    <p>What happened to China in those years?</p>
+    <answer noslider buttontext="mail your answer"></answer>
+  </section>
+  <section class="assignment">
+    <h4>14.7.b: the eastern front</h4>
+    <p>Perhaps you didn't sign up for this course to be confronted with suffering, so feel free to skip this if you want.</p>
+    <ul>
+      <li>Change your code to make all bubbles in the graph white or grey,</li>
+      <li>except for: Russia, Ukraine, Poland, the Netherlands and Germany.</li>
+      <li>Give each of these countries a distinctive color.</li>
+      <li>Run the graph again. In which of those countries did the life expectancy drop below 20 during WW2? Can you imagine what that must have been like?</li>
+    </ul>
+    <answer noslider buttontext="mail your answer"></answer>
+  </section>
+  <h2>final note</h2>
+  <p>Let's not end this chapter in a gloomy mood. These were the main points of this chapter:</p>
+  <ol>
+    <li>Data visualization is cool.</li>
+    <li>You can write software for grahics and animations!</li>
+    <li>In some aspects, human progress has been far more impressive than you perhaps realized.</li>
+    <li>You can write software for grahics and animations!</li>
+  </ol>
+  <p>Just for fun, here's Hans Rosling again, this time about the most important invention. It's not the computer or the internet:</p>
+  <youtube ytid="6sqnptxlCcw"></youtube>
+</main>
+  </div>
+<script src='../js/chapters.js'></script>
+</body>
+</html>

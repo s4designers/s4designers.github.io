@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="graph" width="940" height="530"></canvas><br>
+  <input id="yearSlider" type="range"  min="1800" max="2018" value="1800" style="width: 830px">
+
+  <script src="gapminderData.js"></script>
+  <script>
+
+    var canvasElement = document.getElementById("graph")
+    var context       = canvasElement.getContext("2d")
+
+    function drawSomething() {
+      context.fillStyle = "LightBlue"
+      context.strokeStyle = "DarkBlue"
+      context.lineWidth = 4
+      context.beginPath()
+      context.moveTo(100,100)
+      context.lineTo(200,150)
+      context.lineTo(100,200)
+      context.closePath()
+      context.fill()
+      context.stroke()
+    }
+
+    // drawSomething()
+
+    
+
+    function drawAxis() {
+      originX = 30
+      originY = 510
+
+      context.beginPath()
+      context.moveTo(originX, originY)
+      context.lineTo(838, originY)
+      context.stroke()
+
+      context.beginPath()
+      context.moveTo(originX, originY)
+      context.lineTo(originX, 2)
+      context.stroke()
+
+      for(numChildren = 1; numChildren<=8; numChildren++) {
+        context.fillStyle = "black"
+        context.fillText(numChildren, numChildren * 100 + 30-20, originY+15)
+        context.beginPath()
+        context.moveTo(numChildren * 100 + 30, originY)
+        context.lineTo(numChildren * 100 + 30, 2)
+        context.strokeStyle="#ccc"
+        context.stroke()
+      }
+
+      for(age=10; age<=100; age+=10) {
+        context.fillStyle = "black"
+        context.fillText(age, originX-20, originY-age*5+3)
+        context.beginPath()
+        context.moveTo(originX, originY-age*5)
+        context.lineTo(838, originY-age*5)
+        context.strokeStyle="#ccc"
+        context.stroke()
+      }
+    }
+
+
+    function gX(numChildren) {
+      return 30 + numChildren * 100
+    }
+    function gY(age) {
+      return 510 - age * 5
+    }
+
+    function drawAxis2() {
+      originX = gX(0)
+      originY = gY(0)
+
+      context.strokeStyle = "black"
+      context.beginPath()
+      context.moveTo(originX, originY)
+      context.lineTo(gX(9), originY)
+      context.stroke()
+
+      context.beginPath()
+      context.moveTo(originX, originY)
+      context.lineTo(originX, gY(100))
+      context.stroke()
+
+      context.font = "normal 10px sans-serif"
+
+      for(numChildren = 1; numChildren<=9; numChildren++) {
+        context.fillStyle = "black"
+        context.fillText(numChildren, gX(numChildren)-3, originY+15)
+        context.beginPath()
+        context.moveTo(gX(numChildren), originY)
+        context.lineTo(gX(numChildren), gY(100))
+        context.strokeStyle="#ccc"
+        context.stroke()
+      }
+
+      for(age=10; age<=100; age+=10) {
+        context.fillStyle = "black"
+        context.fillText(age, originX-20, originY-age*5+3)
+        context.beginPath()
+        context.moveTo(originX, gY(age))
+        context.lineTo(gX(9), gY(age))
+        context.strokeStyle="#ccc"
+        context.stroke()
+      }
+    }
+
+    function countryColor(countryInfo) {
+      if(countryInfo.region == "africa") {
+        return 'rgb(0, 213, 233)'
+      } else if(countryInfo.region == "asia") {
+        return 'rgb(255, 88, 114)'
+      } else if(countryInfo.region == "americas") {
+        return 'rgb(127, 235, 0)'
+      } else if(countryInfo.region == "europe") {
+        return 'rgb(255, 231, 0)'
+      } else {
+        return 'black'
+      }
+    }
+
+    function discRadiusForPopulation(population) {
+      var bigRadius = 0.56419 * Math.sqrt( population )
+      var reducedRadius = bigRadius / 500
+      return reducedRadius
+    }
+
+    function drawDisc(x,y,radius,color) {
+      context.beginPath()
+      context.arc(x,y,radius,0,Math.PI*2,false)
+      context.fillStyle = color
+      context.fill()
+      context.lineWidth = 1
+      context.strokeStyle = "black"
+      context.stroke()
+    }
+
+    function drawCountry(countryInfo, year) {
+      var averageBirths = countryInfo.birthsPerWoman[year-1800]
+      var countryX      = gX(averageBirths)
+
+      var averageAge = countryInfo.lifeExpectancy[year-1800]
+      var countryY   = gY(averageAge)
+
+      var population = countryInfo.population[year-1800]
+      var radius = discRadiusForPopulation(population)
+      var color  = countryColor(countryInfo)
+
+      drawDisc(countryX, countryY, radius, color)
+    }
+
+    function drawCountries(year) {
+      context.clearRect(0,0,940,530)
+      context.fillStyle="#ddd"
+      context.font = "bold 200px sans-serif"
+      context.fillText(year,120,455)
+      drawAxis2()
+
+      for(var index=0;index<countryData.length;index++) {
+        drawCountry(countryData[index],year)
+      }
+    }
+
+    drawAxis2()
+
+    function drawCountriesFromSlider() {
+      var sliderValue = document.getElementById("yearSlider").valueAsNumber 
+      drawCountries( sliderValue )
+    }
+
+    yearSlider.oninput = drawCountriesFromSlider
+   // drawCountriesFromSlider()
+  </script>
+</body>
+</html>

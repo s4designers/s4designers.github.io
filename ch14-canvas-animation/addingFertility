@@ -1,0 +1,47 @@
+const fs = require("fs")
+
+const csv = fs.readFileSync("children_per_woman_total_fertility.csv",'utf8')
+const csvLines = csv.split("\n");
+
+// console.log(csvLines.length, "lines.")
+
+const imr1 = csvLines.map(line =>{
+  const splitLine = line.split(",")
+  const result = { country: splitLine[0]}
+  splitLine.shift()
+  result.birthsPerWoman = splitLine.map( value => Number(value))
+  if(result.birthsPerWoman.length !== 219) {
+    console.log(result.country,"length:", result.birthsPerWoman.length)
+  }
+  if(result.birthsPerWoman.some(isNaN)){
+    console.log('weird :', result)
+  }
+  return result
+})
+
+const fertilities = {}
+for( r of imr1) {
+  fertilities[r.country] = r.birthsPerWoman
+}
+const util = require("util")
+// console.log(util.inspect(fertilities, { depth: null, maxArrayLength:300, breakLength: 50000 }))
+
+const restData = require("./gapminder2")
+// console.dir(restData)
+
+const resultList = []
+for(c of restData) {
+  if(fertilities[c.country]) {
+    resultList.push( {...c, birthsPerWoman: fertilities[c.country]})
+    delete fertilities[c.country]
+  } else {
+    // console.log("dropping:", c.country)
+  }
+}
+for(c in fertilities) {
+  console.log("also dropped:", c)
+}
+
+//console.log(util.inspect(resultList, { depth: null, maxArrayLength:300, breakLength: 50000 }))
+
+
