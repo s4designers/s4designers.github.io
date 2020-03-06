@@ -560,7 +560,7 @@ void loop(){
       <p>Loops in arduino can also be used to change the mode of your program. An example of a mode change is when you have an alarm clock and you want to change the alarm time. You have to press a button to enter the "change alarm mode", and from that moment on, all buttons get different functions which enable you to change the alarm time. Once you are done, usually after a certain button is pressed or after some time has lapsed, the normal mode is resumed. </p>
       <p>A version of such a program is shown below. In it, the loop is constantly listening for button presses. If one happens, the program enters the corresponding mode. If BUTTON2 is pressed while in such a mode, something happens, depending on the mode. If BUTTON1 is pressed, the program returns to the loop because the while condition becomes false.</p>
       <script type="text/plain" class="language-arduino">
-#include "breadboard.h"
+#include "s4d_breadboard.h"
 
 void setup(){
   initializeBreadboard();
@@ -618,7 +618,7 @@ void beep() {
         <h3>13.9: Waiting game </h3>
         <p>In this assignment, you'll create a function that pauses the program until a button is pressed.</p>
         <script type="text/plain" class="language-arduino">
-#include "breadboard.h"
+#include "s4d_breadboard.h"
 
 void setup(){
   initializeBreadboard();
@@ -677,7 +677,7 @@ void beep() {
         <h3>13.11: Kitchen Timer </h3>
         <p>In this assignment, you'll build a kitchen timer using while loops in arduino.</p>
         <script type="text/plain" class="language-arduino">
-#include "breadboard.h"
+#include "s4d_breadboard.h"
 unsigned long beepTime = 15000;
 bool isRunning = true;
 unsigned long timeDifference = 0;
