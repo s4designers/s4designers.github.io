@@ -14,7 +14,7 @@
 <body>
 <canvas id="mySea" width=600 height=600></canvas>
 <canvas id="enemySea" width=600 height=600></canvas>
-<div>This should be a some help text<div>
+<div>This should be a useful hint<div>
 <script>
 
 //EnemySquares: array with square objects that don't contain the methods. 
@@ -174,7 +174,7 @@ var enemyContext = enemyCanvas.getContext("2d")
 
 var gapSize = 3   // pixels between each square
 var numRows = 12  // number of squares that fit in the canvas vertically
-var numColumns = numRows  // a sea is always a square
+var numColumns = numRows  // a sea always has equal length and width
 var squareSize = getSquareSize()
 
 var shipSizes = [2,5,4,3,3]
@@ -220,7 +220,7 @@ function insertEnemyGameMethods(squareIndex){
 }
 
 /*
-Methode: draws a square on a canvas context.
+Method: draws a square on a canvas context.
 */
 function drawSquare(context, text){
     var x = this.columnNr * (squareSize+gapSize)
@@ -238,7 +238,7 @@ function drawSquare(context, text){
 }
 
 /*
-Methode: changes the state of the square and redraws it.
+Method: changes the state of the square and redraws it.
 */
 function changeSquareStateAndRedraw(newState,context) {
     this.state = newState
@@ -246,7 +246,7 @@ function changeSquareStateAndRedraw(newState,context) {
 }
 
 /*
-Methode: returns true if the given coordinates overlap the square.
+Method: returns true if the given coordinates overlap the square.
 */
 function coordinatesOverlap(x,y) {
     var squareX = this.columnNr * (squareSize+gapSize)
@@ -257,7 +257,7 @@ function coordinatesOverlap(x,y) {
 }
 
 /*
-Methode: In the player's sea, boats are yellow
+Method: In the player's sea, boats are yellow
 */
 function mySeaColors() {
     if(this.state == "water"){
@@ -272,7 +272,7 @@ function mySeaColors() {
 }
 
 /*
-Methode: In the enemy sea, boats are blue (same as the sea)
+Method: In the enemy sea, boats are blue (same as the sea)
 */
 function enemySeaColors() {
     if(this.state == "water"){
@@ -292,19 +292,20 @@ Function checks whether a boat may be placed on a certain starting position..
 function isValidPosition(firstSquareIndex, currentShipSize){
     var isValid = true
     if(orientation == "horizontal") {
+        //ships should not cross the border
         var colNr = mySquares[firstSquareIndex].columnNr  
         var numAvailableSquares = numColumns - colNr
         if(numAvailableSquares < currentShipSize ){
             isValid = false
         }
-        //gaat niet over ander schip heen
+        //ships shouldn't overlap
         for(var i = firstSquareIndex; i < firstSquareIndex + currentShipSize; i++) {
             if(mySquares[i] != undefined && mySquares[i].state == "ship") {
                 isValid = false
             }
         }
     }else if (orientation == "vertical"){
-        //TODO: Controleer goed plaatsen bij verticale orientatie.
+        //TODO: make it work for the vertical orientation
     }
     return isValid
 }
@@ -319,7 +320,7 @@ function placeBoat(firstSquareIndex){
         }
         currentShipIndex += 1
     }
-    //TODO take into account possible the orientation of ships.
+    //TODO take into account the orientation of the ship.
 
 }
 
