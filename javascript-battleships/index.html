@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Page Title</title>
+  <link rel="stylesheet" href="../css/main.css"/>
+</head>
+<body class="line-numbers">
+  <aside id="toc-column"></aside>
+  <aside id="agenda" include="../agenda.html"></aside>
+  <div id="page">
+    <main>
+
+  <h1>16: Final Task javascript: Battleships</h1>
+  
+  <p>In this final task for javascript, you are going to create an online version of the popular boardgame <i>battleships</i>. For those unfamiliar with the game, below is a detailed video about the game.</p>
+  <youtube ytid="q0qpQ8doUp8"></youtube>
+    <p>
+    To get you started we created a sort of working version of the game for you to start with. It's a working program, but some functionality is missing: Boats can only be placed horizontally, there is no way to know who has won and the computer is playing like an idiot. You get the idea: you are going to improve this game.  Download the file, open it in a browser and play around with it. In assignment 1, we are going to explore the code. 
+    </p>
+    <download href="./battleships.html" >Download the code</download>
+    <p>
+    Grading is very simple. Each assignments can get you up to 1 point. Finish all and you will receive a 10. You need 5.5 points to pass. Your program should not display any errors in the console.
+    </p>
+    <p>
+    Hand in your code by sending an <a href ="mailto:s4designers@gmail.com">email</a>. Also upload your code to isas. 
+    </p>
+  
+  <h3 class="assignment summary">16.1: Exploration</h3>
+  <section class="assignment">
+  <p>This assignment asks some questions about the code. Answering them will help you get a feel for what is going on.</p>
+  <ol type="text">
+    <li>Which code is executed when the program starts?</li>
+    <li>Which code is executed when something is clicked?</li>
+    <li>What does the <code>drawMySea()</code> function do?</li>
+    <li>After the program starts. How many elements are there in the <code>mySquares</code> array?</li>
+    <li>What is the difference between a square on the canvas and a square in the mySquares array?</li>
+    <li>What does the <code>createFriendlyGridSquare()</code> function do?</li>
+    <li>What does the <code>changeSquareStateAndRedraw()</code> function do? Try to get it to do something by calling it (with the proper arguments) in the console.</li>
+    <li>When is the <code>gameSetupRound()</code> function called? What does the parameter do?</li>  
+    <li>When is the <code>playRound()</code> function called?</li>  
+    <li>What does the <code>drawEnemySea()</code> function do? How does it differ from the <code>drawMySea()</code> function?</li>
+    <li>What does <code>currentShipIndex</code> represent?</li>
+    <li>Why do you think the maker of this assignment went through the trouble of making the <code>getSquareSize()</code> function? </li>
+  </ol>
+  </section>
+
+
+  <h3 class="assignment summary">16.2: Hints</h3>
+  <section class="assignment">
+  <p>The game is a bit confusing for the user. Make sure there always is a hint on the screen telling the user what to do.</p>
+  <p><i>Example hints: </i> </p>
+  <ul>
+    <li>Place boat of length 3.</li>
+    <li>Throw bomb in enemy sea.</li>
+  </ul>
+  </section>
+
+  <h3 class="assignment summary">16.3: Random boat placement</h3>
+  <section class="assignment">
+  <p>The enemy now places its boats in the same location every time because the array containing the enemy boats is a given.  Delete the contents of this array and write code that generates the array and draws the enemy sea on the screen. </p>
+  <p>For placing the boats, make sure the boats are placed in a valid position. Maybe you can reuse some functions?</p>
+  </section>
+
+  <h3 class="assignment summary">16.4: Ships have names.</h3>
+  <section class="assignment">
+    <ul>
+      <li>The hint saying "place boat of length 3" is a bit boring. We want it to say "Place Aircraft Carrier of length 5".</li>
+      <li>The <code>ships</code> array currently contains the lengths of each ship. Modify it to hold objects containing the names of the ships, and the lengths of ships as properties. Make sure the rest of the code keeps working.</li>
+      <li>When placing a boat, make sure that the name of the boat is also stored in each square containing the boat. Also store this name when the computer places a boat.</li>
+      <li>Whenever a bomb is thrown and hits a ship, check and see whether any square still contains a ship with the same name. Use this information to show the user which boats have been sunk and which have not. </li>
+    </ul>
+  </section>
+
+  <div id="html-template" class="hint-content">
+    <p>Some assignments are more difficult than others. You don't need to finish all of them. From this point forward, each assignment can be done independently of each other. Take your time to read all of them now. Try to guess which ones are hard and which ones are easy. Do the ones you think are easy first.</p>
+    <p>The further you get, the more complex your code gets. You may need to modify code of earlier assignments in order to get others to work.</p>
+  </div>
+
+  <h3 class="assignment summary">16.5: Double</h3>
+  <section class="assignment">
+  <p>Both the computer and the human player can throw bombs at the same location twice. Modify the game to prevent this from happening.</p>
+  </section>
+
+<h3 class="assignment summary">16.6: Vertical</h3>
+  <section class="assignment">
+    <ul>
+      <li>Add a button to the interface. The player should be able to use this button while placing boats to toggle between placing boats vertically and horizontally.</li>
+      <li>Write code that allows a player (and the computer) to place boats horizontally. Make sure boats are only placed on valid positions. (They should not overlap and should respect the borders of the sea).</li>
+    </ul>
+  </section>
+
+<h3 class="assignment summary">16.7: Winner</h3>
+<section class="assignment">
+ <p> The game should notify the player when there is a winner and who won.</p>
+</section>
+
+<h3 class="assignment summary">16.8: Canvas</h3>
+<section class="assignment">
+ <p> Whenever a player drops a bomb, the game should not only change the color of the square, it should also:</p>
+ <ul>
+   <li>Draw a cross through the square when a player misses.</li>
+   <li>Draw a circle in the centre of the square when a player hits a boat.</li>
+ </ul>
+</section>
+
+<h3 class="assignment summary">16.9: AI</h3>
+<section class="assignment">
+ <p> The current enemy is an idiot. He throws bombs at random. Make the computer more intelligent.</p>
+</section>
+
+<h3 class="assignment summary">16.10: Refactor</h3>
+<section class="assignment">
+ <p>While programming, it is not uncommon for functionality of elements in your to change a bit. This can be a problem for the readability of your code if you did not carefully think about renaming the affected functions and variables whilest making your change. This assignment is about cleaning up your final code to make it more readable and more intelligent. Follow the steps and refactor your code before handing it in. Refactoring is the proces of looking back on working code and making it better.</p>
+
+<div id="html-template" class="hint-content">Backup your code before proceeding!</div>
+ <ul>
+   <li>Do all variables contain whatever their names suggest? If not, change the name.</li>
+   <li>Do functions do whatever their names suggest? If not, change their names.</li>
+   <li>Can you guess whether or not a function has a return or a side-effect based on the name alone?</li>
+   <li>Can you guess the (return) type of each variable and function?</li>
+   <li>Can you use a function to deduplicate similar looking code?</li>
+   <li>Do you have similar looking functions? Can you use a parameter to make the code more flexible?</li>
+   <li>Is the flow of your program clear in a story like function like (<code>playRound()</code>, or <code>gameSetupRound()</code>)?</li>
+   <li>Are there functions in your code that are nolonger used?</li>
+  <li>Do comments still describe the code they are commenting about?</li>
+ </ul>
+</section>
+
+
+      </main>
+  </div>
+<script src='../js/chapters.js'></script>
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Battleships</title>
+    <style>
+    canvas {
+        margin-left: 10px;
+        background-color: #ccc;
+        border-top: 3px solid #ccc;
+        border-left: 3px solid #ccc;
+    }
+    </style>
+</head>
+<body>
+<canvas id="mySea" width=600 height=600></canvas>
+<canvas id="enemySea" width=600 height=600></canvas>
+<div>This should be a some help text<div>
+<script>
+
+//EnemySquares: array with square objects that don't contain the methods. 
+var enemySquares = [
+    { state: "water", rowNr:  0, columnNr:  0 },
+    { state: "water", rowNr:  0, columnNr:  1 },
+    { state: "water", rowNr:  0, columnNr:  2 },
+    { state: "water", rowNr:  0, columnNr:  3 },
+    { state: "water", rowNr:  0, columnNr:  4 },
+    { state: "water", rowNr:  0, columnNr:  5 },
+    { state: "water", rowNr:  0, columnNr:  6 },
+    { state: "water", rowNr:  0, columnNr:  7 },
+    { state: "water", rowNr:  0, columnNr:  8 },
+    { state: "water", rowNr:  0, columnNr:  9 },
+    { state: "water", rowNr:  0, columnNr: 10 },
+    { state: "water", rowNr:  0, columnNr: 11 },
+    { state: "water", rowNr:  1, columnNr:  0 },
+    { state: "water", rowNr:  1, columnNr:  1 },
+    { state: "water", rowNr:  1, columnNr:  2 },
+    { state: "water", rowNr:  1, columnNr:  3 },
+    { state: "ship",  rowNr:  1, columnNr:  4 },
+    { state: "ship",  rowNr:  1, columnNr:  5 },
+    { state: "ship",  rowNr:  1, columnNr:  6 },
+    { state: "water", rowNr:  1, columnNr:  7 },
+    { state: "water", rowNr:  1, columnNr:  8 },
+    { state: "water", rowNr:  1, columnNr:  9 },
+    { state: "water", rowNr:  1, columnNr: 10 },
+    { state: "water", rowNr:  1, columnNr: 11 },
+    { state: "water", rowNr:  2, columnNr:  0 },
+    { state: "water", rowNr:  2, columnNr:  1 },
+    { state: "water", rowNr:  2, columnNr:  2 },
+    { state: "water", rowNr:  2, columnNr:  3 },
+    { state: "water", rowNr:  2, columnNr:  4 },
+    { state: "water", rowNr:  2, columnNr:  5 },
+    { state: "water", rowNr:  2, columnNr:  6 },
+    { state: "water", rowNr:  2, columnNr:  7 },
+    { state: "water", rowNr:  2, columnNr:  8 },
+    { state: "water", rowNr:  2, columnNr:  9 },
+    { state: "water", rowNr:  2, columnNr: 10 },
+    { state: "water", rowNr:  2, columnNr: 11 },
+    { state: "water", rowNr:  3, columnNr:  0 },
+    { state: "water", rowNr:  3, columnNr:  1 },
+    { state: "water", rowNr:  3, columnNr:  2 },
+    { state: "water", rowNr:  3, columnNr:  3 },
+    { state: "water", rowNr:  3, columnNr:  4 },
+    { state: "water", rowNr:  3, columnNr:  5 },
+    { state: "water", rowNr:  3, columnNr:  6 },
+    { state: "water", rowNr:  3, columnNr:  7 },
+    { state: "water", rowNr:  3, columnNr:  8 },
+    { state: "water", rowNr:  3, columnNr:  9 },
+    { state: "water", rowNr:  3, columnNr: 10 },
+    { state: "water", rowNr:  3, columnNr: 11 },
+    { state: "water", rowNr:  4, columnNr:  0 },
+    { state: "water", rowNr:  4, columnNr:  1 },
+    { state: "water", rowNr:  4, columnNr:  2 },
+    { state: "ship",  rowNr:  4, columnNr:  3 },
+    { state: "ship",  rowNr:  4, columnNr:  4 },
+    { state: "ship",  rowNr:  4, columnNr:  5 },
+    { state: "ship",  rowNr:  4, columnNr:  6 },
+    { state: "ship",  rowNr:  4, columnNr:  7 },
+    { state: "water", rowNr:  4, columnNr:  8 },
+    { state: "water", rowNr:  4, columnNr:  9 },
+    { state: "water", rowNr:  4, columnNr: 10 },
+    { state: "water", rowNr:  4, columnNr: 11 },
+    { state: "water", rowNr:  5, columnNr:  0 },
+    { state: "water", rowNr:  5, columnNr:  1 },
+    { state: "water", rowNr:  5, columnNr:  2 },
+    { state: "water", rowNr:  5, columnNr:  3 },
+    { state: "water", rowNr:  5, columnNr:  4 },
+    { state: "water", rowNr:  5, columnNr:  5 },
+    { state: "water", rowNr:  5, columnNr:  6 },
+    { state: "water", rowNr:  5, columnNr:  7 },
+    { state: "water", rowNr:  5, columnNr:  8 },
+    { state: "water", rowNr:  5, columnNr:  9 },
+    { state: "water", rowNr:  5, columnNr: 10 },
+    { state: "water", rowNr:  5, columnNr: 11 },
+    { state: "water", rowNr:  6, columnNr:  0 },
+    { state: "water", rowNr:  6, columnNr:  1 },
+    { state: "ship",  rowNr:  6, columnNr:  2 },
+    { state: "ship",  rowNr:  6, columnNr:  3 },
+    { state: "water", rowNr:  6, columnNr:  4 },
+    { state: "ship",  rowNr:  6, columnNr:  5 },
+    { state: "ship",  rowNr:  6, columnNr:  6 },
+    { state: "ship",  rowNr:  6, columnNr:  7 },
+    { state: "water", rowNr:  6, columnNr:  8 },
+    { state: "water", rowNr:  6, columnNr:  9 },
+    { state: "water", rowNr:  6, columnNr: 10 },
+    { state: "water", rowNr:  6, columnNr: 11 },
+    { state: "water", rowNr:  7, columnNr:  0 },
+    { state: "water", rowNr:  7, columnNr:  1 },
+    { state: "water", rowNr:  7, columnNr:  2 },
+    { state: "water", rowNr:  7, columnNr:  3 },
+    { state: "water", rowNr:  7, columnNr:  4 },
+    { state: "water", rowNr:  7, columnNr:  5 },
+    { state: "water", rowNr:  7, columnNr:  6 },
+    { state: "water", rowNr:  7, columnNr:  7 },
+    { state: "water", rowNr:  7, columnNr:  8 },
+    { state: "water", rowNr:  7, columnNr:  9 },
+    { state: "water", rowNr:  7, columnNr: 10 },
+    { state: "water", rowNr:  7, columnNr: 11 },
+    { state: "water", rowNr:  8, columnNr:  0 },
+    { state: "water", rowNr:  8, columnNr:  1 },
+    { state: "water", rowNr:  8, columnNr:  2 },
+    { state: "water", rowNr:  8, columnNr:  3 },
+    { state: "water", rowNr:  8, columnNr:  4 },
+    { state: "water", rowNr:  8, columnNr:  5 },
+    { state: "water", rowNr:  8, columnNr:  6 },
+    { state: "water", rowNr:  8, columnNr:  7 },
+    { state: "water", rowNr:  8, columnNr:  8 },
+    { state: "water", rowNr:  8, columnNr:  9 },
+    { state: "water", rowNr:  8, columnNr: 10 },
+    { state: "water", rowNr:  8, columnNr: 11 },
+    { state: "water", rowNr:  9, columnNr:  0 },
+    { state: "water", rowNr:  9, columnNr:  1 },
+    { state: "water", rowNr:  9, columnNr:  2 },
+    { state: "ship",  rowNr:  9, columnNr:  3 },
+    { state: "ship",  rowNr:  9, columnNr:  4 },
+    { state: "ship",  rowNr:  9, columnNr:  5 },
+    { state: "ship",  rowNr:  9, columnNr:  6 },
+    { state: "water", rowNr:  9, columnNr:  7 },
+    { state: "water", rowNr:  9, columnNr:  8 },
+    { state: "water", rowNr:  9, columnNr:  9 },
+    { state: "water", rowNr:  9, columnNr: 10 },
+    { state: "water", rowNr:  9, columnNr: 11 },
+    { state: "water", rowNr: 10, columnNr:  0 },
+    { state: "water", rowNr: 10, columnNr:  1 },
+    { state: "water", rowNr: 10, columnNr:  2 },
+    { state: "water", rowNr: 10, columnNr:  3 },
+    { state: "water", rowNr: 10, columnNr:  4 },
+    { state: "water", rowNr: 10, columnNr:  5 },
+    { state: "water", rowNr: 10, columnNr:  6 },
+    { state: "water", rowNr: 10, columnNr:  7 },
+    { state: "water", rowNr: 10, columnNr:  8 },
+    { state: "water", rowNr: 10, columnNr:  9 },
+    { state: "water", rowNr: 10, columnNr: 10 },
+    { state: "water", rowNr: 10, columnNr: 11 },
+    { state: "water", rowNr: 11, columnNr:  0 },
+    { state: "water", rowNr: 11, columnNr:  1 },
+    { state: "water", rowNr: 11, columnNr:  2 },
+    { state: "water", rowNr: 11, columnNr:  3 },
+    { state: "water", rowNr: 11, columnNr:  4 },
+    { state: "water", rowNr: 11, columnNr:  5 },
+    { state: "water", rowNr: 11, columnNr:  6 },
+    { state: "water", rowNr: 11, columnNr:  7 },
+    { state: "water", rowNr: 11, columnNr:  8 },
+    { state: "water", rowNr: 11, columnNr:  9 },
+    { state: "water", rowNr: 11, columnNr: 10 },
+    { state: "water", rowNr: 11, columnNr: 11 }
+]
+var mySquares = []
+
+var myCanvas = document.getElementById("mySea")
+var myContext = myCanvas.getContext("2d")
+
+var enemyCanvas = document.getElementById("enemySea")
+var enemyContext = enemyCanvas.getContext("2d")
+
+var gapSize = 3   // pixels between each square
+var numRows = 12  // number of squares that fit in the canvas vertically
+var numColumns = numRows  // a sea is always a square
+var squareSize = getSquareSize()
+
+var shipSizes = [2,5,4,3,3]
+var currentShipIndex = 0
+var orientation = "horizontal"
+
+/*
+This function calcualates the size of a squares inside of a canvas.
+*/
+function getSquareSize(){
+    var canvasWidth = myCanvas.width
+    var optimalSquareSize = (canvasWidth / numRows) - gapSize
+    return optimalSquareSize
+}
+
+/*
+The function creates "square objects" that contain all properties of a given square. Function should only be used for squares of the user's sea.
+The "draw" method draws the square on the canvas.
+The "isClicked" returns true if the coordinates passed as a parameter overlap the square.
+The "getColor" returns the color the square based on state.
+*/
+function createFriendlyGridSquare(rowNumber, columnNumber){
+    var square = {
+        rowNr: rowNumber,
+        columnNr: columnNumber,
+        state: "water",
+        getColor: mySeaColors,
+        draw: drawSquare,
+        changeState: changeSquareStateAndRedraw,
+        isClicked: coordinatesOverlap
+    }
+    return square
+}
+
+/*
+The enemySquares array already has all coordinates in it, but the functions are lacking. This function inserts all methods into an enemy square.
+*/
+function insertEnemyGameMethods(squareIndex){
+    enemySquares[squareIndex].getColor = enemySeaColors
+    enemySquares[squareIndex].draw = drawSquare
+    enemySquares[squareIndex].changeState = changeSquareStateAndRedraw
+    enemySquares[squareIndex].isClicked = coordinatesOverlap
+}
+
+/*
+Methode: draws a square on a canvas context.
+*/
+function drawSquare(context, text){
+    var x = this.columnNr * (squareSize+gapSize)
+    var y = this.rowNr * (squareSize+gapSize)
+    context.beginPath()
+    context.fillStyle = this.getColor()
+    context.rect(x, y, squareSize, squareSize)
+    context.fill()
+    // Onderstaande regels kun je gebruiken om (korte) tekst te tonen in vakje.
+    // Gebruikt de 'text' parameter, maar die blijft optioneel.
+    context.font = "bold 10px sans-serif"
+    context.fillStyle = "rgba(255, 255, 255, 0.8)" // semi-transparent white
+    var squareIndex = this.rowNr*numColumns+this.columnNr 
+    context.fillText(squareIndex, x + 5, y + 15)
+}
+
+/*
+Methode: changes the state of the square and redraws it.
+*/
+function changeSquareStateAndRedraw(newState,context) {
+    this.state = newState
+    this.draw(context)
+}
+
+/*
+Methode: returns true if the given coordinates overlap the square.
+*/
+function coordinatesOverlap(x,y) {
+    var squareX = this.columnNr * (squareSize+gapSize)
+    var squareY = this.rowNr * (squareSize+gapSize)
+    var fitsHorizontally = x >= squareX && x <= squareX + squareSize
+    var fitsVertically  = y >= squareY && y <= squareY + squareSize
+    return fitsHorizontally && fitsVertically
+}
+
+/*
+Methode: In the player's sea, boats are yellow
+*/
+function mySeaColors() {
+    if(this.state == "water"){
+        return "blue"
+    }else if (this.state == "miss"){
+        return "red"
+    }else if (this.state == "hit"){
+        return "green"
+    }else if (this.state == "ship"){
+        return "yellow"
+    }
+}
+
+/*
+Methode: In the enemy sea, boats are blue (same as the sea)
+*/
+function enemySeaColors() {
+    if(this.state == "water"){
+        return "blue"
+    }else if (this.state == "miss"){
+        return "red"
+    }else if (this.state == "hit"){
+        return "green"
+    }else if (this.state == "ship"){
+        return "blue"
+    }
+}
+
+/*
+Function checks whether a boat may be placed on a certain starting position..
+*/
+function isValidPosition(firstSquareIndex, currentShipSize){
+    var isValid = true
+    if(orientation == "horizontal") {
+        var colNr = mySquares[firstSquareIndex].columnNr  
+        var numAvailableSquares = numColumns - colNr
+        if(numAvailableSquares < currentShipSize ){
+            isValid = false
+        }
+        //gaat niet over ander schip heen
+        for(var i = firstSquareIndex; i < firstSquareIndex + currentShipSize; i++) {
+            if(mySquares[i] != undefined && mySquares[i].state == "ship") {
+                isValid = false
+            }
+        }
+    }else if (orientation == "vertical"){
+        //TODO: Controleer goed plaatsen bij verticale orientatie.
+    }
+    return isValid
+}
+/*
+Draw a boat, starting on the firstSquareIndex but with a length depending on the length of the current ship.
+*/
+function placeBoat(firstSquareIndex){
+    var currentShipSize = shipSizes[currentShipIndex]
+    if(isValidPosition(firstSquareIndex, currentShipSize)){
+        for(var i = firstSquareIndex; i < firstSquareIndex + currentShipSize; i++) {
+            mySquares[i].changeState("ship", myContext)
+        }
+        currentShipIndex += 1
+    }
+    //TODO take into account possible the orientation of ships.
+
+}
+
+/*
+Draws an empty sea on our canvas. Also fills the mySquares array.
+*/
+function createMySea(){
+    for (var rowNumber = 0; rowNumber < numRows; rowNumber++) {
+        for (columnNumber = 0; columnNumber < numRows; columnNumber++) {
+            var square = createFriendlyGridSquare(rowNumber, columnNumber)
+            square.draw(myContext)
+            mySquares.push(square)
+        }
+    }
+}
+
+/*
+Draws the enemy sea based on the pre-filled enemySquares array. Also inserts methods into the objects in that array.
+*/
+function createEnemySea(){
+    for (rowNumber = 0; rowNumber < numRows; rowNumber++) {
+        for (columnNumber = 0; columnNumber < numRows; columnNumber++) {
+            var squareIndex = rowNumber * numColumns + columnNumber
+            insertEnemyGameMethods(squareIndex)
+            enemySquares[squareIndex].draw(enemyContext)
+        }
+    }
+}
+
+/*
+Plays a turn human turn based on x and y coordinates (coming from a click).
+*/
+function playHumanTurn(mouseX,mouseY){
+    for (var i = 0; i < enemySquares.length; i++) {
+        if (enemySquares[i].isClicked(mouseX, mouseY)) {
+            if(enemySquares[i].state == "water"){
+                enemySquares[i].changeState("miss", enemyContext)
+            } else if(enemySquares[i].state == "ship"){
+                enemySquares[i].changeState("hit", enemyContext)
+            }
+        }
+    }
+}
+
+/*
+The computer throws a bomb at random at your sea.
+*/
+function playComputerTurn(){
+    var targetIndex = Math.floor(Math.random() * numRows * numRows)
+    if(mySquares[targetIndex].state == "water"){
+        mySquares[targetIndex].changeState("miss",myContext)
+    } else if (mySquares[targetIndex].state == "ship"){
+        mySquares[targetIndex].changeState("hit",myContext)
+    }
+}
+
+/*
+The "clickEvent" parameter refers to the "click event" triggering this function. This event is an object containing all sorts of information concerning the click. Coordinates is one of those pieces of information.
+The function attempts to place a boat.
+If there is no more boat to be placed, the function draws the enemy sea and starts the game.
+*/
+function gameSetupRound(clickEvent) {
+    mouseX = clickEvent.offsetX
+    mouseY = clickEvent.offsetY
+
+    //Check to sea whether or not the click was on one of the squares
+    for (var i = 0; i < mySquares.length; i++) {
+        if (mySquares[i].isClicked(mouseX, mouseY)) {
+            placeBoat(i)
+            if(currentShipIndex == shipSizes.length){
+                createEnemySea()
+                //Change the onclick listeners to start the game.
+                document.getElementById("enemySea").onclick = playRound
+                document.getElementById("mySea").onclick = ""
+            }
+        }
+    }
+}
+
+/*
+This is the actual game. Function is triggered with a clickEvent.
+The clickEvent parameter is the click event containing the coordinates of the click.
+*/
+function playRound(clickEvent){
+    mouseX = clickEvent.offsetX
+    mouseY = clickEvent.offsetY
+    playHumanTurn(mouseX,mouseY)
+    playComputerTurn()
+}
+
+createMySea()
+document.getElementById("mySea").onclick = gameSetupRound
+
+
+</script>
+</body>
+</html>
