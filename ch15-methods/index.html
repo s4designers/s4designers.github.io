@@ -25,6 +25,7 @@
   </section>
 
   <h3>15.2: your first method</h3>
+  <section class="assignment">
   <h4>15.2.a: salut!</h4>
   <p>15.2Take this code, and give the object a method that calculates a proper salutation for the person:</p>
   <script type="text/plain" class="language-js">
@@ -49,10 +50,16 @@
     <li>If the person has a title (title is not null or undefined), the title is the salutation</li>
     <li>Otherwise: "Mr." for male persons, "Mrs." for female persons, and "Mx." for people who are neither male or female.</li>
   </ul>
-
+  <answer buttontext="mail your code"></answer>
+  </section>
+  
+  <section class="assignment">
   <h4>15.2.b: 'nother method</h4>
   <p>Add to the same objects a method called <code>toString()</code>, that returns a string containing the salutation and the first name and last name. Also write some code to test the method.</p>
+  <answer buttontext="mail your code"></answer>
+  </section>
 
+  <section class="assignment">
   <h4>15.2.c: toString() is special</h4>
   <p>Try this in the console:</p>
   <script type="text/plain" class="language-js">
@@ -60,15 +67,21 @@
     alert( "I always watch " + person4 + " on television!")
   </script>
   <p>Can you think of a possible language rule that could explain the result?</p>
+  <answer buttontext="mail your explanation"></answer>
+  </section>
 
   <h3>15.3: new methods for old squares</h3>
+  <section class="assignment">
   <h4>15.3.a: stop the show!</h4>
   <p>Download the final code for the moving squares from the video: <download href="./methodsOnCanvas-v2.html"></download></p>
   <ul>
     <li>Add a method to the square-objects that make them stop moving.</li>
     <li>Add a button to the HTML that stops both buttons by calling your method.</li>
   </ul> 
+  <answer buttontext="mail your code"></answer>
+  </section>
 
+  <section class="assignment">
   <h4>15.3.b: </h4>
   <p>Replace the old function <code>startAnimation()</code>with the following code:</p>
   <script type="text/plain" class="language-js">
@@ -108,6 +121,8 @@
     <li>We want each square to stop moving when it is clicked. The other one should keep moving (if it wasn't already stopped).</li>
     <li>Add the two methods. You probably won't have to write new functions for this, but if you feel that you do: that's fine, go ahead.</li>
   </ul>
+  <answer buttontext="mail your code"></answer>
+  </section>
 
   <h2>functions as values</h2>
   <youtube ytid="hVAMvad7Fh0"></youtube>
@@ -117,6 +132,7 @@
     <answer noslider buttontext="mail your word list">15.4: Which words or concepts would you like us to explain during class?</answer>
   </section>
 
+  <section class="assignment">
   <h3>15.5: warming up</h3>
   <script type="text/plain" class="language-js">
     function getElById(id) {
@@ -128,8 +144,10 @@
   var getElById = ___
   </script>
   <p>replace the ___ with your anonymous function.</p>
+  <answer buttontext="mail your code"></answer>
+  </section>
 
-
+  <section class="assignment">
   <h3>15.6: anonymous event handlers</h3>
   <p>Create this HTML file:</p>
   <script type="text/plain" class="language-html">
@@ -166,17 +184,93 @@
     </html>  
   
   </script>
-  <p>Make sure that the button do as they say by adding anynymous functions that call <code>increaseScoreBy()</code> with the appropriate argument.</p>
+  <p>Make sure that the buttons do as they say by adding event handling functions. Each event handler must be an anynymous functions that calls <code>increaseScoreBy(&hellip;)</code> with the appropriate argument.</p>
+  <answer buttontext="mail your code"></answer>
+  </section>
 
-  <h3>anonymous timer</h3>
+  <section class="assignment">
+  <h3>15.7: anonymous timer</h3>
   <p>Start with the code you made in exercise 15.3 (or the code you can download there).</p>
   <p>Look for the place where the timer is started. Rewrite that code to use an anonymous function. The function name <code>doAnimationStep</code> should disappear from your program, but it's code should not.</p>
+  <answer buttontext="mail your code"></answer>
+  </section>
 
   <h2>polymorphism: objects do it their way</h2>
-  <p>What are methods good for? It turns out that you can organize programs very well by <b>hiding variation inside objects</b>. Take a game, for example: all the NPCs (non-player characters) can move, make sound, respond to the player etc. They all have to be able to do these things, but each kind of NPC should be allowed to do them differently from the other types of NPC. Using methods you can package this variation within the code for the NPC objects. The rest of the program only has to understand that it can <i>simply ask these objects</i> to move, play or respond. It doesn't have to contain code that deals with the differences.</p>
   <youtube ytid="coePwuUOySg"></youtube>
+  <p>What are methods good for? It turns out that you can organize large programs very well by <b>hiding variation inside objects</b>. Take a game, for example: all the NPCs (non-player characters) can move, make sound, respond to the player etc. They all have to be able to do these things, but each kind of NPC should be allowed to do them differently from the other types of NPC. Using methods you can package this variation within the code for the NPC objects. The rest of the program only has to understand that it can <i>simply ask these objects</i> to move, play sound or respond. The rest of the game code doesn't have to have any code that deals with the differences between NPC types.</p>
 
-  <h3 style="font-weight: 400; text-align: center;">« the exercises for this final section will be published soon »</h3>
+  <h3 class="assignment summary">15.8: summary and questions</h3>
+  <section class="assignment">
+    <answer  buttontext="mail your summary">15.8.a: Make a list with <i>3 to 5 bulletpoints</i> with the most important or interesting things in the video:</answer>
+  </section>
+  <section class="assignment">
+      <answer noslider buttontext="mail your word list">15.8.b: Which words or concepts would you like us to explain during class?</answer>
+  </section>
+
+  <h3>15.9: warming up</h3>
+  <p>Here's a list of different types of animals, and a function:</p>
+  <script type="text/plain" class="language-js">
+    var animalFarm = [
+      { name: "Bessie",
+        type: "pig",
+        toString: function() { return this.name + " the " + this.type }
+      },
+      { name: "Rufus",
+        type: "dog",
+        toString: function() { return this.name + " the " + this.type }
+      },
+      { name: "Angelina",
+        type: "duck",
+        toString: function() { return this.name + " the " + this.type }
+      },
+      { name: "Clarence",
+        type: "pig",
+        toString: function() { return this.name + " the " + this.type }
+      },
+      { name: "Ethel",
+        type: "cat",
+        toString: function() { return this.name + " the " + this.type }
+      },
+      { name: "Elmer",
+        type: "pig",
+        toString: function() { return this.name + " the " + this.type }
+      },
+      { name: "Florence",
+        type: "dog",
+        toString: function() { return this.name + " the " + this.type }
+      },
+    ]
+
+    function animalMakeNoise(animal) {
+      var theNoise;
+      if( animal.type == "dog")       { theNoise = "Woof"  }
+      else if( animal.type == "cat")  { theNoise = "Miauw" }
+      else if( animal.type == "pig")  { theNoise = "Oink"  }
+      else if( animal.type == "duck") { theNoise = "Quack" }
+      else { theNoise == "????" }
+
+      alert( animal.name + ' says "' + theNoise + '"')
+      console.log( animal + ' says "' + theNoise + '"')
+    }
+  </script>
+
+  <section class="assignment">
+  <h4>15.8.a: cacophony</h4>
+  <p>Add some code that make noise for every animal in the list. Your code should work with both short and long lists of dogs, cats, pigs and ducks.</p>
+  <p>Compare the strings that are sent to the <code>alert()</code> command to the output on the console. Explain the output on the console.</p>
+  <answer buttontext="mail your both the code, and your explanation"></answer>
+  </section>
+  
+  <section class="assignment">
+  <h4>15.8.b: method time</h4>
+  <p>Give each animal a second method. The new method should do what the animalMakeNoise function does, but just for that animal object. Also, skip the <code>alert()</code>; it is OK to just output to the console.</p>
+  <p>Adapt the code you wrote in the previous exercise to work with the method instead of the function.</p>
+  <p>The result should be a program that does exactly the same thing (except for the alerts). This is called a <i>refactoring</i>. Refactorings should not change what the code does, but they are intended to make the program simpler. Do you think that this refactored code is more, or less complicated than the code before?</p>
+  <answer buttontext="mail your both the code, and your opinion on the complexity"></answer>
+  </section>
+
+
+  <h3 style="font-weight: 400; text-align: center;">« the last exercises for this final section will be published soon »</h3>
 </main>
   </div>
 <script src='../js/chapters.js'></script>
