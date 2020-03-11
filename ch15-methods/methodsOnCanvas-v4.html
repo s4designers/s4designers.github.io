@@ -76,7 +76,7 @@
       return { x: newX, 
                y: newY,
                size: 40,
-               color: { red: 255, green: 128, blue: 0 },
+               color: { red: 255, green: 128, blue: 0, opacity: 1 },
                ySpeed: speed,
                update: function() {
                 this.ySpeed += 1
@@ -84,17 +84,12 @@
                 var touchesBottomSide = this.y >= canvasElement.height - this.size 
                 if( touchesBottomSide ) {
                   this.ySpeed = -this.ySpeed -1
+                  this.color.opacity -= 0.1
                 }
               },
                draw: drawSquare
              }
     }
-
-
-    // function startAnimation() {
-    //   setInterval( doAnimationStep, 40) // 40 ms = 25 frames per second
-    // }
-    // canvasElement.onclick = startAnimation
 
     canvasElement.onclick = function() {
       setInterval( doAnimationStep, 40) // 40 ms = 25 frames per second
@@ -110,9 +105,28 @@
       }
     }
     
+    // This version of drawSquare can draw squares with transparency.
+    // Just give the color of your square a property called 'opacity',
+    // and give it a value between 0 and 1.
+    // This version of drawSquare can also draw the square rotated.
+    // If the square object has a property called 'angle', it will use that angle
+    // to draw the square rotated.
+    // Squares are rotated around their centerpoint. 
+    // Angles are measured in degrees (e.g. 45, 90, etc.)
     function drawSquare() {
-      theContext.fillStyle = "rgb("+ this.color.red + ", "+ this.color.green+ ", "+this.color.blue+")"
+      theContext.save()
+      if(this.angle) {
+        theContext.translate(this.x + this.size/2, this.y + this.size/2)
+        theContext.rotate(this.angle * Math.PI / 180)
+        theContext.translate(-(this.x + this.size/2), -(this.y + this.size/2))
+      }
+      var theOpacity = this.color.opacity
+      if(theOpacity == undefined) {
+        theOpacity = 1
+      }
+      theContext.fillStyle = "rgba("+ this.color.red + ", "+ this.color.green+ ", "+this.color.blue+", "+theOpacity+")"
       theContext.fillRect(this.x, this.y, this.size, this.size)
+      theContext.restore()
     }
 
   </script>

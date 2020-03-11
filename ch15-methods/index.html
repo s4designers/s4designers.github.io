@@ -269,8 +269,95 @@
   <answer buttontext="mail your both the code, and your opinion on the complexity"></answer>
   </section>
 
+  <section class="assignment">
+  <h3>15.9: templates again</h3>
+  <p>Find the template render function you created in exercise 13.8, upto and including 13.8.f. Let's make methods. (If you're unhappy with your solution to that exercise, you may use <a href="../ch13-loops/templates.html">this one</a>.)</p>
+  <p>Replace the playlist with this one:</p>
+  <script type="text/plain" class="language-js">
+    var thePlaylist =
+    [
+      { advertImage: "chipmunk.scripting.school/ch15-methods/images/RollingStonesMagazine500.jpg", url: "https://www.rollingstone.com/music/music-lists/500-greatest-songs-of-all-time-151127/"}
+      { title: "Like a Rolling Stone",          artist: "Bob Dylan",          album: "Highway 61 Revisited",                   duration: 369,  youtubeId: "qpxTvpmOY6k",  spotifyId: "3AhXZa8sUQht0UEdBJgpGc",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135381-932d1e7ffbb6e74894243b088dbabd54a60920d8.jpg" },
+      { title: "(I Can't Get No) Satisfaction", artist: "The Rolling Stones", album: "Out Of Our Heads",                       duration: 222,  youtubeId: "OZ8GZ3PFVGM",  spotifyId: "57J2znxukXsXzS3XPuZ1TG",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135474-0831507a5835bcabad247ca86d01fe22a00bd28d.jpg" },
+      { title: "Imagine",                       artist: "John Lennon",        album: "Imagine",                                duration: 187,                             spotifyId: "7pKfPomDEeI4TPT6EOYjn9",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135475-970456d7020ae1d76fc52d47d84379ddc127d7de.jpg" },
+      { title: "What's Going On",               artist: "Marvin Gaye",        album: "What's Going On",                        duration: 232,                             spotifyId: "6h2vZPWSWsRJ0ps91epUgT",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135479-e2ff971367c0b40140a4acb66197807f391b337b.jpg" },
+      { title: "Respect",                       artist: "Aretha Franklin",    album: "I Never Loved a Man the Way I Love You", duration: 147,  youtubeId: "zF-gQP91iIE",  spotifyId: "7s25THrKz86DM225dOYwnr",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135481-9fc4d7e00bc5a131a0bd0382295c5a30edc3c9c4.jpg" },
+      { title: "Good Vibrations",               artist: "The Beach Boys",     album: "Smiley Smile/Wild Honey",                duration: 217,                             spotifyId: "2oF7FZHIJbzjeEXZ3D0Ku4",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135491-04b899351028bbb03fb423d8b1461a895d3e6883.jpg" },
+      { advertImage: "chipmunk.scripting.school/ch15-methods/images/BnL-lounge.jpg", url: "https://nymag.com/strategist/article/best-lounge-chairs-with-back-support.html"}
+      { title: "Johnny B. Goode",               artist: "Chuck Berry",        album: "The Anthology",                          duration: 161,                             spotifyId: "3k80YuKn2pV1J02dfQtCVB",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135495-b39e2c030c57d05f17c127ebccb45e9161ed1650.jpg" },
+      { title: "Hey Jude",                      artist: "The Beatles",        album: "1",                                      duration: 425,                             spotifyId: "3H7sv3Krffn15BufUuXzf3",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135498-1e0ea8d22030efb2f875509bb15e82262baa3cfc.jpg" },
+      { title: "Smells Like Teen Spirit",       artist: "Nirvana",            album: "Nevermind",                              duration: 301,  youtubeId: "hTWKbfoikeg",  spotifyId: "3oTlkzk1OtrhH8wBAduVEi",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135502-e78198df085d95aa1dd378c14cbf0f15d450da17.jpg" },
+      { title: "What'd I Say, Pt. 1 & 2",       artist: "Ray Charles",        album: "The Ultimate Hits Collection",           duration: 304,                             spotifyId: "2eB8n7IbMSd0aoh0UtsRZK",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135505-e5ea75da3d8162667d9894c06bee85b807f5d189.jpg" },
+      { title: "My Generation",                 artist: "The Who",            album: "My Generation",                          duration: 201,  youtubeId: "uswXI4fDYrM",  spotifyId: "4kxrawSkeAoJiASQArwqYO",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135508-6107f93612ed48c1ff5a7c7dced718ea5d2580a8.jpg" },
+      { advertImage: "chipmunk.scripting.school/ch15-methods/images/BnL-Axiom.jpg", url: "https://www.pixar.com/feature-films/walle"}
+      { title: "A Change Is Gonna Come",        artist: "Sam Cooke",          album: "Portrait of a Legend 1951-1964",         duration: 191,                             spotifyId: "7aXPwuC5qjhT0ddjHqe64o",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135512-9cd200d1136820cefc0123d8915a192daf7909ee.jpg" },
+      { title: "Yesterday",                     artist: "The Beatles",        album: "Help!",                                  duration: 125,                             spotifyId: "1e0hllQ23AG0QGFgezgLOq",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135514-892128e548dcb6711821ee8c676cce3c5f0e51ea.jpg" },
+      { title: "Blowin' in the Wind",           artist: "Bob Dylan",          album: "The Freewheelin' Bob Dylan",             duration: 165,                             spotifyId: "18GiV1BaXzPVYpp9rmOg0E",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135382-eb0a765e70698726b457176819b8deca6bad2706.jpg" },
+      { title: "London Calling",                artist: "The Clash",          album: "London Calling",                         duration: 200,                             spotifyId: "2nS1kdlqTxGfWGT9seeaY0",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135547-ca86cd049b90e4f6627995be053097227d3cde2c.jpg" },
+      { title: "I Want To Hold Your Hand",      artist: "The Beatles",        album: "Meet the Beatles!",                      duration: 145,                             spotifyId: "4DRBaZ760gyk7LWnaJFqsJ",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135571-63a52e3e01e5a203aa5bb68347dadf0fc3fc4289.jpg" },
+      { title: "Purple Haze",                   artist: "Jimi Hendrix",       album: "Are You Experienced?",                   duration: 170,                             spotifyId: "0wJoRiX5K5BxlqZTolB2LD",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135573-f27225624394dca91afe937ab6a80a7424e531a3.jpg" },
+      { title: "Maybellene",                    artist: "Chuck Berry",        album: "The Anthology",                          duration: 143,                             spotifyId: "3kjv56LPvBv7HHLvZ8Wwwl",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135575-c9f62436b47ada7410f85aa5a7ff775bf028eba7.jpg" },
+      { title: "Hound Dog",                     artist: "Elvis Presley",      album: "Elvis 30 #1 Hits",                       duration: 137,                             spotifyId: "64Ny7djQ6rNJspquof2KoX",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135577-9695cff6528d9c9624d7d095bf98915ef2a2a9d4.jpg" },
+      { title: "Let It Be",                     artist: "The Beatles",        album: "Let It Be",                              duration: 243,                             spotifyId: "5V1AHQugSTASVez5ffJtFo",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135579-62eebf7dd401199cf9ac1acd3a3fcacdbe32df38.jpg" },
+      { title: "Born to Run",                   artist: "Bruce Springsteen",  album: "Born To Run",                            duration: 269,  youtubeId: "IxuThNgl3YA",  spotifyId: "3JlWTo11ustqpPS1V7Jivs",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135580-2e5773a2a60f763e58b18e817356b20c8afa7435.jpg" }
+    ]      
+  </script>
+  <p>This version has two differences:</p>
+  <ol>
+    <li>
+      <b>There are items that are ads.</b><br>
+      They should just show their image, but if you click on them, the browser should open the webpage given in the <code>url:</code> property. In HTML, you create a clickable image using code like this:
+      <script type="text/plain" class="language-html">
+        <a href="url-for-when-image-is-clicked"><img src="url-for-image-itself"></a>
+      </script>
+    </li>
+    <li>
+      <b>Some songs now have an extra property called <code>youtubeId:</code>.</b><br>
+      Items with such a property should have a title that is clickable (using the &lt;a href="&hellip;"&gt; tag), and will navigate the browser to the Youtube page for that video. Complete urls for Youtube video's can be created from the youtube-id like this:
+      <code>https://www.youtube.com/watch?v=</code><i><code>the-youtube-id</code></i>.<br>
+      Songs that do not have a youtubeId should not have a clickable title.
+    </li>
+  </ol>
+  <p>We want all items to appear in the webpage. Our old render function, and the old song template aren't enough enymore. We need extra template(s), and&mdash;perhaps&mdash;extra render functions.</p>
+  <p>Solve the problem using polymorphism: using objects that store different functions under the same property name. </p>
+  <p>Before you start programming, make a decision: Will you use&hellip;</p>
+  <ul>
+    <li>&hellip;<i>a single render function for the render method?</i></li>
+    <li>&hellip;<i>two different functions for the render method</i> (e.g. one for ads, and one for songs)? Or&hellip;</li>
+    <li>&hellip;<i>three different functions for the render method</i>? (one for ads, one for songs <i>with</i> a <code>youtubeId</code>, and one for songs <i>without</i> one)</li>
+  </ul>
+  <p>Use a for loop to add a method called "render" to each item in the list. The render methods use your template function to generate the proper HTML, given the type of object that they are part of.</p>
+  <p>Rewrite the code that generates HTML for the entire playlist to call the method, instead of the stand-alone render function you had before. Your program should, of course, execute the "method installer" function before it starts rendering the page.</p>
+  <answer buttontext="mail your your code"></answer>
+  </section>
 
-  <h3 style="font-weight: 400; text-align: center;">« the last exercises for this final section will be published soon »</h3>
+  <h3>15.10 polymorphic squares</h3>
+  <p>Here is the code from the last video. <download href="./methodsOnCanvas-v4.html"></download> It has the looping over the array for animating many squares, and it has a bit of polymorphism in the behavior of the squares (i.e. the <code>update()</code> method). What is <i>doesn't</i> have is the interactivity that you created in exercise 15.3.</p>
+  
+  <section class="assignment">
+  <h4>15.10.a: combining code</h4>
+  <p>Look at the code for doing the interactivity in your 15.3 solution. (Or, if you weren't happy about that solution: create a new one). Then change the code from the last video (i.e. from the download above) to also support the same interactivity: <b>When any of the squares is clicked, (regardless of its type) it should stop animating</b>. The rest should continue.</p>
+  <p>Among other tasks, you will have to change the function <code>handleCanvasClick()</code>, that was given in 15.3, to deal with many squares that are inside an array. But that is something you've done before :-)</p>
+  <p><span class="inline-note">TIP:</span>If you find that it is difficult to actually click on the moving squares, there are two things you can do: It would certainly work if you slow down the entire animation. But it might also work if, instead of reacting to the 'onclick' event on the canvas, you listened to the 'onmousedown' event. That one doesn't wait for the user to release the mouse button.</p>
+  <answer buttontext="mail your your code"></answer>
+  </section>
+
+  <section class="assignment">
+  <h4>15.10.b: let's get wild!</h4>
+  <p>Instead of stopping the squares, make them do fun stuff. Like:</p>
+  <ul>
+    <li>changing direction</li>
+    <li>start moving in a (random) diagonal direction.<br> (just give it <i>both</i> an <code>xSpeed</code> and a <code>ySpeed</code>, and update them both)</li>
+    <li>simply becoming 10% bigger with each click</li>
+    <li>start rotating. <br> (in the code you downloaded, we changed the <code>drawSquare()</code> function to be able to draw rotated squares. All you have to do is give your square a property called 'angle' with a number in it. See the comments in the code).</li>
+    <li>start going faster or slower</li>
+    <li>taking a new, random, color</li>
+    <li>adding <i>another square</i> to the field that starts on the same position, but moves in a different direction.</li>
+    <li><span class="inline-bonus">BONUS:</span>add a lot of tiny squares (use a for-loop) to the field, each with a different diagonal direction and a bright color.<br> You could increase the opacity of the tiny squares slowly (or quickly) to make them "fade out" (the new <code>drawSquare()</code> can also deal with opacity in the color of a square). You could then reuse the gravity code (used with the orange squares) for the tiny squares, making them do down after going up.<br>These tricks together might make it look like there are fireworks going off! That would be a proper celebration of the end of this programming course.</li>
+  </ul>
+  <p>One requirement, though: <b>Each of the three families of squares (small dark blue, big light blue, and orange) must have different behaviour</b> when you click them. All squares of the same family must have the same behavior. </p>
+  <answer buttontext="mail your your code"></answer>
+  </section>
 </main>
   </div>
 <script src='../js/chapters.js'></script>
