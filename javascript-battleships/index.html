@@ -11,22 +11,47 @@
   <div id="page">
     <main>
 
-  <h1>16: Final Task javascript: Battleships</h1>
+  <h1>16: final task JavaScript: Battleships</h1>
   
-  <p>In this final task for javascript, you are going to create an online version of the popular boardgame <i>battleships</i>. For those unfamiliar with the game, below is a detailed video about the game.</p>
+  <p>In this final task for JavaScript, you are going to create an online version of the popular boardgame <i>battleships</i>. For those unfamiliar with the game, below is a detailed video about the game.</p>
   <youtube ytid="q0qpQ8doUp8"></youtube>
     <p>
-    To get you started we created a sort of working version of the game for you to start with. It's a working program, but some functionality is missing: Boats can only be placed horizontally, there is no way to know who has won and the computer is playing like an idiot. You get the idea: you are going to improve this game.  Download the file, open it in a browser and play around with it. In assignment 1, we are going to explore the code. 
+    To get you started we created a sort-of-working version of the game. It's a working program, but much functionality is missing: Boats can only be placed horizontally, there is no way to know who has won and the computer is playing like an idiot. You get the idea: you are going to improve this game.  Download the file, open it in a browser and play around with it. In assignment 1, we are going to explore the code. 
     </p>
     <download href="./battleships.html" >Download the code</download>
     <p>
-    Grading is very simple. Each assignments can get you up to 1 point. Finish all and you will receive a 10. You need 5.5 points to pass. Your program should not display any errors in the console.
+
+    <h4>how to get a passing grade</h4>  
+    Grading is very simple. Each of the assignments on this page can earn you up to 1 point. Finish them all, with high quality code, and you will receive a 10. You need 5.5 points to pass. Your program should not display any errors in the console.
     </p>
-    <p>
-    Hand in your code by sending an <a href ="mailto:s4designers@gmail.com">email</a>. Also upload your code to isas. 
-    </p>
-  
-  <h3 class="assignment summary">16.1: Exploration</h3>
+
+    <section class="assignment">
+    <h4>16.0: sending in the Battleships assignment</h4>
+    <answer noslider buttontext="mail the battleships program">Send in your code. If your solution uses multiple files, make sure you add them all to the email.</answer> 
+    </section>
+
+    <h4>iSAS</h4>
+    <p>If you're not an Academy for IT and Media Design regular, you may not be familiar with <a href="https://isas.han.nl">iSAS</a>. iSAS is (one of) our information system(s), and you have to use it to upload all the work you did for this course. We are legally oblidged to keep an archive of all the work that students recieve credits for. You don't have to upload your work right away. The deadline is 7&frac12; weeks after the start of the course. Use your HAN-account to <a href="https://isas.han.nl">log&nbsp;in&nbsp;to&nbsp;iSAS</a>. iSAS will tell you the exact date for the deadline.</p>
+    <p>After logging in, you'll find that iSAS wants you to upload four things, with unfamiliar names. That is because the information structure in iSAS has not been updated to reflect the current structure of the course (it's also not in English). Here's what you have to upload:</p>
+    <table>
+      <tr>
+        <th>iSAS name</th><th>what to upload</th>
+      </tr>
+      <tr>
+        <td>Blog</td><td>All the files for this assignment: <b>Battleships</b></td>
+      </tr>
+      <tr>
+        <td>Rofl</td><td>All the files for the Arduino assignment: <b>Burglar Alarm</b></td>
+      </tr>
+      <tr>
+        <td>Documenteer leerproces</td><td><i>leave this one empty</i></td>
+      </tr>  
+      <tr>
+        <td>Oefenopdrachten</td><td>All the code for <b>all the homework assignments</b>.</td>
+      </tr>
+    </table>
+
+  <h3>16.1: exploration</h3>
   <section class="assignment">
   <p>This assignment asks some questions about the code. Answering them will help you get a feel for what is going on.</p>
   <ol type="text">
@@ -43,77 +68,65 @@
     <li>What does <code>currentShipIndex</code> represent?</li>
     <li>Why do you think the maker of this assignment went through the trouble of making the <code>getSquareSize()</code> function? </li>
   </ol>
+  <answer buttontext="mail your answers">We're going to do this assignment in class. So send in this one as part of the session.</answer>
   </section>
 
-
-  <h3 class="assignment summary">16.2: Hints</h3>
-  <section class="assignment">
+  <h3>16.2: hints</h3>
   <p>The game is a bit confusing for the user. Make sure there always is a hint on the screen telling the user what to do.</p>
   <p><i>Example hints: </i> </p>
   <ul>
     <li>Place boat of length 3.</li>
     <li>Throw bomb in enemy sea.</li>
   </ul>
-  </section>
 
-  <h3 class="assignment summary">16.3: Random boat placement</h3>
-  <section class="assignment">
-  <p>The enemy now places its boats in the same location every time because the array containing the enemy boats is a given.  Delete the contents of this array and write code that generates the array and draws the enemy sea on the screen. </p>
-  <p>For placing the boats, make sure the boats are placed in a valid position. Maybe you can reuse some functions?</p>
-  </section>
-
-  <h3 class="assignment summary">16.4: Ships have names.</h3>
-  <section class="assignment">
+  <h3>16.3: random boat placement</h3>
+  <p>The enemy now places its boats in the same location every time because the array containing the enemy boats is a given. Delete the contents of this array and write code that generates a similar array, with only water in it. Then add code to place enemy ships in the enemySea randomly, and draw the enemy sea on the screen. </p>
+  <p>For placing the boats, make sure the boats are placed in a valid position. 
+  <ul>
+    <li>What are the two ways that a boat placement could be not valid?</li>
+    <li>Maybe you can reuse some functions?</li>
+  </ul> 
+  
+  <h3>16.4: ships have names.</h3>
     <ul>
       <li>The hint saying "place boat of length 3" is a bit boring. We want it to say "Place Aircraft Carrier of length 5".</li>
-      <li>The <code>ships</code> array currently contains the lengths of each ship. Modify it to hold objects containing the names of the ships, and the lengths of ships as properties. Make sure the rest of the code keeps working.</li>
-      <li>When placing a boat, make sure that the name of the boat is also stored in each square containing the boat. Also store this name when the computer places a boat.</li>
-      <li>Whenever a bomb is thrown and hits a ship, check and see whether any square still contains a ship with the same name. Use this information to show the user which boats have been sunk and which have not. </li>
+      <li>The <code>ships</code> array currently contains only the length of each ship. Modify it to hold objects containing two properties: the name of the ship, and its length. Make sure the rest of the code keeps working now, that you've changed an important data structure.</li>
+      <li>When placing a boat, make sure that the name of the boat is also stored in each square containing a segment of the boat. Also store this name in the squares where the enemy places its boats.</li>
+      <li>Whenever a bomb is thrown and hits a ship, check and see whether the sea still contains any square with the same name that isn't hit yet. Use this information to show the user which boats have already been sunk and which have not. </li>
     </ul>
-  </section>
 
-  <div id="html-template" class="hint-content">
+    <br><br>
+  <div class="instruction">
     <p>Some assignments are more difficult than others. You don't need to finish all of them. From this point forward, each assignment can be done independently of each other. Take your time to read all of them now. Try to guess which ones are hard and which ones are easy. Do the ones you think are easy first.</p>
     <p>The further you get, the more complex your code gets. You may need to modify code of earlier assignments in order to get others to work.</p>
   </div>
 
-  <h3 class="assignment summary">16.5: Double</h3>
-  <section class="assignment">
+  <h3>16.5: double</h3>
   <p>Both the computer and the human player can throw bombs at the same location twice. Modify the game to prevent this from happening.</p>
-  </section>
 
-<h3 class="assignment summary">16.6: Vertical</h3>
-  <section class="assignment">
-    <ul>
-      <li>Add a button to the interface. The player should be able to use this button while placing boats to toggle between placing boats vertically and horizontally.</li>
-      <li>Write code that allows a player (and the computer) to place boats horizontally. Make sure boats are only placed on valid positions. (They should not overlap and should respect the borders of the sea).</li>
-    </ul>
-  </section>
+  <h3>16.6: vertical</h3>
+  <ul>
+    <li>Add a button to the interface. The player should be able to use this button while placing boats to toggle between placing boats vertically and horizontally.</li>
+    <li>Write code that allows a player (and the computer) to place boats horizontally. Make sure boats are only placed on valid positions. (They should not overlap and should respect the borders of the sea).</li>
+  </ul>
 
-<h3 class="assignment summary">16.7: Winner</h3>
-<section class="assignment">
+<h3>16.7: winner</h3>
  <p> The game should notify the player when there is a winner and who won.</p>
-</section>
 
-<h3 class="assignment summary">16.8: Canvas</h3>
-<section class="assignment">
+<h3>16.8: canvas</h3>
  <p> Whenever a player drops a bomb, the game should not only change the color of the square, it should also:</p>
  <ul>
    <li>Draw a cross through the square when a player misses.</li>
    <li>Draw a circle in the centre of the square when a player hits a boat.</li>
  </ul>
-</section>
 
-<h3 class="assignment summary">16.9: AI</h3>
-<section class="assignment">
+<h3>16.9: AI</h3>
  <p> The current enemy is an idiot. He throws bombs at random. Make the computer more intelligent.</p>
-</section>
 
-<h3 class="assignment summary">16.10: Refactor</h3>
-<section class="assignment">
+<h3>16.10: refactor</h3>
  <p>While programming, it is not uncommon for functionality of elements in your to change a bit. This can be a problem for the readability of your code if you did not carefully think about renaming the affected functions and variables whilest making your change. This assignment is about cleaning up your final code to make it more readable and more intelligent. Follow the steps and refactor your code before handing it in. Refactoring is the proces of looking back on working code and making it better.</p>
 
-<div id="html-template" class="hint-content">Backup your code before proceeding!</div>
+<div class="hint-content">Backup your code before proceeding!</div>
  <ul>
    <li>Do all variables contain whatever their names suggest? If not, change the name.</li>
    <li>Do functions do whatever their names suggest? If not, change their names.</li>
@@ -125,12 +138,15 @@
    <li>Are there functions in your code that are nolonger used?</li>
   <li>Do comments still describe the code they are commenting about?</li>
  </ul>
-</section>
 
-<h3 class="assignment summary">16.11: Bonus - multiplayer battleships</h3>
-<section class="assignment">
- <p> Use firebase (or any other technology) to make your battleships implementation work online against another player. The option to play the computer should still be available.</p>
-</section>
+ <h3>16.11: <span class="inline-bonus">BONUS:</span>multiplayer battleships</h3>
+  <p> Use Firebase (or any other technology) to make your battleships implementation work online against another player. The option to play the computer should still be available.</p>
+
+  <section class="assignment">
+  <h3>16.12: sending in the Battleships assignment</h3>
+  <answer noslider buttontext="mail the battleships program">Send in your code. If your solution uses multiple files, make sure you add them all to the email.</answer> 
+  <p><i>It doesn't matter if you use this send-button, or the one at the start of this page. They're the same.</i></p>
+  </section>
 
       </main>
   </div>
