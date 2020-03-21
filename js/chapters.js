@@ -509,7 +509,9 @@ async function addCodeHighlighter() {
     loadStylesheet('/js/prism/custom-prims.css'),
     loadScript('/js/prism/custom-prism.js')  
   ])
-  window.Prism.highlightAll()
+  console.log("before Highlight call", document.body.scrollHeight)
+  window.Prism.highlightAll(false,(...args) => {console.log('...args :', ...args)})
+  console.log("after Highlight call", document.body.scrollHeight)
 }
 
 function adaptPageTitle() {
@@ -555,6 +557,13 @@ function installScrollToTop() {
   tocVisibleObserver.observe($("#toc"))
 }
 
+function gotoFragmentId() {
+  const fragementId = window.location.hash.slice(1)
+  console.log('window.location.hash:', fragementId)
+  window.location.hash = "#"+fragementId
+}
+
+
 //====== main program ===============================================
 
 
@@ -567,9 +576,10 @@ async function setupChapter() {
   createAnswerBlocks()
   createTodoBlocks()
   createDownloadButtons()
-  addCodeHighlighter()
   createNotes()  
   installScrollToTop()
+  await addCodeHighlighter()
+  gotoFragmentId()
 }
 
 setupChapter();

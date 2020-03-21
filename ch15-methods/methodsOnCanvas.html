@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Methods</title>
+</head>
+<style>
+
+  canvas {
+    border: 1px dotted black;
+  }
+  body {
+    margin: 20px;
+  }
+</style>
+<body>
+  <canvas id="theCanvas" width=500 height=400></canvas>
+  <script>
+
+    var canvasElement = document.getElementById("theCanvas")
+    var theContext    = canvasElement.getContext("2d")
+
+    var squareOne = createSmallSquare(200,200, 10)
+    var squareTwo = createBigSquare(20,250, 20)
+    // var squaresList = [ 
+    //   createBigSquare(100, 0),
+    //   createBigSquare(250, 200),
+
+    //   createSmallSquare(200, 200, -10),
+    //   createSmallSquare(100, 210,  15),
+    //   createSmallSquare(210, 100,  10),
+    //   createSmallSquare(300,  50,  2),
+
+    //   createOrangeSquare(400, 300, 10),
+    //   createOrangeSquare(100, 350, -20),
+    //   createOrangeSquare(450, 0,  1),
+    // ]
+
+    function createSmallSquare(newX,newY,speed) {
+      return { x: newX, 
+               y: newY,
+               size: 40,
+               color: { red: 0, green: 0, blue: 200 },
+               xSpeed: speed,
+               update: updateSquare,
+               draw: drawSquare
+             }
+    }
+
+    function createBigSquare(newX,newY) {
+      return { x: newX, 
+               y: newY,
+               size: 100,
+               color: { red: 200, green: 200, blue: 255 },
+               xSpeed: 5,
+               update: updateSquare,
+               draw: drawSquare
+             }
+    }
+
+    function startAnimation() {
+      setInterval( doAnimationStep, 40) // 40 ms = 25 frames per second
+    }
+    canvasElement.onclick = startAnimation
+
+    function doAnimationStep() {
+      theContext.clearRect(0,0, canvasElement.width, canvasElement.height)
+      // updateSquare(squareOne)
+      squareOne.update()
+      squareOne.draw()
+      // updateSquare(squareTwo)
+      squareTwo.update()
+      squareTwo.draw()
+      // for( var i = 0; i < squaresList.length; i ++ ) {
+        // var theSquare = squaresList[i]
+        // updateSquare(theSquare)
+        // drawSquare(theSquare)
+      // }
+    }
+    
+    function drawSquare() {
+      theContext.fillStyle = "rgb("+ this.color.red + ", "+ this.color.green+ ", "+this.color.blue+")"
+      theContext.fillRect(this.x, this.y, this.size, this.size)
+    }
+    
+    function updateSquare() {
+      this.x += this.xSpeed
+      var touchesRightSide = this.x >= canvasElement.width - this.size
+      var touchesLeftSide = this.x <= 0;
+      if( touchesLeftSide || touchesRightSide ) {
+        this.xSpeed = -this.xSpeed // make speed negative
+      }
+    }
+    
+    // function createOrangeSquare(newX,newY, speed) {
+    //   return { x: newX, 
+    //            y: newY,
+    //            size: 40,
+    //            color: { red: 255, green: 128, blue: 0 },
+    //            xSpeed: speed,
+    //          }
+    // }
+    
+    // function updateBigSquare(square) {
+    //   square.size += square.sizeSpeed
+    //   var maxSizeReached = square.size >= 200 
+    //   var minSizeReached = square.size <= 20 
+    //   if( maxSizeReached || minSizeReached ) {
+    //     square.sizeSpeed = -square.sizeSpeed
+    //   }
+    // }
+        
+    // function updateOrangeSquare(square) {
+    //   square.ySpeed += 1
+    //   square.y += square.ySpeed
+    //   var touchesBottomSide = square.y >= canvasElement.height - square.size 
+    //   if( touchesBottomSide ) {
+    //     square.ySpeed = -square.ySpeed -1
+    //   }
+    //   console.log("ySpeed", square.ySpeed, "y:", square.y)
+    // }
+
+    // function updateSquare(square) {
+    //   if( square.xSpeed != undefined) { // it's a small blue square
+    //     updateSmallSquare(square)
+    //   } else if( square.ySpeed != undefined) { // it's an orange square'}
+    //     updateOrangeSquare(square)
+    //   } else if( square.sizeSpeed != undefined ) {
+    //     updateBigSquare(square)
+    //   }
+    // }
+
+
+  </script>
+
+</body>
+</html>
