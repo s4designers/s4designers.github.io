@@ -84,7 +84,7 @@ void setup() {
 </section> 
 
 <section class="assignment">
-  <h3 class="assignment questions">8.5 Arduino music recorder</h3>
+  <h3 class="assignment questions">10.3 Arduino music recorder</h3>
   <p>The code above makes a musical instrument out of our arduino. You can record notes, and play them back. Try it: while recording, use the potentiometer to change the note.</p>
   <p><span class="inline-note">NOTE:</span> The program only wants to record notes while you're turning the potentiometer. But perhaps your potentiometer readings change even if you're not turning the knob. In that case, it may keep recording notes.</p>
   <script type="text/plain" class="language-arduino">
@@ -160,8 +160,8 @@ void setup() {
 
 <br><br><br>
 <div class="theory">
-  <p><i>This textbox wants to convince you of an ancient wisdom among software creators: that to keep complex programs manageble, return values are much better than global variables or other “side effects”. But it is OK to use global variables and other side effects  <u>if you need them</u>.</i></p>
   <h3>side effects versus return values</h3>
+  <p><i>This textbox wants to convince you of an ancient wisdom among software creators: that to keep complex programs manageble, return values are much better than global variables or other “side effects”. But it is OK to use global variables and other side effects  <u>if you need them</u>.</i></p>
   <p>You could, if you want, write a function that only modifies its own local variables. This function would not return anything. Nor would it have any <i>side effects</i>, like changing global variables, or the display, or a connected thing like an LED or a buzzer. Such a function would be useful for one thing only: draining the battery of your laptop or mobile device. It would be useless for anything else, because it doesn't <i>do antything</i>, or <i>create any result value</i>.</p>
   <p>Useful functions have either…</p>
   <ul>
@@ -198,7 +198,7 @@ void setup() {
 </div>
 
 <section class="assignment">
-      <h3 class="assignment questions">10.3: side effect or return</h3>
+      <h3 class="assignment questions">10.4: side effect or return</h3>
       <p>
         Below are some function calls. Based on the name of the called function, try to explain why you think the function has a side-effect or a return value.
       </p>
@@ -218,7 +218,7 @@ void setup() {
 
 
  <section class="assignment">
-      <h3 class="assignment questions">10.4 Stronger password manager</h3>
+      <h3 class="assignment questions">10.5: Stronger password manager</h3>
           <script type="text/plain" class="language-javascript">
             function createPassword(passPhrase) {
               var cryptoPhrase = "a7" + btoa(passPhrase) + "%H";
