@@ -72,7 +72,7 @@
 
     <h4>iSAS</h4>
     <p>Do not forget, after you've sent in your work with the usual button, to upload it into our iSAS system. See the <a href="../javascript-battleships/index.html#isas">iSAS explanation on the Battleships page</a>.</p>
-    <h3><span style="font-size: larger">👉</span> 17.1: make a table <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <h3><span style="font-size: larger">👉</span> 17.1: make a table <span class="task-type">(required task)</span></h3>
     <p>Since you're creating a large program completely from scratch, it helps to plan ahead. In this case a small table will do fine. Here's a start for your table:</p>
     <table>
       <tr>
@@ -87,7 +87,7 @@
     </table>
     <p>Re-read the list of features at the top of this page, and place those features in this table. To get you started, we have already placed feature 4 into the table.</p>
 
-    <h3><span style="font-size: larger">👉</span> 17.2: alarm on&mdash;alarm off <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <h3><span style="font-size: larger">👉</span> 17.2: alarm on&mdash;alarm off <span class="task-type">(required task)</span></h3>
     <p>Whether the alarm is on or off is not determined by a sensor-value. We have to store this in a global variable. Create this variable, and give it the best name and the best datatype you can think of. In the next task, we'll change this variable when a buton is pressed.</p>
     <br><br>
     <p>
@@ -95,13 +95,13 @@
       <i>In this assignment, we will name the buttons "OK" and "Cancel".</i>
     </p>
 
-    <h3><span style="font-size: larger">👉</span> 17.3: toggling the alarm <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <h3><span style="font-size: larger">👉</span> 17.3: toggling the alarm <span class="task-type">(required task)</span></h3>
     <p>To <i>toggle</i> a switch meand to change it's state: if it's on, it becomes off, and if it's off, it becomes on. We also use the wordt with boolean variables. What logical operator can be used to toggle a boolean variable?</p>
     <p>Create a function that, when called, toggles the alarm state.</p>
     <p>Then change your program to call the function when the OK button (see picture) is pressed. Make sure that pressing and releasing the button will toggle the alarm state <i>only once</i>. Use the OLED or the Serial Monitor to check that program works as intended.</p>
     <p>In task 17.7, you're probably going to change the location of the button-press-handling code, and that is OK.</p>
     
-    <h3><span style="font-size: larger">👉</span> 17.4: door open&mdash;door closed <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <h3><span style="font-size: larger">👉</span> 17.4: door open&mdash;door closed <span class="task-type">(required task)</span></h3>
     <p>In contrast to the on/off state, the program can, at all times, see if the door is open or closed by looking at a sensor value. Getting it right takes a bit of work.</p> 
     <p>Start by writing the sensor values from the magnet sensor repeatedly to the OLED screen. Experiment with the magnet and see how the value changes when you move the magnet. Notice that there are some complications with the magnet sensor:</p>
     <ol>
@@ -118,30 +118,31 @@
       </ul>
     </p>
     
-    <h3><span style="font-size: larger">👉</span> 17.4: table structure to code <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <h3><span style="font-size: larger">👉</span> 17.4: table structure to code <span class="task-type">(required task)</span></h3>
     <p>By now, you have a variable that knows if the alarm is turned on, and a function that can tell you if the door is closed. It is time to create the main structure of the loop function.</p>
     <p>Create, inside the <code>loop()</code> function, a combination of if-statements that decide in which of the four possible states the burglar alarm is in: alarm-on/door-open, alarm-on/door-closed, alarm-off/door-open, or alarm-off/door-closed. Use print commands to check if you have got it right.</p>
     
-    <h3><span style="font-size: larger">👉</span> 17.5: table content to comments <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <h3><span style="font-size: larger">👉</span> 17.5: table content to comments <span class="task-type">(required task)</span></h3>
     <p>Your table contains remarks about what things should be done in which of the four states. Describe these features in <code>//TODO:&hellip;&hellip; </code> comments that you add in the correct parts of structure of if-statements.</p>
 
-    <h3><span style="font-size: larger">👉</span> 17.6: status lights show state <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <h3><span style="font-size: larger">👉</span> 17.6: status lights show state <span class="task-type">(required task)</span></h3>
     <p>Refer to your table again, and make sure that the correct LED is burning, depending on the program state.</p>
     <p>Keep in mind that when you turn one LED on, the others must be turned off. Perhaps you could make a function for this that you can re-use in several places?</p>
     
-    <h3><span style="font-size: larger">👉</span> 17.7: alarm switch depends on program state <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <h3><span style="font-size: larger">👉</span> 17.7: alarm switch depends on program state <span class="task-type">(required task)</span></h3>
     <p>Perhaps you current program allows the user to always toggle the on/off state of the alarm. Now is the time to change that. You should have <code>//TODO:&hellip;</code> comments that say when it is OK to turn the alarm on or off.</p>
     <p>Make sure your program only toggles the alarm's on/off state when it is OK to do so. It is preferable to place the code at the correct places inside the main if-statements structure where the TODO-comments are.</p>
     <p>If you find yourself duplicating code, consider creating a function that holds the code, and is called from two (or more) different places. Perhaps you need parameters for this; perhaps not.</p>
+    <p>Show a message on the OLED display to tell the user that she can turn the alarm on (or off).</p>
     
-    <h3><span style="font-size: larger">👉</span> 17.8: mayhem! <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <h3><span style="font-size: larger">👉</span> 17.8: mayhem! <span class="task-type">(required task)</span></h3>
     <p>If the alarm is on, and the door is opened, have your program wait for 20 seconds, and then start making noise, blinking lights and flashing text on the display to alert the residents, security personnel and guard dogs of the intrusion!</p>
     <p>It must not be possible to prevent or stop the spectacle by closing the door again (or turning off the alarm).</p>
     
     <div class=theory>
       <h4>a recap of using arrays in Arduino</h4>
       <p>Arrays in Arduino are quite like arrays in Javascript, but with important differences:</p>
-      <script type="text/plain" class="language-arduino">
+      <script type="text/plain" class="language-arduino" data-line="2,12,17,25,30,51">
 
         //The code is an array with 3 integers. Here's how you create one in Arduino:
         int secretCode[3] = {4, 6, 2}; 
@@ -151,10 +152,10 @@
         // fixed when you create it. That's what the '3' between the square brackets 
         // is for.
         // It is also impossible to ask the length of the array.
-        // You can, of course, ask for the values inside the array. Array positions start
-        // from zero, so the first value in the array can be read like this:
+        // You can, of course, ask for the values inside the array. 
+        // The first value in the array can be read like this:
         
-        int firstDigit = secretCode[0]; 
+        int firstDigit = secretCode[0]; // array positions start from zero 
         
         // You can change the value of an array element:
 
@@ -164,15 +165,15 @@
 
         // This is very similar to how array's are read and changed in JavaScript, BUT...  
         // if you request a value from a position that does not exist (e.g. code[3] )
-        // your code will read an unpredictable value instead of giving an error 
-        // message, or something recognizable like ‹undefined›.
+        // your code will read an unpredictable, kind-a-random value instead of giving 
+        // an error message, or something recognizable like ‹undefined›.
         
-        int oops = secretCode[3];  // not a useful value, no error message
+        int oops = secretCode[3];  // not a predictable value, no error message
         
         // If you want to pass an array as a parameter, you can. The parameter's type
         // should say that you're expecting an array with (for example) size 3:
         
-        int printlnCode( String label, int theCode[3] ){
+        int printlnCode( String label, int theCode[3] ){ // theCode is an array parameter
           Serial.print(label);
           for( int i; i<3; i++ ) {
             Serial.print(" ");
@@ -192,6 +193,7 @@
           Serial.print("value from an incorrect position: ");
           Serial.println(oops);
 
+          // passing an array as an argument:
           printlnCode( "The code is:", secretCode );
           changeTheCode();
           printlnCode( "The code is now:", secretCode );
@@ -203,10 +205,10 @@
       </script>
     </div>
 
-    <h3><span style="font-size: larger">👉</span> 17.9: code <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <h3><span style="font-size: larger">👉</span> 17.9: code <span class="task-type">(required task)</span></h3>
     <p>Make a global variable to hold a 3 digit code. This will be an array with 3 integers.</p>
     
-    <h3><span style="font-size: larger">👉</span> 17.10: potentiometer to digit <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <h3><span style="font-size: larger">👉</span> 17.10: potentiometer to digit <span class="task-type">(required task)</span></h3>
     <p>We're going to let the user enter a 3-digit code to disable the alarm before it activates. As a preparation, we need to turn the potentiometer into a device for inputting digits.</p>
     <ul>
       <li>Write a function that reads the potentiometer, and returns a digit between 0 and 9.</li>
@@ -215,40 +217,80 @@
     </ul>
     <p>You don't have to do anything (yet) with the digits you read. That will be the next task. For now, try to get a result that is similar to the GIF below:</p>
     <img src="./1-cijfer-geen-tijd-korter.gif" style="max-width:300px">
+    
+    <h3><span style="font-size: larger">👍</span> 17.11: be informative <span class="task-type">(additional task)</span></h3>
+    <p>Inform the user, while the 20-second countdown is in progress, how much seconds she has left before the alarm will activate.</p>
+    <p>You can use the OLED.printTop() and OLED.printBottom() functions to print the digit (from the potmeter) and the time independently. If you like bigger letters, use the OLED.print() function. In that case you must combine the values into a single string before calling OLED.print(), like this:</p>
+    <script type="text/plain" class="language-arduino" data-line="3">
+      int digit = 5;
+      int secondsLeft = 10;
+      String displayString = String(digit) + String(" : ") + String(secondsLeft);
+      OLED.print(displayString); // output: 5 : 10    
+    </script>
+    
+    <h3><span style="font-size: larger">👉</span> 17.12: turning off the alarm with the 3-digit code <span class="task-type">(required task)</span></h3>
+    <p>Let's allow the user to enter the 3-digit code and turn off the alarm during the 20-second count-down.</p>
+    <p>When, during the countdown, the user presses the OK-button, the program must check if the current potmeter-digit is the same as the first digit in the code. If it is the same, and the user presses OK again, the program checks against the second code-digit. If the third digit matches at the third OK-button press, the alarm must be turned off. </p>
+
+    <h3><span style="font-size: larger">👉</span> 17.13: checking after all digits have been entered <span class="task-type">(required task)</span></h3>
+    <p>It is better if you check the correctness of the code <i>after</i> all three digits have been entered.</p>
+    <p>Store the digits that the user enters (with the OK-button) and wait for all three digits to havve been entered before checking them against the secret code and turning off the alarm.</p>
+
+    <h3><span style="font-size: larger">👍</span> 17.14: user-friendlier <span class="task-type">(additional task)</span></h3>
+    <p>Improve the user interface.</p>
+    <ul>
+      <li>While the user is entering digits, the digits that have already been entered should remain visible.</li>
+      <li>When, during the code-entering phase, the user presses the Cancel-button, the user can remove all entered digits and start entering them again from the beginning.</li>
+    </ul>
+    <p>See the animated GIF below for an illustration of how that would work.</p>
+
+    <h3><span style="font-size: larger">👍</span> 17.15: even more user-friendlier <span class="task-type">(additional task)</span></h3>
+    <p>While the user is entering digits, the one that is being entered should be blinking.</p>
+    <img src="./drie-cijfers-en-knipper.gif" style="max-width:300px">
 
 
+    <h3><span style="font-size: larger">👉</span> 17.16: changing the 3-digit code <span class="task-type">(required task)</span></h3>
+    <p>If the door is closed, <i>and</i> the alarm is turned off, the user can change the 3-digit code.</p>
+    <ul>
+      <li>The user has to press the Cancel-button (in the correct program state) to start changing the code.</li>
+      <li>The UI for changing the code is largely the same as for entering the code to prevent alarm activation: The user turns the potmeter to change the digit, and presses the OK-button three times to enter all digits of the new code.</li>
+      <li>Changing the code is not time-limited, so the program doesn't show the seconds that are left.</li>
+      <li>After all three digits have been entered, the program shows a message that the secret code has been changed.</li>
+      <li>While the user is changing the code, the system does not respond to other stumuli, like the door opening or closing.</li>
+    </ul>
+    <p>TIP 1: Since the UI is mostly the same as what you built in tasks 17.10 to 17.15, try to re-use the code. Place the code in functions, and give the functions parameters to make them usable for both disabling the alarm and for changing the code.</p>
+    <p>TIP 2: Create a separate while-loop for handling the code-changing phase. It is OK because all other program functions are blocked during this phase, and it is better because the code inside the loop() function doesn't need to deal with changed meaning of the button(s).</p>
+
+    <h3><span style="font-size: larger">👍</span> 17.17: canceling the code change  <span class="task-type">(additional task)</span></h3>
+    <p>Allow the user to cancel the code change. While the user is entering digits for the new code, she can press the Cancel button. This has a different effect from when the user presses the Cancel-button while trying to disable the alarm. Now, the code-changing phase should simply stop. The 3-digit code remains unchanged, and the system goes back to normal operations.</p>
+
+    <h3><span style="font-size: larger">👏</span> 17.18: the great refactoring <span class="task-type">(bonus task)</span></h3>
+    <p>While programming, it is not uncommon for functionality of elements in your to change a bit. This can be a problem for the readability of your code if you did not carefully think about renaming the affected functions and variables whilst making your change. This assignment is about cleaning up your final code to make it more readable and more intelligent. Follow the steps and refactor your code before handing it in. Refactoring is the proces of looking back on working code and making it better.</p>
+    
+    <div class="hint-content">Backup your code before proceeding!</div>
+    <ul>
+      <li>Do all variables still contain whatever their names suggest? If not, change the name.</li>
+      <li>Do functions still do whatever their names suggest? If not, change their names.</li>
+      <li>Can you guess whether or not a function has a return or a side-effect based on the name alone?</li>
+      <li>Can you guess the (return) type of each variable and function from its name?</li>
+      <li>Do you have functions with many (say, >12) lines? Can you split those into smaller functions?</li>
+      <li>Can you use a function to de-duplicate similar looking code?</li>
+      <li>Do you have similar looking functions? Can you use one or more parameters to combine them into a more flexible function?</li>
+      <li>Does the code in your <code>loop()</code> function read like a "story" that makes the flow of your program clear?</li>
+      <li>Are there functions in your code that are no longer used? Remove them.</li>
+      <li>Do you have comments explaining pieces of code that might be difficult to understand quickly?</li>
+      <li>Do comments still describe the code they are commenting about? If not, change them.</li>
+    </ul>
+    
+    <h3><span style="font-size: larger">👏</span> 17.19: cool extras <span class="task-type">(bonus task)</span></h3>
+    <p>If you're happy with your solutions to the required tasks, you can see if you can extend the burglar alarm with extra features. Discuss your idea with one of the teachers to check if your idea is feasibile and helps score full marks. It is also cool if you have an interesting organization of your code in mind, or want to try out some new language features.</p>
 
 
-
-
-
-
-
-
-
-    <h3>17.___: refactor</h3>
- <p>While programming, it is not uncommon for functionality of elements in your to change a bit. This can be a problem for the readability of your code if you did not carefully think about renaming the affected functions and variables whilest making your change. This assignment is about cleaning up your final code to make it more readable and more intelligent. Follow the steps and refactor your code before handing it in. Refactoring is the proces of looking back on working code and making it better.</p>
-
-<div class="hint-content">Backup your code before proceeding!</div>
- <ul>
-   <li>Do all variables still contain whatever their names suggest? If not, change the name.</li>
-   <li>Do functions still do whatever their names suggest? If not, change their names.</li>
-   <li>Can you guess whether or not a function has a return or a side-effect based on the name alone?</li>
-   <li>Can you guess the (return) type of each variable and function from its name?</li>
-   <li>Do you have functions with many (say, >12) lines? Can you split those into smaller functions?</li>
-   <li>Can you use a function to de-duplicate similar looking code?</li>
-   <li>Do you have similar looking functions? Can you use one or more parameters to combine them into a more flexible function?</li>
-   <li>Does the code in your <code>loop()</code> function read like a "story" that makes the flow of your program clear?</li>
-   <li>Are there functions in your code that are no longer used? Remove them.</li>
-   <li>Do you have comments explaining pieces of code that might be difficult to understand quickly?</li>
-   <li>Do comments still describe the code they are commenting about? If not, change them.</li>
- </ul>
-
-<section class="assignment">
-  <h3>17.____: sending in the Burglar Alarm </h3>
-  <answer noslider buttontext="mail the zipfile">Send in your program, and <i>do include</i> the s4d_breadboard.h file. Combine them into a zip-file.</answer> 
-  <p><i>It doesn't matter if you use this send-button, or the one at the start of this page. They're the same.</i></p>
-</section>
+    <section class="assignment">
+      <h3>17.20: sending in the Burglar Alarm </h3>
+      <answer noslider buttontext="mail the zipfile">Send in your program, and <i>do include</i> the s4d_breadboard.h file. Combine them into a zip-file.</answer> 
+      <p><i>It doesn't matter if you use this send-button, or the one at the start of this page. They're the same.</i></p>
+    </section>
 
 
       </main>
