@@ -23,7 +23,7 @@
     <ol>
       <li>If the alarm is turned on, <i>and</i> the door is opened, the user has 20 seconds to enter a 3-digit code to disable the alarm. If that fails, the alarm will go off with lots of noise and lights.</li>
       <li>When the door is closed, <i>and</i> the alarm is turned off, the user can change the 3-digit code.</li>
-      <li>If the alarm is off, <i>or</i> the door is closed, pressing the OK-button (the button closest to the display) will change the on/off state of the alarm.</li>
+      <li>If the door is closed, pressing the OK-button (the button closest to the display) will change the on/off state of the alarm.</li>
       <li>A colored LED will show the alarm's status: if it is on or off, and whether it is detecting the door being open or closed.</li>
     </ol>
 
@@ -34,7 +34,7 @@
         <td style="font-size: larger;">👉</td>
         <td>The <b>required tasks</b> are marked with <i>the pointing hand</i>.<br>
           You cannot get a passing grade if you're missing any of these tasks.
-          Doing all of these required tasks well can earn you 7 points.
+          Doing all of these required tasks well (see next section) can earn you 6 points.
         </td>
       </tr>
       <tr>
@@ -45,13 +45,25 @@
       </tr>
       <tr>
         <td style="font-size: larger;">👏</td>
-        <td>Finally, there's a general <b>bonus</b> task, marked with the <i>clapping hands</i>.<br>
-            Add a cool improvement or extra feature, and you can score an additional full point.
+        <td>Finally, there are two general <b>bonus</b> tasks, marked with the <i>clapping hands</i>.<br>
+            Add a cool improvement or improve your code quality, and you can score an additional full point for each bonus assignment.
         </td>
       </tr>
     </table>  
 
-    This is an individual assignment. You can share plans, ideas and hints. Do not share code. Hand in your own unique code.     
+    <h4>what does it mean to do the tasks well?</h4>
+    <ol>
+      <li>The code does what is required. It doesn't have side-effects that aren't required.<br>If, however, you feel like improving on the requirements and adding extra or better features, you're welcome. But your cool innovation should not be sidestepping an important programming challenge. Check with your teacher.</li>
+      <li>The following basic code quality aspects are OK:
+        <ul>
+          <li>good names for variables and functions;</li>
+          <li>the correct datatypes for variables, parameters and return values;</li>
+          <li>proper indentation of code;</li>
+          <li>no uneccessary global variables.</li>
+        </ul>
+      </li>
+      <li>The code is clearly your own code. You can share plans, ideas and hints with classmates. But don't code your solutions together and don't share code fragments.</li>
+    </ol>
 
     <section class="assignment">
     <h4>17.0: sending in the Burglar Alarm </h4>
@@ -77,24 +89,159 @@
 
     <h3><span style="font-size: larger">👉</span> 17.2: alarm on&mdash;alarm off <span style="color:#888; font-weight:normal">(required task)</span></h3>
     <p>Whether the alarm is on or off is not determined by a sensor-value. We have to store this in a global variable. Create this variable, and give it the best name and the best datatype you can think of. In the next task, we'll change this variable when a buton is pressed.</p>
-    
-    <h3><span style="font-size: larger">👉</span> 17.2: alarm on&mdash;alarm off <span style="color:#888; font-weight:normal">(required task)</span></h3>
-    <p></p>
+    <br><br>
+    <p>
+      <img src="./okcancel.jpg" style="max-width:300px"><br>
+      <i>In this assignment, we will name the buttons "OK" and "Cancel".</i>
+    </p>
 
-<h3>17.___: refactor</h3>
+    <h3><span style="font-size: larger">👉</span> 17.3: toggling the alarm <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <p>To <i>toggle</i> a switch meand to change it's state: if it's on, it becomes off, and if it's off, it becomes on. We also use the wordt with boolean variables. What logical operator can be used to toggle a boolean variable?</p>
+    <p>Create a function that, when called, toggles the alarm state.</p>
+    <p>Then change your program to call the function when the OK button (see picture) is pressed. Make sure that pressing and releasing the button will toggle the alarm state <i>only once</i>. Use the OLED or the Serial Monitor to check that program works as intended.</p>
+    <p>In task 17.7, you're probably going to change the location of the button-press-handling code, and that is OK.</p>
+    
+    <h3><span style="font-size: larger">👉</span> 17.4: door open&mdash;door closed <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <p>In contrast to the on/off state, the program can, at all times, see if the door is open or closed by looking at a sensor value. Getting it right takes a bit of work.</p> 
+    <p>Start by writing the sensor values from the magnet sensor repeatedly to the OLED screen. Experiment with the magnet and see how the value changes when you move the magnet. Notice that there are some complications with the magnet sensor:</p>
+    <ol>
+      <li>The sensor values are not stable: even if you keep the magnet steady at the same distance from the sensor, the values will keep changing a bit. </li>
+      <li>The sensor value is somewhere in the middle of the 0 &ndash; 1023 range when there is no magnet near the sensor.</li>
+      <li>When the magnet gets closer, the average values you're reading can go up, <i>or</i> they can go down.</li>
+      <li>Also, but you can't see this at home, the "center point" (the value when the magnet is far away) differs between different sensors. On your beadboard, the sensor might have its center point around 500, on mine it could be 750. The center point could also change if you test the program with a lot of iron nearby (e.g. a desk with an iron frame).</li>
+    </ol>  
+    <p>Solve the problem of differing center points by reading the sensor when the program starts and storing that value as the center point. This assumes that the user will not start the program with the magnet close by, but it is the best we can do.</p>
+    <p>Then create a function that will report if the door is closed, by detecting if the magnet is close enough.
+      <ul>
+        <li>In what sensor value ranges will you consider the door to be closed?</li>
+        <li>How would those value ranges move if the center point moves? Use the center point global variable.</li>
+      </ul>
+    </p>
+    
+    <h3><span style="font-size: larger">👉</span> 17.4: table structure to code <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <p>By now, you have a variable that knows if the alarm is turned on, and a function that can tell you if the door is closed. It is time to create the main structure of the loop function.</p>
+    <p>Create, inside the <code>loop()</code> function, a combination of if-statements that decide in which of the four possible states the burglar alarm is in: alarm-on/door-open, alarm-on/door-closed, alarm-off/door-open, or alarm-off/door-closed. Use print commands to check if you have got it right.</p>
+    
+    <h3><span style="font-size: larger">👉</span> 17.5: table content to comments <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <p>Your table contains remarks about what things should be done in which of the four states. Describe these features in <code>//TODO:&hellip;&hellip; </code> comments that you add in the correct parts of structure of if-statements.</p>
+
+    <h3><span style="font-size: larger">👉</span> 17.6: status lights show state <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <p>Refer to your table again, and make sure that the correct LED is burning, depending on the program state.</p>
+    <p>Keep in mind that when you turn one LED on, the others must be turned off. Perhaps you could make a function for this that you can re-use in several places?</p>
+    
+    <h3><span style="font-size: larger">👉</span> 17.7: alarm switch depends on program state <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <p>Perhaps you current program allows the user to always toggle the on/off state of the alarm. Now is the time to change that. You should have <code>//TODO:&hellip;</code> comments that say when it is OK to turn the alarm on or off.</p>
+    <p>Make sure your program only toggles the alarm's on/off state when it is OK to do so. It is preferable to place the code at the correct places inside the main if-statements structure where the TODO-comments are.</p>
+    <p>If you find yourself duplicating code, consider creating a function that holds the code, and is called from two (or more) different places. Perhaps you need parameters for this; perhaps not.</p>
+    
+    <h3><span style="font-size: larger">👉</span> 17.8: mayhem! <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <p>If the alarm is on, and the door is opened, have your program wait for 20 seconds, and then start making noise, blinking lights and flashing text on the display to alert the residents, security personnel and guard dogs of the intrusion!</p>
+    <p>It must not be possible to prevent or stop the spectacle by closing the door again (or turning off the alarm).</p>
+    
+    <div class=theory>
+      <h4>a recap of using arrays in Arduino</h4>
+      <p>Arrays in Arduino are quite like arrays in Javascript, but with important differences:</p>
+      <script type="text/plain" class="language-arduino">
+
+        //The code is an array with 3 integers. Here's how you create one in Arduino:
+        int secretCode[3] = {4, 6, 2}; 
+        
+         
+        // In Arduino, you cannot change de length of an array. The size of the array
+        // fixed when you create it. That's what the '3' between the square brackets 
+        // is for.
+        // It is also impossible to ask the length of the array.
+        // You can, of course, ask for the values inside the array. Array positions start
+        // from zero, so the first value in the array can be read like this:
+        
+        int firstDigit = secretCode[0]; 
+        
+        // You can change the value of an array element:
+
+        void changeTheCode() {
+          secretCode[1] = 7; // the second element in the array is now a 7.
+        }
+
+        // This is very similar to how array's are read and changed in JavaScript, BUT...  
+        // if you request a value from a position that does not exist (e.g. code[3] )
+        // your code will read an unpredictable value instead of giving an error 
+        // message, or something recognizable like ‹undefined›.
+        
+        int oops = secretCode[3];  // not a useful value, no error message
+        
+        // If you want to pass an array as a parameter, you can. The parameter's type
+        // should say that you're expecting an array with (for example) size 3:
+        
+        int printlnCode( String label, int theCode[3] ){
+          Serial.print(label);
+          for( int i; i<3; i++ ) {
+            Serial.print(" ");
+            Serial.print( theCode[i] );
+          }
+          Serial.println("");
+        }
+        
+        // You can run this entire program to test and experiment with it.
+        // All code is tested in the setup() function:
+        void setup(){
+          Serial.begin(9600);
+          
+          Serial.print("First item in the secret code: ");
+          Serial.println( firstDigit );
+          
+          Serial.print("value from an incorrect position: ");
+          Serial.println(oops);
+
+          printlnCode( "The code is:", secretCode );
+          changeTheCode();
+          printlnCode( "The code is now:", secretCode );
+        }
+        
+        void loop(){
+          // nothing here
+        }      
+      </script>
+    </div>
+
+    <h3><span style="font-size: larger">👉</span> 17.9: code <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <p>Make a global variable to hold a 3 digit code. This will be an array with 3 integers.</p>
+    
+    <h3><span style="font-size: larger">👉</span> 17.10: potentiometer to digit <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <p>We're going to let the user enter a 3-digit code to disable the alarm before it activates. As a preparation, we need to turn the potentiometer into a device for inputting digits.</p>
+    <ul>
+      <li>Write a function that reads the potentiometer, and returns a digit between 0 and 9.</li>
+      <li>Change the way you're program is waiting for 20 seconds before activating the alarm. Intead of using a regular call to the <code>delay()</code> function, use a while-loop to wait 20 seconds (with the help of the <code>millis()</code> function.</li>
+      <li>For testing purposes, use the 20-second while-loop to continually update the OLED display with the digit you get from your potentiometer reading function.</li>
+    </ul>
+    <p>You don't have to do anything (yet) with the digits you read. That will be the next task. For now, try to get a result that is similar to the GIF below:</p>
+    <img src="./1-cijfer-geen-tijd-korter.gif" style="max-width:300px">
+
+
+
+
+
+
+
+
+
+
+
+    <h3>17.___: refactor</h3>
  <p>While programming, it is not uncommon for functionality of elements in your to change a bit. This can be a problem for the readability of your code if you did not carefully think about renaming the affected functions and variables whilest making your change. This assignment is about cleaning up your final code to make it more readable and more intelligent. Follow the steps and refactor your code before handing it in. Refactoring is the proces of looking back on working code and making it better.</p>
 
 <div class="hint-content">Backup your code before proceeding!</div>
  <ul>
-   <li>Do all variables contain whatever their names suggest? If not, change the name.</li>
-   <li>Do functions do whatever their names suggest? If not, change their names.</li>
+   <li>Do all variables still contain whatever their names suggest? If not, change the name.</li>
+   <li>Do functions still do whatever their names suggest? If not, change their names.</li>
    <li>Can you guess whether or not a function has a return or a side-effect based on the name alone?</li>
-   <li>Can you guess the (return) type of each variable and function?</li>
-   <li>Can you use a function to deduplicate similar looking code?</li>
-   <li>Do you have similar looking functions? Can you use a parameter to make the code more flexible?</li>
-   <li>Is the flow of your program clear in a story like function like (<code>playRound()</code>, or <code>gameSetupRound()</code>)?</li>
-   <li>Are there functions in your code that are nolonger used?</li>
-  <li>Do comments still describe the code they are commenting about?</li>
+   <li>Can you guess the (return) type of each variable and function from its name?</li>
+   <li>Do you have functions with many (say, >12) lines? Can you split those into smaller functions?</li>
+   <li>Can you use a function to de-duplicate similar looking code?</li>
+   <li>Do you have similar looking functions? Can you use one or more parameters to combine them into a more flexible function?</li>
+   <li>Does the code in your <code>loop()</code> function read like a "story" that makes the flow of your program clear?</li>
+   <li>Are there functions in your code that are no longer used? Remove them.</li>
+   <li>Do you have comments explaining pieces of code that might be difficult to understand quickly?</li>
+   <li>Do comments still describe the code they are commenting about? If not, change them.</li>
  </ul>
 
 <section class="assignment">
