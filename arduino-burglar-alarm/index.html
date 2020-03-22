@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Page Title</title>
+  <link rel="stylesheet" href="../css/main.css"/>
+</head>
+<body class="line-numbers">
+  <aside id="toc-column"></aside>
+  <aside id="agenda" include="../agenda.html"></aside>
+  <div id="page">
+    <main>
+
+  <h1>17: final task Arduino: Burglar Alarm</h1>
+
+    <p>Since this course is, of course, going to launch your career as a highly paid software developer, you're going to need a high-tech security system for your fancy villa. Let's start by building the burglar alarm. Here's the concept:</p>
+    <ul>
+      <li>We fix an Arduino (with the S4D breadboard, of course) to the frame of a door.</li>
+      <li>On the door itself, we attach a magnet. The magnet sensor on the Arduino can detect whether the door is open or closed.</li>
+    </ul>
+
+    <p>A fully developed burglar alarm will have the following features:</p>
+    <ol>
+      <li>If the alarm is turned on, <i>and</i> the door is opened, the user has 20 seconds to enter a 3-digit code to disable the alarm. If that fails, the alarm will go off with lots of noise and lights.</li>
+      <li>When the door is closed, <i>and</i> the alarm is turned off, the user can change the 3-digit code.</li>
+      <li>If the alarm is off, <i>or</i> the door is closed, pressing the OK-button (the button closest to the display) will change the on/off state of the alarm.</li>
+      <li>A colored LED will show the alarm's status: if it is on or off, and whether it is detecting the door being open or closed.</li>
+    </ol>
+
+    <h4>how to get a passing grade</h4>  
+    <p>Grading works a bit differently from the Battleships assignment. There are ___ tasks on this page, for which you can earn a total of 10 points. Each assignment is marked by one of these emoji: 👉 (pointing hand), 👍 (thumbs up), and 👏 (clapping hands).</p>
+    <table>
+      <tr>
+        <td style="font-size: larger;">👉</td>
+        <td>The <b>required tasks</b> are marked with <i>the pointing hand</i>.<br>
+          You cannot get a passing grade if you're missing any of these tasks.
+          Doing all of these required tasks well can earn you 7 points.
+        </td>
+      </tr>
+      <tr>
+        <td style="font-size: large;">👍</td>
+        <td>The four <b>additional features</b> are marked with the <i>thumbs up</i> emoji.<br> 
+          Each of these can earn you an extra &frac12; point each.
+        </td>
+      </tr>
+      <tr>
+        <td style="font-size: larger;">👏</td>
+        <td>Finally, there's a general <b>bonus</b> task, marked with the <i>clapping hands</i>.<br>
+            Add a cool improvement or extra feature, and you can score an additional full point.
+        </td>
+      </tr>
+    </table>  
+
+    This is an individual assignment. You can share plans, ideas and hints. Do not share code. Hand in your own unique code.     
+
+    <section class="assignment">
+    <h4>17.0: sending in the Burglar Alarm </h4>
+    <answer noslider buttontext="mail the zipfile">Send in your program, and <i>do include</i> the s4d_breadboard.h file. Combine them into a zip-file.</answer> 
+    </section>
+
+    <h4>iSAS</h4>
+    <p>Do not forget, after you've sent in your work with the usual button, to upload it into our iSAS system. See the <a href="../javascript-battleships/index.html#isas">iSAS explanation on the Battleships page</a>.</p>
+    <h3><span style="font-size: larger">👉</span> 17.1: make a table <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <p>Since you're creating a large program completely from scratch, it helps to plan ahead. In this case a small table will do fine. Here's a start for your table:</p>
+    <table>
+      <tr>
+        <td></td><td><b>alarm is on</b></td><td><b>alarm is off</b></td>
+      </tr>
+      <tr>
+        <td><b>door is open</b></td><td>Red LED is on<br>&hellip;<br>&hellip;</td><td>Blue LED is on<br>&hellip;<br>&hellip;</td>
+      </tr>
+      <tr>
+        <td><b>door is closed</b></td><td>Green LED is on<br>&hellip;<br>&hellip;</td><td>Yellow LED is on<br>&hellip;<br>&hellip;</td>
+      </tr>
+    </table>
+    <p>Re-read the list of features at the top of this page, and place those features in this table. To get you started, we have already placed feature 4 into the table.</p>
+
+    <h3><span style="font-size: larger">👉</span> 17.2: alarm on&mdash;alarm off <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <p>Whether the alarm is on or off is not determined by a sensor-value. We have to store this in a global variable. Create this variable, and give it the best name and the best datatype you can think of. In the next task, we'll change this variable when a buton is pressed.</p>
+    
+    <h3><span style="font-size: larger">👉</span> 17.2: alarm on&mdash;alarm off <span style="color:#888; font-weight:normal">(required task)</span></h3>
+    <p></p>
+
+<h3>17.___: refactor</h3>
+ <p>While programming, it is not uncommon for functionality of elements in your to change a bit. This can be a problem for the readability of your code if you did not carefully think about renaming the affected functions and variables whilest making your change. This assignment is about cleaning up your final code to make it more readable and more intelligent. Follow the steps and refactor your code before handing it in. Refactoring is the proces of looking back on working code and making it better.</p>
+
+<div class="hint-content">Backup your code before proceeding!</div>
+ <ul>
+   <li>Do all variables contain whatever their names suggest? If not, change the name.</li>
+   <li>Do functions do whatever their names suggest? If not, change their names.</li>
+   <li>Can you guess whether or not a function has a return or a side-effect based on the name alone?</li>
+   <li>Can you guess the (return) type of each variable and function?</li>
+   <li>Can you use a function to deduplicate similar looking code?</li>
+   <li>Do you have similar looking functions? Can you use a parameter to make the code more flexible?</li>
+   <li>Is the flow of your program clear in a story like function like (<code>playRound()</code>, or <code>gameSetupRound()</code>)?</li>
+   <li>Are there functions in your code that are nolonger used?</li>
+  <li>Do comments still describe the code they are commenting about?</li>
+ </ul>
+
+<section class="assignment">
+  <h3>17.____: sending in the Burglar Alarm </h3>
+  <answer noslider buttontext="mail the zipfile">Send in your program, and <i>do include</i> the s4d_breadboard.h file. Combine them into a zip-file.</answer> 
+  <p><i>It doesn't matter if you use this send-button, or the one at the start of this page. They're the same.</i></p>
+</section>
+
+
+      </main>
+  </div>
+<script src='../js/chapters.js'></script>
+</body>
+</html>
