@@ -521,10 +521,7 @@ function adaptPageTitle() {
   let titleText = titleElement.textContent
   const titleRegex = /^\s*(?:Chapter)?\s*(\d+):?\s*(.*)$/i
   const htmlSegments = titleHtml.match(titleRegex);
-  if(!htmlSegments) {
-    console.log("titleHtml", titleHtml)
-  }
-  if(htmlSegments.length == 3){
+  if(htmlSegments && htmlSegments.length == 3){
     const textSegments = titleText.match(titleRegex);
     const chapterNum = textSegments[1]
     const chapterTitle = htmlSegments[2]
@@ -559,9 +556,10 @@ function installScrollToTop() {
 }
 
 function gotoFragmentId() {
-  const fragementId = window.location.hash.slice(1)
-  console.log('window.location.hash:', fragementId)
-  window.location.hash = "#"+fragementId
+  const fragmentId = window.location.hash.slice(1)
+  if(fragmentId.length > 0) {
+    window.location.hash = "#"+fragmentId
+  }
 }
 
 
