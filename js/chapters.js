@@ -112,16 +112,16 @@ function loadStylesheet(url) {
 //======= creating page elements ====================================
 
 const tocLevels = {
-  h1:  1,
-  h2:  2,
-  h3:  3,
-  h4:  4,
-  youtube: 3
+  // h1:  1,
+  h2:  1,
+  h3:  2,
+  h4:  3,
+  youtube: 2
 }
 const youtubeOembedUrl = (ytid) => `https://noembed.com/embed?url=http://www.youtube.com/watch?v=${ytid}`
 
 async function createTOC(testData) {
-  const contentElements = testData || $$("h1, h2, h3, h4, youtube")
+  const contentElements = testData || $$("h2, h3, h4, youtube")
   const tocItems = []
   const youtubePromises = []
   currentLevel = 0
@@ -134,7 +134,8 @@ async function createTOC(testData) {
     if( contentEl.tagName.toLowerCase() === 'h1' ) {
       tocItem.title = contentEl.innerHTML  // perhaps treat h1's differently?
     } else if(contentEl.tagName.toLowerCase() !== 'youtube') {
-      tocItem.title = contentEl.innerHTML
+      const taskRegex = /<span\s+class="task-type"\s*>.*?<\/span>\s*$/
+      tocItem.title = contentEl.innerHTML.replace(taskRegex, '')
     } else if(contentEl.title) {
       tocItem.title = contentEl.title
       tocItem.icon = "youtube"
