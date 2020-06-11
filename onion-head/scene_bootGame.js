@@ -150,7 +150,7 @@ class BootGame extends Phaser.Scene {
         this.load.audio("music", "assets/sound/soundtrack_optie_3.mp3")
         this.load.audio("explosion", "assets/sound/explosion.mp3")
         this.load.audio("gunshot", "assets/sound/gunshot.mp3")
-        this.load.audio("storm", "assets/sound/wind_effect.mp3")
+        this.load.audio("storm", "assets/sound/Wind_effect.mp3")
 
     }
 
