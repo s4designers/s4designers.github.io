@@ -20,7 +20,7 @@ class BootGame extends Phaser.Scene {
         this.load.image("ter_gravel_200x50", "assets/gravel_200x50.png");
         this.load.image("ter_gravel_200x400", "assets/gravel_200x400.png");
         this.load.image("ter_lava_200x50", "assets/ter_lava_200x50.png");
-        this.load.image("ter_cloud", "assets/acloud.png");
+        this.load.image("ter_cloud", "assets/cloud1.png");
         this.load.image("ter_tree_pine1", "assets/pine_tree1.png");
         this.load.image("ter_tree_pine2", "assets/pine_tree2.png");
         this.load.image("ter_tree_oak1", "assets/oak_tree1.png");
