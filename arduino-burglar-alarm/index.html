@@ -28,7 +28,7 @@
     </ol>
 
     <h4>how to get a passing grade</h4>  
-    <p>Grading works a bit differently from the Battleships assignment. There are ___ tasks on this page, for which you can earn a total of 10 points. Each assignment is marked by one of these emoji: 👉 (pointing hand), 👍 (thumbs up), and 👏 (clapping hands).</p>
+    <p>Grading works a bit differently from the Battleships assignment. There are 19 tasks on this page, for which you can earn a total of 10 points. Each assignment is marked by one of these emoji: 👉 (pointing hand), 👍 (thumbs up), and 👏 (clapping hands).</p>
     <table>
       <tr>
         <td style="font-size: larger;">👉</td>
@@ -59,7 +59,7 @@
           <li>good names for variables and functions;</li>
           <li>the correct datatypes for variables, parameters and return values;</li>
           <li>proper indentation of code;</li>
-          <li>no uneccessary global variables.</li>
+          <li>no unneccessary global variables.</li>
         </ul>
       </li>
       <li>The code is clearly your own code. You can share plans, ideas and hints with classmates. But don't code your solutions together and don't share code fragments.</li>
@@ -96,10 +96,10 @@
     </p>
 
     <h3><span style="font-size: larger">👉</span> 17.3: toggling the alarm <span class="task-type">(required task)</span></h3>
-    <p>To <i>toggle</i> a switch meand to change it's state: if it's on, it becomes off, and if it's off, it becomes on. We also use the wordt with boolean variables. What logical operator can be used to toggle a boolean variable?</p>
-    <p>Create a function that, when called, toggles the alarm state.</p>
-    <p>Then change your program to call the function when the OK button (see picture) is pressed. Make sure that pressing and releasing the button will toggle the alarm state <i>only once</i>. Use the OLED or the Serial Monitor to check that program works as intended.</p>
-    <p>In task 17.7, you're probably going to change the location of the button-press-handling code, and that is OK.</p>
+    <p>To <i>toggle</i> a switch means to change it's state: if it's on, it becomes off, and if it's off, it becomes on. We also use the word with boolean variables. What logical operator can be used to toggle a boolean variable?</p>
+    <p>Create a function that, when called, toggles the alarm's on/off state.</p>
+    <p>Then change your program to call the function when the OK-button (see picture) is pressed. Make sure that pressing and releasing the button will toggle the alarm state <i>only once</i>. Use the OLED or the Serial Monitor to check that program works as intended.</p>
+    <p>In task 17.7, you're probably going to change the location of the button-press-handling code, and that's OK.</p>
     
     <h3><span style="font-size: larger">👉</span> 17.4: door open&mdash;door closed <span class="task-type">(required task)</span></h3>
     <p>In contrast to the on/off state, the program can, at all times, see if the door is open or closed by looking at a sensor value. Getting it right takes a bit of work.</p> 
@@ -108,7 +108,7 @@
       <li>The sensor values are not stable: even if you keep the magnet steady at the same distance from the sensor, the values will keep changing a bit. </li>
       <li>The sensor value is somewhere in the middle of the 0 &ndash; 1023 range when there is no magnet near the sensor.</li>
       <li>When the magnet gets closer, the average values you're reading can go up, <i>or</i> they can go down.</li>
-      <li>Also, but you can't see this at home, the "center point" (the value when the magnet is far away) differs between different sensors. On your beadboard, the sensor might have its center point around 500, on mine it could be 750. The center point could also change if you test the program with a lot of iron nearby (e.g. a desk with an iron frame).</li>
+      <li>Also, but you can't see this at home, the "center point" (the value when the magnet is far away) differs between different sensors. On your breadboard, the sensor might have its center point around 500, on mine it could be 750. The center point could also change if you test the program with a lot of iron nearby (e.g. a desk with an iron frame).</li>
     </ol>  
     <p>Solve the problem of differing center points by reading the sensor when the program starts and storing that value as the center point. This assumes that the user will not start the program with the magnet close by, but it is the best we can do.</p>
     <p>Then create a function that will report if the door is closed, by detecting if the magnet is close enough.
