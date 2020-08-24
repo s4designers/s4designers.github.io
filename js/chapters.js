@@ -562,11 +562,31 @@ function gotoFragmentId() {
   }
 }
 
+//====== firebase auth ==============================================
+
+async function initFirebase() {
+  await loadScript("/__/firebase/7.19.0/firebase-app.js")
+
+  await Promise.all([
+    loadScript("/__/firebase/7.19.0/firebase-auth.js"),
+    loadScript("/__/firebase/7.19.0/firebase-firestore.js"),
+  ])
+  // Initialize Firebase
+  await loadScript("/__/firebase/init.js")
+}
+
+
+
+
+
+
 
 //====== main program ===============================================
 
 
 async function setupChapter() {
+  await initFirebase()
+  console.log("FIREBASE:", firebase)
   await createTOC()          
   await loadIncludes()
   adaptPageTitle()
