@@ -507,7 +507,7 @@ async function addCodeHighlighter() {
   window.Prism = window.Prism || {};
   window.Prism.manual = true;
   await Promise.all([
-    loadStylesheet('/js/prism/custom-prims.css'),
+    loadStylesheet('/js/prism/custom-prism.css'),
     loadScript('/js/prism/custom-prism.js')  
   ])
   console.log("before Highlight call", document.body.scrollHeight)
@@ -567,7 +567,7 @@ function gotoFragmentId() {
 
 
 async function setupChapter() {
-  await createTOC()          // also async, but no need to await
+  await createTOC()          
   await loadIncludes()
   adaptPageTitle()
   createHintBlocks()

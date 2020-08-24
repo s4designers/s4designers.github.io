@@ -20,6 +20,6 @@ cat prism-theme-okaidia-custom.css \
     prism-line-highlight.css \
     prism-line-numbers.css \
     prism-unescaped-markup.css \
-  > custom-prims.css  
+  > custom-prism.css  
 echo "Created custom-prism.css"
 
