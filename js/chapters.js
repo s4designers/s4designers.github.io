@@ -224,89 +224,89 @@ function createYoutubePlayers() {
   })  
 }
 
-const defaultAnswerInstructionsWithSlider = "First, use the slider to tell us how satisfied you are with your answer. Then use the button to send in your answer.";
-const defaultAnswerInstructionsNoSlider = "Send in your answer using this button:";
-const defaultAnswerButtonText = "mail your work"
+// const defaultAnswerInstructionsWithSlider = "First, use the slider to tell us how satisfied you are with your answer. Then use the button to send in your answer.";
+// const defaultAnswerInstructionsNoSlider = "Send in your answer using this button:";
+// const defaultAnswerButtonText = "Mail your work"
 
-const createAnswerBlocks = function() {
-  let allAssignmentSections = $$("section.assignment")
-  allAssignmentSections.forEach( assignmentSection => {
-    const title = $("*:first-child",assignmentSection).textContent
-    const firstSpaceIdx = title.indexOf(' ');
-    const assignmentId = title.slice(0,firstSpaceIdx).trim();
-    const assignmentTitle = title.slice(firstSpaceIdx).trim();
-    const answerElement = $("answer",assignmentSection)
+// const createAnswerBlocks = function() {
+//   let allAssignmentSections = $$("section.assignment")
+//   allAssignmentSections.forEach( assignmentSection => {
+//     const title = $("*:first-child",assignmentSection).textContent
+//     const firstSpaceIdx = title.indexOf(' ');
+//     const assignmentId = title.slice(0,firstSpaceIdx).trim();
+//     const assignmentTitle = title.slice(firstSpaceIdx).trim();
+//     const answerElement = $("answer",assignmentSection)
     
-    let subQuestions = $$('ol[type="a"] > li', assignmentSection)
-    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    subQuestions = subQuestions.map( (el,idx) => {
-      return chars.charAt(idx) + ") " + el.textContent + "\n\n\n"
-    })
-    const buttonId = newId("button")
+//     let subQuestions = $$('ol[type="a"] > li', assignmentSection)
+//     const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+//     subQuestions = subQuestions.map( (el,idx) => {
+//       return chars.charAt(idx) + ") " + el.textContent + "\n\n\n"
+//     })
+//     const buttonId = newId("button")
 
-    if( !answerElement ) {
-      const assignmentBlock = `
-        <div class="assignment-block" >
-          ${defaultAnswerInstructionsNoSlider}
-          <button id=${buttonId} class="mail-button">${defaultAnswerButtonText}</button>
-        </div>  
-      `
-      assignmentSection.insertAdjacentHTML('beforeend', assignmentBlock)
-      const mailButton = byId(buttonId)
-      mailButton.addEventListener("click", (evt) => {
-        let subject = encodeURIComponent( `s4d_${assignmentId} ${assignmentTitle}`)
-        let messageBody = encodeURIComponent( subQuestions.join("") )
-        window.open(`mailto:s4designers@gmail.com?subject=${subject}&body=${messageBody}`)
-      })
-    } else {  // answerElement exists
-      const noSliderValue = answerElement.getAttribute("noslider")
-      const needsSlider = ["no", "false", null].includes(noSliderValue)
-      const answerInstructions = answerElement.innerHTML || (needsSlider ? defaultAnswerInstructionsWithSlider : defaultAnswerInstructionsNoSlider)
-      const sliderId = newId("button")
-      const displayId = newId("sliderDisplay")
-      let sliderHTML = ''
-      if(needsSlider) {
-        sliderHTML = `<br>
-          <input id=${sliderId} class="satisfaction-slider" type=range value=50 min=0 max=100> 
-          <span id=${displayId} class="satisfaction-display">50</span>%
-        `
-      }
-      buttonText = answerElement.getAttribute("buttontext") || defaultAnswerButtonText
-      const buttonDisabled = needsSlider ? "disabled" : ''
-      const assignmentBlock = `
-        <div class="assignment-block" >
-          ${answerInstructions}
-          ${sliderHTML}
-          <button id=${buttonId} class="mail-button" ${buttonDisabled}>${buttonText}</button>
-        </div>  
-      `
-      answerElement.outerHTML = assignmentBlock
-      const satisfactionSlider = byId(sliderId)
-      const sliderDisplay = byId(displayId)
-      const mailButton = byId(buttonId)
-      if(needsSlider) {
-        satisfactionSlider.addEventListener("change", (evt) => {
-          mailButton.disabled = false
-        })
-        satisfactionSlider.addEventListener("input", (evt) => {
-          sliderDisplay.textContent = satisfactionSlider.value
-        })      
-        mailButton.addEventListener("click", (evt) => {
-          let satisfactionPrefix = `(${satisfactionSlider.value}) `
-          let subject = encodeURIComponent( satisfactionPrefix + `s4d_${assignmentId} ${assignmentTitle}`)
-          let messageBody = encodeURIComponent( subQuestions.join("") )
-          window.open(`mailto:s4designers@gmail.com?subject=${subject}&body=${messageBody}`)
-        })
-      } else {
-        mailButton.addEventListener("click", (evt) => {
-          let subject = encodeURIComponent( `s4d_${assignmentId} ${assignmentTitle}`)
-          let messageBody = encodeURIComponent( subQuestions.join("") )
-          window.open(`mailto:s4designers@gmail.com?subject=${subject}&body=${messageBody}`)
-        })
-      }
-    }
-  })
-}
+//     if( !answerElement ) {
+//       const assignmentBlock = `
+//         <div class="assignment-block" >
+//           ${defaultAnswerInstructionsNoSlider}
+//           <button id=${buttonId} class="mail-button">${defaultAnswerButtonText}</button>
+//         </div>  
+//       `
+//       assignmentSection.insertAdjacentHTML('beforeend', assignmentBlock)
+//       const mailButton = byId(buttonId)
+//       mailButton.addEventListener("click", (evt) => {
+//         let subject = encodeURIComponent( `s4d_${assignmentId} ${assignmentTitle}`)
+//         let messageBody = encodeURIComponent( subQuestions.join("") )
+//         window.open(`mailto:s4designers@gmail.com?subject=${subject}&body=${messageBody}`)
+//       })
+//     } else {  // answerElement exists
+//       const noSliderValue = answerElement.getAttribute("noslider")
+//       const needsSlider = ["no", "false", null].includes(noSliderValue)
+//       const answerInstructions = answerElement.innerHTML || (needsSlider ? defaultAnswerInstructionsWithSlider : defaultAnswerInstructionsNoSlider)
+//       const sliderId = newId("button")
+//       const displayId = newId("sliderDisplay")
+//       let sliderHTML = ''
+//       if(needsSlider) {
+//         sliderHTML = `<br>
+//           <input id=${sliderId} class="satisfaction-slider" type=range value=50 min=0 max=100> 
+//           <span id=${displayId} class="satisfaction-display">50</span>%
+//         `
+//       }
+//       buttonText = answerElement.getAttribute("buttontext") || defaultAnswerButtonText
+//       const buttonDisabled = needsSlider ? "disabled" : ''
+//       const assignmentBlock = `
+//         <div class="assignment-block" >
+//           ${answerInstructions}
+//           ${sliderHTML}
+//           <button id=${buttonId} class="mail-button" ${buttonDisabled}>${buttonText}</button>
+//         </div>  
+//       `
+//       answerElement.outerHTML = assignmentBlock
+//       const satisfactionSlider = byId(sliderId)
+//       const sliderDisplay = byId(displayId)
+//       const mailButton = byId(buttonId)
+//       if(needsSlider) {
+//         satisfactionSlider.addEventListener("change", (evt) => {
+//           mailButton.disabled = false
+//         })
+//         satisfactionSlider.addEventListener("input", (evt) => {
+//           sliderDisplay.textContent = satisfactionSlider.value
+//         })      
+//         mailButton.addEventListener("click", (evt) => {
+//           let satisfactionPrefix = `(${satisfactionSlider.value}) `
+//           let subject = encodeURIComponent( satisfactionPrefix + `s4d_${assignmentId} ${assignmentTitle}`)
+//           let messageBody = encodeURIComponent( subQuestions.join("") )
+//           window.open(`mailto:s4designers@gmail.com?subject=${subject}&body=${messageBody}`)
+//         })
+//       } else {
+//         mailButton.addEventListener("click", (evt) => {
+//           let subject = encodeURIComponent( `s4d_${assignmentId} ${assignmentTitle}`)
+//           let messageBody = encodeURIComponent( subQuestions.join("") )
+//           window.open(`mailto:s4designers@gmail.com?subject=${subject}&body=${messageBody}`)
+//         })
+//       }
+//     }
+//   })
+// }
 
 const defaultHintSteps = [
   { prompt: "Try to solve the problem by yourself. But if you're stuck, use the button for a hint:",
@@ -562,6 +562,104 @@ function gotoFragmentId() {
   }
 }
 
+
+
+const defaultAnswerInstructionsWithSlider = "First, use the slider to tell us how satisfied you are with your answer. Then use the button to send in your answer.";
+const defaultAnswerInstructionsNoSlider = "Send in your answer using this button:";
+const defaultAnswerButtonText = "Mail your work"
+
+const createAnswerBlocks = function() {
+  let allAssignmentSections = $$("section.assignment")
+  allAssignmentSections.forEach( assignmentSection => {
+    const title = $("*:first-child",assignmentSection).textContent
+    const firstSpaceIdx = title.indexOf(' ');
+    const assignmentId = title.slice(0,firstSpaceIdx).trim();
+    const assignmentTitle = title.slice(firstSpaceIdx).trim();
+    const answerElement = $("answer",assignmentSection)
+    
+    let subQuestions = $$('ol[type="a"] > li', assignmentSection)
+    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    subQuestions = subQuestions.map( (el,idx) => {
+      return chars.charAt(idx) + ") " + el.textContent + "\n\n\n"
+    })
+    const buttonId = newId("button")
+    const loginBlock = `
+      <div class="login-block">
+        Please login to send in your answer(s)
+        <button class="login-button">Login with Github account</button>
+      </div>  
+    `
+
+
+    if( !answerElement ) {
+      const assignmentBlock = `
+        ${loginBlock}
+        <div class="assignment-block" >
+          ${defaultAnswerInstructionsNoSlider}
+          <button id=${buttonId} class="mail-button">${defaultAnswerButtonText}</button>
+        </div>  
+      `
+      assignmentSection.insertAdjacentHTML('beforeend', assignmentBlock)
+
+      const mailButton = byId(buttonId)
+      mailButton.addEventListener("click", (evt) => {
+        let subject = encodeURIComponent( `s4d_${assignmentId} ${assignmentTitle}`)
+        let messageBody = encodeURIComponent( subQuestions.join("") )
+        window.open(`mailto:s4designers@gmail.com?subject=${subject}&body=${messageBody}`)
+      })
+    } else {  // answerElement exists
+      const noSliderValue = answerElement.getAttribute("noslider")
+      const needsSlider = ["no", "false", null].includes(noSliderValue)
+      const answerInstructions = answerElement.innerHTML || (needsSlider ? defaultAnswerInstructionsWithSlider : defaultAnswerInstructionsNoSlider)
+      const sliderId = newId("slider")
+      const displayId = newId("sliderDisplay")
+      let sliderHTML = ''
+      if(needsSlider) {
+        sliderHTML = `<br>
+          <input id=${sliderId} class="satisfaction-slider" type=range value=50 min=0 max=100> 
+          <span id=${displayId} class="satisfaction-display">50</span>%
+        `
+      }
+      buttonText = answerElement.getAttribute("buttontext") || defaultAnswerButtonText
+      const buttonDisabled = needsSlider ? "disabled" : ''
+      const assignmentBlock = `
+        ${loginBlock}
+        <div class="assignment-block" >
+          ${answerInstructions}
+          ${sliderHTML}
+          <button id=${buttonId} class="mail-button" ${buttonDisabled}>${buttonText}</button>
+        </div>  
+      `
+      answerElement.outerHTML = assignmentBlock
+      const satisfactionSlider = byId(sliderId)
+      const sliderDisplay = byId(displayId)
+      const mailButton = byId(buttonId)
+      if(needsSlider) {
+        satisfactionSlider.addEventListener("change", (evt) => {
+          mailButton.disabled = false
+        })
+        satisfactionSlider.addEventListener("input", (evt) => {
+          sliderDisplay.textContent = satisfactionSlider.value
+        })      
+        mailButton.addEventListener("click", (evt) => {
+          let satisfactionPrefix = `(${satisfactionSlider.value}) `
+          let subject = encodeURIComponent( satisfactionPrefix + `s4d_${assignmentId} ${assignmentTitle}`)
+          let messageBody = encodeURIComponent( subQuestions.join("") )
+          window.open(`mailto:s4designers@gmail.com?subject=${subject}&body=${messageBody}`)
+        })
+      } else {
+        mailButton.addEventListener("click", (evt) => {
+          let subject = encodeURIComponent( `s4d_${assignmentId} ${assignmentTitle}`)
+          let messageBody = encodeURIComponent( subQuestions.join("") )
+          window.open(`mailto:s4designers@gmail.com?subject=${subject}&body=${messageBody}`)
+        })
+      }
+    }
+  })
+}
+
+
+
 //====== firebase auth ==============================================
 
 async function initFirebase() {
@@ -577,9 +675,173 @@ async function initFirebase() {
 
 
 
+function setSignInButtonsDisabled( disabled ) {
+  $$(".login-button").forEach(el=>{
+    el.style.disabled = disabled 
+  })
+}
+
+function doSignIn() {
+  console.log("FB> doSignIn")
+  if (!firebase.auth().currentUser) {
+
+    var provider = new firebase.auth.GithubAuthProvider();
+    provider.addScope('user');
+    firebase.auth().signInWithPopup(provider).then( result => {
+      token = result.credential.accessToken;
+      window.localStorage.setItem("gitHubAccessToken",token);
+    }).catch(function(error) {
+      console.error(error);
+      setSignInButtonsDisabled(false);
+    });
+
+  } else {
+    throw new Error("WEIRD: Should not be able to press sign-in button if already logged in");
+  }
+  setSignInButtonsDisabled(true);
+}
+
+function doSignOut() {
+  firebase.auth().signOut();
+}
+
+async function doGitHubRequest( endpoint, method = "GET", data = null ){
+  const token = localStorage.getItem("gitHubAccessToken")
+  if( ! token ) {
+    throw new Error("Attempt to access GitHub without an access token in localStorage.")
+  }
+
+  let body, contentType;
+  if( data ) {
+    body = JSON.stringify(data)
+    contentType = "application/json"
+  }
+
+  const response = await fetch('https://api.github.com' + endpoint, {
+    method,
+    mode: "cors",
+    credentials: "omit",  // To prevent browser from throwing when Github sends "*" in Access-Control-Allow-Origin header. We don't need cookies anyway.
+    headers: {
+      Authorization: "token "+ token,
+      Accept: "application/vnd.github.v3+json",
+      "Content-Type": contentType,
+    },
+    body,
+    redirect: "follow",
+  });
+  const myJson = await response.json();
+  console.log("FB> GH ("+endpoint+"): ",myJson);
+  return myJson
+}
 
 
+async function gatherUserInfo() {
+  const currentUserRef = firebase.firestore().doc("users/"+firebase.auth().currentUser.uid)
+  userInfoDoc = await currentUserRef.get(); // get userinfo from our db
+  console.log("FB> Got FB user info:", userInfoDoc.data())
+  let userInfo
+  if( ! userInfoDoc.exists ) {
+    const gitHubUserInfo = await doGitHubRequest("/user");
+    userInfo = {
+      gitHubName: gitHubUserInfo.login,
+      realName: firebase.auth().currentUser.displayName || "UNKNOWN",
+      email: firebase.auth().currentUser.email,
+      avatarURL: firebase.auth().currentUser.photoURL,
+      status: "student",
+      group: "UNKNOWN"
+    }
+    currentUserRef.set( userInfo );  // store the new user to out FB database
+    console.log("FB> Added user info to DB:", userInfo);
+  }
+  else {
+    userInfo = userInfoDoc.data()  
+  }
+  window.userInfo = userInfo
+  return userInfo;
+}
 
+function makeHandleAuthStateChanged(afterSignIn, afterSignout) {
+  return function(user) {
+    console.log("FB> USER:", user);
+    if (user) {
+      gatherUserInfo().then( afterSignIn )
+    } else {  /* user has left the building (sign out) */
+      // window.localStorage.removeItem("gitHubAccessToken");
+      afterSignout && afterSignout();
+      delete window.userInfo;
+    }
+  }
+}
+
+function showSignInUIs() {
+  console.log("FB> LOGGED OUT: access token:", window.localStorage.getItem('gitHubAccessToken'));
+
+  $$(".login-block").forEach(el=>{
+    console.log("FB> login-block:", el)
+    el.style.display="block";
+  })
+  setSignInButtonsDisabled(false);
+
+  $$(".assignment-block").forEach(el=>{
+    console.log("FB> assignment-block:", el)
+    el.style.display="none";
+  })
+  // setup FB subscriptions
+  // for(ex of Object.values(window.allExercises)) {
+  //   ex.hideUI();
+  // }
+
+  byId("logoutDiv").classList.remove('visible');
+}
+
+function showExerciseSubmitUIs() {
+   console.log("FB> LOGGED IN: access token for user '" + window.userInfo.displayName/*.gitHubName*/ +"':", window.localStorage.getItem('gitHubAccessToken'));
+
+  $$(".login-block").forEach(el=>{
+    el.style.display="none";
+  })
+  $$(".assignment-block").forEach(el=>{
+    el.style.display="block"
+  })
+  byId("logoutDiv").classList.add('visible');
+
+  // // setup FB subscriptions
+  // for(ex of Object.values(window.allExercises)) {
+  //   ex.showUI();
+  // }
+}
+
+function installLogoutUI() {
+  const logoutDiv = `
+    <div id="logoutDiv">
+      <div id="logoutInnerDiv">
+        Log out <img class="logoutIcon" src="/images/logout.svg">
+      </div>  
+    </div>  
+  `
+  document.body.insertAdjacentHTML("beforeend",logoutDiv)
+  byId("logoutDiv").onclick = doSignOut
+}
+
+
+function initAuth() {
+  // Listening for auth state changes.
+  firebase.auth().onAuthStateChanged(makeHandleAuthStateChanged(showExerciseSubmitUIs,showSignInUIs));
+  
+  // setup event handlers for the sign-in buttons.
+  $$(".login-button").forEach(el=>{
+    el.addEventListener('click', doSignIn)
+  })
+
+  installLogoutUI()
+
+  // setup exercise UI's
+  $$(".assignment-block").forEach(el=>{
+    // const exType = el.dataset.exercise_type
+    // const exerciseClass = window.exerciseTypes[exType]
+    // const exercise = new exerciseClass(el)
+  });
+}
 
 //====== main program ===============================================
 
@@ -593,6 +855,7 @@ async function setupChapter() {
   createHintBlocks()
   createYoutubePlayers()
   createAnswerBlocks()
+  initAuth()
   createTodoBlocks()
   createDownloadButtons()
   createNotes()  

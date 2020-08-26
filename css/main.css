@@ -106,8 +106,46 @@ main {
   bottom: 0px;
 }
 #scrollToTop:hover {
-  color: #444;
+  color: #222;
 }
+
+#logoutDiv {
+  position: fixed;
+  height: 30px;
+  padding: 5px 10px;
+  background-color: #b4e2c1;
+  border-top-left-radius: 10px;
+  color: #000;
+  border: 1px solid #9dccab;
+  border-bottom: none;
+  border-right: none;
+  bottom: 0px;
+  transition: right 0.6s;
+  right: -110px;
+  font-family: "Avenir Next", "Avenir", sans-serif;
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 100px;
+}
+#logoutDiv.visible {
+  right: 0px;
+}
+
+#logoutInnerDiv {
+  opacity:0.5;
+}
+#logoutDiv:hover #logoutInnerDiv {
+  opacity:0.9;
+}
+
+.logoutIcon {
+  height: 15px;
+  position: relative;
+  top: 3px;
+  margin-left: 8px;
+}
+
+
 
 #agenda {
   grid-area: rightBar;
