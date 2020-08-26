@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "production": "s4d-inbox",
+    "development": "s4d-inbox-dev"
+  }
+}
