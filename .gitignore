@@ -71,3 +71,5 @@ typings/
 # MSOffice temp files
 ~$*
 .vscode/
+
+.firebase/hosting..cache

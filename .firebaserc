@@ -2,21 +2,5 @@
   "projects": {
     "production": "s4d-inbox",
     "development": "s4d-inbox-dev"
-  },
-  "targets": {
-    "s4d-inbox-dev": {
-      "hosting": {
-        "devTarget": [
-          "s4d-course-dev"
-        ]
-      }
-    },
-    "s4d-inbox": {
-      "hosting": {
-        "productionTarget": [
-          "s4d-course"
-        ]
-      }
-    }
   }
 }
