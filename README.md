@@ -1,6 +1,53 @@
 # S4D-lesmateriaal
 
-Lesmateriaal voor de minor Scripting voor Designers
+**Lesmateriaal voor de minor Scripting voor Designers**
+
+
+De site wordt nu gehost in het Firebase project [**s4d-inbox**](https://console.firebase.google.com/project/s4d-inbox/overview). Jille Treffers en Robert Holwerda zijn daar nu eigenaar van (via hun gmail-accounts). Voor studenten en bezoekers is dit de _publieke site_:
+
+[dingo.scripting.school](https://dingo.scripting.school) _(cohort sept. 2020)_
+
+of, synoniem:
+
+[s4d-course.web.app](https://s4d-course.web.app) _(generiek firebase domain)_
+
+Daarnaast is er een tweede Firebase project (zelfde eigenaren) voor ontwikkelen en testen: [**s4d-inbox-dev**](https://console.firebase.google.com/project/s4d-inbox-dev/overview). De bijbehorende _development site_ voor lesmateriaal is [https://s4d-course-dev.web.app](https://s4d-course-dev.web.app). Niet voor studenten en gasten :-)
+
+
+## Deploying
+
+Na edits in lesmateriaal of code, is een push naar github niet (meer) voldoende om te deployen. Dat moet via de firebase commandline. Die moet globaal geinstalleerd zijn:
+
+```bash
+npm install -g firebase-tools
+```
+
+**Gebruik vervolgens niet het standaard _`firebase deploy`_ commando!**. Gebruik dit shellscript in de root van de repo:
+
+```bash
+./deploy.sh
+```
+(wellicht het script eerst executable maken: `chmod u+x  deploy.sh`)
+
+Dit script zal de `master`-branch naar de publieke site ([s4d-course.web.app](https://s4d-course.web.app)) deployen, en alle andere branches naar de developmentsite ([https://s4d-course-dev.web.app](https://s4d-course-dev.web.app)).
+
+Wijzigingen in les-content kunnen we gewoon in master maken en dan pushen naar Github en deployen naar de publieke site met `./deploy.sh`. 
+
+Klooien met code en database doen we nu in aparte branches, zodat deployments eerst naar de development site gaan. Als de code afdoende getest is, mergen in de `master`-branch en dan vanuit `master` deployen naar publieke site.
+
+## Previewen voor deployment
+
+Zodra de Firebase database code en de Github authentication gemerged zijn in de `master`-branch, kun je de site lokaal alleen nog bekijken met behulp van een soort firebase-hosting-emulator.
+
+Ook dat gaat met een shellscript:
+```bash
+./serve.sh
+```
+(wellicht het script eerst executable maken: `chmod u+x  serve.sh`)
+
+Hiermee wordt een lokale http-server gestart waamee de static content (en, ooit misschien, de cloud functions) lokaal te gebruiken zijn. _Maar de database is nog **wel de online Firestore**_. Die wordt niet lokaal ge-emuleerd.
+
+Vandaar het `./serve.sh` script. Net als `./deploy.sh` kijkt-ie naar de huidige got-branch. Als je emuleert terwijl je de `master`-branch actief hebt, dan zal de lokale software toch de productie-database gebruiken. In alle andere branches wordt de database van het development-project gebruikt. (Dit is wellicht niet helemaal handig, maar een betere oplossing komt later.)
 
 ## Chapters schrijven
 
@@ -194,6 +241,3 @@ Dit zal alle elementen met class 'unpublished' verwijderen uit de op te nemen HT
 __Note__: Het `reject`-attribuut kan worden gecombineerd met een fragment identifier of een `select`-attribuut. Het `reject`-attribuut wint altijd.
 
 
-## Web preview
-
-The site is currently hosted on Github itself: [https://hanica.github.io/S4D-lesmateriaal/](https://hanica.github.io/S4D-lesmateriaal/)
