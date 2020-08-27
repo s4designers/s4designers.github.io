@@ -1,5 +1,11 @@
 @import '../fonts/ZillaSlab/ZillaSlab.css';
 @import '../fonts/SourceCodePro/SourceCodePro.css';
+@import '../fonts/Montserrat/Montserrat.css';
+
+:root {
+  --sans-font: "Avenir Next", "Avenir", "Montserrat", sans-serif;
+}
+
 
 body {
   font-family: "Zilla Slab";
@@ -48,7 +54,7 @@ main {
 }
 #toc {
   padding: 1.5em;
-  font-family: "Avenir Next", "Avenir", sans-serif;
+  font-family: var(--sans-font);
   font-size: 9pt;
 }
 .toc1 {
@@ -98,7 +104,7 @@ main {
   bottom: -40px;
   transition: bottom 0.6s;
   left: 20px;
-  font-family: "Avenir Next", "Avenir", sans-serif;
+  font-family: var(--sans-font);
   box-sizing: border-box;
   cursor: pointer;
 }
@@ -112,7 +118,7 @@ main {
 #agenda {
   grid-area: rightBar;
   padding: 1.5em;
-  font-family: "Avenir Next", "Avenir", sans-serif;
+  font-family: var(--sans-font);
   font-size: 9pt;
   opacity: 0.2;
   transition: opacity 0.3s;
@@ -176,7 +182,7 @@ a:hover, #toc a:hover {
 }
 
 h1,h2,h3,h4,h5,h6 {
-  font-family: "Avenir Next", "Avenir", sans-serif;
+  font-family: var(--sans-font);
   margin-top: 4em;
   margin-bottom: 0.5em;
   color: #000;
@@ -194,7 +200,7 @@ h1 {
 h1 > .chapter-num {
   font-size: 14px;
   line-height: 1em;
-  font-family: "Avenir Next", "Avenir", sans-serif;
+  font-family: var(--sans-font);
   font-weight: bold;
   color: #e50056;
   letter-spacing: 4px;
@@ -271,7 +277,7 @@ td {
 .theory::before, 
 .instruction::before,
 .hint-content::before {
-  font-family: "Avenir Next", "Avenir", sans-serif;
+  font-family: var(--sans-font);
   display: inline-block;
   color: white;
   padding: 0.5em 2em;
@@ -311,7 +317,7 @@ td {
 }
 
 span.inline-note, span.inline-bonus {
-  font-family: "Avenir Next", "Avenir", sans-serif;
+  font-family: var(--sans-font);
   font-weight: bold;
   text-transform: uppercase;
   color: #e50056;
@@ -328,7 +334,7 @@ span.inline-bonus {
 
 .assignment-block,
 .hint-block {
-  font-family: "Avenir Next", "Avenir", sans-serif;
+  font-family: var(--sans-font);
   font-size: 80%;
   line-height: 1.3em;
   background-color: #e8e8e8;
@@ -404,7 +410,7 @@ main th {
 }
 
 button {
-  font-family: "Avenir Next", "Avenir", sans-serif;
+  font-family: var(--sans-font);
   background: #e50056;
   font-weight: 500;
   color: white;
