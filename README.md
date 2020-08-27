@@ -35,6 +35,19 @@ Wijzigingen in les-content kunnen we gewoon in master maken en dan pushen naar G
 
 Klooien met code en database doen we nu in aparte branches, zodat deployments eerst naar de development site gaan. Als de code afdoende getest is, mergen in de `master`-branch en dan vanuit `master` deployen naar publieke site.
 
+## Previewen voor deployment
+
+Zodra de Firebase database code en de Github authentication gemerged zijn in de `master`-branch, kun je de site lokaal alleen nog bekijken met behulp van een soort firebase-hosting-emulator.
+
+Ook dat gaat met een shellscript:
+```bash
+./serve.sh
+```
+(wellicht het script eerst executable maken: `chmod u+x  serve.sh`)
+
+Hiermee wordt een lokale http-server gestart waamee de static content (en, ooit misschien, de cloud functions) lokaal te gebruiken zijn. _Maar de database is nog **wel de online Firestore**_. Die wordt niet lokaal ge-emuleerd.
+
+Vandaar het `./serve.sh` script. Net als `./deploy.sh` kijkt-ie naar de huidige got-branch. Als je emuleert terwijl je de `master`-branch actief hebt, dan zal de lokale software toch de productie-database gebruiken. In alle andere branches wordt de database van het development-project gebruikt. (Dit is wellicht niet helemaal handig, maar een betere oplossing komt later.)
 
 ## Chapters schrijven
 
