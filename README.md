@@ -1,6 +1,40 @@
 # S4D-lesmateriaal
 
-Lesmateriaal voor de minor Scripting voor Designers
+**Lesmateriaal voor de minor Scripting voor Designers**
+
+
+De site wordt nu gehost in het Firebase project [**s4d-inbox**](https://console.firebase.google.com/project/s4d-inbox/overview). Jille Treffers en Robert Holwerda zijn daar nu eigenaar van (via hun gmail-accounts). Voor studenten en bezoekers is dit de _publieke site_:
+
+[dingo.scripting.school](https://dingo.scripting.school) _(cohort sept. 2020)_
+
+of,synoniem:
+
+[s4d-course.web.app](https://s4d-course.web.app) _(generiek firebase domain)_
+
+Daarnaast is er een tweede Firebase project (zelfde eigenaren) voor ontwikkelen en testen: [**s4d-inbox-dev**](https://console.firebase.google.com/project/s4d-inbox-dev/overview). De bijbehorende _development site_ voor lesmateriaal is [https://s4d-course-dev.web.app](https://s4d-course-dev.web.app). Niet voor studenten en gasten :-)
+
+
+## Deploying
+
+Na edits in lesmateriaal of code, is een push naar github (nu) niet voldoende om te deployen. Dat moet via de firebase commandline. Die moet globaal geinstalleerd zijn:
+
+```bash
+npm install -g firebase-tools
+```
+
+**Gebruik vervolgens niet het standaard _`firebase deploy`_ commando!**. Gebruik dit shellscript in de root van de repo:
+
+```bash
+./deploy.sh
+```
+(wellicht het script eerst executable maken?)
+
+Dit script zal de `master`-branch naar de publieke site ([s4d-course.web.app](https://s4d-course.web.app)) deployen, en alle andere branches naar de developmentsite ([https://s4d-course-dev.web.app](https://s4d-course-dev.web.app)).
+
+Wijzigingen in les-content kunnen we gewoon in master maken en dan pushen naar Github en deployen naar de publieke site met `./deploy.sh`. 
+
+Klooien met code en database in aparte branches, zodat deployments eerst naar de development site gaan. Als de code afdoende getest is, mergen in `master`-branch an dan vanuit `master` deployen naar publieke site.
+
 
 ## Chapters schrijven
 
@@ -194,6 +228,3 @@ Dit zal alle elementen met class 'unpublished' verwijderen uit de op te nemen HT
 __Note__: Het `reject`-attribuut kan worden gecombineerd met een fragment identifier of een `select`-attribuut. Het `reject`-attribuut wint altijd.
 
 
-## Web preview
-
-The site is currently hosted on Github itself: [https://hanica.github.io/S4D-lesmateriaal/](https://hanica.github.io/S4D-lesmateriaal/)
