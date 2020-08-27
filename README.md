@@ -7,7 +7,7 @@ De site wordt nu gehost in het Firebase project [**s4d-inbox**](https://console.
 
 [dingo.scripting.school](https://dingo.scripting.school) _(cohort sept. 2020)_
 
-of,synoniem:
+of, synoniem:
 
 [s4d-course.web.app](https://s4d-course.web.app) _(generiek firebase domain)_
 
@@ -16,7 +16,7 @@ Daarnaast is er een tweede Firebase project (zelfde eigenaren) voor ontwikkelen 
 
 ## Deploying
 
-Na edits in lesmateriaal of code, is een push naar github (nu) niet voldoende om te deployen. Dat moet via de firebase commandline. Die moet globaal geinstalleerd zijn:
+Na edits in lesmateriaal of code, is een push naar github niet (meer) voldoende om te deployen. Dat moet via de firebase commandline. Die moet globaal geinstalleerd zijn:
 
 ```bash
 npm install -g firebase-tools
@@ -27,13 +27,13 @@ npm install -g firebase-tools
 ```bash
 ./deploy.sh
 ```
-(wellicht het script eerst executable maken?)
+(wellicht het script eerst executable maken: `chmod u+x  deploy.sh`)
 
 Dit script zal de `master`-branch naar de publieke site ([s4d-course.web.app](https://s4d-course.web.app)) deployen, en alle andere branches naar de developmentsite ([https://s4d-course-dev.web.app](https://s4d-course-dev.web.app)).
 
 Wijzigingen in les-content kunnen we gewoon in master maken en dan pushen naar Github en deployen naar de publieke site met `./deploy.sh`. 
 
-Klooien met code en database in aparte branches, zodat deployments eerst naar de development site gaan. Als de code afdoende getest is, mergen in `master`-branch an dan vanuit `master` deployen naar publieke site.
+Klooien met code en database doen we nu in aparte branches, zodat deployments eerst naar de development site gaan. Als de code afdoende getest is, mergen in de `master`-branch en dan vanuit `master` deployen naar publieke site.
 
 
 ## Chapters schrijven
