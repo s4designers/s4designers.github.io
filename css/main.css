@@ -19,13 +19,11 @@ body {
   grid-gap: 0px;
   grid-template-columns: fit-content(300px) 1fr fit-content(300px);
   grid-template-areas:
-     "header  header  header"
+     "logo  header  header"
      "leftBar content rightBar"
      "footer  footer  footer";
 }
-#agenda-pointer {
-  grid-area: content;
-}
+
 #page {
   grid-area: content;
   width: calc(100% - 60px);
@@ -115,6 +113,7 @@ main {
   color: #444;
 }
 
+
 #agenda {
   grid-area: rightBar;
   padding: 1.5em;
@@ -123,10 +122,46 @@ main {
   opacity: 0.2;
   transition: opacity 0.3s;
 }
+
+body.index {
+  grid-template-columns: 1fr max-content fit-content(700px);
+}
+
+body.index #agenda {
+  opacity: 1;
+  margin-right: 100px;
+  padding-top: 0;
+  padding-bottom: 100px;
+}
+
 #agenda:hover {
   opacity: 1;
 }
 
+#agenda-pointer, #time-table-heading {
+  grid-area: content;
+  margin-top: 14px;
+  margin-left: 20px;
+  text-align: left;
+  font-family: var(--sans-font);
+  font-size: 18pt;
+  color: #aaa;
+}
+#time-table-heading {
+  display: none;
+  margin-bottom: 1em;
+}
+#welcome {
+  grid-area: header;
+  margin: 100px 0px 100px 20px;
+  text-align: left;
+  font-family: var(--sans-font);
+  font-size: 18pt;
+  line-height: 1.5em;
+  color: black;
+  font-weight: 400;
+  margin-right: 40px;
+}
 
 
 #agenda h1, #toc h1 {
@@ -155,6 +190,7 @@ main {
 @media (max-width: 800px) { 
   body {
     grid-template-areas:
+      "icon"
       "header"
       "leftBar" 
       "content"
@@ -164,6 +200,12 @@ main {
   main {
     padding: 1em;
     width: auto;
+  }
+  #agenda-pointer {
+    display: none
+  }
+  #time-table-heading {
+    display: block;
   }
 }
 
