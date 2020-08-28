@@ -500,7 +500,7 @@ async function loadIncludes() {
       console.error(err)
     }
   })
-  Promise.all(allIncludeElements)
+  return Promise.all(allIncludeElements)
 }
 
 async function addCodeHighlighter() {
