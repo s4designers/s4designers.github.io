@@ -8,7 +8,7 @@
 // iife to prevent creating global variables
 (function () {
 
-//======= helper functions ==========================================
+  //======= helper functions ==========================================
 
 // returns a single element that matcher the css-selector (unlike JQuery)
 function $(selector, parentElement=window.document) {
@@ -427,7 +427,6 @@ function createDownloadButtons() {
         downloadButtonText = "download " + fileName + ""
       }
     }
-    console.log('fileName :', fileName)
 
     downloadUrl = downloadUrl
                     .split("/")
@@ -438,7 +437,6 @@ function createDownloadButtons() {
     if(match) {
       downloadUrl = match[1] + ":" + match[2]
     }
-    console.log('fileName :', fileName)
     const replacementHtml = `
       <button id="${downloadButtonId}">
         <img class="buttonIcon" src="../images/download.svg"> ${downloadButtonText}
@@ -510,9 +508,7 @@ async function addCodeHighlighter() {
     loadStylesheet('/js/prism/custom-prims.css'),
     loadScript('/js/prism/custom-prism.js')  
   ])
-  console.log("before Highlight call", document.body.scrollHeight)
-  window.Prism.highlightAll(false,(...args) => {console.log('...args :', ...args)})
-  console.log("after Highlight call", document.body.scrollHeight)
+  window.Prism.highlightAll(false)
 }
 
 function adaptPageTitle() {
@@ -546,7 +542,6 @@ function installScrollToTop() {
     entries.forEach( () =>{
       const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
       const tocBottom = $("#toc").getBoundingClientRect().bottom;
-      // console.log('tocBottom :', tocBottom, viewportHeight/3*2)
       scrollToTopDiv.classList.toggle('visible', tocBottom < viewportHeight/3*2);
     })
   }
