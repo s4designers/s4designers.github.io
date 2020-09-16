@@ -41,16 +41,35 @@
 <h3 class="assignment questions">9b.2: Multiplayer Mexican!</h3>  
 <p>Je gaat je mexican spel multiplayer maken.</p>
 <ul>
-  <li>Koppel je mexican spel file aan firebase door de code die door google gegevens is BOVEN je eigen script tag te plaatsen.</li>
+  <li>Koppel je mexican spel file aan firebase door de code die door google gegeven is BOVEN je eigen script tag te plaatsen.</li>
   <li>Alle globale variabelen die je nu gebruikt moeten een waarde in de realtime database worden.</li>
+  <li>Maak voor al deze waarden in de database een reference in je code.</li>
   <li>Maak voor alle waarden een functie die deze waarden in firebase kunnen wijzigen.</li>
-  <li>Maak voor alle variabelen die je had functies die "af gaan" op het moment dat een waarde wijzigt. Laat deze nog even leeg. Deze functies noemen "callback functies"</li>
+  <li>Maak voor alle references in je code functies die "af gaan" op het moment dat een waarde wijzigt. Laat deze nog even leeg. Deze functies noemen "callback functies". Deze functies mogen dalijk alleen maar zijeffecten hebben, nooit een return.</li>
+  <li>Als je in zo'n callback functie iets zou returnen, waarom gebeurt er dan niet zoveel?</li>
+  <li>Je kunt nieuwe listener maken in een andere listener. Soms is dit handig als je op basis van het veranderen van een bepaald ding, wil uitlezen wat er op een andere plek in de database gebeurt. Dat ziet er zo uit:</li>
+</ul>
+<script type="text/plain" class="language-javascript">
+  someNode.on('value', function(data){
+   anotherNode.once('value', function(moreData){ 
+    document.getElementById("element").innerHTML = moreData.val()
+   });
+  });
+  /*
+    .once (ipv .on) is handig als je eenmalig een waarde wilt ophalen.
+    In dit geval haal je dus elke keer dat someNode wijzigt, een keer een waarde op uit anotherNode. 
+    Je kunt de reference van anotherNode natuurlijk af laten hangen van de waarde van data.
+  */
+</script>
+<ul>
   <li>Gooi al je globale variabelen weg. Overal waar je code die variabelen wijzigde, vervang je die code door de betreffende wegschrijf functie.</li>
   <li>Zorg ervoor dat als een waarde wijzigt, dat de juiste elementen op het scherm worden aangepast door de eerder gemaakte "callback functies".</li>
+  <li>Ben je ervan bewust dat een het ophalen van de database even duurt. Dit kan dus <b>altijd</b> alleen maar via zo'n callback.</li>
   <li>Maak een beginscherm dat je speler naam vraagt. Op het moment dat er meer dan een spelers in het spel zitten moet het spel kunnen starten middels een knop.</li>
   <li>Je programma weet nu nog niet wie er aan de beurt is. Beide spelers zien precies hetzelfde. Verzin een manier om er toch voor te zorgen dat als de een aan de beurt is, bij de ander de knoppen grijs worden. De naam van de speler moet in iedergeval ook als globale variabele worden opgeslagen om deze te kunnen vergelijken met de speler die op het moment aan de beurt is (dat weet firebase).</li>
   <li>Houd bij hoeveel iedereen moet zuipen en update dat. </li>
-  <li>Succes! </li>
+  <li>Maak de website mooi. </li>
+  <li>Veel plezier, maar <a href="https://www.connection-sggz.nl/verslaving/alcoholverslaving?gclid=EAIaIQobChMIs4aGl9nt6wIVzOJ3Ch30lglDEAAYASAAEgIBAPD_BwE" >drink met mate. </a></li>
 </ul>
   </section>
 
