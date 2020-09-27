@@ -19,38 +19,6 @@
   <p>You've seen them before: variables that are created <i>inside</i> a function. Did you wonder what happens to them when the function (call) is done, and its code stops running? <b>They disappear</b>. And when the function is called again, and it's code start running anew? <b>They are created again.</b> Welcome to the most important kind of variable in all programming languages: <i>local variables</i>.</p>
   <youtube ytid="0fs7zljFEa0"></youtube>
 
- 
-  <youtube ytid="S4x1qM6p4d0"></youtube>
-  <!-- <section class="assignment">
-      <h3 class="assignment questions">10.1: Arduino Sum</h3>
-      <p> Make an arduino function that calculates the sum of three values. The function should be called like this:</p>
-      <script type="text/plain" class="language-arduino">
-void setup() {
-  Serial.begin(9600);
-  Serial.println(sum(4,3,4)); // outputs 11
-  Serial.println(sum(12,8,3)); // outputs 23
-  Serial.println(sum(41,13,20)); // outputs 74
-}
-      </script>
-      <answer buttontext="Mail the code"></answer>
-  </section> -->
-
-  <!-- <section class="assignment">
-      <h3 class="assignment questions">10.2: Arduino Calibration</h3>
-      <p> Make an arduino function reads a value from the magnetsensor and stores it in a global variable, call this function in the setup. We are going to use this reading as a baseline to detect whether or not a magnet is near.</p>
-      <answer buttontext="Mail the code"></answer>
-  </section>
-  <section class="assignment">
-      <h3 class="assignment questions">10.3: Arduino returns</h3>
-      <p> Make an arduino function that returns true if the magnet is near, and returns false if the magnet is far away. Use the value you set in with the function in 10.2.  Call the function in an if-statement that turns on a lightbulb if the magnet is far, and turns it off when the magnet is near.</p>
-      <answer buttontext="Mail the code"></answer>
-  </section>
-  <section class="assignment">
-      <h3 class="assignment questions">10.4: Side effects</h3>
-      <p> Which functions in the previous assignments have a side-effect, and which have a return value. </p>
-      <answer buttontext="Mail the code"></answer>
-  </section> -->
-
   <h3 class="assignment summary">10.1: summary and questions</h3>
   <section class="assignment">
     <answer  buttontext="mail your summary">10.1.a: Make a list with <i>3 to 5 bulletpoints</i> with the most important or interesting things in the video (or the theory textbox above):</answer>
@@ -59,8 +27,19 @@ void setup() {
       <answer noslider buttontext="mail your word list">10.1.b: Which words or concepts would you like us to explain during class?</answer>
   </section>
 
+ 
+  <youtube ytid="S4x1qM6p4d0"></youtube>
 
-  <h3 class="assignment questions">10.2: shadowing global variables</h3>
+  <h3 class="assignment summary">10.2: summary and questions</h3>
+  <section class="assignment">
+    <answer  buttontext="mail your summary">10.2.a: Make a list with <i>3 to 5 bulletpoints</i> with the most important or interesting things in the video (or the theory textbox above):</answer>
+  </section>
+  <section class="assignment">
+      <answer noslider buttontext="mail your word list">10.2.b: Which words or concepts would you like us to explain during class?</answer>
+  </section>
+
+
+  <h3 class="assignment questions">10.3: shadowing global variables</h3>
   <p>Here's some JavaScript code that uses both global and local variables (actually, it uses global variables and parameters; but parameters <i>are</i> local variables):</p>
   <p><b>Don't run this code yet!</b> Just examine it</p>
   <script type="text/plain" class="language-javascript">
@@ -78,16 +57,16 @@ void setup() {
     console.log("## health:", health );
   </script>
   <section class="assignment">
-    <h4>10.2.a: without running the code, predict what the following code is going to print to the console.</h4>
+    <h4>10.3.a: without running the code, predict what the following code is going to print to the console.</h4>
     <answer buttonText="mail your predicted output"></answer>
   </section>
   <section class="assignment">     
-  <h4>10.2.b: run the code. Were you correct?</h4>
+  <h4>10.3.b: run the code. Were you correct?</h4>
   <answer noslider buttontext="mail your result"></answer>
 </section> 
 
 <section class="assignment">
-  <h3 class="assignment questions">10.3 Arduino music recorder</h3>
+  <h3 class="assignment questions">10.4 Arduino music recorder</h3>
   <p>The code above makes a musical instrument out of our arduino. You can record notes, and play them back. Try it: while recording, use the potentiometer to change the note.</p>
   <p><span class="inline-note">NOTE:</span> The program only wants to record notes while you're turning the potentiometer. But perhaps your potentiometer readings change even if you're not turning the knob. In that case, it may keep recording notes.</p>
   <script type="text/plain" class="language-arduino">
@@ -201,7 +180,7 @@ void setup() {
 </div>
 
 <section class="assignment">
-      <h3 class="assignment questions">10.4: side effect or return</h3>
+      <h3 class="assignment questions">10.5: side effect or return</h3>
       <p>
         Below are some function calls. Based on the name of the called function, try to explain why you think the function has a side-effect or a return value.
       </p>
@@ -221,7 +200,7 @@ void setup() {
 
 
  <section class="assignment">
-      <h3 class="assignment questions">10.5: Stronger password manager</h3>
+      <h3 class="assignment questions">10.6: Stronger password manager</h3>
           <script type="text/plain" class="language-javascript">
             function createPassword(passPhrase) {
               var cryptoPhrase = "a7" + btoa(passPhrase) + "%H";
