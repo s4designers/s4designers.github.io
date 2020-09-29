@@ -18,7 +18,7 @@
 
   <p>We're going to make bubbles!</p>
 
-  <p>Actually, we're going to learn about drawing om the <i>canvas</i>, a way of creating visuals without the help of HTML and CSS. HTML is about documents: text combined with other thing, provided that those other things are rectangular. Some kinds of information simply aren't that well suited for the rectangles-next-to-rectangles-inside-rectangles model of HTML.</p>
+  <p>Actually, we're going to learn about drawing om the <i>canvas</i>, a way of creating visuals without the help of HTML and CSS. HTML is about documents: text combined with other things, provided that those other things are rectangular. Some kinds of information simply aren't that well suited for the rectangles-next-to-rectangles-inside-rectangles model of HTML.</p>
 
   <youtube ytid="iey-WcT2QVA"></youtube>
 
@@ -32,8 +32,10 @@
 
   <h2>here's Hans Rosling!</h2>
 
-  <p>Hans Rosling was a Swedish doctor who made an incredible impression, during a 2006 TED talk, with a data visualization about how global health developed in the 20th century. It opened the eyes of many to the awesome scale of how human lives improved in the last 150 years. He founded an organization called <a href="">Gapminder</a> that makes the software and the data available. We are going to use their data to create our own version of the data visualization that proved so effective. Hans Rosling died in 2017, and <a href="https://www.gapminder.org/factfulness-book/">his book, "Factfulness"</a>, came out in 2018. Highly reccommended.</p>
-  <p>Watch at least part of his first TED talk (<a href="https://www.ted.com/search?q=rosling">there are more</a>). If you're not interested in the entire talk, watch at least the part from 3:07 to 5:14. That gives you an idea where we're going in this chapter.</p>
+  <p>Hans Rosling was a Swedish doctor who made an incredible impression during a 2006 TED talk, with a data visualization about how global health developed in the 20th century. It opened the eyes of many to the awesome scale of how human lives improved in the last 150 years. </p>
+  <p>He founded an organization called <a href="">Gapminder</a> that makes the software and the data available. We are going to use their data to create our own version of the data visualization that proved so effective. </p>
+  <p>Hans Rosling died in 2017, and his book, <a href="https://www.gapminder.org/factfulness-book/">"Factfulness"</a>, came out in 2018. Highly reccommended.</p>
+  <p>Watch at least part of his first TED talk (<a href="https://www.ted.com/search?q=rosling">there are more</a>). If you're not interested in the entire talk, watch at least the part from 3:07 to 5:14. This gives you an idea where we're going in this chapter.</p>
 
   <youtube ytid="hVimVzgtD6w"></youtube>
 
@@ -41,7 +43,9 @@
 
   <section class="assignment">
   <h3>14.2: step 1 &ndash; coordinates and axis</h3>  
-  <p>On almost all 2D computer graphics systems, the x-coordinates go from left to right, and the y-coordinates go from top to bottom. This means that the vertical axis is going the wrong way if you want to draw graphs! That is a problem we can solve with some simple calculations. Also, there's a scaling issue. In the graph, the x-axis goes from 0 to 9 (average children per woman), but you can bet it's actually several hundred of pixels wide. Similar issue for the y-axis. To prevent you from getting bogged down in the arithmetic of these conversions, we created two functions that are incredibly useful:</p>
+  <p>On almost all 2D computer graphics systems, the x-coordinates go from left to right (just as in graphs), but the y-coordinates go <i>from top to bottom</i>. If your y-coordinate gets <i>higher</i>, it points to a position <i>further down</i> on the screen. So the vertical axis is going the wrong way if you want to draw graphs! That is a problem we can solve with some simple calculations.</p>
+  <p> Also, there's a scaling issue. In the graph, the x-axis goes from 0 to 9 (average children per woman), but you can bet it's actually several hundred of pixels wide. Similar issue for the y-axis. Let's invent some words to allow us to talk about the problem: The y-axis represents the avarage life-span, measured in <i>years</i>, and each year is 5 <i>pixels</i> apart on the canvas. Let's say that the <b>years are the <i>data units</i></b> on the x-axis. We need a way to convert these data-units (years) to <b><i>canvas pixels</i></b>, which are the numbers we can use with drawing commands on the canvas. Likewise, on the x-axis, <b>the <i>data units</i> are the number of children</b> per woman. We use a 100 <b><i>canvas pixels</i></b> for each extra child.</p>
+  <p>To prevent you from getting bogged down in the arithmetic of these conversions, we created two functions that convert from data units to canvas pixels. They are incredibly useful in the coming series of assignments.</p>
   <script type="text/plain" class="language-js">
     // convert from data-units (number of children per woman) 
     // to canvas coordinates in canvas-pixels
@@ -103,13 +107,13 @@
   <p>Open the datafile in your browser. Most of the file is the data. There's a bit of code in front that sorts the data in way that works nicer for our graph.</p>
   <p>In the HTML file, add a &lt;script src=""&gt;&lt;/script&gt; element above the script that is already there. Make it include the data file into the HTML file.</p>
   <p>Your code can now access the data using a new global variable called <b><i>countryData</i></b>.</p>
-  <p>Solve the following questions by <b>writing a Javascript function that simply returns the answer</b>:</p>
+  <p>Solve the each of following questions by <b>writing a simple Javascript function that simply returns the answer</b>:</p>
   <ol type="a">
     <li>How many countries are there in the data-file?</li>
     <li>What, according to this data file, is the <i>region</i> of Australia?</li>
     <li>Each country has four arrays with data. We are interested in three of them: <code>population</code>, <code>lifeExpectancy</code>, <code>birthsPerWoman</code>. All these arrays are equally long in all countries. How long?</li>
     <li>Each item in any of the arrays contains the value for a year between 1800 and 2018. The item on position 0 is for 1800, the last item in the array is for the year 2018. What was the population of Argentina in 1990?</li>
-    <li>Actually, we lied. One of the array's in one particular country is not just as long as all the others. Which array, in which country?</li>
+    <li>Actually, we lied. One of the array's in one particular country <i>is not</i> exactly as long as all the others. Which array, in which country?</li>
   </ol>
   <answer buttontext="mail your answers & code">Send in <b>both</b> the answer to the question <i>and</i> the code you used to get the answer.</answer>
   </section>
@@ -117,7 +121,7 @@
   <h3>14.4: step 3 &ndash; bubbles!</h3>
   <p>Drawing circles is done with the <code>.arc()</code> function, and the maths-people have decided that you need <b>π</b> (pi) for that. For those who don't like trigonometry, here's the code:</p>
   <script type="text/plain" class="language-js">
-    function drawDisc(x,y,radius,color) {
+    function drawDisc(theContext, x, y, radius, color) {
       theContext.beginPath()
       theContext.arc(x,y,radius,0,Math.PI*2,false)
       theContext.fillStyle = color
@@ -125,14 +129,14 @@
       // TODO: give the circle a black outline
     }
   </script>
-  <p>The variable <code>theContext</code> is the global variable containing the... ...context! If you gave that variable a different name, please change the function code to use your name for the context.</p>
+  <p>The canvas-context passed to the function as a parameter. Even if your code stores its canvas-context in a global variable, you can still use this function by passing that global variable as the first argument whenever you call this function.</p>
   <p>The x and y parameters are in canvas-pixels, and point to the center of the disc. Like the color you give to <code>context.fillStyle</code> etc., the color for the disc is a css color in a string (e.g. "red", "#F894BA" or "rgb(100,0,255)")</p>
   <section class="assignment">
     <h4>14.4.a: warming up</h4>
-    <p>Change your program to:</p>
+    <p>Change your program:</p>
     <ul>
       <li>draw 5 discs, with different colors and sizes on different locations;</li>
-      <li>draw a 1px black line around each disc.</li>
+      <li>make sure that each disc has a 1px black line around it.</li>
     </ul>
     <answer buttontext="mail your code"></answer>
   </section>
@@ -163,7 +167,7 @@
     <ul>
       <li>The first parameter is an object with the data for a country, the second parameter is the year.</li>
       <li>Don't forget to convert years to usable array positions.</li>
-      <li>Don't change the <code>drawDisc()</code> function. Create a new one.</li>
+      <li>Don't change the <code>drawDisc()</code> function. Create a new function.</li>
     </ul>
     <answer buttontext="mail your code"></answer>
   </section>
@@ -186,13 +190,13 @@
   </section>
 
   <h2>animation</h2>
-  <p>CSS has some cool features for animations, but those are specific to HTML/CSS. A more generally usesable technique for animation is simply to draw the image multiple times.</p>
+  <p>CSS has some cool features for animations, but those are specific to HTML/CSS, and not flexible enough for our project. A more generally usesable technique for animation is simply to draw the image multiple times.</p>
   <youtube ytid="co6xdhDxGoc"></youtube>
 
-  <h3 class="assignment summary">14.6: summary and questions</h3>
+  <!-- <h3 class="assignment summary">14.6: summary and questions</h3>
   <section class="assignment">
       <answer noslider buttontext="mail your word list">13.6.a: Which words or concepts would you like us to explain during class?</answer>
-  </section>
+  </section> -->
 
 
   <h3>14.6: step 5 &ndash; animating through two centuries</h3>
