@@ -3,9 +3,9 @@
 **Lesmateriaal voor de minor Scripting voor Designers**
 
 
-De site wordt nu gehost in het Firebase project [**s4d-inbox**](https://console.firebase.google.com/project/s4d-inbox/overview). Jille Treffers en Robert Holwerda zijn daar nu eigenaar van (via hun gmail-accounts). Voor studenten en bezoekers is dit de _publieke site_:
+De site wordt nu gehost in het Firebase project [**s4d-inbox**](https://console.firebase.google.com/project/s4d-inbox/overview). Peter Schulz, Sander Leer, Robert Holwerda en Jille Treffers zijn daar nu eigenaar van. Voor studenten en bezoekers is dit de _publieke site_:
 
-[dingo.scripting.school](https://dingo.scripting.school) _(cohort sept. 2020)_
+[elk.scripting.school](https://dingo.scripting.school) _(cohort feb. 2021)_
 
 of, synoniem:
 
@@ -22,7 +22,7 @@ Na edits in lesmateriaal of code, is een push naar github niet (meer) voldoende 
 npm install -g firebase-tools
 ```
 
-**Gebruik vervolgens niet het standaard _`firebase deploy`_ commando!**. Gebruik dit shellscript in de root van de repo:
+**:warning: Gebruik vervolgens :bangbang:niet:bangbang: het standaard _`firebase deploy`_ commando!**. Gebruik dit shellscript in de root van de repo:
 
 ```bash
 ./deploy.sh
@@ -31,9 +31,12 @@ npm install -g firebase-tools
 
 Dit script zal de `master`-branch naar de publieke site ([s4d-course.web.app](https://s4d-course.web.app)) deployen, en alle andere branches naar de developmentsite ([https://s4d-course-dev.web.app](https://s4d-course-dev.web.app)).
 
-Wijzigingen in les-content kunnen we gewoon in master maken en dan pushen naar Github en deployen naar de publieke site met `./deploy.sh`. 
+Wijzigingen in les-content kunnen we gewoon in master maken en dan pushen naar Github en deployen naar de publieke site met:
+```bash
+./deploy.sh
+```
 
-Klooien met code en database doen we nu in aparte branches, zodat deployments eerst naar de development site gaan. Als de code afdoende getest is, mergen in de `master`-branch en dan vanuit `master` deployen naar publieke site.
+Klooien met code en database doen we nu in aparte branches, zodat deployments eerst naar de development site gaan. Als de code afdoende getest is: mergen in de `master`-branch en dan vanuit `master` deployen naar publieke site.
 
 ## Previewen voor deployment
 
@@ -47,7 +50,7 @@ Ook dat gaat met een shellscript:
 
 Hiermee wordt een lokale http-server gestart waamee de static content (en, ooit misschien, de cloud functions) lokaal te gebruiken zijn. _Maar de database is nog **wel de online Firestore**_. Die wordt niet lokaal ge-emuleerd.
 
-Vandaar het `./serve.sh` script. Net als `./deploy.sh` kijkt-ie naar de huidige got-branch. Als je emuleert terwijl je de `master`-branch actief hebt, dan zal de lokale software toch de productie-database gebruiken. In alle andere branches wordt de database van het development-project gebruikt. (Dit is wellicht niet helemaal handig, maar een betere oplossing komt later.)
+Vandaar het `./serve.sh` script. Net als `./deploy.sh` kijkt-ie naar de huidige git-branch. Als je emuleert terwijl je de `master`-branch actief hebt, dan zal de lokale software toch de productie-database gebruiken. In alle andere branches wordt de database van het development-project gebruikt. (Dit is wellicht niet helemaal handig, maar een betere oplossing komt later.)
 
 ## Chapters schrijven
 
