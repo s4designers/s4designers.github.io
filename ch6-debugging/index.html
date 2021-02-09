@@ -98,7 +98,7 @@
 <h3 class="assignment questions">6.3: jille's bugs</h3>
   <img src="gallery-of-bugs.png" style="width: 100%;">  
   <p>Here's a buggy program that's meant to showcase a set of 6 bug pictures. It doesn't work correctly, so you will have to debug it. The user should be able to use the button on the right-hand side of the photo to cycle, as often as she likes, through all 6 pictures.</p>
-  <p>The program code below that contains 4 bugs. Three of them are caused by typos, and you should be able to find an fix them in a reasonable amount of time. The fourth error is a logic error that causes several malfunctions.</p>
+  <p>The program code below that contains 6 bugs. Four of them are caused by typos, and you should be able to find an fix them in a reasonable amount of time. The fifth error is a thinking error that results in a runtime message. The sixth error is a (related?) logic error that <i>doesn't</i> cause any error messages, but does result in a visible malfunction.</p>
   <p>The CSS is rather long; sorry about that. The bugs are only in the JavaScript.</p>
   <script type="text/plain" class="language-html">
     <!DOCTYPE html>
@@ -191,34 +191,35 @@
         
         function showPicture6() {
           document.getElementById("mainImage).src = pictureNames[6]
-          document.getElementById("nextButton").onclick = showPicture7
+          document.getElementById("nextButton").onclick = showPicture1
         }
     
         showPicture1()
-      </script>
+      &lt;/script>
     </body>
     </html>  </script>
     <p>Here are the images: <download href="bugPhotos.zip"></download></p>
     <p>Run the page. First, solve the syntax errors and the remaining typo.</p>
     <section class="assignment">
-  <h4>6.3.a: first, describe the 3 simple bugs</h4>
+  <h4>6.3.a: first, describe the four simple bugs</h4>
   <p>For each bug you find, <b><i>before you start fixing it</i></b>, give a description of the bug. How would you explain the malfunction to a classmate? Describe it in terms of what you're seeing, or how the program is behaving; keep ideas about the causes out of the description. Try to be as clear and precise as you can! When you start programming in teams (a few weeks from now), you really don't want your teammates to be vague or superficial about  problems they want you to help out on.</p>  
-  <answer noslider buttontext="mail the descriptions of 3 typo-bugs you've found">Collect the descriptions in a single mail before sending the mail in.</answer>
+  <answer noslider buttontext="mail the descriptions of 4 typo-bugs you've found">Collect the descriptions in a single mail before sending the mail in.</answer>
   </section>
   <section class="assignment">
-    <h4>6.3.b: Fix them bugs!</h4>
-    <p>Correct the typos. After that, the user should be able to see most of the photos.</p>
+    <h4>6.3.b: Fix them (typo-)bugs!</h4>
+    <p>Correct the typos. After that, the user should be able to see most of the photos. After that, the user should be able to see most of the photos.</p>
+    <p><b>Also</b> fix the 5th bug: the thinking error (or is this a typo too?) that causes an error message. What could have been the intended functionality (that is broken now)?</p>
     <answer noslider buttontext="mail your code"></answer>
   </section>
   <section class="assignment">
     <h4>6.3.c: the logic error</h4>
-    <p>The logic error has more than a single consequence for the behaviour of the program. Can you describe 3 or 4 observations about what is still going wrong?</p>
-    <answer noslider buttontext="mail the your observations"></answer>
+    <p>The final logic error has a single consequence for the behaviour of the program. Can you describe what is still going wrong?</p>
+    <answer noslider buttontext="mail your description"></answer>
   </section>
   <section class="assignment">
     <h4>6.3.d: the cause of the error</h4>
     <p>Analyze the behaviour of the program. Use <code>console.log()</code> to get more information about what is going on. Can you find the thinking error that was made?</p>
-    <p>You don't have to fix the problem. The important thing is to <b>discover, en describe clearly, whodunnit:</b> What casued the error?</p>
+    <p>DON'T FIX THE PROBLEM. The important thing is to <b>discover, en describe clearly, whodunnit:</b> What casued the error?</p>
     <answer buttontext="mail your description of the thinking error"></answer>
   </section>
   <section class="assignment">
