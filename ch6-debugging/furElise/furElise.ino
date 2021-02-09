@@ -128,20 +128,20 @@ int melodyFrequencies[] = {
   NOTE_C4, NOTE_E4,  NOTE_A4, NOTE_B4,  REST, 
   NOTE_E4, NOTE_GS4, NOTE_B4, NOTE_C5,  REST, 
   
-  NOTE_E4,  NOTE_E5,  NOTE_DS5, NOTE_E5,  NOTE_DS5, 
-  NOTE_E5,  NOTE_B4,  NOTE_D5,  NOTE_C5,  NOTE_A4,  REST,  
-  NOTE_C4,  NOTE_E4,  NOTE_A4,  NOTE_B4,  REST,    
-  NOTE_E4,  NOTE_C5,  NOTE_B4,  NOTE_A4,  REST,
+  NOTE_E4,  NOTE_E5, NOTE_DS5, NOTE_E5, NOTE_DS5, 
+  NOTE_E5,  NOTE_B4, NOTE_D5,  NOTE_C5, NOTE_A4,  REST,  
+  NOTE_C4,  NOTE_E4, NOTE_A4,  NOTE_B4, REST,    
+  NOTE_E4,  NOTE_C5, NOTE_B4,  NOTE_A4, REST,
 
   NOTE_B4, NOTE_C5, NOTE_D5, NOTE_E5, REST,
   NOTE_G4, NOTE_F5, NOTE_E5, NOTE_D5, REST,
   NOTE_F4, NOTE_E5, NOTE_D5, NOTE_C5, REST,
   NOTE_E4, NOTE_D5, NOTE_C5, NOTE_B4, REST,
 
-  NOTE_E4,  NOTE_E5, NOTE_DS5, NOTE_E5, NOTE_DS5, 
-  NOTE_E5, NOTE_B4,  NOTE_D5, NOTE_C5,  NOTE_A4,  REST,
-  NOTE_C4, NOTE_E4,  NOTE_A4, NOTE_B4,  REST,
-  NOTE_E4, NOTE_C5,  NOTE_B4, NOTE_A4,  REST
+  NOTE_E4, NOTE_E5, NOTE_DS5, NOTE_E5, NOTE_DS5, 
+  NOTE_E5, NOTE_B4, NOTE_D5, NOTE_C5, NOTE_A4,  REST,
+  NOTE_C4, NOTE_E4, NOTE_A4, NOTE_B4, REST,
+  NOTE_E4, NOTE_C5, NOTE_B4, NOTE_A4, REST
 };
 
 int ledPins[] = { LED_BLUE, LED_GREEN, LED_YELLOW, LED_RED };
@@ -153,7 +153,6 @@ void setup() {
 int loopCounter = 0;
 
 void loop() 
-
   int ledIndex  = loopCounter / 4;
   int ledPin    = ledPins[ledIndex];
 
@@ -161,10 +160,8 @@ void loop()
   int noteDuration = melodyDurations[noteIndex];
   int noteFrequency = melodyFrequencies[noteIndex];
 
-  tone(BUZZER, noteFrequency);
   digitalWrite( ledPin, HIGH );
-  delay(noteDuration);
+  playTone( noteFrequency, noteDuration );
   digitalWrite( ledPin, LOW );
-  noTone(BUZZER);
   loopCounter = loopCounter;
 }
