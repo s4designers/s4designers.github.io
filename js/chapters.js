@@ -1,3 +1,8 @@
+function ll(...args) {
+  console.log(...args);
+}
+
+
 /*==================================    
   TODO: 
     * answer instruction should be visible 
@@ -231,12 +236,12 @@ const defaultAnswerButtonText = "mail your work"
 const createAnswerBlocks = function() {
   let allAssignmentSections = $$("section.assignment")
   allAssignmentSections.forEach( assignmentSection => {
+
     const title = $("*:first-child",assignmentSection).textContent
     const firstSpaceIdx = title.indexOf(' ');
     const assignmentId = title.slice(0,firstSpaceIdx).trim();
     const assignmentTitle = title.slice(firstSpaceIdx).trim();
     const answerElement = $("answer",assignmentSection)
-    
     let subQuestions = $$('ol[type="a"] > li', assignmentSection)
     const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     subQuestions = subQuestions.map( (el,idx) => {
