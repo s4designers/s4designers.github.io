@@ -293,10 +293,10 @@ function estimateFine(actualSpeed, speedLimit){
    <script type="text/plain" class="language-javascript">
   
     function canJoinTheATeam( person ) {
-      var isLargerThan190cm = person.length > 200
+      var isLargerThan190cm = person.length > 190
       var canSquatMoreThan150kg = person.squattingWeight > 150
       if(person.isMale) {
-        if(isLargerThan190kg){
+        if(isLargerThan190cm){
           if(canSquatMoreThan150kg) {
             return true
           } else {
@@ -332,7 +332,7 @@ function estimateFine(actualSpeed, speedLimit){
       <li>What is the value of the canSquadMoreThan150kg variable on line 3? </li>
       <li>Who can join the A-team?</li>
       <li>The expressions on lines 2 and 3 result in a boolean value. What does that mean?</li>
-      <li>You don't need to use all of the variables to get a working program. You can expressions that result in a boolean directly into the condition part of the if-statement. Do this. </li>
+      <li>You don't need to use all of the variables to get a working program. You can use any <i>expression</i> that results in a boolean, directly inside the condition part of the if-statement. Do this. </li>
     </ol>
   <answer buttontext="mail your answers"></answer>
   </section>
