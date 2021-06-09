@@ -257,32 +257,32 @@ function coordinatesOverlap(x,y) {
 }
 
 /*
-Method: In the player's sea, boats are yellow
+Method: In the player's sea, ships are yellow
 */
 function mySeaColors() {
     if(this.state == "water"){
-        return "blue"
+        return "mediumslateblue"
     }else if (this.state == "miss"){
-        return "red"
+        return "lightcoral"
     }else if (this.state == "hit"){
-        return "green"
+        return "palegreen"
     }else if (this.state == "ship"){
-        return "yellow"
+        return "silver"
     }
 }
 
 /*
-Method: In the enemy sea, boats are blue (same as the sea)
+Method: In the enemy sea, ships are blue (same as the sea)
 */
 function enemySeaColors() {
     if(this.state == "water"){
-        return "blue"
+        return "darkslateblue"
     }else if (this.state == "miss"){
-        return "red"
+        return "crimson"
     }else if (this.state == "hit"){
-        return "green"
+        return "seagreen"
     }else if (this.state == "ship"){
-        return "blue"
+        return "midnightblue"
     }
 }
 
