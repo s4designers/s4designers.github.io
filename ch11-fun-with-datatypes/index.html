@@ -165,27 +165,27 @@ void loop(){
 
 <section class="assignment">
 <h3 class="assignment questions">11.2: time</h3>  
-<p></p>
+<p>This is a simple program that allows a light to remain on for a fixed period of time (1.5 seconds).</p>
 <script type="text/plain" class="language-arduino">
-#include "s4d_breadboard.h"
-int buttonClickTime = 0;
-
-void setup() {
-  intitalizeBreadboard();
-}
-
-//millis() gives the number of milliseconds since the arduino was powered on, or reset.
-void loop() {
-  if(analogRead(BUTTON1) == HIGH){
-    buttonClickTime = millis(); 
+  #include "s4d_breadboard.h"
+  int buttonClickTime = 0;
+  
+  void setup() {
+    initializeBreadboard();
   }
-
-  if(millis() > buttonClickTime + 5000){
-    digitalWrite(LED_BLUE, LOW);
-  }else{
-    digitalWrite(LED_BLUE, HIGH);
+  
+  //millis() gives the number of milliseconds since the arduino was powered on, or reset.
+  void loop() {
+    if( digitalRead(BUTTON1) == HIGH ) {
+      buttonClickTime = millis();
+    }
+  
+    if(millis() > buttonClickTime + 1500) {  // 1.5 seconds after last moment that the button was pressed, the light goes off.
+      digitalWrite(LED_BLUE, LOW);
+    } else {
+      digitalWrite(LED_BLUE, HIGH);
+    }
   }
-}
   </script>
   <p>The code above contains a similar problem. How? Analyze it by running it and adding print-commands. Then:
     <ol type=a>
@@ -207,10 +207,10 @@ void loop() {
    <script type="text/plain" class="language-arduino">
 String helloString;
 helloString = "Hello " + "class";                  //does not work
-helloString  = String("Hello ") + "class";         // works
-helloString  = String("Hello ") + String("class"); // works
-helloString  = "Hello " + String("class");         // works
-numberString = "Hello " + String( 123 )            // also works
+helloString = String("Hello ") + "class";         // works
+helloString = String("Hello ") + String("class"); // works
+helloString = "Hello " + String("class");         // works
+helloString = "Hello " + String( 123 )            // also works
   </script>
 <p>The following is an experiment that uses this string-conversion-and-concatenation trick. Actually, each pair of commented-out lines is a little experiment in itself. Uncomment each pair in turn, en see what happens. Mail your observations and for each pair of lines, try to explain what you see.</p>
 <script type="text/plain" class="language-arduino">
@@ -219,7 +219,7 @@ void setup() {
 
   int number;
 
-  // int number = 4.3;
+  // number = 4.3;
   // Serial.println("number1: " + String(number));
   
   // number = 4/5;
@@ -250,6 +250,10 @@ void setup() {
   // isCorrect = 13;
   // Serial.println("bool4: " + String(isCorrect));
   
+}
+
+void loop() {
+  // do nothing :-)
 }
   </script>
 <ol type="a">
@@ -374,7 +378,7 @@ void setup() {
 
 <script type="text/javascript">
   function isPostcode(inputString) {
-    var inputNoSpaces = inputString.replace(" ", "");
+    var inputNoSpaces = inputString.replaceAll(" ", "");
   
     if( inputNoSpaces.length != 6 ) {
       return false;
