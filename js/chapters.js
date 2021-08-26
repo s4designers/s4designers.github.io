@@ -40,6 +40,7 @@ function appendToElement(element, children) {
 }
 
 // creates a element, but doesn't place it into the DOM
+// attributes that whose names start with $ will change the style of the element
 function createElement( tagName, attributes={}, children="") {
   const element = document.createElement(tagName);
   for( attrName in attributes ) {
@@ -532,7 +533,7 @@ function adaptPageTitle() {
       ${chapterTitle}`
       $('title').textContent = `S4D ${textSegments[1]}: ${textSegments[2]}`
   } else {
-    $('title').textContent = "S4D: " + $('h1').textContent
+    $('title').textContent = "S4D: " + titleText
   }
 }
 
