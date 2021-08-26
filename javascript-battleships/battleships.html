@@ -17,7 +17,7 @@
 <div>This should be a useful hint<div>
 <script>
 
-//EnemySquares: array with square objects that don't contain the methods. 
+/* enemySquares: array with square objects that don't contain the methods. */
 var enemySquares = [
     { state: "water", rowNr:  0, columnNr:  0 },
     { state: "water", rowNr:  0, columnNr:  1 },
@@ -172,14 +172,14 @@ var myContext = myCanvas.getContext("2d")
 var enemyCanvas = document.getElementById("enemySea")
 var enemyContext = enemyCanvas.getContext("2d")
 
-var gapSize = 3   // pixels between each square
-var numRows = 12  // number of squares that fit in the canvas vertically
-var numColumns = numRows  // a sea always has equal length and width
+var gapSize = 3            /* pixels between each square  */
+var numRows = 12           /* number of squares that fit in the canvas vertically  */
+var numColumns = numRows   /* a sea always has equal length and width  */
 var squareSize = getSquareSize()
 
 var shipSizes = [2,5,4,3,3]
 var currentShipIndex = 0
-var orientation = "horizontal"
+var placingShipsHorizontally = true  /* this used to be a variable called 'orientation' */
 
 /*
 This function calcualates the size of a squares inside of a canvas.
@@ -222,19 +222,20 @@ function insertEnemyGameMethods(squareIndex){
 /*
 Method: draws a square on a canvas context.
 */
-function drawSquare(context, text){
+function drawSquare(context){
     var x = this.columnNr * (squareSize+gapSize)
     var y = this.rowNr * (squareSize+gapSize)
     context.beginPath()
     context.fillStyle = this.getColor()
     context.rect(x, y, squareSize, squareSize)
     context.fill()
-    // Onderstaande regels kun je gebruiken om (korte) tekst te tonen in vakje.
-    // Gebruikt de 'text' parameter, maar die blijft optioneel.
     context.font = "bold 10px sans-serif"
-    context.fillStyle = "rgba(255, 255, 255, 0.8)" // semi-transparent white
+    context.fillStyle = "rgba(255, 255, 255, 0.8)" /* semi-transparent white */
     var squareIndex = this.rowNr*numColumns+this.columnNr 
     context.fillText(squareIndex, x + 5, y + 15)
+    /* TIP: you can add fillText commands here to show more info (such as state, 
+            or ship name) in each square
+    */
 }
 
 /*
@@ -287,32 +288,33 @@ function enemySeaColors() {
 }
 
 /*
-Function checks whether a boat is allowed to be placed on a certain starting position..
+Function checks whether a ship is allowed to be placed on a certain starting position..
 */
 function isValidPosition(firstSquareIndex, currentShipSize){
     var isValid = true
-    if(orientation == "horizontal") {
-        //ships should not cross the border
+    if( placingShipsHorizontally ) {
+        /* ships should not cross the border */
         var colNr = mySquares[firstSquareIndex].columnNr  
         var numAvailableSquares = numColumns - colNr
         if(numAvailableSquares < currentShipSize ){
             isValid = false
         }
-        //ships shouldn't overlap
+        /* ships shouldn't overlap */
         for(var i = firstSquareIndex; i < firstSquareIndex + currentShipSize; i++) {
             if(mySquares[i] != undefined && mySquares[i].state == "ship") {
                 isValid = false
             }
         }
-    }else if (orientation == "vertical"){
-        //TODO: make it work for the vertical orientation
+    }else {
+        /* TODO: make it work for when the ship will be placed vertically */
     }
     return isValid
 }
 /*
-Draw a boat, starting on the firstSquareIndex but with a length depending on the length of the current ship.
+Place a ship, by changing the state of squares.
+Starting on the firstSquareIndex but with a length depending on the length of the current ship.
 */
-function placeBoat(firstSquareIndex){
+function placeShip(firstSquareIndex){
     var currentShipSize = shipSizes[currentShipIndex]
     if(isValidPosition(firstSquareIndex, currentShipSize)){
         for(var i = firstSquareIndex; i < firstSquareIndex + currentShipSize; i++) {
@@ -320,12 +322,12 @@ function placeBoat(firstSquareIndex){
         }
         currentShipIndex += 1
     }
-    //TODO take into account the orientation of the ship.
-
+    /* TODO: this function must also be able to place ships vertically */
 }
 
 /*
-Draws an empty sea on our canvas. Also fills the mySquares array.
+Creates a data-structure for the player's sea, without any ships in it. 
+Also draws each square after it's object has been added to the data-structure.
 */
 function createMySea(){
     for (var rowNumber = 0; rowNumber < numRows; rowNumber++) {
@@ -338,7 +340,9 @@ function createMySea(){
 }
 
 /*
-Draws the enemy sea based on the pre-filled enemySquares array. Also inserts methods into the objects in that array.
+Creates the data-structure for the enemy sea, based on the pre-filled enemySquares array. 
+Also inserts methods into the objects in that array.
+And draws each square after it's object has been added to the data-structure.
 */
 function createEnemySea(){
     for (rowNumber = 0; rowNumber < numRows; rowNumber++) {
@@ -379,20 +383,20 @@ function playComputerTurn(){
 
 /*
 The "clickEvent" parameter refers to the "click event" triggering this function. This event is an object containing all sorts of information concerning the click. Coordinates is one of those pieces of information.
-The function attempts to place a boat.
-If there is no more boat to be placed, the function draws the enemy sea and starts the game.
+The function attempts to place a ship.
+If there are no more ships to be placed, the function draws the enemy sea and starts the game.
 */
 function gameSetupRound(clickEvent) {
     mouseX = clickEvent.offsetX
     mouseY = clickEvent.offsetY
 
-    //Check to sea whether or not the click was on one of the squares
+    /* Check to sea whether or not the click was on one of the squares */
     for (var i = 0; i < mySquares.length; i++) {
         if (mySquares[i].isClicked(mouseX, mouseY)) {
-            placeBoat(i)
+            placeShip(i)
             if(currentShipIndex == shipSizes.length){
                 createEnemySea()
-                //Change the onclick listeners to start the game.
+                /* Change the onclick listeners to start the game. */
                 document.getElementById("enemySea").onclick = playRound
                 document.getElementById("mySea").onclick = ""
             }
