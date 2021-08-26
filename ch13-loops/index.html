@@ -537,82 +537,92 @@
     </section>
     <div class="theory">
         <h2>Using loops in arduino</h2>
-        <p>In arduino loops can be used for reasons similar to those in javascript, but there are some differences. In this theory block, we’ll quickly discuss looping though arrays and a different kind op loop in arduino.</p>
+        <p>In Arduino loops can be used for reasons similar to those in Javascript, but there are some differences. In this theory block, we’ll quickly discuss looping though arrays and a very different use of loops in Arduino.</p>
         <h4>Arrays in arduino</h4>
-        <p>We have seen that for-loops are the best way to loop through arrays. This is also true in arduino, but because arrays in arduino do not have a <code>.length</code> property like in javascript, you'll just have to use the length of the array as a number. Luckily, you already needed this number when declaring the array. In the code below, note the <code>4</code> in the array declaration as well as the <code>4</code> in the for-loop condition.</p>
+        <p>We have seen that for-loops are the usual/'best' way to loop through arrays. This is also true in Arduino, but because arrays in Arduino do not have a <code>.length</code> property like in Javascript, you'll just have to use the length of the array as a number. Luckily, you already needed this number when declaring the array. In the code below, note the <b><code>4</code></b> in the array declaration as well as the <b><code>4</code></b> in the for-loop condition.</p>
         
         <script type="text/plain" class="language-arduino">
-#include "breadboard.h"
-int ledPins[4] = {LED_RED, LED_YELLOW, LED_BLUE, LED_GREEN};
+#include "s4d_breadboard.h"
+int ledPins[4] = {LED_RED, LED_YELLOW, LED_GREEN, LED_BLUE};
 
 void setup(){
-initializeBreadboard();
-  for(int i = 0; i < 4; i++){
-    digitalWrite(ledPins[i], HIGH);
-    delay(100);
-    digitalWrite(ledPins[i], LOW);  
-    delay(100);
+  initializeBreadboard();
+  // quickly 'walk' the 4 leds from right to left
+  for( int idx = 0; idx < 4; idx++ ) {  
+    digitalWrite(ledPins[idx], HIGH);
+    delay(150);
+    digitalWrite(ledPins[idx], LOW);  
+    delay(20);
   }
 }
 
 void loop(){
-  
+  // ...do nothing
 }
         </script>
       <h4>Custom loops in arduino</h4>
-      <p>Loops in arduino can also be used to change the mode of your program. An example of a mode change is when you have an alarm clock and you want to change the alarm time. You have to press a button to enter the "change alarm mode", and from that moment on, all buttons get different functions which enable you to change the alarm time. Once you are done, usually after a certain button is pressed or after some time has lapsed, the normal mode is resumed. </p>
-      <p>A version of such a program is shown below. In it, the loop is constantly listening for button presses. If one happens, the program enters the corresponding mode. If BUTTON2 is pressed while in such a mode, something happens, depending on the mode. If BUTTON1 is pressed, the program returns to the loop because the while condition becomes false.</p>
+      <p>Loops in arduino can also be used to change the 'mode' of your program. An example of a mode change is when you have an alarm clock and you want to change the alarm time. You have to press a button to enter the "change alarm mode", and from that moment on, all buttons get different functions which enable you to change the alarm time. Once you are done, you press a certain button (or do nothing for some time), and the normal mode is resumed. </p>
+      <p>The program below has a few modes. Its loop-function is constantly listening for button presses. If one happens, the program enters the corresponding mode. If BUTTON2 is pressed while in such a mode, something happens, depending on the mode. If BUTTON1 is pressed, the program returns to the loop because the while condition becomes false.</p>
       <script type="text/plain" class="language-arduino">
 #include "s4d_breadboard.h"
+
+// 'const' makes a variable read-only: it can't change.
+// We call such variables 'constants', and they also don't use any memory.
+const int BLINK_BUTTON = BUTTON1;  
+const int BEEP_BUTTON = BUTTON2;
 
 void setup(){
   initializeBreadboard();
 }
 
 void loop(){
-  OLED.print( "Normal mode" ) ;
-  if (digitalRead(BUTTON1) == HIGH) {
-    delay(200); // delay is to give user the chance to release the button
+  OLED.print( "Normal Mode" ) ;
+  if (digitalRead(BLINK_BUTTON) == HIGH) { 
+    delay(200); // this delay gives user the chance to release the button
     blinkMode();
   }
 
-  if(digitalRead(BUTTON2) == HIGH){
-    delay(200); // delay is to give user the chance to release the button
+  if(digitalRead(BEEP_BUTTON) == HIGH){
+    delay(200); // this delay gives user the chance to release the button
     beepMode();
   }
 }
 
+//////////////  beep mode  //////////////
+
 void beepMode(){
-  OLED.print( "beepMode" )  ;
-  while (digitalRead(BUTTON1) == LOW ) {
+  OLED.print( "Beep Mode" );
+  while (digitalRead(BEEP_BUTTON) == LOW ) {   // as long as the button isn't pressed again
     beep();
   }
-  delay(200); // delay is to give user the chance to release the button
+  // the loop ends when the user presses the button a second time
+  delay(200); // this delay gives user the chance to release the button
 }
+
+void beep() {
+  playTone(1500, 40);  // high tone, for 40 milliseconds
+  delay(20);
+}
+
+//////////////  blink mode  //////////////
 
 void blinkMode(){
-  OLED.print( "blinkMode" )  ;
-  while (digitalRead(BUTTON1) == LOW) {
-    flashRedLED();
+  OLED.print( "Blink Mode" );
+  while (digitalRead(BLINK_BUTTON) == LOW) {  // as long as the button isn't pressed again
+    blinkRedLED();
   }
-  delay(200); // delay is to give user the chance to release the button
+  // the loop ends when the user presses the button a second time
+  delay(200); // this delay gives user the chance to release the button
 }
 
-void flashRedLED() {
+void blinkRedLED() {
   digitalWrite(LED_RED, HIGH);
   delay(40);
   digitalWrite(LED_RED, LOW);
   delay(20);
 }
-
-void beep() {
-  tone(BUZZER, 1500 );
-  delay(40);
-  noTone(BUZZER);
-  delay(20);
-}
-
   </script>
+
   <h4>Empty loops in arduino</h4>
   <p>Another thing that sometimes happens in arduino program is using while-loops with no code inside, that repeat "nothing" forever until the condition becomes true. These loops can come in very handy if you want nothing to happen until a button is pressed, or a sensor reading exceeds a certain value. The excersise below is about those loops. </p>
 </div>  
@@ -631,7 +641,7 @@ void waitForButtonPress(){
   while( ... ){
 
   }
-  delay(200);
+  delay(200); // this delay gives user the chance to release the button
 }
 
 void loop(){
@@ -641,10 +651,7 @@ void loop(){
 }
 
 void beep() {
-  tone(BUZZER, 1500 );
-  delay(100);
-  noTone(BUZZER);
-  delay(100);
+  playTone(1500, 100 );
 }
         </script>
         <p>The given code should (when complete) wait for a user to press a button until executing the beep command.</p>
@@ -662,63 +669,116 @@ void beep() {
         <p>Make a program that has the following features:</p>
         <ul>
           <li>5 seconds after a button is pressed, the RED LED turns on.</li>
-          <li>If a user presses a button before the 5 seconds have passed, a tone should play, notifying the user he/she is too early.</li>
+          <li>After the first button press, during the 5 second wait: Whenever the user presses any button before the 5 seconds have passed, a short tone should play (perhaps as a hint that the buttons don't do anything).</li>
         </ul>
-        <p>Using the <code>delay(5000)</code> function will not work in this instance as the whole program freezes while the delay is being executed. Build your own custom delay function called <code>waitMode(5000);</code>using the <code>millis()</code> function and a while loop. Note that you don't have to leave the while loop empty. I want to be able to call my function like this <code>waitMode(5000);</code> </p>
+        <p>Using the <code>delay(5000)</code> function will not work in this situation because it freezes the whole program while the delay is being executed. Build your own custom delay function called <code>waitMode(5000);</code>using the <code>millis()</code> function and a while-loop. Note that you don't have to leave the while-loop empty. You want to be able to call your function like this <code>waitMode(5000);</code> </p>
         <hint steps=1>
-  <ul>
-    <li>Does the function called with the <code>waitMode(5000)</code> command have a parameter? </li>
-    <li>Does the function called with the <code>waitMode(5000)</code> command have a return value? </li>
-    <li>What is condition of the while-loop inside the <code>waitMode</code> function? </li>
-    <li>What code should be executed inside of the while-loop? </li>
-</ul>
-</hint>
+          <ul>
+            <li>Does the function called with the <code>waitMode(5000)</code> command have a parameter? </li>
+            <li>Does the function called with the <code>waitMode(5000)</code> command have a return value? </li>
+            <li>TIP: add the following command to your function, at the start: <br><code>unsigned long startTime = millis();</code></li>
+            <li>What is condition of the while-loop inside the <code>waitMode</code> function? <br>Can you use the <code>startTime</code> variable to check if 5 seconds have passed since the start of the function-call?</li>
+            <li>What code should be executed inside of the while-loop? </li>
+        </ul>
+        </hint>
 <answer buttontext="mail your code"></answer>
 </section>
 
  <section class="assignment">
         <h3>13.11: Kitchen Timer </h3>
-        <p>In this assignment, you'll build a kitchen timer using while loops in arduino.</p>
+        <p>You don't have to use while-loops to create modes in your Arduino program. Another method uses:</p>
+        <ol>
+          <li>
+            <b>A variable</b> to store what mode the program is in.<br>
+            If you have only two modes, it's nicest to use a boolean. Otherwise, use an integer.
+          </li>
+          <li><b>An if-statement</b> (or more than one) in the loop function to check the mode (variable) and do different things in different modes.</li>
+        </ol>
+        <p>In this assignment, you'll build a kitchen timer with two modes.</p>
+        <p>Note that the pause-state is handled using a mode variable instead of a while-loop. (A while-loop would have worked just as well.)</p>
         <script type="text/plain" class="language-arduino">
 #include "s4d_breadboard.h"
-unsigned long beepTime = 15000;
-bool isRunning = true;
-unsigned long timeDifference = 0;
+
+const int PAUSE_BUTTON = BUTTON1;
+const int ADJUST_BUTTON = BUTTON2;
+
+bool isPaused = false;           // stores the app mode
+
+unsigned long beepTime = 15000;  // when should the timer go off (milliseconds)
+unsigned long pauseStart;        // see function 'changePauseState'
 
 void setup(){
   initializeBreadboard();
+  OLED.printTop("running");
 }
 
 void loop(){
-  if(digitalRead(BUTTON1) == HIGH){
-    if(isRunning){
-      OLED.print("paused");
-      timeDifference = beepTime - millis();
-    }else{
-      beepTime = millis() + timeDifference;
-    }
-    isRunning = !isRunning;
-    delay(200); // delay is to give user chance to release button
+
+  if(digitalRead(PAUSE_BUTTON) == HIGH) {  // The button is pressed.
+    delay(200);                            // Delay gives user chance to release button
+    changePauseState();
   }
 
-  if(isRunning){
-    OLED.print((beepTime - millis()) / 1000 );
-    if(millis() > beepTime){
-      beep();
+  if(digitalRead(ADJUST_BUTTON) == HIGH) {  // The button is pressed.
+    delay(200);                             // Delay gives user chance to release button
+    // your code here...
+  }
+
+  if( ! isPaused ) {                       // Normal operation: show time and check if timer is done.
+    long timeLeft = beepTime - millis();   // (Why isn't timeLeft an *unsigned* long?)
+    OLED.printBottom( timeLeft / 1000 );
+    if( timeLeft <= 0 ) {                  // Timer must 'go off'.
+      beepMode();                          // Keep beeping until button-press.
+      waitForeverMode();                   // Do nothing until the Arduino is reset.
     }
   }
 }
 
-void beep() {
-  tone(BUZZER, 1500 );
-  delay(100);
-  noTone(BUZZER);
-  delay(100);
+
+//////////  mode changes  //////////////
+
+void changePauseState() {
+  isPaused = ! isPaused;                 // Toggle the 'isPaused' state.
+  if( isPaused ) {                       // We're entering paused state
+    OLED.printTop("paused");
+    pauseStart = millis();               // Store current time to be able to calculate
+                                          //   the pause duration when pause ends.
+  } else {                               // else: We're leaving the paused-state
+    OLED.printTop("running");
+    unsigned long pauseDuration;
+    pauseDuration = millis() - pauseStart;
+    beepTime = beepTime + pauseDuration; // Because millis() keeps increasing during pauses,
+                                          //   we need adjust the beepTime with the duration that
+                                          //   the timer was paused.
+  }
+}
+
+//////////  timer goes off  //////////////
+
+void beepMode(){
+  OLED.printTop( "timer finished" );
+  while ( digitalRead(BUTTON1) == LOW ) {  // as long as the button isn't pressed
+    digitalWrite( LED_GREEN, HIGH );
+    playTone(1500,50);
+    digitalWrite( LED_GREEN, LOW );
+    delay(30);
+  }
+  // the loop ends when the user presses the button
+}
+
+void waitForeverMode() {
+  OLED.printTop( "Use reset button to" );
+  OLED.printBottom( "restart the timer." );
+  while( true ) {                             // runs forever! (why?)
+    // do nothing...
+  }
 }
         </script>
-        <p>The given code should beep after 15 seconds have passed. There is no option to change the time yet.</p>
-        <p>When BUTTON2 is clicked, the program should enter "change time mode". Make a function with a while-loop that represents this mode.</p>
-        <p>While in "change time mode", the display should show the position of the potmeter * 100. If the button is pressed, use this number to update the beepTime variable. Make sure the timer is turned on.</p>
+        <p>The given code beeps after 15 seconds have passed. There is no option to change the time yet. Add the following functionality to the program:</p>
+        <ol>
+          <li>When BUTTON2 is clicked, the program should enter "change time mode". Decide for yourself if you want to use  a variable (and an if-statement) for this mode, or a function with a while-loop.</li>
+          <li>While in "change time mode", the display should show the position of the potmeter * 100. If the button is pressed, use this number (potmeter * 100) to update the beepTime variable. Make sure the timer is turned on.</li>
+        </ol>
 <answer buttontext="mail your code"></answer>
 </section>
 
