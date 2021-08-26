@@ -121,24 +121,24 @@
       </ul>
     </p>
     
-    <h3><span style="font-size: larger">👉</span> 17.4: table structure to code <span class="task-type">(required task)</span></h3>
+    <h3><span style="font-size: larger">👉</span> 17.5: table structure to code <span class="task-type">(required task)</span></h3>
     <p>By now, you have a variable that knows if the alarm is turned on, and a function that can tell you if the door is closed. It is time to create the main structure of the loop function.</p>
     <p>Create, inside the <code>loop()</code> function, a combination of if-statements that decide in which of the four possible states the burglar alarm is in: alarm-on/door-open, alarm-on/door-closed, alarm-off/door-open, or alarm-off/door-closed. Use print commands to check if you have got it right.</p>
     
-    <h3><span style="font-size: larger">👉</span> 17.5: table content to comments <span class="task-type">(required task)</span></h3>
+    <h3><span style="font-size: larger">👉</span> 17.6: table content to comments <span class="task-type">(required task)</span></h3>
     <p>Your table contains remarks about what things should be done in which of the four states. Describe these features in <code>//TODO:&hellip;&hellip; </code> comments that you add in the correct parts of structure of if-statements.</p>
 
-    <h3><span style="font-size: larger">👉</span> 17.6: status lights show state <span class="task-type">(required task)</span></h3>
+    <h3><span style="font-size: larger">👉</span> 17.7: status lights show state <span class="task-type">(required task)</span></h3>
     <p>Refer to your table again, and make sure that the correct LED is burning, depending on the program state.</p>
     <p>Keep in mind that when you turn one LED on, the others must be turned off. Perhaps you could make a function for this that you can re-use in several places?</p>
     
-    <h3><span style="font-size: larger">👉</span> 17.7: alarm switch depends on program state <span class="task-type">(required task)</span></h3>
+    <h3><span style="font-size: larger">👉</span> 17.8: alarm switch depends on program state <span class="task-type">(required task)</span></h3>
     <p>Perhaps you current program allows the user to always toggle the on/off state of the alarm. Now is the time to change that. You should have <code>//TODO:&hellip;</code> comments that say when it is OK to turn the alarm on or off.</p>
     <p>Make sure your program only toggles the alarm's on/off state when it is OK to do so. It is preferable to place the code at the correct places inside the main if-statements structure where the TODO-comments are.</p>
     <p>If you find yourself duplicating code, consider creating a function that holds the code, and is called from two (or more) different places. Perhaps you need parameters for this; perhaps not.</p>
     <p>Show a message on the OLED display to tell the user that she can turn the alarm on (or off).</p>
     
-    <h3><span style="font-size: larger">👉</span> 17.8: mayhem! <span class="task-type">(required task)</span></h3>
+    <h3><span style="font-size: larger">👉</span> 17.9: mayhem! <span class="task-type">(required task)</span></h3>
     <p>If the alarm is on, and the door is opened, have your program wait for 20 seconds, and then start making noise, blinking lights and flashing text on the display to alert the residents, security personnel and guard dogs of the intrusion!</p>
     <p>It must not be possible to prevent or stop the spectacle by closing the door again (or turning off the alarm).</p>
     
@@ -208,10 +208,10 @@
       </script>
     </div>
 
-    <h3><span style="font-size: larger">👉</span> 17.9: code <span class="task-type">(required task)</span></h3>
+    <h3><span style="font-size: larger">👉</span> 17.10: code <span class="task-type">(required task)</span></h3>
     <p>Make a global variable to hold a 3 digit code. This will be an array with 3 integers.</p>
     
-    <h3><span style="font-size: larger">👉</span> 17.10: potentiometer to digit <span class="task-type">(required task)</span></h3>
+    <h3><span style="font-size: larger">👉</span> 17.11: potentiometer to digit <span class="task-type">(required task)</span></h3>
     <p>We're going to let the user enter a 3-digit code to disable the alarm before it activates. As a preparation, we need to turn the potentiometer into a device for inputting digits.</p>
     <ul>
       <li>Write a function that reads the potentiometer, and returns a digit between 0 and 9.</li>
@@ -221,7 +221,7 @@
     <p>You don't have to do anything (yet) with the digits you read. That will be the next task. For now, try to get a result that is similar to the GIF below:</p>
     <img src="./1-cijfer-geen-tijd-korter.gif" style="max-width:300px">
     
-    <h3><span style="font-size: larger">👍</span> 17.11: be informative <span class="task-type">(additional task)</span></h3>
+    <h3><span style="font-size: larger">👍</span> 17.12: be informative <span class="task-type">(additional task)</span></h3>
     <p>Inform the user, while the 20-second countdown is in progress, how much seconds she has left before the alarm will activate.</p>
     <p>You can use the OLED.printTop() and OLED.printBottom() functions to print the digit (from the potmeter) and the time independently. If you like bigger letters, use the OLED.print() function. In that case you must combine the values into a single string before calling OLED.print(), like this:</p>
     <script type="text/plain" class="language-arduino" data-line="3">
@@ -231,15 +231,15 @@
       OLED.print(displayString); // output: 5 : 10    
     </script>
     
-    <h3><span style="font-size: larger">👉</span> 17.12: turning off the alarm with the 3-digit code <span class="task-type">(required task)</span></h3>
+    <h3><span style="font-size: larger">👉</span> 17.13: turning off the alarm with the 3-digit code <span class="task-type">(required task)</span></h3>
     <p>Let's allow the user to enter the 3-digit code and turn off the alarm during the 20-second count-down.</p>
     <p>When, during the countdown, the user presses the OK-button, the program must check if the current potmeter-digit is the same as the first digit in the code. If it is the same, and the user presses OK again, the program checks against the second code-digit. If the third digit matches at the third OK-button press, the alarm must be turned off. </p>
 
-    <h3><span style="font-size: larger">👉</span> 17.13: checking after all digits have been entered <span class="task-type">(required task)</span></h3>
+    <h3><span style="font-size: larger">👉</span> 17.14: checking after all digits have been entered <span class="task-type">(required task)</span></h3>
     <p>It is better if you check the correctness of the code <i>after</i> all three digits have been entered.</p>
     <p>Store the digits that the user enters (with the OK-button) and wait for all three digits to havve been entered before checking them against the secret code and turning off the alarm.</p>
 
-    <h3><span style="font-size: larger">👍</span> 17.14: user-friendlier <span class="task-type">(additional task)</span></h3>
+    <h3><span style="font-size: larger">👍</span> 17.15: user-friendlier <span class="task-type">(additional task)</span></h3>
     <p>Improve the user interface.</p>
     <ul>
       <li>While the user is entering digits, the digits that have already been entered should remain visible.</li>
@@ -247,12 +247,12 @@
     </ul>
     <p>See the animated GIF below for an illustration of how that would work.</p>
 
-    <h3><span style="font-size: larger">👍</span> 17.15: even more user-friendlier <span class="task-type">(additional task)</span></h3>
+    <h3><span style="font-size: larger">👍</span> 17.16: even more user-friendlier <span class="task-type">(additional task)</span></h3>
     <p>While the user is entering digits, the one that is being entered should be blinking. This should not change the responsiveness of your interface.</p>
     <img src="./drie-cijfers-en-knipper.gif" style="max-width:300px">
 
 
-    <h3><span style="font-size: larger">👉</span> 17.16: changing the 3-digit code <span class="task-type">(required task)</span></h3>
+    <h3><span style="font-size: larger">👉</span> 17.17: changing the 3-digit code <span class="task-type">(required task)</span></h3>
     <p>If the door is closed, <i>and</i> the alarm is turned off, the user can change the 3-digit code.</p>
     <ul>
       <li>The user has to press the Cancel-button (in the correct program state) to start changing the code.</li>
@@ -264,10 +264,10 @@
     <p>TIP 1: Since the UI is mostly the same as what you built in tasks 17.10 to 17.15, try to re-use the code. Place the code in functions, and give the functions parameters to make them usable for both disabling the alarm and for changing the code.</p>
     <p>TIP 2: Create a separate while-loop for handling the code-changing phase. It is OK because all other program functions are blocked during this phase, and it is better because the code inside the loop() function doesn't need to deal with changed meaning of the button(s).</p>
 
-    <h3><span style="font-size: larger">👍</span> 17.17: canceling the code change  <span class="task-type">(additional task)</span></h3>
+    <h3><span style="font-size: larger">👍</span> 17.18: canceling the code change  <span class="task-type">(additional task)</span></h3>
     <p>Allow the user to cancel the code change. While the user is entering digits for the new code, she can press the Cancel button. This has a different effect from when the user presses the Cancel-button while trying to disable the alarm. Now, the code-changing phase should simply stop. The 3-digit code remains unchanged, and the system goes back to normal operations.</p>
 
-    <h3><span style="font-size: larger">👏</span> 17.18: the great refactoring <span class="task-type">(bonus task)</span></h3>
+    <h3><span style="font-size: larger">👏</span> 17.19: the great refactoring <span class="task-type">(bonus task)</span></h3>
     <p>While programming, it is not uncommon for functionality of elements in your to change a bit. This can be a problem for the readability of your code if you did not carefully think about renaming the affected functions and variables whilst making your change. This assignment is about cleaning up your final code to make it more readable and more intelligent. Follow the steps and refactor your code before handing it in. Refactoring is the proces of looking back on working code and making it better.</p>
     
     <div class="hint-content">Backup your code before proceeding!</div>
@@ -285,7 +285,7 @@
       <li>Do comments still describe the code they are commenting about? If not, change them.</li>
     </ul>
     
-    <h3><span style="font-size: larger">👏</span> 17.19: cool extras <span class="task-type">(bonus task)</span></h3>
+    <h3><span style="font-size: larger">👏</span> 17.20: cool extras <span class="task-type">(bonus task)</span></h3>
     <p>If you're happy with your solutions to the required tasks, you can see if you can extend the burglar alarm with extra features. Discuss your idea with one of the teachers to check if your idea is feasibile and helps score full marks. It is also cool if you have an interesting organization of your code in mind, or want to try out some new language features.</p>
 
 
