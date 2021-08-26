@@ -30,7 +30,7 @@
   <h3>15.2: your first method</h3>
   <section class="assignment">
   <h4>15.2.a: salut!</h4>
-  <p>15.2Take this code, and give the object a method that calculates a proper salutation for the person:</p>
+  <p>Take this code, and give the object a method that calculates a proper salutation for the person:</p>
   <script type="text/plain" class="language-js">
     function createPerson( firstName, lastName, gender, title) {
       return { firstName: firstName, 
@@ -41,13 +41,13 @@
     }
 
     var person1 = createPerson('Harry', 'Potter', 'male', null )  // null used to specify no title
-    console.log( person1.sulutation() )  // => "Mr."
+    console.log( person1.salutation() )  // => "Mr."
     var person2 = createPerson('Petunia', 'Dursley', 'female', null ) 
-    console.log( person2.sulutation() )  // => "Mrs."
+    console.log( person2.salutation() )  // => "Mrs."
     var person3 = createPerson('Minerva', 'McGonagall', 'female', 'professor' )
-    console.log( person3.sulutation() )  // => "professor"
+    console.log( person3.salutation() )  // => "professor"
     var person4 = createPerson('Tinky', 'Winky', 'other', null )
-    console.log( person4.sulutation() )  // => "Mx."                // see https://en.wikipedia.org/wiki/Mx_(title)
+    console.log( person4.salutation() )  // => "Mx."                // see https://en.wikipedia.org/wiki/Mx_(title)
   </script>
   <ul>
     <li>If the person has a title (title is not null or undefined), the title is the salutation</li>
@@ -79,7 +79,7 @@
   <p>Download the final code for the moving squares from the video: <download href="./methodsOnCanvas-v2.html"></download></p>
   <ul>
     <li>Add a method to the square-objects that make them stop moving.</li>
-    <li>Add a button to the HTML that stops both buttons by calling your method.</li>
+    <li>Add a button to the HTML that stops both squares by calling your method.</li>
   </ul> 
   <answer buttontext="mail your code"></answer>
   </section>
@@ -258,14 +258,14 @@
   </script>
 
   <section class="assignment">
-  <h4>15.8.a: cacophony</h4>
+  <h4>15.9.a: cacophony</h4>
   <p>Add some code that make noise for every animal in the list. Your code should work with both short and long lists of dogs, cats, pigs and ducks.</p>
   <p>Compare the strings that are sent to the <code>alert()</code> command to the output on the console. Explain the output on the console.</p>
   <answer buttontext="mail your both the code, and your explanation"></answer>
   </section>
   
   <section class="assignment">
-  <h4>15.8.b: method time</h4>
+  <h4>15.9.b: method time</h4>
   <p>Give each animal a second method. The new method should do what the animalMakeNoise function does, but just for that animal object. Also, skip the <code>alert()</code>; it is OK to just output to the console.</p>
   <p>Adapt the code you wrote in the previous exercise to work with the method instead of the function.</p>
   <p>The result should be a program that does exactly the same thing (except for the alerts). This is called a <i>refactoring</i>. Refactorings should not change what the code does, but they are intended to make the program simpler. Do you think that this refactored code is more, or less complicated than the code before?</p>
@@ -273,26 +273,26 @@
   </section>
 
   <section class="assignment">
-  <h3>15.9: templates again</h3>
+  <h3>15.10: templates again</h3>
   <p>Find the template render function you created in exercise 13.8, upto and including 13.8.f. Let's make methods. (If you're unhappy with your solution to that exercise, you may use <a href="../ch13-loops/templates.html">this one</a>.)</p>
   <p>Replace the playlist with this one:</p>
   <script type="text/plain" class="language-js">
     var thePlaylist =
     [
-      { advertImage: "chipmunk.scripting.school/ch15-methods/images/RollingStonesMagazine500.jpg", url: "https://www.rollingstone.com/music/music-lists/500-greatest-songs-of-all-time-151127/"}
+      { advertImage: "elk.scripting.school/ch15-methods/images/RollingStonesMagazine500.jpg", url: "https://www.rollingstone.com/music/music-lists/500-greatest-songs-of-all-time-151127/"},
       { title: "Like a Rolling Stone",          artist: "Bob Dylan",          album: "Highway 61 Revisited",                   duration: 369,  youtubeId: "qpxTvpmOY6k",  spotifyId: "3AhXZa8sUQht0UEdBJgpGc",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135381-932d1e7ffbb6e74894243b088dbabd54a60920d8.jpg" },
       { title: "(I Can't Get No) Satisfaction", artist: "The Rolling Stones", album: "Out Of Our Heads",                       duration: 222,  youtubeId: "OZ8GZ3PFVGM",  spotifyId: "57J2znxukXsXzS3XPuZ1TG",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135474-0831507a5835bcabad247ca86d01fe22a00bd28d.jpg" },
       { title: "Imagine",                       artist: "John Lennon",        album: "Imagine",                                duration: 187,                             spotifyId: "7pKfPomDEeI4TPT6EOYjn9",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135475-970456d7020ae1d76fc52d47d84379ddc127d7de.jpg" },
       { title: "What's Going On",               artist: "Marvin Gaye",        album: "What's Going On",                        duration: 232,                             spotifyId: "6h2vZPWSWsRJ0ps91epUgT",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135479-e2ff971367c0b40140a4acb66197807f391b337b.jpg" },
       { title: "Respect",                       artist: "Aretha Franklin",    album: "I Never Loved a Man the Way I Love You", duration: 147,  youtubeId: "zF-gQP91iIE",  spotifyId: "7s25THrKz86DM225dOYwnr",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135481-9fc4d7e00bc5a131a0bd0382295c5a30edc3c9c4.jpg" },
       { title: "Good Vibrations",               artist: "The Beach Boys",     album: "Smiley Smile/Wild Honey",                duration: 217,                             spotifyId: "2oF7FZHIJbzjeEXZ3D0Ku4",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135491-04b899351028bbb03fb423d8b1461a895d3e6883.jpg" },
-      { advertImage: "chipmunk.scripting.school/ch15-methods/images/BnL-lounge.jpg", url: "https://nymag.com/strategist/article/best-lounge-chairs-with-back-support.html"}
+      { advertImage: "elk.scripting.school/ch15-methods/images/BnL-lounge.jpg", url: "https://nymag.com/strategist/article/best-lounge-chairs-with-back-support.html"},
       { title: "Johnny B. Goode",               artist: "Chuck Berry",        album: "The Anthology",                          duration: 161,                             spotifyId: "3k80YuKn2pV1J02dfQtCVB",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135495-b39e2c030c57d05f17c127ebccb45e9161ed1650.jpg" },
       { title: "Hey Jude",                      artist: "The Beatles",        album: "1",                                      duration: 425,                             spotifyId: "3H7sv3Krffn15BufUuXzf3",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135498-1e0ea8d22030efb2f875509bb15e82262baa3cfc.jpg" },
       { title: "Smells Like Teen Spirit",       artist: "Nirvana",            album: "Nevermind",                              duration: 301,  youtubeId: "hTWKbfoikeg",  spotifyId: "3oTlkzk1OtrhH8wBAduVEi",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135502-e78198df085d95aa1dd378c14cbf0f15d450da17.jpg" },
       { title: "What'd I Say, Pt. 1 & 2",       artist: "Ray Charles",        album: "The Ultimate Hits Collection",           duration: 304,                             spotifyId: "2eB8n7IbMSd0aoh0UtsRZK",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135505-e5ea75da3d8162667d9894c06bee85b807f5d189.jpg" },
       { title: "My Generation",                 artist: "The Who",            album: "My Generation",                          duration: 201,  youtubeId: "uswXI4fDYrM",  spotifyId: "4kxrawSkeAoJiASQArwqYO",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135508-6107f93612ed48c1ff5a7c7dced718ea5d2580a8.jpg" },
-      { advertImage: "chipmunk.scripting.school/ch15-methods/images/BnL-Axiom.jpg", url: "https://www.pixar.com/feature-films/walle"}
+      { advertImage: "elk.scripting.school/ch15-methods/images/BnL-Axiom.jpg", url: "https://www.pixar.com/feature-films/walle"},
       { title: "A Change Is Gonna Come",        artist: "Sam Cooke",          album: "Portrait of a Legend 1951-1964",         duration: 191,                             spotifyId: "7aXPwuC5qjhT0ddjHqe64o",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135512-9cd200d1136820cefc0123d8915a192daf7909ee.jpg" },
       { title: "Yesterday",                     artist: "The Beatles",        album: "Help!",                                  duration: 125,                             spotifyId: "1e0hllQ23AG0QGFgezgLOq",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135514-892128e548dcb6711821ee8c676cce3c5f0e51ea.jpg" },
       { title: "Blowin' in the Wind",           artist: "Bob Dylan",          album: "The Freewheelin' Bob Dylan",             duration: 165,                             spotifyId: "18GiV1BaXzPVYpp9rmOg0E",  imageUrl: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135382-eb0a765e70698726b457176819b8deca6bad2706.jpg" },
@@ -321,24 +321,47 @@
       Songs that do not have a youtubeId should not have a clickable title.
     </li>
   </ol>
-  <p>We want all items to appear in the webpage. Our old render function, and the old song template aren't enough enymore. We need extra template(s), and&mdash;perhaps&mdash;extra render functions.</p>
+  <p>We want all items to appear in the webpage. Our old render function, and the old song template aren't enough enymore. We need an extra template for ads, and an extra render function.</p>
   <p>Solve the problem using polymorphism: using objects that store different functions under the same property name. </p>
-  <p>Before you start programming, make a decision: Will you use&hellip;</p>
+  <!-- <p>Before you start programming, make a decision: Will you use&hellip;</p>
   <ul>
     <li>&hellip;<i>a single render function for the render method?</i></li>
     <li>&hellip;<i>two different functions for the render method</i> (e.g. one for ads, and one for songs)? Or&hellip;</li>
     <li>&hellip;<i>three different functions for the render method</i>? (one for ads, one for songs <i>with</i> a <code>youtubeId</code>, and one for songs <i>without</i> one)</li>
+  </ul> -->
+  <ul>
+    <li>Add the following code to your program:
+      <script type="text/plain" class="language-js">
+        function renderAdvert() {
+          return '<img src="' + this.advertImage + '">'
+        }
+
+        function renderSong() {
+          return "<h2>" + this.title + "</h2>"
+        }
+      </script>
+    </li>
+    <li>
+      Change thePlayList: give every object a proprty called <i>render</i>. The value of the property should be one of the two functions from the previous bullet.
+    </li>
+    <li>Change the code that renders the entire playlist (with the for-loop): Instead of calling <i>renderTemplate</i>, it should call the render-<i>method</i> of every item in the playlist.</li>
+    <li>
+      Now, the page does show ads, and it shows the title of each song. But it no longer uses the template for songs, and we can't play the songs anymore.<br>
+      Make sure that the program uses the template for songs (again), <i>by changing the method for songs</i>.
+    </li>
+    <li>Change the method for ads: If the user clicks on the image, the browser should go to the page in the 'url'-property of the ad. (You can do this by creating a hyperlink around the image using the &lt;a href=&quot;...&quot;&gt; ... &lt;/a&gt; tag; see the tip above).</li>
+    <li>
+        Change the code for rendering songs: if the song-object contains a youtube-id, use an &lt;a ... &gt; tag to make the the title a hyperlink to the youtube page (see the tip above).
+    </li>
   </ul>
-  <p>Use a for loop to add a method called "render" to each item in the list. The render methods use your template function to generate the proper HTML, given the type of object that they are part of.</p>
-  <p>Rewrite the code that generates HTML for the entire playlist to call the method, instead of the stand-alone render function you had before. Your program should, of course, execute the "method installer" function before it starts rendering the page.</p>
   <answer buttontext="mail your your code"></answer>
   </section>
 
-  <h3>15.10 polymorphic squares</h3>
+  <h3>15.11 polymorphic squares</h3>
   <p>Here is the code from the last video. <download href="./methodsOnCanvas-v4.html"></download> It has the looping over the array for animating many squares, and it has a bit of polymorphism in the behavior of the squares (i.e. the <code>update()</code> method). What is <i>doesn't</i> have is the interactivity that you created in exercise 15.3.</p>
   
   <section class="assignment">
-  <h4>15.10.a: combining code</h4>
+  <h4>15.11.a: combining code</h4>
   <p>Look at the code for doing the interactivity in your 15.3 solution. (Or, if you weren't happy about that solution: create a new one). Then change the code from the last video (i.e. from the download above) to also support the same interactivity: <b>When any of the squares is clicked, (regardless of its type) it should stop animating</b>. The rest should continue.</p>
   <p>Among other tasks, you will have to change the function <code>handleCanvasClick()</code>, that was given in 15.3, to deal with many squares that are inside an array. But that is something you've done before :-)</p>
   <p><span class="inline-note">TIP:</span>If you find that it is difficult to actually click on the moving squares, there are two things you can do: It would certainly work if you slow down the entire animation. But it might also work if, instead of reacting to the 'onclick' event on the canvas, you listened to the 'onmousedown' event. That one doesn't wait for the user to release the mouse button.</p>
@@ -346,7 +369,7 @@
   </section>
 
   <section class="assignment">
-  <h4>15.10.b: let's get wild!</h4>
+  <h4>15.11.b: let's get wild!</h4>
   <p>Instead of stopping the squares, make them do fun stuff. Like:</p>
   <ul>
     <li>changing direction</li>

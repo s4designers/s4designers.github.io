@@ -16,19 +16,20 @@ String dayNames[] = {
 
 void loop() {
   
-  // use helper function for reading hour from potMeter
+  // use helper function for reading the hour from potMeter
   int hour = getHour();
   // use helper function to deal with buttons for changing the weekday
   int dayNumber = adjustWeekday();
-  // use the dayName only for printing, not in your boolean expressions
+  // use the dayName only for printing, not in your boolean expressions (see line 8)
   String dayName = dayNames[dayNumber];
   OLED.printTop( dayName, String(hour) + ":00" );
 
 
-  // TODO: replace the 'false' values with boolean expressions
+  // TODO: Replace the 'false' values with boolean expressions
   //       that reflect their names. 
-  //       Feel free to some variables in the expressions of 
+  // NOTE: Feel free to use some variables in the expressions of 
   //       other variables.
+  
   bool isSleeping   = false;
   bool havingDinner = false;
   bool isWeekend    = false;
