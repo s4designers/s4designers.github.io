@@ -2,6 +2,8 @@ const agenda = {}
 
 agenda.currentLesson = [1,1]  // [ week, lesson in week ] 1-based 
 
+// All strings in this data will be preprocessed by a Markdown converter.
+// So you can use **bold**, _italic_ and [hyperlinks](http://www.example.com).
 agenda.lessonWeeks =
 [
   // a week is just an array of objects
@@ -9,7 +11,7 @@ agenda.lessonWeeks =
     {  // a lesson is an object
       date: "Monday Aug 30th",
       title: "Kick-off", // title is optional
-      content: [ // content is optional, must be array of strings 
+      content: [ // content is optional
         "Kick-off",
         "Getting the Arduino to work with your laptop",
         "Getting your browser to work with mail-links",
@@ -17,7 +19,7 @@ agenda.lessonWeeks =
       ]
     },
     { date: "Tuesday Aug 31st",
-      title: "[chapter 1: introduction to the Arduino](href='../ch1-intro-arduino/index.html')",
+      title: "[chapter 1: introduction to the Arduino](/ch1-intro-arduino/index.html)",
       // content: [
       //   "Assignments 1.3 - 1.10",
       //   "_assignment 1.11 is left for the next day_",
