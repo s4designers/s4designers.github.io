@@ -3,11 +3,10 @@
 <head>
   <meta charset='utf-8'>
   <title>Scripting for Designers</title>
-  <link rel="stylesheet" href="./css/main.css"/>
+  <link rel="stylesheet" href="/css/main.css"/>
 </head>
 <body class="index">
 <!-- <body class="line-numbers"> -->
-  <aside id="agenda"></aside>
 
   <div id="welcome">
     welcome to Scripting for Designers
@@ -15,21 +14,10 @@
   <div id="agenda-pointer">
     select a chapter from the time table &nbsp; ⟶
   </div>
-  <div id="time-table-heading">
-    time table: 
+  <div id="agenda">
   </div>
+  <script src='/js/chapters.js'></script>
 
 
-<script language="javascript">
-  async function loadAgenda() {
-    const response = await fetch('./agenda.html')
-    const content = await response.text()
-    const agendaElement = document.createElement( 'div')
-    agendaElement.className = 'agenda';
-    agendaElement.innerHTML = content;
-    document.querySelector('#agenda').appendChild(agendaElement)
-  }
-  loadAgenda();
-</script>
 </body>
 </html>

@@ -2,14 +2,6 @@ function ll(...args) {
   console.log(...args);
 }
 
-
-/*==================================    
-  TODO: 
-    * answer instruction should be visible 
-      with <answer.../> instead of <answer...></answer>
-    * tweak margin between h2 and attention-block (ch2)
-  ==================================*/
-
 // iife to prevent creating global variables
 (function () {
 
@@ -27,27 +19,51 @@ function byId(id) {
   return window.document.getElementById(id)
 }
 
-function appendToElement(element, children) {
-  if(typeof children === "string"){
-    element.innerHTML = children
-  } else if(children instanceof Element){
-    element.appendChild(children)
-  } else if(children instanceof Array) {
-    for(const child of children) {
-      appendToElement(element, child)
+function appendToElement(element, child) {
+  // element can be - a css-selector. or 
+  //                - a DOM element.
+  // child can be - a string (containing HTML),
+  //              - a DOM element, or
+  //              - a list of strings, DOM elements or lists.
+  //                  (nested lists are flattened)
+  if(typeof element === "string") {
+    element = $(element)
+  }
+  if(typeof child === "string"){
+    element.insertAdjacentHTML('beforeend', child )
+  } else if(child instanceof Element){
+    element.appendChild(child)
+  } else if(child instanceof Array) {
+    for(const item of child) {
+      appendToElement(element, item)
     }
   }
 }
 
 // creates a element, but doesn't place it into the DOM
-// attributes that whose names start with $ will change the style of the element
+// tagName can contain an id and classes, like this: 'div#toc.dark.collapsed'
+// tagName is actually optional, with 'div' the default. so '#toc.dark.collapsed' works too.
+// props in attributes whose names start with $ will change the style of the element
+// children can be anything that appendToElement accepts, i.e. a string, a dom-element or a list.
+const tagRegex = /\s*([a-zA-z0-9_-]+)?(#[a-zA-z0-9_-]+)?((\.[a-zA-z0-9_-]+)*)\s*/
 function createElement( tagName, attributes={}, children="") {
-  const element = document.createElement(tagName);
+  // ll("appToEl:", tagName, attributes, children)
+  const parseResult = tagName.match(tagRegex)
+  const elementName = parseResult[1] || 'div'
+  const id = parseResult[2]
+  const classes = parseResult[3].replaceAll(".", " ")
+  const element = document.createElement(elementName)
+  attributes.id = attributes.id || id
+  attributes.class = (classes || "") + " " + (attributes.class || "")
   for( attrName in attributes ) {
+    attrValue = attributes[attrName]
+    if(attrValue == undefined) {
+      continue;
+    }
     if(attrName.charAt(0) === '$') {
-      element.style[attrName.substring(1)] = attributes[attrName];
+      element.style[attrName.substring(1)] = attrValue
     } else {
-      element.setAttribute(attrName, attributes[attrName])
+      element.setAttribute(attrName, attrValue)
     }
   }
   appendToElement(element, children)
@@ -563,13 +579,66 @@ function gotoFragmentId() {
   }
 }
 
+async function createTimeTable() {
+  Promise.all([await loadScript("/agenda.js"), await loadScript("https://cdnjs.cloudflare.com/ajax/libs/markdown-it/12.2.0/markdown-it.min.js")])
+  const markdown = new window.markdownit()  // markdown module.
+  const agendaElements = []                 // container for all DOM elements creted for the agenda
+  let [currentWeek, currentDay] = agenda.currentLesson  //
+  currentWeek--
+  currentDay--
+  const flattenedLessonList = []
+  let currentLessonIdx = -1;
+  agenda.lessonWeeks.forEach( (weekData, weekNr) => {
+    weekData[0].weekNr = weekNr + 1
+    weekData.forEach( (lessonData, lessonNr) => {
+      flattenedLessonList.push(lessonData)
+      ll("%%", currentWeek, currentDay, weekNr, lessonNr, currentLessonIdx)
+      if(weekNr == currentWeek && lessonNr == currentDay) {
+        currentLessonIdx = flattenedLessonList.length-1
+      }
+    })
+  })
+
+  flattenedLessonList.forEach((lessonData, lessonIdx) => {
+    if(lessonData.weekNr) {
+      weekHeading = createElement("h2", {class: "week"}, "week " + (lessonData.weekNr))
+      agendaElements.push(weekHeading)
+    }
+    let lessonStatus
+    // 
+    if( lessonIdx < currentLessonIdx - 2 ) { lessonStatus = "done" }
+    else if( lessonIdx <= currentLessonIdx + 1 ) { lessonStatus = "open" }     
+    else { lessonStatus = "closed" }
+    if( lessonIdx === currentLessonIdx ) {
+      lessonStatus += " current"
+    }
+    ll(">>", lessonIdx, currentLessonIdx, lessonStatus)
+    const lessonElement = createElement("section.lesson",{class: lessonStatus})
+    appendToElement(lessonElement, createElement("h6",{},lessonData.date))
+    appendToElement(lessonElement, createElement("h3",{},markdown.renderInline(lessonData.title)))
+    let content = lessonData.content
+
+    if(content != undefined) {
+      if ( ! Array.isArray(content) ) {
+        content = [ ""+ content ]
+      }
+      const liElements = content.map( line => createElement("li",{},markdown.renderInline(line)) )
+      const ulElement = createElement("ul.lesson-content", {}, liElements)
+      appendToElement(lessonElement,ulElement)
+    }
+    agendaElements.push(lessonElement)
+  })
+  appendToElement("#agenda", agendaElements)
+}
+
 
 //====== main program ===============================================
 
 
-async function setupChapter() {
-  await createTOC()          // also async, but no need to await
-  await loadIncludes()
+async function setupChapterPage() {
+  await createTOC() 
+  await createTimeTable()
+  // await loadIncludes()
   adaptPageTitle()
   createHintBlocks()
   createYoutubePlayers()
@@ -582,7 +651,16 @@ async function setupChapter() {
   gotoFragmentId()
 }
 
-setupChapter();
+async function setupIndexPage() {
+  await createTimeTable()
+}
+
+let pagePath = window.location.pathname.toLowerCase()
+if(pagePath == "/" || pagePath == "/index.html") {
+  setupIndexPage()
+} else {
+  setupChapterPage()
+}
 
 })();  // end of iife construct
 

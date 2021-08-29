@@ -4,6 +4,7 @@
 
 :root {
   --sans-font: "Avenir Next", "Avenir", "Montserrat", sans-serif;
+  --han-pink: var(--han-pink);
 }
 
 
@@ -95,7 +96,7 @@ main {
   background-color: white;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  /* color: #e50056; */
+  /* color: var(--han-pink); */
   color: #888;
   border: 1px solid #ddd;
   border-bottom: none;
@@ -140,7 +141,7 @@ body.index #agenda {
 
 #agenda-pointer, #time-table-heading {
   grid-area: content;
-  margin-top: 14px;
+  margin-top: 21px;
   margin-left: 20px;
   text-align: left;
   font-family: var(--sans-font);
@@ -169,24 +170,48 @@ body.index #agenda {
   font-size: 12pt;
 }
 #agenda h2 {
-  margin-top: 1em;
+  margin-top: 1.5em;
+  margin-bottom: 0em;
   font-size: 14px;
 }
-#agenda h3 {
-  margin-top: 0.5em;
+#agenda h6 {
+  margin-top: 1em;
   margin-bottom: 0em;
+  font-size: 11px;
+  font-weight: 400;
+  color: #444;
+}
+#agenda h3 {
+  margin-top: 0.0em;
+  margin-bottom: 0.0em;
   font-size: 14px;
   font-weight: 400;
 }
 #agenda .week {
-  margin-top: 0;
-  margin-bottom: 2em;
+  margin-top: 1;
+  margin-bottom: 0.5em;
 }
-#agenda .lesson-content {
-  padding-left: 1.5em;
+
+#agenda .lesson.current h6, 
+#agenda .lesson.current h3 {
+  font-weight: bold;
+}
+
+#agenda .lesson.closed h3 a {
+  pointer-events: none;
+  color: black;
+}
+
+#agenda .lesson ul.lesson-content {
   margin-top: 0;
   margin-bottom: 0;
+  display: none;
+  padding-inline-start: 1.2em;
 }
+#agenda .lesson.open .lesson-content {
+  display: block;
+}
+
 #agenda .lesson-content li::marker {
   color: #888;
 }
@@ -215,7 +240,7 @@ body.index #agenda {
 
 
 a {
-  color: #e50056;
+  color: var(--han-pink);
   text-decoration: none;
 }
 #toc a {
@@ -223,8 +248,8 @@ a {
   text-decoration: none;
 }
 a:hover, #toc a:hover { 
-  color: #e50056;
-  text-decoration: underline solid #e5005680 1px;
+  color: var(--han-pink);
+  text-decoration: underline solid var(--han-pink)80 1px;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -248,7 +273,7 @@ h1 > .chapter-num {
   line-height: 1em;
   font-family: var(--sans-font);
   font-weight: bold;
-  color: #e50056;
+  color: var(--han-pink);
   letter-spacing: 4px;
   margin-bottom: 10px;
 }
@@ -349,7 +374,7 @@ img.full-width {
 
 .attention::before {
   content: "attention";
-  background-color: #e50056;
+  background-color: var(--han-pink);
 }
 
 .theory::before {
@@ -375,13 +400,13 @@ span.inline-note, span.inline-bonus {
   font-family: var(--sans-font);
   font-weight: bold;
   text-transform: uppercase;
-  color: #e50056;
+  color: var(--han-pink);
   letter-spacing: 2px;
   font-size: smaller;
 }
 
 span.inline-note {
-  color: #e50056;
+  color: var(--han-pink);
 }
 span.inline-bonus {
   color: #61c2ee;
@@ -466,7 +491,7 @@ main th {
 
 button {
   font-family: var(--sans-font);
-  background: #e50056;
+  background: var(--han-pink);
   font-weight: 500;
   color: white;
   padding: 4px 8px;
