@@ -592,7 +592,6 @@ async function createTimeTable() {
     weekData[0].weekNr = weekNr + 1
     weekData.forEach( (lessonData, lessonNr) => {
       flattenedLessonList.push(lessonData)
-      ll("%%", currentWeek, currentDay, weekNr, lessonNr, currentLessonIdx)
       if(weekNr == currentWeek && lessonNr == currentDay) {
         currentLessonIdx = flattenedLessonList.length-1
       }
@@ -612,12 +611,10 @@ async function createTimeTable() {
     if( lessonIdx === currentLessonIdx ) {
       lessonStatus += " current"
     }
-    ll(">>", lessonIdx, currentLessonIdx, lessonStatus)
     const lessonElement = createElement("section.lesson",{class: lessonStatus})
     appendToElement(lessonElement, createElement("h6",{},lessonData.date))
     appendToElement(lessonElement, createElement("h3",{},markdown.renderInline(lessonData.title)))
     let content = lessonData.content
-
     if(content != undefined) {
       if ( ! Array.isArray(content) ) {
         content = [ ""+ content ]
