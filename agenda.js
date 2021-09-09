@@ -4,14 +4,14 @@ agenda.currentLesson = [1,1]  // [ week, lesson in week ] 1-based
 
 // All strings in this data will be preprocessed by a Markdown converter.
 // So you can use **bold**, _italic_ and [hyperlinks](http://www.example.com).
-agenda.lessonWeeks =
-[
-  // a week is just an array of objects
-  [
-    {  // a lesson is an object
+// HTML-tags will work too, and line-breaks (\n) will be converted to <br>.
+agenda.program =
+[ // The progam is an array of weeks.
+  [ // A week is just an array of lesson-objects.
+    {  // A lesson is an object.
       date: "Monday Aug 30th",
       title: "Kick-off", // title is optional
-      content: [ // content is optional
+      content: [ // content is optional, can also be a single string.
         "Kick-off",
         "Getting the Arduino to work with your laptop",
         "Getting your browser to work with mail-links",

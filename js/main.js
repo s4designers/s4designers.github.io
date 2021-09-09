@@ -581,14 +581,14 @@ function gotoFragmentId() {
 
 async function createTimeTable() {
   Promise.all([await loadScript("/agenda.js"), await loadScript("https://cdnjs.cloudflare.com/ajax/libs/markdown-it/12.2.0/markdown-it.min.js")])
-  const markdown = new window.markdownit()  // markdown module.
+  const markdown = new window.markdownit({html:true, breaks: true})  // markdown module.
   const agendaElements = []                 // container for all DOM elements creted for the agenda
   let [currentWeek, currentDay] = agenda.currentLesson  //
   currentWeek--
   currentDay--
   const flattenedLessonList = []
   let currentLessonIdx = -1;
-  agenda.lessonWeeks.forEach( (weekData, weekNr) => {
+  agenda.program.forEach( (weekData, weekNr) => {
     weekData[0].weekNr = weekNr + 1
     weekData.forEach( (lessonData, lessonNr) => {
       flattenedLessonList.push(lessonData)
@@ -605,15 +605,23 @@ async function createTimeTable() {
     }
     let lessonStatus
     // 
-    if( lessonIdx < currentLessonIdx - 2 ) { lessonStatus = "done" }
+    if( lessonIdx < currentLessonIdx - 1 ) { lessonStatus = "done" }
     else if( lessonIdx <= currentLessonIdx + 1 ) { lessonStatus = "open" }     
     else { lessonStatus = "closed" }
     if( lessonIdx === currentLessonIdx ) {
       lessonStatus += " current"
     }
     const lessonElement = createElement("section.lesson",{class: lessonStatus})
-    appendToElement(lessonElement, createElement("h6",{},lessonData.date))
-    appendToElement(lessonElement, createElement("h3",{},markdown.renderInline(lessonData.title)))
+    if(lessonStatus === "done") {
+      ll(lessonData.date, lessonData.date.match(/(monday )|(tuesday )|(wednesday )|(thursday )|(friday )/i))
+      dateText = lessonData.date.replace(/(monday )|(tuesday )|(wednesday )|(thursday )|(friday )/gi,"")
+      chapterText = lessonData.title.replace(/chapter /i, "")
+      appendToElement(lessonElement, createElement("h6",{},markdown.renderInline(dateText + ": " + chapterText)))
+    } else {
+      appendToElement(lessonElement, createElement("h6",{},markdown.renderInline(lessonData.date)+":"))
+      appendToElement(lessonElement, createElement("h3",{},markdown.renderInline(lessonData.title)))
+    }
+
     let content = lessonData.content
     if(content != undefined) {
       if ( ! Array.isArray(content) ) {
