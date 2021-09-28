@@ -1,6 +1,6 @@
 const agenda = {}
 
-agenda.currentLesson = [4,3]  // [ week, lesson in week ] 1-based 
+agenda.currentLesson = [5,3]  // [ week, lesson in week ] 1-based 
 
 // All strings in this data will be preprocessed by a Markdown converter.
 // So you can use **bold**, _italic_ and [hyperlinks](http://www.example.com).
@@ -138,42 +138,42 @@ agenda.program =
     },
   ],
   [
-    { date: "Thursday Sept 23rd",
-      title: "[chapter 13 – loops for repeating commands (continued _again_)](/ch13-loops/index.html)",
+    { date: "Monday Sept 27th",
+      title: "_vervalt_",
+      content: [],
+    },
+    { date: "Tuesday Sept 28th",
+      title: "[chapter 13 – loops _(continued)_](/ch13-loops/index.html) and [chapter 14 – visuals](/ch14-canvas-animation/index.html)",
       content: [
-        "assignments 13.9—13.12",
+        "assignments 13.9—13.10 (_niet 13.11_)",
+        "assignments 14.1—14.2",
       ],
     },
-  //   { date: "Monday Sept 27th",
-  //     title: "[chapter 13 – loops for repeating commands _(continued 2)_](/ch13-loops/index.html) and [chapter 14 – visuals with canvas and animation](/ch14-canvas-animation/index.html)",
-  //     content: [
-  //       "b Geen aftrap",
-  //       "lees aandachtig: text box &quot;loops in Arduino&quot;, en _voer het tweede programma uit in je Arduino_",
-  //       "oefeningen 13.9—13.10, _(niet 13.11)_",
-  //       "en",
-  //       "video 14a en oefening 14.1, en",
-  //       "video &quot;The best stats you&apos;ve ever seen&quot; (i.i.g. stukje tussen 3:07 and 5:14)",
-  //       "oefeningen 14.2 tot 14.4.a",
-  //     ],
-  //   },
-  //   { date: "Tuesday Sept 28th",
-  //     title: "[chapter 14 – visuals with canvas and animation (continued)](/ch14-canvas-animation/index.html)",
-  //     content: [
-  //       "oefening 14.2 (als je die nog niet hebt) ",
-  //       "oefening 14.3—14.7,",
-  //     ],
-  //   },
-  //   { date: "Wednesday Sept 29th",
-  //     title: "[chapter 15 – active objects do it with _methods_](/ch15-methods/index.html)",
-  //   },
-  //   { date: "Thursday Sept 30th",
-  //     title: "[chapter 15 – active objects do it with _methods_ (continued)](/ch15-methods/index.html)",
-  //     content: [
-  //       "video 15b and assignment 15.4 ",
-  //       "10:00—16:00: assignments 15.5—15.7",
-  //     ],
-  //   }
+    { date: "Wednesday Sept 29th",
+      title: "[chapter 14 – visuals with canvas and animation _(continued)_](/ch14-canvas-animation/index.html)",
+      content: [
+        "assignments 14.3 tot 14.6",
+      ],
+    },
+    { date: "Thursday Sept 30th",
+      title: "[chapter 14 – animation _(continued)_](/ch14-canvas-animation/index.html) and [chapter 15 – methods](/ch15-methods/index.html)",
+      content: [
+        // "oefening 14.2 (als je die nog niet hebt) ",
+        "assignments 14.7—14.8",
+        "assignments 15.1—15.7",
+
+      ],
+    },
   ],
+  [
+    { date: "Monday Oct 4th",
+    title: "[chapter 15 – active objects do it with _methods_ _(continued)_](/ch15-methods/index.html)",
+    content: [
+      "assignments 15.8—15.11",
+    ],
+  },
+
+  ]
   // [
   //   { date: "Monday Oct. 4th",
   //     title: "[chapter 16 – final assignment _javascript_: Battleships](_javascript-battleships_index.html)",
