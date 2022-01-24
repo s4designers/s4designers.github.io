@@ -1,10 +1,12 @@
 const agenda = {}
 
-agenda.currentLesson = [5,3]  // [ week, lesson in week ] 1-based 
+agenda.currentLesson = [3,3]  // [ week, lesson in week, number of days top open ahead (defaults to 1) ] 1-based
 
 // All strings in this data will be preprocessed by a Markdown converter.
 // So you can use **bold**, _italic_ and [hyperlinks](http://www.example.com).
 // HTML-tags will work too, and line-breaks inside ``-strings will be converted to <br>.
+
+
 agenda.program =
 [ // The progam is an array of weeks.
   [ // A week is just an array of lesson-objects.
@@ -24,21 +26,21 @@ agenda.program =
         "Assignments 1.3—1.10",
         "_assignment 1.11 is left for the next day_",
       ]
-    }, 
+    },
     { date: "Wednesday Sept 1st",
       title: "[chapter 2 – intro to JavaScript](/ch2-intro-javascript/index.html)",
       content: [
         "assignment 1.11 of [chapter 1](/ch1-intro-arduino/index.html)",
         "assignments 2.3—2.10",
       ]
-    }, 
+    },
     { date: "Thursday Sept 2nd",
       title: "[chapter 3 – interactivity in JavaScript with _functions_](/ch3-interactivity-functions/index.html)",
       content: [
         "Assignments 3.3—3.11",
         "_(assignment 3.12 is left for the next lesson)_",
       ],
-    }, 
+    },
   ],
   [
     { date: "Monday Sept 6th",
@@ -47,36 +49,36 @@ agenda.program =
         "Assignment 3.12",
         "Assignments 4.2—4.7",
       ],
-    }, 
+    },
     { date: "Tuesday Sept 7th",
       title: "[chapter 5 – russian dolls for data: variables _inside_ variables](/ch5-variables-inside-variables/index.html')",
       content: [
         "assignments 5.2—5.12",
       ],
-    }, 
+    },
     { date: "Wednesday Sept 8th",
       title: "[chapter 6 – _debugging_ code that doesn't work](/ch6-debugging/index.html)",
       content: [
         "assignments 6.2—6.5",
         "bonus assignment 6.6 _if you have the time_"
       ],
-    }, 
+    },
     { date: "Thursday Sept 9th",
       title: "[chapter 7 – how functions communicate: _parameters_ and _return values_](/ch7-more-about-functions/index.html)",
       content: [
         "assignments 7.2—7.11 ",
       ],
     }
-  ], 
+  ],
   [
     { date: "Monday Sept 13th",
       title: "[chapter 8 – _true_, _false_, and choosing with _if-statements_](/ch8-true-false-if/index.html)",
       content: [
-        `from ch7: assignment 7.12, 
+        `from ch7: assignment 7.12,
            _(7.12.e is bonus, skip this if you don't have the time)_`,
         "assignments 8.1—8.6",
       ],
-    }, 
+    },
     { date: "Tuesday Sept 14th",
       title: "[chapter 8 – _true_, _false_, and choosing with _if-statements_ (continued)](/ch8-true-false-if/index.html)",
       content: [
@@ -167,75 +169,73 @@ agenda.program =
   ],
   [
     { date: "Monday Oct 4th",
-    title: "[chapter 15 – active objects do it with _methods_ _(continued)_](/ch15-methods/index.html)",
+      title: "[chapter 15 – active objects do it with _methods_ _(continued)_](/ch15-methods/index.html)",
+      content: [
+        "assignments 15.8—15.11",
+      ],
+    },
+    { date: "Tuesday Oct. 5th",
+      title: "[chapter 16 – final assignment _javascript_: Battleships](/javascript-battleships/index.html)",
+      content: [
+        "_introduction Battle Ships final assignment_",
+        "Video battleships code walkthrough",
+        "assignments 16.1 and 16.2",
+      ],
+    },
+  { date: "Wednesday Oct. 6th",
+    title: "continuing Battleships assignment",
     content: [
-      "assignments 15.8—15.11",
+      "in class, we support you while you're working on the assignment",
     ],
   },
-
+  { date: "Thursday Oct. 7th: no class",
+    title: "continuing Battleships assignment",
+    content: [
+      "in class, we support you while you're working on the assignment",
+    ],
+  },
+    { date: "Thursday Oct. 7th",
+      title: "Battleships assignment + intro [chapter 17 – final assignment _Arduino_: Buglar Alarm](/arduino-burglar-alarm/index.html)",
+      content: [
+        "in class, we support you while you're working on the assignment",
+      ],
+    },
+    { date: "_Friday_ Oct. 8th",
+      title: '<span style="font-weight: 600; color: #0a0">23:59: deadline BattleShips</span>',
+      content: []
+    },
+  ],
+  [
+    { date: "Monday Oct. 11th",
+      title: "introducing the Arduino assignment: [the Burglar alarm](/arduino-burglar-alarm/index.html)",
+      content: [
+        "in class, we support you while you're working on the assignment",
+      ],
+    },
+    { date: "Tuesday Oct. 12th",
+      title: "continuing Burglar alarm",
+      content: [
+        "in class, we support you while you're working on the assignment",
+      ],
+    },
+    { date: "Wednesday Oct. 13th",
+      title: "continuing Burglar alarm",
+      content: [
+        "in class, we support you while you're working on the assignment",
+      ],
+    },
+    { date: "Thursday Oct. 14th",
+        title: "Kick-off Project",
+        content: [
+          "introduction to the S4D Project",
+          "[**the list of programming platforms**](/project-list.html)",
+          "team formation for the project",
+          "remaining time is for support while you're finishing the Burglar Alarm",
+        ],
+    },
+    { date: "Thursday Oct. 14th",
+        title: '<span style="font-weight: 600; color: #0a0">23:59: deadline Burglar Alarm</span>',
+        content: [],
+    }
   ]
-  // [
-  //   { date: "Monday Oct. 4th",
-  //     title: "[chapter 16 – final assignment _javascript_: Battleships](_javascript-battleships_index.html)",
-  //     content: [
-  //       // "9:00—9:30: video 15c en assignment 15.8",
-  //       // "assignments 15.9—15.11",
-  //       "_introductie Battle Ships eindopdracht_",
-  //       "Video battleships code walkthrough",
-  //       "assignments 16.1 and 16.2",
-  //     ],
-  //   },
-    // { date: "Tuesday Oct. 5th",
-    //   title: "[chapter 16 – final assignment _javascript_: Battleships](/javascript-battleships/index.html)",
-    //   content: [
-    //     "regular meeting schedule where we support making the assignment",
-    //   ],
-    // },
-    // { date: "Wednesday Oct. 6th",
-    //   title: "",
-    //   content: [
-    //     "regular meeting schedule where we support making the assignment",
-    //   ],
-    // },
-    // { date: "Thursday Oct. 7th",
-    //   title: "",
-    //   content: [
-    //     "regular meeting schedule where we support making the assignment",
-    //   ],
-    // },
-  //   { date: "_Sunday_ Oct. 10th",
-  //     title: "23:00: _deadline_ [Zeeslag](/javascript-battleships/index.html)",
-  //     content: [],
-  //   }
-  // ],
-  // [
-  //   { date: "Monday Oct. 11th",
-  //     title: "[chapter 17 – final assignment _Arduino_: Inbraakalarm](/arduino-burglar-alarm/index.html)",
-  //     content: [
-  //       "regular meeting schedule where we support making the assignment",
-  //     ],
-  //   },
-    // { date: "Tuesday Oct. 12th",
-    //   title: "",
-    //   content: [
-    //     "regular meeting schedule where we support making the assignment",
-    //   ],
-    // },
-    // { date: "Wednesday Oct. 13th",
-    //   title: "",
-    //   content: [
-    //     "regular meeting schedule where we support making the assignment",
-    //   ],
-    // },
-    // { date: "Thursday Oct. 14th",
-    //   title: "",
-    //   content: [
-    //     "regular meeting schedule where we support making the assignment",
-    //   ],
-    // },
-  //   { date: "Sunday Oct. 17th",
-  //     title: "23:00: _deadline_ [Inbraakalarm](/arduino-burglar-alarm/index.html)",
-  //     content: [],
-  //   }
-  // ]
 ]

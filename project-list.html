@@ -17,7 +17,30 @@
     p {
       margin-top: 0em;
     }
-
+    .groot-project {
+      color: #bbb;
+    }
+    .groot-project a {
+      color: #bbb;
+    }
+    .groot-project:hover {
+      color: #000;
+    }
+    .groot-project:hover a {
+      color: #e50056;
+    }
+    :is(h3,h5).groot-project::before {
+      content: 'groot-project';
+      display: inline-block;
+      padding: 2px 8px;
+      margin-right: 0.2em;
+      border-radius: 4px;
+      background-color: #bbb;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em
+    }
 
   </style>
 </head>
@@ -34,21 +57,20 @@
 
 <h1>Programmeer-platforms voor S4D-Project</h1>
 
+<ol>
+  <li>Sommige items in deze lijst zijn gemarkeerd met een label "groot-project". Die zijn dus niet te kiezen voor het kleine project.</li>
+  <li>Sommige items in deze lijst zijn gemarkeerd met 🦊. Dat zijn ingewikkelde technologieën. Kies die alleen als je een hoog cijfer voor je course-opdracht hebt gehaald.</li>
+  <li>Sommige items in deze lijst zijn gemarkeerd met 🐼. Dat zijn technologieën die (relatief) laagdrempelig zijn.</li>
+  <li>Helemaal onderop staat een project voor hen die de course-opdrachten niet gehaald hebben, of hen die het gevoel hebben die opdrachten met heel veel moeite of hulp gehaald hebben. (Als de opdrachten voor jou goed te doen waren, of 'gewoon' pittig, dan is dit project niet voor jou.)</li>
+</ol>
+
+
 <h2>Game development:</h2>
 
-<h3>Unity (C#) 🦊</h3>
-  <p><a href='https://unity3d.com/'>Unity</a> is op dit moment één van de meestgebruikte game-programmeerplatforms. Wordt ook wel Unity3D genoemd, maar je kunt ook prima 2D games bouwen.</p>
-  <p>De programmeertaal voor Unity is C#. Unity draait op alle platforms, ook op mobiel en VR.</p>
-<!-- 
-<h3>Dreams voor Playstation 4</h3>
-  <p>Dreams in een nieuwe tool voor de PS4 om spelletjes, interacieve verhalen en andere ‘experiences’ mee te maken. Het is gericht op designers, artiesten, indies etc.
-  Naast innovatieve tools voor 3D, schilderen en muziek, zit er een visuele programmeertaal in die erg interessant is. Dat maakt Dreams een ultieme ‘scripting voor designers’.
-  ICA heeft, speciaal voor onderzoek naar Dreams, Playstations, VR-brillen, PS camera’s en meer gekocht.
-  Ter orientatie:
-  <a href='https://www.youtube.com/watch?v=BrRWp83p11Q'>Trailer</a>
-  <a href='https://www.youtube.com/watch?v=oSt9153tzQg&amp;t=1539s'>Een beeld van het programmeersysteem (op 25:39)</a>
-  <a href='https://www.youtube.com/watch?v=cCJu8QSj84o?t=946s'>En een demo over hoe de programmeertaal verweven is met de virtuele omgeving.</a></p>
- -->
+<h3 class="groot-project">Unity (C#) 🦊</h3>
+  <p class="groot-project"><a href='https://unity3d.com/'>Unity</a> is op dit moment één van de meestgebruikte game-programmeerplatforms. Wordt ook wel Unity3D genoemd, maar je kunt ook prima 2D games bouwen.</p>
+  <p class="groot-project">De programmeertaal voor Unity is C#. Unity draait op alle platforms, ook op mobiel en VR.</p>
+
 <h3>Löve2D (Lua) 🐼</h3>
   <p>2D games in Lua met support voor iOS en Android. Zie <a href='http://love2d.org/'>love2d.org</a>. Lua is een soort Javascript, maar dan eleganter, en heel populair in de Game-industrie.</p>
 
@@ -78,6 +100,15 @@
 <h3>Touch Designer</h3>
   <p><a href='http://www.derivative.ca/'>Touch Designer</a> is een heel uitgebreid zusje van Max/MSP en VVVV. Heeft als voordeel dat het zowel op Mac als op Windows draait. Er is een gratis versie. </p>
 
+<h3>Dreams voor Playstation 4</h3>
+  <p>Dreams in een nieuwe tool voor de PS4 om spelletjes, interacieve verhalen en andere ‘experiences’ mee te maken. Het is gericht op designers, artiesten, indies etc.
+  Naast innovatieve tools voor 3D, schilderen en muziek, zit er een visuele programmeertaal in die erg interessant is. Dat maakt Dreams een ultieme ‘scripting voor designers’.
+  ICA heeft, speciaal voor onderzoek naar Dreams, Playstations, VR-brillen, PS camera’s en meer gekocht.
+  Ter orientatie:<br>
+  <a href='https://www.youtube.com/watch?v=BrRWp83p11Q'>Trailer</a><br>
+  <a href='https://www.youtube.com/watch?v=oSt9153tzQg&amp;t=1539s'>Een beeld van het programmeersysteem (op 25:39)</a><br>
+  <a href='https://www.youtube.com/watch?v=cCJu8QSj84o?t=946s'>En een demo over hoe de programmeertaal verweven is met de virtuele omgeving.</a></p>
+
 <h2>Programmeren in de browser:</h2>
 
 <h3>Vue.js of Svelte 🦊</h3>
@@ -85,10 +116,8 @@
 
 <h3>JQuery 🐼</h3>
   <p>Een veelgebruikte Javascript-module voor interactieve webpagina’s. Maakt bijna alles in de browser makkelijker, waaronder animaties, interactie en communicatie met een server.</p>
-  <h5>Jquery UI</h5>
-    <p>Voor hen die zich al in JQuery hebben ingewerkt: De <a href='https://jqueryui.com/'>bibliotheek</a> die, gebruik makend van “gewone” JQuery allerlei extra UI-componenten (drap-drop, date-pickers, dieloogvenstertjes etc) aanbiedt.</p>
-  <h5>JQuery Mobile</h5>
-    <p>Een <a href='http://jquerymobile.com/'>framework</a> om de UI voor mobiele websites te maken. Hiervoor moet je JQuery al kennen. Goed te combineren met b.v. PhoneGap.</p>
+  <h5 class="groot-project">Jquery UI</h5>
+    <p class="groot-project">Voor hen die zich al in JQuery hebben ingewerkt: De <a href='https://jqueryui.com/'>bibliotheek</a> die, gebruik makend van “gewone” JQuery allerlei extra UI-componenten (drap-drop, date-pickers, dieloogvenstertjes etc) aanbiedt.</p>
 
 <h3>HTML5 API’s</h3>
   <p>HTML5 bevat eigenlijk meer Javascript-uitbreidingen dan HTML-uitbreidingen. Met API’s bedoelen we die Javascript-uitbreidingen. Denk aan spraakherkenning, sensoren van je telefoon of het aansturen van een Philips Hue lamp. Voor meer uitdaging kun je ook kijken naar de <a href='https://cloud.google.com/vision/'>google Vision API</a></p>
@@ -96,8 +125,8 @@
 <h3>d3.js</h3>
   <p>Veel gebruikte Javascript library voor het visualiseren van informatie. Kijk even op hun <a href='https://d3js.org/'>site</a> voor gave demo’s. Veel gebruikt in combinatie met <a href='https://observablehq.com/'>Observable</a>, een heel nieuw type programmeeromgeving die zich veel beter leent voor experimenteren en exploreren.</p>
 
-<h3>Three.js of Babylon.js</h3>
-  <p>Javascript bibliotheken om 3D applicaties mee te maken. <a href='https://threejs.org/'>Three.js</a> is groter en populairder, <a href='https://www.babylonjs.com/'>Babylon.js</a> is moderner en in sommige opzichten makkelijker. Ook te gebruiken met <a href='https://observablehq.com/'>Observable</a>.</p>
+<h3 class="groot-project">Three.js of Babylon.js</h3>
+  <p class="groot-project">Javascript bibliotheken om 3D applicaties mee te maken. <a href='https://threejs.org/'>Three.js</a> is groter en populairder, <a href='https://www.babylonjs.com/'>Babylon.js</a> is moderner en in sommige opzichten makkelijker. Ook te gebruiken met <a href='https://observablehq.com/'>Observable</a>.</p>
 
 <h2>Programmeren op de server:</h2>
 
@@ -111,8 +140,8 @@
 <h3>Python met Django of Flask</h3>
   <p><a href='https://www.python.org/'>Python</a> is een betere (en leerzamere) programmeertaal dan PHP, en ook veelgebruikt voor webapps. Vrijwel iedereen die een web-app maakt met Python, gebruikt <a href='http://flask.pocoo.org/'>Flask</a> of <a href='https://www.djangoproject.com/'>Django</a> als web-framework, dus die zijn de moeite waard om te onderzoeken.</p>
 
-<h3>Node.JS 🦊</h3>
-  <p><a href='https://nodejs.org/en/'>Node</a> is een heel populaire technologie waarmee je je server-code in Javascript programmeert. Zit wat merkwaardig in elkaar, en heeft een flinke leercurve. Veel sneller en flexibeler dan PHP of Python.</p>
+<h3 class="groot-project">Node.JS 🦊</h3>
+  <p class="groot-project"><a href='https://nodejs.org/en/'>Node</a> is een heel populaire technologie waarmee je je server-code in Javascript programmeert. Zit wat merkwaardig in elkaar, en heeft een flinke leercurve. Veel sneller en flexibeler dan PHP of Python.</p>
 
 <h3>database: MongoDB</h3>
   <p>Als je gefascineerd bent door databases, dan is <a href='https://www.mongodb.com/'>MongoDB</a> een veelgebruikte DB die zijn populariteit o.a. dankt aan het feit dat-ie heel toegankelijk is voor Javascript programmeurs. Vaak gebruikt in combinatie met Node.JS.</p>
@@ -125,38 +154,32 @@
 <h3>Firebase</h3>
   <p><a href='https://www.firebase.com/'>Firebase</a> is niet alleen een fascinerend nieuw soort database, maar ook een technologie die er, net als Meteor, voor zorgt dat de programmeur bijna niks hoeft te doen om data van de server naar de browser in real-time te krijgen. Is flexibeler en simpeler dan Meteor, maar doet ook minder voor je. Je moet het zelf combineren met een browsertechnologie als Backbone, ReactJS of JQuery.</p>
 
-<h3>Websockets 🦊</h3>
-  <p>Een <a href='http://websocket.org/'>technologie</a> waarmee webservers heel snel data naar een browser kunnen sturen zonder te hoeven wachten op en verzoek van de browser. Als de server een verandering ziet (Jantje is ingelogd, dat product is verkocht, dat game-karaktertje heeft zich verplaatst etc.) dan is die informatie zo snel (b.v. 0.1 seconde) bij andere gebruikers die actief zijn op de site, dan het voor de gebruikers lijkt alsof updates onmiddellijk zijn.</p>
+<h3 class="groot-project">Websockets 🦊</h3>
+  <p class="groot-project">Een <a href='http://websocket.org/'>technologie</a> waarmee webservers heel snel data naar een browser kunnen sturen zonder te hoeven wachten op en verzoek van de browser. Als de server een verandering ziet (Jantje is ingelogd, dat product is verkocht, dat game-karaktertje heeft zich verplaatst etc.) dan is die informatie zo snel (b.v. 0.1 seconde) bij andere gebruikers die actief zijn op de site, dan het voor de gebruikers lijkt alsof updates onmiddellijk zijn.</p>
 
-<h3>Meteor</h3>
-  <p><a href='https://www.meteor.com/'>Meteor</a> is een systeem voor het bouwen van real-time webapps met verrassend weinig moeite. Vrij nieuw, maar al best populair. Zowel de Javascript in de browser als de servercode (ook Javascript) schrijf je met behulp van Meteor. Op die manier kunnen browser en server heel goed samenwerken, veel makkelijker en sneller dan eigenlijk alle andere frameworks.</p>
+<h3 class="groot-project">Meteor</h3>
+  <p class="groot-project"><a href='https://www.meteor.com/'>Meteor</a> is een systeem voor het bouwen van real-time webapps met verrassend weinig moeite. Vrij nieuw, maar al best populair. Zowel de Javascript in de browser als de servercode (ook Javascript) schrijf je met behulp van Meteor. Op die manier kunnen browser en server heel goed samenwerken, veel makkelijker en sneller dan eigenlijk alle andere frameworks.</p>
 
 <h2>Progammeren voor mobiele telefoons (en tablets):</h2>
 
 <h3>Cordova</h3>
   <p><a href='http://phonegap.com/'>Phonegap</a> gebruik je als je een mobiele app wil bouwen, mat HTML, CSS en Javascript. Phongap verpakt de files van je app tot een enkel bestand dat geïnstalleerd kan worden op een iOS of Android apparaat (Phonegap ondersteunt nog meer platforms). Daarnaast biedt Phonegap mogelijkheden om vanuit je Javascript code toegang te krijgen tot features die wel in mobiele telefoons zitten, maar niet in browsers (zoals sensoren, de telefoon, het adresboek, gps etc).</p>
 
-<h3>Android in Java 🦊</h3>
-  <p>Normale applicaties voor <a href='https://developer.android.com/develop/index.html'>Android</a> worden geschreven in de programmeertaal Java. Java is niet simpel, en Android ook niet. Toch hebben we een S4D groep gehad die een hele gave Android applicatie op deze manier hebben gemaakt. Android apps kunnen tegenwoordig ook in Kotlin geschreven worden. Dat is een hele nieuwe taal die een beetje lijkt op swift.</p>
+<h3 class="groot-project">Android in Java 🦊</h3>
+  <p class="groot-project">Normale applicaties voor <a href='https://developer.android.com/develop/index.html'>Android</a> worden geschreven in de programmeertaal Java. Java is niet simpel, en Android ook niet. Toch hebben we een S4D groep gehad die een hele gave Android applicatie op deze manier hebben gemaakt. Android apps kunnen tegenwoordig ook in Kotlin geschreven worden. Dat is een hele nieuwe taal die een beetje lijkt op swift.</p>
 
-<h3>Android in Kotlin 🦊</h3>
-  <p>Android apps kunnen tegenwoordig ook in Kotlin geschreven worden. Dat is een hele nieuwe, moderne taal die een beetje lijkt op swift.</p>
-
-<h2>Desktop applicaties:</h2>
-
-<h3>Java 🦊 of C# 🦊</h3>
-  <p>Java is een populaire programmeertaal waar veel applicaties in gebouwd zijn. C# is de microsoft tegenhanger er van. Veel enterprise software (salesforce, microsoft dynamics of SAP) gebruiken java of c#. Maar je kunt ze ook voor andere doeleinden gebruiken. Unity werkt bijvoorbeeld met C#, terwijl android weer java gebruikt. Kies een van de twee. Er is veel werk voor programmeurs die deze talen kunnen.</p>
+<h3 class="groot-project">Android in Kotlin 🦊</h3>
+  <p class="groot-project">Android apps kunnen tegenwoordig ook in Kotlin geschreven worden. Dat is een hele nieuwe, moderne taal die een beetje lijkt op swift.</p>
 
 <h2>En verder:</h2>
 
-<!-- 
-<h3>Raspberry-Pi projecten</h3>
-  <p><a href='https://www.raspberrypi.org/'>Raspberry Pi</a> is het grotere broertje van Arduino: een klein mini-computertje dat aangesloten kan worden op allerlei electronica. Maar de Raspberry Pi is <em>veel</em> sneller, en heeft <em>veel</em> meer geheugen, en kan Linux en Windows draaien en je kunt er een monitor, toetsenbord en muis op aansluiten, en de laatste versie heeft bluetooth en wifi! Programmeren gaat vaak in Python, maar Javascript, en eigenlijk de meeste andere programmeertalen werken ook prima. Op internet kun je duizenden originele en verrassende Raspberry Pi projecten vinden die je kunnen inspireren. Bijvoorbeeld <a href='http://www.instructables.com/id/Raspberry-Pi-Projects/'>hier</a> en <a href='https://learn.adafruit.com/category/raspberry-pi'>hier</a>.</p>
+<h3 class="groot-project">Raspberry-Pi projecten</h3>
+  <p class="groot-project"><a href='https://www.raspberrypi.org/'>Raspberry Pi</a> is het grotere broertje van Arduino: een klein mini-computertje dat aangesloten kan worden op allerlei electronica. Maar de Raspberry Pi is <em>veel</em> sneller, en heeft <em>veel</em> meer geheugen, en kan Linux en Windows draaien en je kunt er een monitor, toetsenbord en muis op aansluiten, en de laatste versie heeft bluetooth en wifi! Programmeren gaat vaak in Python, maar Javascript, en eigenlijk de meeste andere programmeertalen werken ook prima. Op internet kun je duizenden originele en verrassende Raspberry Pi projecten vinden die je kunnen inspireren. Bijvoorbeeld <a href='http://www.instructables.com/id/Raspberry-Pi-Projects/'>hier</a> en <a href='https://learn.adafruit.com/category/raspberry-pi'>hier</a>.</p>
 
-<h3>Verder met Arduino</h3>
-  <p>Niet echt een nieuw platform, maar als je een leuk project kunt bedenken, leef je uit…</p>
--->
-<h3>Office VB e.d.</h3>
+<h3 class="groot-project">Verder met Arduino</h3>
+  <p class="groot-project">Niet echt een nieuw platform, maar als je een leuk project kunt bedenken, leef je uit…</p>
+
+  <h3>Office VB e.d.</h3>
   <p>Voor MS Word en MS Excel zijn enorm veel programma’s geschreven. Wellicht niet erg artistiek, maar vreselijk handig! Je kunt de eigen programmeertaal gebruiken (<a href='https://en.wikipedia.org/wiki/Visual_Basic_for_Applications'>Visual Basic for Applications</a>), maar tegenwoordig ook gewoon <a href='https://dev.office.com/reference/add-ins/javascript-api-for-office'>Javascript</a>.</p>
 
 <h3>Data journalism</h3>
@@ -166,9 +189,11 @@
   <p>Er zijn een aantal programmeertalen bedacht die muzikanten kunnen gebruiken voor live voorstellingen. De muzikant staat dan op een podium live te programmeren om steeds interessantere muziek te laten horen. Op Youtube kun je <a href='https://www.youtube.com/watch?v=rnCE7hxNGXw'>video’s</a> van optredens vinden als je zoekt op “Live Coding Music”.</p>
   <p>Talen die voor Live Coding gemaakt zijn zijn: <a href='https://sonic-pi.net/'>Sonic Pi</a>, <a href='https://tidalcycles.org/'>Tidal</a>, <a href='http://chuck.cs.princeton.edu/'>Chuck</a>, en zelfs [Python</p>
 
-
+<h3>Learn Python The Hard Way</h3>
+    <p>Opnieuw een inleiding programmeren doorlopen, aan de hand van het boek <a href="https://learnpythonthehardway.org/python3/">Learn Python the Hard Way</a> van Zed Shaw. De titel is intimiderender dan de inhoud van het boek. Het is wel een boek met flink wat huiswerk :-).</p>
+    <p>Dit project is alleen voor hen die de course-opdrachten niet gehaald hebben, en voor hen die het gevoel hebben die opdrachten met heel veel moeite (of hulp) gehaald hebben. Als de opdrachten voor jou goed te doen waren, of 'gewoon' pittig, dan is dit project niet voor jou.</p>
 </main>
 </div>
 <script src='../js/main.js'></script>
 </body>
-</html>  
+</html>
