@@ -1,6 +1,6 @@
 const agenda = {}
 
-agenda.currentLesson = [1,1]  // [ week, lesson in week ] 1-based 
+agenda.currentLesson = [1,2]  // [ week, lesson in week ] 1-based 
 
 // All strings in this data will be preprocessed by a Markdown converter.
 // So you can use **bold**, _italic_ and [hyperlinks](http://www.example.com).
