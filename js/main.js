@@ -591,7 +591,7 @@ async function createTimeTable() {
   }
   const flattenedLessonList = []
   let currentLessonIdx = -1;
-  agenda.program.forEach( (weekData, weekNr) => {
+  agenda.program.forEach((weekData, weekNr) => {
     weekData[0].weekNr = weekNr + 1
     weekData.forEach( (lessonData, lessonNr) => {
       flattenedLessonList.push(lessonData)
@@ -616,12 +616,14 @@ async function createTimeTable() {
     }
     const lessonElement = createElement("section.lesson",{class: lessonStatus})
     if(lessonStatus === "done") {
-      ll(lessonData.date, lessonData.date.match(/(monday )|(tuesday )|(wednesday )|(thursday )|(friday )/i))
+      //ll(lessonData.date, lessonData.date.match(/(monday )|(tuesday )|(wednesday )|(thursday )|(friday )/i))
       dateText = lessonData.date.replace(/(monday )|(tuesday )|(wednesday )|(thursday )|(friday )/gi,"")
       chapterText = lessonData.title.replace(/chapter /i, "")
       appendToElement(lessonElement, createElement("h6",{},markdown.renderInline(dateText + ": " + chapterText)))
     } else {
-      appendToElement(lessonElement, createElement("h6",{},markdown.renderInline(lessonData.date)+":"))
+      const dateHeader = lessonData.date ? markdown.renderInline(lessonData.date) + ":"
+                                         : ""
+      appendToElement(lessonElement, createElement("h6",{},dateHeader))
       appendToElement(lessonElement, createElement("h3",{},markdown.renderInline(lessonData.title)))
     }
 

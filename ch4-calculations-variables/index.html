@@ -30,7 +30,7 @@
     <h3 class="assignment questions">4.2: lingo</h3>
       <p>Variables can also have pieces of text as their value. Here's a code snippet that uses variables with text values:</p>
       <script type="text/plain" class="language-javascript">
-        var pasta = "Spagetti"
+        var pasta = "Spaghetti"
         var sauce = "Bolognese"
         var cheese
         cheese = "Parmesan"
@@ -58,7 +58,7 @@
           <h4>4.2.c: to quote or not to quote</h4>
           <p>Notice how, in the code snippet, text values have quotes around them: "Spagetti", "Carbonara", etc. These quotes are needed to prevent confusion.</p>
           <ol type=a>
-            <li>If the value "Spagetti" did not have any quotes around it, how would JavaScript misunderstand it? With what kind of thing would JavaScript confuse it?</li>
+            <li>If the value "Spaghetti" did not have any quotes around it, how would JavaScript misunderstand it? With what kind of thing would JavaScript confuse it?</li>
             <li>What error message is shown in the console when you try the code snippet in the browser <i>without the quotes around "Spagetti"</i> (first place the code into an HTML-file, see <a href="../ch3-interactivity-functions/index.html#html-template">the template</a>).</li>
             <li>Can you think of another reason why it's useful to have text values be surrounded by quotes?</li>
           </ol>
@@ -209,18 +209,18 @@
 var birdsBought = 0
 var giraffesBought = 0
 
-function updateShoppingCard(){
+function updateShoppingCart(){
   document.getElementById("orderLine1").innerHTML = birdsBought + " * sunbird = " + birdsBought * 200 + " euro"
   document.getElementById("orderLine2").innerHTML = giraffesBought + " * giraffe = " + giraffesBought * 5000 + " euro"
 }
 
 function buyBirdPhoto() {
   birdsBought = birdsBought + 1
-  updateShoppingCard()
+  updateShoppingCart()
 }
 function buyGiraffePhoto() {
   giraffesBought = giraffesBought + 1
-  updateShoppingCard()
+  updateShoppingCart()
 }
 
 document.getElementById("buyButton1").onclick = buyBirdPhoto
