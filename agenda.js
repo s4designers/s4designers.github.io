@@ -1,6 +1,6 @@
 const agenda = {}
 
-agenda.currentLesson = [4,2,2]  // [ week, lesson in week ] 1-based 
+agenda.currentLesson = [4,4,2]  // [ week, lesson in week ] 1-based 
 
 // All strings in this data will be preprocessed by a Markdown converter.
 // So you can use **bold**, _italic_ and [hyperlinks](http://www.example.com).
@@ -69,6 +69,18 @@ agenda.program =
       content: [
         "assignments 4.6 & 4.7 from [chapter 4](/ch4-calculations-variables/index.html)",
         "assignments 5.1—5.6",
+      ],
+    },
+    { date: "Thursday Feb 22nd",
+      title: "les vervalt ivm 'studiedag HAN'",
+    },
+    { date: "Friday Feb 23rd",
+      title: `[chapter 6 – _debugging_ code that doesn't work](/ch6-debugging/index.html)
+      [chapter 7 – how functions communicate: _parameters_ and _return values_](/ch7-more-about-functions/index.html)`,
+      content: [
+        "assignments 5.7—5.12 from [chapter 5](/ch5-variables-inside-variables/index.html)",
+        "assignments 6.1—6.5 (optioneel: 6.6)",
+        "assignments 7.1—7.7",
       ],
     }
   ]
