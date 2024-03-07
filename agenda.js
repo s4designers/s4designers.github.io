@@ -1,6 +1,6 @@
 const agenda = {}
 
-agenda.currentLesson = [4,4,2]  // [ week, lesson in week ] 1-based 
+agenda.currentLesson = [6,3,1]  // [ week, lesson in week ] 1-based 
 
 // All strings in this data will be preprocessed by a Markdown converter.
 // So you can use **bold**, _italic_ and [hyperlinks](http://www.example.com).
@@ -74,15 +74,53 @@ agenda.program =
     { date: "Thursday Feb 22nd",
       title: "les vervalt ivm 'studiedag HAN'",
     },
-    { date: "Friday Feb 23rd",
-      title: `[chapter 6 – _debugging_ code that doesn't work](/ch6-debugging/index.html)
-      [chapter 7 – how functions communicate: _parameters_ and _return values_](/ch7-more-about-functions/index.html)`,
+  ],
+  [
+    { date: "Monday Feb 26th",
+      title: `[chapter 6 – _debugging_ code that doesn't work](/ch6-debugging/index.html)`,
       content: [
         "assignments 5.7—5.12 from [chapter 5](/ch5-variables-inside-variables/index.html)",
         "assignments 6.1—6.5 (optioneel: 6.6)",
+      ],
+    },
+    { date: "Tuesday Feb 27th",
+      title: `[chapter 7 – how functions communicate: _parameters_ and _return values_](/ch7-more-about-functions/index.html)`,
+      content: [
         "assignments 7.1—7.7",
       ],
-    }
+    },
+  ],
+  [
+    { date: "Monday March 4th",
+      title: `[chapter 8 – _true, false,_ and choosing with _if-statements_](/ch8-true-false-if/index.html)`,
+      content: [
+        "assignments 7.8—7.12 from [chapter 7](/ch7-more-about-functions/index.html)",
+        "assignments 8.1—8.9"
+      ],
+    },
+    { date: "Tuesday March 5th",
+      title: `[chapter 9 – more about if statements and _conditions_](/ch9-more-if-conditions/index.html)`,
+      content: [
+        "assignments 8.10—8.12 from [chapter 8](/ch8-true-false-if/index.html)",
+        "assignments 9.1—9.5"
+      ],
+    },
+    { date: "Thursday March 7th",
+      title: `[chapter 10 – more about functions: _local variables_ and _side effects_](/ch10-locals-and-side-effects/index.html)`,
+      content: [
+        "assignments 9.6—9.8 from [chapter 9](/ch9-more-if-conditions/index.html)",
+        "_optional_: assignments 9.9 and 9.10  from [chapter 9](/ch9-more-if-conditions/index.html)",
+        "assignments 10.1—10.6"
+      ],
+    },
+    { date: "Friday March 8th",
+      title: `[chapter 11 – fun with data types](/ch11-fun-with-datatypes/index.html)`,
+      content: [
+        "assignment 10.7 from [chapter 10](/ch10-locals-and-side-effects/index.html)",
+        "assignments 11.1—11.6"
+      ],
+    },
+
   ]
 ]
 
