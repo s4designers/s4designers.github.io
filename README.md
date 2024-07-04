@@ -3,7 +3,7 @@
 **Lesmateriaal voor de minor Scripting voor Designers**
 
 
-De site wordt nu gehost in het Firebase project [**s4d-inbox**](https://console.firebase.google.com/project/s4d-inbox/overview). Peter Schulz, Sander Leer, Robert Holwerda en Jille Treffers zijn daar nu eigenaar van. Voor studenten en bezoekers is dit de _publieke site_:
+De site wordt nu gehost in het Firebase project [**s4d-inbox**](https://console.firebase.google.com/project/s4d-inbox/overview). Peter Schulz, Sander Leer en Robert Holwerda zijn daar nu eigenaar van. Voor studenten en bezoekers is dit de _publieke site_:
 
 [elk.scripting.school](https://dingo.scripting.school) _(cohort feb. 2021)_
 
