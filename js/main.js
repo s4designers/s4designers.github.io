@@ -728,7 +728,7 @@ function ll(...args) {
         class: lessonStatus,
       })
 
-      if (lessonStatus === 'done' || lessonStatus === 'closed') {
+      if (lessonStatus === 'done') {
         appendToElement(
           lessonElement,
           createElement(
