@@ -456,11 +456,14 @@
         
               // TODO 1: The first bird should get higher opacity when slider values are high.
               //         The second bird should get lower opacity when slider values are high.
+
+              // TODO 3: The left of the first bird should move from 0 pixels to 400 pixels
+              //         when slider values go from 0 to 1.
+              //         Don't forget to start at left position 400px (see html code).
         
-              // TODO 3: The left of the first bird should move from 400 pixels to 0 pixels 
-              //         when slider values go from 1 to 0.
               //         The second bird should move from 400 pixels to 800 pixels when slider values
               //         go from 0 to 1.
+              //         Don't forget to start at left position 800px (see html code).
         
               console.log("updateImages ended")
             }
@@ -477,8 +480,8 @@
               </script>
       <p>Note these three things about the code:</p>
       <ul>
-        <li>In this version, the slider values go from 0 (zero) to 1 (one). This is actually useful!</li>
-        <li>There are three comments start start with "TODO". These comments correspond to the three steps describe below.</li>
+        <li>In this version, the slider values go from 0 (zero) to 1 (one). If you set the slider halfway, you get the value 0.5. This is actually useful!</li>
+        <li>There are three comments starting with "TODO". These comments correspond to the three steps described below.</li>
         <li>Where the video used <code>document.getElementById( ... ).</code><b><code>value</code></b> to get the slider value, this code uses a variant: <code>document.getElementById( ... ).</code><b><code>valueAsNumber</code></b>. Please use this new variant in your code too! It helps prevent some weird bugs you might encounter.</li>
       </ul>        
       <p>Here are the birds: <download href="./mousebird.jpg" ></download>, and <download href="./crested_crane.jpg"></download></p>
