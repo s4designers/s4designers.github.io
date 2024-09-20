@@ -1,5 +1,7 @@
 # TODO
 
+test from RHolleman
+
 ## inhoud
 * !! H7 eindopdracht aanpassen, niet param object als returnwaarde
 * !! H9: opdr. 9.4 eist "global variables". Herformuleren/uitleggen
