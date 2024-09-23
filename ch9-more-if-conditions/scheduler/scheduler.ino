@@ -1,4 +1,5 @@
-#include "s4d_breadboard.h"
+ // #include change to <path to global header> or "local header"
+#include <lib/s4d_breadboard_lib.h>
 
 void setup() {
   initializeBreadboard();
@@ -66,13 +67,13 @@ bool isButtonPressed(int buttonPin) {
 int weekday = 1;  // Start on Monday
 
 int adjustWeekday() {
-  if( isButtonPressed(BUTTON1) ) {
+  if( Button.button1Pressed() ) {
     weekday = weekday + 1;
     if( weekday > 6 ) {
       weekday = 0;
     }
   }
-  if( isButtonPressed(BUTTON2) ) {
+  if( Button.button2Pressed()) {
     weekday = weekday - 1;
     if( weekday < 0 ) {
       weekday = 6;

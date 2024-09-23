@@ -697,82 +697,82 @@ void beep() {
         <p>In this assignment, you'll build a kitchen timer with two modes.</p>
         <p>Note that the pause-state is handled using a mode variable instead of a while-loop. (A while-loop would have worked just as well.)</p>
         <script type="text/plain" class="language-arduino">
-#include "s4d_breadboard.h"
+          #include "s4d_breadboard.h"
 
-const int PAUSE_BUTTON = BUTTON1;
-const int ADJUST_BUTTON = BUTTON2;
-
-bool isPaused = false;           // stores the app mode
-
-unsigned long beepTime = 15000;  // when should the timer go off (milliseconds)
-unsigned long pauseStart;        // see function 'changePauseState'
-
-void setup(){
-  initializeBreadboard();
-  OLED.printTop("running");
-}
-
-void loop(){
-
-  if(digitalRead(PAUSE_BUTTON) == HIGH) {  // The button is pressed.
-    delay(200);                            // Delay gives user chance to release button
-    changePauseState();
-  }
-
-  if(digitalRead(ADJUST_BUTTON) == HIGH) {  // The button is pressed.
-    delay(200);                             // Delay gives user chance to release button
-    // your code here...
-  }
-
-  if( ! isPaused ) {                       // Normal operation: show time and check if timer is done.
-    long timeLeft = beepTime - millis();   // (Why isn't timeLeft an *unsigned* long?)
-    OLED.printBottom( timeLeft / 1000 );
-    if( timeLeft <= 0 ) {                  // Timer must 'go off'.
-      beepMode();                          // Keep beeping until button-press.
-      waitForeverMode();                   // Do nothing until the Arduino is reset.
-    }
-  }
-}
-
-
-//////////  mode changes  //////////////
-
-void changePauseState() {
-  isPaused = ! isPaused;                 // Toggle the 'isPaused' state.
-  if( isPaused ) {                       // We're entering paused state
-    OLED.printTop("paused");
-    pauseStart = millis();               // Store current time to be able to calculate
-                                          //   the pause duration when pause ends.
-  } else {                               // else: We're leaving the paused-state
-    OLED.printTop("running");
-    unsigned long pauseDuration;
-    pauseDuration = millis() - pauseStart;
-    beepTime = beepTime + pauseDuration; // Because millis() keeps increasing during pauses,
-                                          //   we need adjust the beepTime with the duration that
-                                          //   the timer was paused.
-  }
-}
-
-//////////  timer goes off  //////////////
-
-void beepMode(){
-  OLED.printTop( "timer finished" );
-  while ( digitalRead(BUTTON1) == LOW ) {  // as long as the button isn't pressed
-    digitalWrite( LED_GREEN, HIGH );
-    playTone(1500,50);
-    digitalWrite( LED_GREEN, LOW );
-    delay(30);
-  }
-  // the loop ends when the user presses the button
-}
-
-void waitForeverMode() {
-  OLED.printTop( "Use reset button to" );
-  OLED.printBottom( "restart the timer." );
-  while( true ) {                             // runs forever! (why?)
-    // do nothing...
-  }
-}
+          //PAUSE_BUTTON = BUTTON1;
+          //ADJUST_BUTTON = BUTTON2;
+          
+          bool isPaused = false;           // stores the app mode
+          
+          unsigned long beepTime = 15000;  // when should the timer go off (milliseconds)
+          unsigned long pauseStart;        // see function 'changePauseState'
+          
+          void setup(){
+            initializeBreadboard();
+            OLED.printTop("running");
+          }
+          
+          void loop(){
+          
+            if(Button.button1Pressed() == HIGH) {  // The PAUSE_BUTTON is pressed.
+              delay(200);                            // Delay gives user chance to release button
+              changePauseState();
+            }
+          
+            if(Button.button2Pressed() == HIGH) {  // The ADJUST_BUTTON is pressed.
+              delay(200);                             // Delay gives user chance to release button
+              // your code here...
+            }
+          
+            if( ! isPaused ) {                       // Normal operation: show time and check if timer is done.
+              long timeLeft = beepTime - millis();   // (Why isn't timeLeft an *unsigned* long?)
+              OLED.printBottom( timeLeft / 1000 );
+              if( timeLeft <= 0 ) {                  // Timer must 'go off'.
+                beepMode();                          // Keep beeping until button-press.
+                waitForeverMode();                   // Do nothing until the Arduino is reset.
+              }
+            }
+          }
+          
+          
+          //////////  mode changes  //////////////
+          
+          void changePauseState() {
+            isPaused = ! isPaused;                 // Toggle the 'isPaused' state.
+            if( isPaused ) {                       // We're entering paused state
+              OLED.printTop("paused");
+              pauseStart = millis();               // Store current time to be able to calculate
+                                                    //   the pause duration when pause ends.
+            } else {                               // else: We're leaving the paused-state
+              OLED.printTop("running");
+              unsigned long pauseDuration;
+              pauseDuration = millis() - pauseStart;
+              beepTime = beepTime + pauseDuration; // Because millis() keeps increasing during pauses,
+                                                    //   we need adjust the beepTime with the duration that
+                                                    //   the timer was paused.
+            }
+          }
+          
+          //////////  timer goes off  //////////////
+          
+          void beepMode(){
+            OLED.printTop( "timer finished" );
+            while ( Button.button1Pressed() == LOW ) {  // as long as the button isn't pressed
+              digitalWrite( LED_GREEN, HIGH );
+              playTone(1500,50);
+              digitalWrite( LED_GREEN, LOW );
+              delay(30);
+            }
+            // the loop ends when the user presses the button
+          }
+          
+          void waitForeverMode() {
+            OLED.printTop( "Use reset button to" );
+            OLED.printBottom( "restart the timer." );
+            while( true ) {                             // runs forever! (why?)
+              // do nothing...
+            }
+          }
         </script>
         <p>The given code beeps after 15 seconds have passed. There is no option to change the time yet. Add the following functionality to the program:</p>
         <ol>

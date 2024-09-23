@@ -176,7 +176,7 @@ void loop(){
   
   //millis() gives the number of milliseconds since the arduino was powered on, or reset.
   void loop() {
-    if( digitalRead(BUTTON1) == HIGH ) {
+    if( Button.button1Pressed() == HIGH ) {
       buttonClickTime = millis();
     }
   

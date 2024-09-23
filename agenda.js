@@ -1,6 +1,6 @@
 const agenda = {}
 
-agenda.currentLesson = [4, 1, 2] // [ week, lesson in week, number of look-ahead lessons] 1-based
+agenda.currentLesson = [4, 2, 2] // [ week, lesson in week, number of look-ahead lessons] 1-based
 
 /*
 The progam is an array of weeks.
