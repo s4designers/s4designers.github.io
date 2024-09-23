@@ -89,7 +89,7 @@
       return reading;
     }
     
-    void playNote(int position) {
+    void playNote2(int position) {
       toneToPlay = notes[position] * 24 + 400;
       OLED.printBottom("tone freq.: ", toneToPlay);
       tone(BUZZER, toneToPlay );
@@ -99,25 +99,25 @@
     
     void loop() {
       currentReading = analogReadingAsByte(POTENTIOMETER);
-      if(digitalRead(BUTTON1) == HIGH){
+      if(Button.button1Pressed() == HIGH){
         // record only if potmeter changes and note array not yet full
         if( currentReading != previousReading && recordingCounter < 200) {
           OLED.printTop("recording nr:", recordingCounter);
           digitalWrite( LED_RED, HIGH );
           digitalWrite( LED_BLUE, LOW );      
           notes[recordingCounter] = currentReading;
-          playNote( recordingCounter );
+          playNote2( recordingCounter );
           recordingCounter = recordingCounter + 1;
           previousReading = currentReading;
           playbackCounter = 0;
         } else if( recordingCounter == 200 ) {
           OLED.printBottom("memory full");
         }                                      // don't play if there's no recording
-      }else if(digitalRead(BUTTON2) == HIGH && recordingCounter > 0) {
+      }else if(Button.button2Pressed() == HIGH && recordingCounter > 0) {
         OLED.printTop("Playing nr:", playbackCounter);
         digitalWrite( LED_BLUE, HIGH );
         digitalWrite( LED_RED, LOW );
-        playNote( playbackCounter );
+        playNote2( playbackCounter );
         playbackCounter = playbackCounter + 1;
         if(playbackCounter == recordingCounter) { // pause, than play from beginning
           OLED.printBottom("end of recording"); 
