@@ -1,6 +1,6 @@
 const agenda = {}
 
-agenda.currentLesson = [4, 3, 2] // [ week, lesson in week, number of look-ahead lessons] 1-based
+agenda.currentLesson = [4, 4, 2] // [ week, lesson in week, number of look-ahead lessons] 1-based
 
 /*
 The progam is an array of weeks.
@@ -151,6 +151,14 @@ agenda.program = [
     },
     {
       date: new Date('2024-09-26'),
+      title: '– geen les –',
+      content: [],
+    },
+  ],
+  // OW-5
+  [
+    {
+      date: new Date('2024-09-30'),
       title: '[loops for repeating commands](/ch13-loops/) _(continued)_',
       content: [
         'assignments 13.6—13.9',
@@ -158,11 +166,8 @@ agenda.program = [
         '_during class: assignments 13.10—13.11_',
       ],
     },
-  ],
-  // OW-5
-  [
     {
-      date: new Date('2024-09-30'),
+      date: new Date('2024-10-01'),
       title: '[visuals with canvas and animation](/ch14-canvas-animation/)',
       content: [
         'assignments 14.1—14.5',
@@ -170,7 +175,7 @@ agenda.program = [
       ],
     },
     {
-      date: new Date('2024-10-01'),
+      date: new Date('2024-10-02'),
       title: '[active objects do it with _methods_ ](/ch15-methods/)',
       content: [
         'assignments 15.1—15.8',
@@ -178,16 +183,12 @@ agenda.program = [
       ],
     },
     {
-      date: new Date('2024-10-02'),
+      date: new Date('2024-10-03'),
       title:
         '_final assignment_ [Javascript: Battleships](/javascript-battleships/)',
       content: [
         "_during class: we support you while you're working on the assignment_",
       ],
-    },
-    {
-      date: new Date('2024-10-03'),
-      title: '_support_',
     },
   ],
   // OW-6
@@ -198,28 +199,32 @@ agenda.program = [
     },
     {
       date: new Date('2024-10-08'),
+      title: '_support_',
+    },
+    {
+      date: new Date('2024-10-09'),
       title:
+        '_support_, and<br>' +
         '_deadline inleveren_ [Javascript: Battleships](/javascript-battleships/), and<br>' +
         '_final assignment_ [Arduino: Burglar alarm](/arduino-burglar-alarm/)',
       content: 'voor 23:59 inleveren via mail',
     },
     {
-      date: new Date('2024-10-09'),
-      title: '_support_',
-    },
-    {
       date: new Date('2024-10-10'),
-      title:
-        '_support_, and<br>' +
-        '_deadline inleveren_ [Arduino: Burglar alarm](/arduino-burglar-alarm/)',
-      content: 'voor 23:59 inleveren via mail',
+      title: '_support_',
     },
   ],
   // OW-7
   [
     {
       date: new Date('2024-10-14'),
-      title: 'Project kick-off',
+      title: '_support_',
+    },
+    {
+      date: new Date('2024-10-15'),
+      title:
+        '_deadline inleveren_ [Arduino: Burglar alarm](/arduino-burglar-alarm/), and<br>' +
+        'Project kick-off',
       content: [
         'introduction to the S4D Project',
         '[**list of programming platforms**](/project-list.html)',
@@ -228,17 +233,29 @@ agenda.program = [
     },
     {
       date: new Date('2024-10-16'),
-      title: 'Project progress review',
-      content: [
-        // 'list of learning resources',
-        // 'goals / high level functionality overview',
-      ],
+      title: '_support_',
     },
     {
       date: new Date('2024-10-17'),
-      title: '_assessments_',
-      content: ['_nadere informatie volgt via mail_'],
+      title: 'Project progress review',
+      content: [
+        'list of learning resources',
+        'goals / high level functionality overview',
+      ],
     },
+  ],
+  // OW-8
+  [
+    {
+      date: 'ma 21-10 t/m vr 25-10',
+      title: '– herfstvakantie –',
+    },
+
+    // {
+    //   date: new Date('2024-01-01'),
+    //   title: '_assessments_',
+    //   content: ['_nadere informatie volgt via mail_'],
+    // },
     // {
     //   date: "—",
     //   title:
@@ -252,9 +269,8 @@ agenda.program = [
     //   content: [],
     // },
     // {
-    //   date: 'ma 16-10 t/m vr 20/10',
-    //   title: '_herfstvakantie_',
+    //   date: 'ma 21-10 t/m vr 25-10',
+    //   title: '– herfstvakantie –',
     // },
   ],
-  // OW-8
 ]
