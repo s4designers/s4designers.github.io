@@ -1,6 +1,6 @@
 const agenda = {}
 
-agenda.currentLesson = [4, 4, 2] // [ week, lesson in week, number of look-ahead lessons] 1-based
+agenda.currentLesson = [5, 3, 2] // [ week, lesson in week, number of look-ahead lessons] 1-based
 
 /*
 The progam is an array of weeks.
@@ -171,23 +171,25 @@ agenda.program = [
       title: '[visuals with canvas and animation](/ch14-canvas-animation/)',
       content: [
         'assignments 14.1—14.5',
+        '_during class: assignments 13.8—13.11_',
         '_during class: assignments 14.6—14.8_',
       ],
     },
     {
       date: new Date('2024-10-02'),
-      title: '[active objects do it with _methods_ ](/ch15-methods/)',
+      title:
+        '[visuals with canvas and animation](/ch14-canvas-animation/) _(continued)_',
       content: [
-        'assignments 15.1—15.8',
-        '_during class: assignments 15.9—15.10_',
+        'assignments 14.1—14.5',
+        '_during class: assignments 14.6—14.8_',
       ],
     },
     {
       date: new Date('2024-10-03'),
-      title:
-        '_final assignment_ [Javascript: Battleships](/javascript-battleships/)',
+      title: '[active objects do it with _methods_ ](/ch15-methods/)',
       content: [
-        "_during class: we support you while you're working on the assignment_",
+        'assignments 15.1—15.8',
+        '_during class: assignments 15.9—15.10_',
       ],
     },
   ],
@@ -195,7 +197,11 @@ agenda.program = [
   [
     {
       date: new Date('2024-10-07'),
-      title: '_support_',
+      title:
+        '_final assignment_ [Javascript: Battleships](/javascript-battleships/)',
+      content: [
+        "_during class: we support you while you're working on the assignment_",
+      ],
     },
     {
       date: new Date('2024-10-08'),
@@ -203,15 +209,15 @@ agenda.program = [
     },
     {
       date: new Date('2024-10-09'),
-      title:
-        '_support_, and<br>' +
-        '_deadline inleveren_ [Javascript: Battleships](/javascript-battleships/), and<br>' +
-        '_final assignment_ [Arduino: Burglar alarm](/arduino-burglar-alarm/)',
-      content: 'voor 23:59 inleveren via mail',
+      title: '_support_',
     },
     {
       date: new Date('2024-10-10'),
-      title: '_support_',
+      title:
+        '_deadline inleveren_ [Javascript: Battleships](/javascript-battleships/), and<br>' +
+        '_final assignment_ [Arduino: Burglar alarm](/arduino-burglar-alarm/), and<br>' +
+        '_support_',
+      content: 'voor 23:59 inleveren via mail',
     },
   ],
   // OW-7
@@ -222,9 +228,7 @@ agenda.program = [
     },
     {
       date: new Date('2024-10-15'),
-      title:
-        '_deadline inleveren_ [Arduino: Burglar alarm](/arduino-burglar-alarm/), and<br>' +
-        'Project kick-off',
+      title: '**Project kick-off**, and<br>' + '_support_',
       content: [
         'introduction to the S4D Project',
         '[**list of programming platforms**](/project-list.html)',
@@ -233,7 +237,8 @@ agenda.program = [
     },
     {
       date: new Date('2024-10-16'),
-      title: '_support_',
+      title:
+        '_deadline inleveren_ [Arduino: Burglar alarm](/arduino-burglar-alarm/), and<br>',
     },
     {
       date: new Date('2024-10-17'),
