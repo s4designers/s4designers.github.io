@@ -568,8 +568,8 @@ void loop(){
 
 // 'const' makes a variable read-only: it can't change.
 // We call such variables 'constants', and they also don't use any memory.
-const int BLINK_BUTTON = BUTTON1;  
-const int BEEP_BUTTON = BUTTON2;
+// const int BLINK_BUTTON = BUTTON1;  
+// const int BEEP_BUTTON = BUTTON2;
 
 void setup(){
   initializeBreadboard();
@@ -577,12 +577,12 @@ void setup(){
 
 void loop(){
   OLED.print( "Normal Mode" ) ;
-  if (digitalRead(BLINK_BUTTON) == HIGH) { 
+  if (Button.button1Pressed()) { 
     delay(200); // this delay gives user the chance to release the button
     blinkMode();
   }
 
-  if(digitalRead(BEEP_BUTTON) == HIGH){
+  if(Button.button2Pressed()){
     delay(200); // this delay gives user the chance to release the button
     beepMode();
   }
@@ -592,7 +592,7 @@ void loop(){
 
 void beepMode(){
   OLED.print( "Beep Mode" );
-  while (digitalRead(BEEP_BUTTON) == LOW ) {   // as long as the button isn't pressed again
+  while (!Button.button2Pressed()) {   // as long as the button isn't pressed again
     beep();
   }
   // the loop ends when the user presses the button a second time
@@ -608,7 +608,7 @@ void beep() {
 
 void blinkMode(){
   OLED.print( "Blink Mode" );
-  while (digitalRead(BLINK_BUTTON) == LOW) {  // as long as the button isn't pressed again
+  while (!Button.button1Pressed()) {  // as long as the button isn't pressed again
     blinkRedLED();
   }
   // the loop ends when the user presses the button a second time
